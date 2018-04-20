@@ -86,6 +86,38 @@ is a discrete category, there are no nontrivial maps between
 representables, so every transformation is cartesian and the
 localization is the identity functor.
 
+\section{Preliminaries}
+\begin{enumerate}
+\item A commuting square
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[d,swap,"f"] \arrow[r] & B \arrow[d,"g"] \\
+X \arrow[r,swap,"h"] & Y
+\end{tikzcd}
+\end{equation*}
+is a pullback square if and only if the induced map on fibers
+\begin{equation*}
+\prd{x:X}\fib{f}{x}\to\fib{g}{h(x)}
+\end{equation*}
+is a fiberwise equivalence.
+\item For any modality $\modal$ the following are equivalent:
+\begin{enumerate}
+\item All propositions are modal.
+\item All $\modal$-connected maps are surjective.
+\end{enumerate}
+In particular it follows that all $n$-connected maps are surjective, for $n\geq -1$.
+\item For any modality $\modal$, the subuniverse of $\modal$-separated types consist of types with $\modal$-modal identity types. In other words, a type is $\modal$-separated if its diagonal is classified by $\UU_\modal$. The subuniverse of $\modal$-separated types is again a reflective subuniverse, and its reflection $\modal'$ is again a modality. Since all propositions are $\modal$-separated (because the unit type is $\modal$-modal), it follows that the $\modal'$-connected maps are surjective. Moreover, the following are equivalent for any map $f:A\to B$:
+\begin{enumerate}
+\item $f$ is $\modal'$-connected.
+\item $f$ is surjective and its diagonal is $\modal$-connected.
+\end{enumerate}
+For any map $f:A\to B$ the following are also equivalent:
+\begin{enumerate}
+\item $f$ is $\modal'$-modal.
+\item its diagonal is $\modal$-modal.
+\end{enumerate}
+\end{enumerate}
+
 \section{\texorpdfstring{$\modal$}{○}-\'etale maps}
 
 \begin{defn}

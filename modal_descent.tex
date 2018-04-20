@@ -287,6 +287,24 @@ commutes. To see this, note that both $f\circ \pi_2$ and $\modal(\etmap(f))\circ
 The class of formally \'etale maps is precisely the class of maps that arise as pullbacks of maps between modal types.
 \end{cor}
 
+\begin{cor}
+Suppose $P:X\to\UU_\modal$ is a family of modal types such that the projection map $\proj 1:\big(\sm{x:X}P(x)\big)\to X$ is formally \'etale. Then $P$ has a unique extension
+\begin{equation*}
+\begin{tikzcd}
+X \arrow[d,swap,"\modalunit"] \arrow[r,"P"] & \UU_\modal. \\
+\modal X \arrow[ur,densely dotted,swap,"\tilde{P}"] 
+\end{tikzcd}
+\end{equation*}
+It follows that the square commuting square
+\begin{equation*}
+\begin{tikzcd}
+\sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \sm{t:\modal X}\tilde{P}(t) \arrow[d,"\proj 1"] \\
+X \arrow[r,swap,"\modalunit"] & \modal X
+\end{tikzcd}
+\end{equation*}
+is a pullback square. In particular the top map is $\modal$-connected, so this square is in fact a $\modal$-naturality square.
+\end{cor}
+
 \section{The reflective factorization system}
 
 In this section we investigate a second factorization system that can be obtained from any modality, of which the right class is the class of formally \'etale maps. The left class is the class of \emph{$\modal$-equivalences}.

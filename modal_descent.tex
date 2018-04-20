@@ -86,11 +86,7 @@ is a discrete category, there are no nontrivial maps between
 representables, so every transformation is cartesian and the
 localization is the identity functor.
 
-\section{Modal descent}
-
-Felix Wellen introduced the notion of $\modal$-\'etale maps for an arbitrary modality $\modal$.
-The results in this section have been established in discussions with Felix Wellen and Mike Shulman.
-Preliminary ideas about modal descent were presented by the author in June 2017 at the Big Proofs meeting in Cambridge, UK, in joint work with Bas Spitters.
+\section{$\modal$-\'etale maps}
 
 \begin{defn}
 We say that a map $f:A\to B$ is \define{$\modal$-\'etale} if the square
@@ -141,6 +137,115 @@ Y \arrow[r] & \modal Y
 \end{equation*}
 are equivalences. Therefore this square is a pullback square, so $f$ is $\modal$-\'etale.
 \end{proof}
+
+In this section our goal is to characterize the $\modal$-\'etale maps for the $n$-truncations. We call such maps \define{$n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
+
+\begin{lem}\label{lem:etale_char}
+Let $\modal$ be a modality for which all propositions are modal, and consider a map $f:A\to B$. The following are equivalent:
+\begin{enumerate}
+\item $f$ is $\modal$-\'etale.
+\item The commuting square
+\begin{equation*}
+\begin{tikzcd}[column sep=large]
+A\times_{\modal A} A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\pi_1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{enumerate}
+\end{lem}
+
+\begin{rmk}
+In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square
+\begin{equation*}
+\begin{tikzcd}
+A\times A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times f}"] & B\times B \arrow[d,"\pi_1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{rmk}
+
+\begin{proof}
+Suppose first that $f$ is $\modal$-\'etale, and consider the commuting cube
+\begin{equation*}
+\begin{tikzcd}
+& A\times_{\modal A} A \arrow[dl] \arrow[d] \arrow[dr] \\
+A \arrow[d] & B\times_{\modal B} B \arrow[dl] \arrow[dr] & A \arrow[dl,crossing over] \arrow[d] \\
+B \arrow[dr] & \modal A \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+& \modal B
+\end{tikzcd}
+\end{equation*}
+Since the top, bottom, and both front squares are pullback squares, it follows that both back squares are pullback. This proves that (i) implies (ii).
+
+Now suppose that (ii) holds. Then the map
+\begin{equation*}
+\fib{\modalunit}{\modalunit(a)}\to \fib{\modalunit}{\modalunit(f(a))}
+\end{equation*}
+is an equivalence for every $a:A$. Since all propositions are assumed to be modal, it follows that
+\begin{equation*}
+\fib{\modalunit}{t}\to \fib{\modalunit}{\modal f(t)}
+\end{equation*}
+is an equivalence for every $t:\modal A$. Thus it follows that the square
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[d,swap,"\modalunit"] \arrow[r] & B \arrow[d,"\modalunit"] \\
+\modal A \arrow[r] & \modal B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{proof}
+
+\begin{cor}
+If $f:A\to B$ is $\modal$-\'etale, then the square
+\begin{equation*}
+\begin{tikzcd}[column sep=large]
+A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
+A\times_{\modal A} A \arrow[r,swap,"f\times_{\modal f}f"] & B\times_{\modal B} B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{cor}
+
+\begin{proof}
+Consider the diagram
+\begin{equation*}
+\begin{tikzcd}[column sep=large]
+A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
+A\times_{\modal A} A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\pi_1"] \\
+A \arrow[r,"f"] & B
+\end{tikzcd}
+\end{equation*}
+The bottom square is a pullback square by \cref{lem:etale_char}, and the outer rectangle is a pullback since both vertical composites are homotopic to the respective identity functions. Therefore the top square is a pullback.
+\end{proof}
+
+\begin{thm}
+A map $f:A\to B$ is $0$-\'etale if and only if for each $a:A$ the restriction
+\begin{equation*}
+\begin{tikzcd}
+\sm{x:A}\brck{a=x} \arrow[d,swap,"\proj 1"] \arrow[r,densely dotted,"f"] & \sm{y:B}\brck{f(a)=y} \arrow[d,"\proj 1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+of $f$ to the connected component at $a$ of $A$ is an equivalence. 
+\end{thm}
+
+\begin{proof}
+By \cref{lem:etale_char} and the fact that $\eqv{(\tproj{0}{a}=\tproj{0}{x})}{\brck{a=x}}$, it follows that $f$ is $0$-\'etale if and only if the square
+\begin{equation*}
+\begin{tikzcd}[column sep=huge]
+\sm{a,x:A}\brck{a=x} \arrow[d,swap,"\pi_1"] \arrow[r,"\total{\brck{\apfunc{f}}}"] & \sm{b,y:B}\brck{b=y} \arrow[d,"\pi_1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square. Furhtermore, this square is a pullback if and only if the induced map
+\begin{equation*}
+\Big(\sm{x:A}\brck{a=x}\Big)\to\Big(\sm{y:B}\brck{f(a)=y}\Big)
+\end{equation*}
+is an equivalence, for each $a:A$.
+\end{proof}
+
+\section{Modal descent}
 
 The following theorem can be seen as a `modal flattening lemma'.
 \begin{thm}\label{thm:etale_flattening}
@@ -283,10 +388,6 @@ A \arrow[dr,swap,"f"] \arrow[rr,"\eqvsym"] & & \modal (X\times_{\modal X} A) \ar
 commutes. To see this, note that both $f\circ \pi_2$ and $\modal(\etmap(f))\circ \modalunit$ factor the same map as a $\modal$-connected map followed by a modal map, so the claim follows from uniqueness of factorizations.
 \end{proof}
 
-\begin{cor}\label{cor:etale}
-The class of $\modal$-\'etale maps is precisely the class of maps that arise as pullbacks of maps between modal types.
-\end{cor}
-
 \begin{cor}
 Suppose $P:X\to\UU_\modal$ is a family of modal types such that the projection map $\proj 1:\big(\sm{x:X}P(x)\big)\to X$ is $\modal$-\'etale. Then $P$ has a unique extension
 \begin{equation*}
@@ -393,7 +494,7 @@ A \arrow[ddr,bend right=15,swap,"f"] \arrow[drr,bend left=15,"\modalunit"] \arro
 & B \arrow[r,swap,"\modalunit"] & \modal B.
 \end{tikzcd}
 \end{equation*}
-Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
+Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale_pb}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
 \end{proof}
 
 Recall that a map $i:A\to B$ is said to be \define{left orthogonal} to a map $f:X\to Y$, or that the map $f$ is \define{right orthogonal} to the map $i$,
@@ -441,112 +542,4 @@ In this cube the top and bottom squares are pullback by the assumption that $f$ 
 For any map $f:X\to Y$, the type of factorizations into a $\modal$-connected map followed by a $\modal$-\'etale map is contractible.
 \end{cor}
 
-\section{$\modal$-\'etale maps for the $n$-truncations}
-
-The $n$-equivalences are easily described: they are just the maps that induce isomorphisms on the first $n$ homotopy groups. In this section our goal is to characterize the $\modal$-\'etale maps for the $n$-truncations. We call such maps \define{$n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
-
-\begin{lem}\label{lem:etale_char}
-Let $\modal$ be a modality for which all propositions are modal, and consider a map $f:A\to B$. The following are equivalent:
-\begin{enumerate}
-\item $f$ is $\modal$-\'etale.
-\item The commuting square
-\begin{equation*}
-\begin{tikzcd}[column sep=large]
-A\times_{\modal A} A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\pi_1"] \\
-A \arrow[r,swap,"f"] & B
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\end{enumerate}
-\end{lem}
-
-\begin{rmk}
-In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square
-\begin{equation*}
-\begin{tikzcd}
-A\times A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times f}"] & B\times B \arrow[d,"\pi_1"] \\
-A \arrow[r,swap,"f"] & B
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\end{rmk}
-
-\begin{proof}
-Suppose first that $f$ is $\modal$-\'etale, and consider the commuting cube
-\begin{equation*}
-\begin{tikzcd}
-& A\times_{\modal A} A \arrow[dl] \arrow[d] \arrow[dr] \\
-A \arrow[d] & B\times_{\modal B} B \arrow[dl] \arrow[dr] & A \arrow[dl,crossing over] \arrow[d] \\
-B \arrow[dr] & \modal A \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
-& \modal B
-\end{tikzcd}
-\end{equation*}
-Since the top, bottom, and both front squares are pullback squares, it follows that both back squares are pullback. This proves that (i) implies (ii).
-
-Now suppose that (ii) holds. Then the map
-\begin{equation*}
-\fib{\modalunit}{\modalunit(a)}\to \fib{\modalunit}{\modalunit(f(a))}
-\end{equation*}
-is an equivalence for every $a:A$. Since all propositions are assumed to be modal, it follows that
-\begin{equation*}
-\fib{\modalunit}{t}\to \fib{\modalunit}{\modal f(t)}
-\end{equation*}
-is an equivalence for every $t:\modal A$. Thus it follows that the square
-\begin{equation*}
-\begin{tikzcd}
-A \arrow[d,swap,"\modalunit"] \arrow[r] & B \arrow[d,"\modalunit"] \\
-\modal A \arrow[r] & \modal B
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\end{proof}
-
-\begin{thm}
-A map $f:A\to B$ is $0$-\'etale if and only if for each $a:A$ the restriction
-\begin{equation*}
-\begin{tikzcd}
-\sm{x:A}\brck{a=x} \arrow[d,swap,"\proj 1"] \arrow[r,densely dotted,"f"] & \sm{y:B}\brck{f(a)=y} \arrow[d,"\proj 1"] \\
-A \arrow[r,swap,"f"] & B
-\end{tikzcd}
-\end{equation*}
-of $f$ to the connected component at $a$ of $A$ is an equivalence. 
-\end{thm}
-
-\begin{proof}
-By \cref{lem:etale_char} and the fact that $\eqv{(\tproj{0}{a}=\tproj{0}{x})}{\brck{a=x}}$, it follows that $f$ is $0$-\'etale if and only if the square
-\begin{equation*}
-\begin{tikzcd}[column sep=huge]
-\sm{a,x:A}\brck{a=x} \arrow[d,swap,"\pi_1"] \arrow[r,"\total{\brck{\apfunc{f}}}"] & \sm{b,y:B}\brck{b=y} \arrow[d,"\pi_1"] \\
-A \arrow[r,swap,"f"] & B
-\end{tikzcd}
-\end{equation*}
-is a pullback square. Furhtermore, this square is a pullback if and only if the induced map
-\begin{equation*}
-\Big(\sm{x:A}\brck{a=x}\Big)\to\Big(\sm{y:B}\brck{f(a)=y}\Big)
-\end{equation*}
-is an equivalence, for each $a:A$.
-\end{proof}
-
-\begin{cor}
-If $f:A\to B$ is $\modal$-\'etale, then the square
-\begin{equation*}
-\begin{tikzcd}[column sep=large]
-A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
-A\times_{\modal A} A \arrow[r,swap,"f\times_{\modal f}f"] & B\times_{\modal B} B
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\end{cor}
-
-\begin{proof}
-Consider the diagram
-\begin{equation*}
-\begin{tikzcd}[column sep=large]
-A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
-A\times_{\modal A} A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\pi_1"] \\
-A \arrow[r,"f"] & B
-\end{tikzcd}
-\end{equation*}
-The bottom square is a pullback square by \cref{lem:etale_char}, and the outer rectangle is a pullback since both vertical composites are homotopic to the respective identity functions. Therefore the top square is a pullback.
-\end{proof}
 \end{document}

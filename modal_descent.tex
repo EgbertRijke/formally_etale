@@ -461,7 +461,14 @@ is a pullback square.
 \end{lem}
 
 \begin{rmk}
-The condition that the propositions need to be modal isn't sharp. The characterization of \'etale maps also works when the modality is $(-2)$-truncation. It holds for every modality of separated types, since any proposition is separated for any modality.
+In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square
+\begin{equation*}
+\begin{tikzcd}
+A\times A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times f}"] & B\times B \arrow[d,"\pi_1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
 \end{rmk}
 
 \begin{proof}

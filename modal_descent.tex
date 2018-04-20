@@ -1,0 +1,527 @@
+\documentclass[9pt,twosided]{amsart}
+
+\usepackage{hott}
+
+\title{Modal descent}
+\author{Discussion with Shulman, Wellen, Frey, Awodey, Rijke}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Mike's observations:
+\begin{enumerate}
+\item Every factorization system $(\mathcal{E},\mathcal{M})$ has an underlying reflective
+subuniverse, for which the modal types are those such that $X\to \unit$ is
+in $\mathcal{M}$.  It is not clear whether every reflective subuniverse underlies
+a factorization system.  One natural definition takes $\mathcal{E}$ to be the maps
+inverted by the reflector $\modal$; another takes $\mathcal{M}$ to be the maps whose
+$\modal$-naturality square is a pullback.  These two classes of maps are
+always orthogonal, but factorizations do not always exist; i.e. they
+are a "prefactorization system".  The prefactorization systems
+obtained in this way from a reflective subuniverse are called
+*reflective*; they are precisely those for which $\mathcal{E}$ satisfies
+2-out-of-3.
+\item 
+\begin{enumerate}
+\item Every modality is, in particular, a reflective subuniverse, so the
+foregoing applies to it.  In this case, however, the putative explicit
+definitions of $\mathcal{E}$ and $\mathcal{M}$ are always a factorization system, with
+factorizations constructed by pulling back in the $\modal$-naturality square;
+thus we always obtain a reflective factorization system.  The
+modalities are precisely the reflective subuniverses that have \emph{stable
+units}, i.e. all the modal units $X\to\modal X$ are $\modal$-connected.  In \cite{CassidyHebertKelly}
+there are two weaker conditions on a reflective subcategory that
+ensure that the reflective prefactorization system has factorizations:
+being \emph{simple} (equivalent to the fact that factorizations can be
+constructed by pulling back in the $\modal$-naturality square) and being
+\emph{semi-left-exact}.  It is not clear whether in HoTT there exist
+semi-left-exact reflective subuniverses that are not modalities, or
+simple ones that are not semi-left-exact, or even reflective
+subuniverses that are not simple.
+\item Every modality also gives rise to a different factorization
+system, in which the right class is the maps with $\modal$-modal fibers and
+the left class is the maps with $\modal$-connected fibers.  This
+factorization system is \emph{stable}, i.e. the left class (and hence the
+factorizations) are stable under pullback.  Moreover, every stable
+factorization system arises in this way from a unique modality.
+\end{enumerate}
+\item The above two factorization systems associated to a modality do not
+in general coincide.  They can coincide only if the $\modal$-connected maps
+satisfy 2-out-of-3 (since the $\modal$-inverted maps always do), and only if
+the $\modal$-inverted maps are stable under pullback (since the $\modal$-connected
+maps always are).  However, both of these properties are sufficient
+to imply that $\modal$ is fully left exact, which in turn implies that the
+two factorization systems coincide.
+\item Another way of extending a reflective subuniverse to a
+factorization system is that if it's accessible, we can choose a
+generating family and then use the same generating family to generate
+a factorization system.  This works for any accessible reflective
+subuniverse, but in principle, at least, it seems as if the result may
+depend on the generating family chosen, and I don't see any reason for
+it to coincide with the reflective (pre)factorization system.  I also
+don't know whether anything special happens for modalites.
+\item If we have a factorization system $(\mathcal{E},\mathcal{M})$,
+with underlying reflective subuniverse $\modal$, then all maps between
+$\modal$-modal types are in $\mathcal{M}$, hence so are any of their pullbacks.  Thus,
+the reflective factorization system, if it exists, is the
+factorization system with the smallest class $\mathcal{M}$ that has a given
+underlying reflective subuniverse.  On the other hand, again for any
+$(\mathcal{E},\mathcal{M})$, any pullback of an $\mathcal{M}$-map is again in $\mathcal{M}$, hence all fibers of an
+$\mathcal{M}$-map are $\modal$-modal; thus the stable factorization system, if it exists
+(i.e. if $\modal$ is a modality), is the factorization system with the
+\emph{largest} class $\mathcal{M}$ that has a given underlying reflective subuniverse.
+\end{enumerate}
+
+In a presheaf topos, a natural transformation is cartesian if and only if it is right orthogonal to all maps between representables. 
+Question: What do we get if we localize inside an
+arbitrary presheaf topos at the maps between representables?  A
+general presheaf topos is not cohesive, so the discrete objects are
+not fully embedded and we can't produce a modality by "taking the
+colimit and then the discrete object".  But this localization seems to
+be trying to give us the closest possible approximation to such.  As
+an extreme example in the other direction, if the domain of presheaves
+is a discrete category, there are no nontrivial maps between
+representables, so every transformation is cartesian and the
+localization is the identity functor.
+
+\section{Modal descent}
+
+Felix Wellen introduced the notion of formally \'etale maps for an arbitrary modality $\modal$.
+The results in this section have been established in discussions with Felix Wellen and Mike Shulman.
+Preliminary ideas about modal descent were presented by the author in June 2017 at the Big Proofs meeting in Cambridge, UK, in joint work with Bas Spitters.
+
+\begin{defn}
+We say that a map $f:A\to B$ is \define{formally \'etale} if the square
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[r,"f"] \arrow[d,swap,"\eta"] & B \arrow[d,"\eta"] \\
+\modal A \arrow[r,swap,"\modal f"] & \modal B
+\end{tikzcd}
+\end{equation*}
+is a pullback square. We will write
+\begin{equation*}
+\isetale(f)\defeq\ispullback(f,\eta_A,\natunit_\modal(f)).
+\end{equation*}
+\end{defn}
+
+It is immediate from the definition that any equivalence is formally \'etale, and that the formally \'etale maps are closed under composition.
+
+\begin{eg}\label{eg:etale_prop}
+We claim that a map $f:A\to B$ is formally \'etale with respect to propositional truncation if and only if $A\to \isequiv(f)$. Examples of maps that satisfy this condition include equivalences, maps between propositions, and any map of the form $\emptyt\to B$.
+
+To see that if $f:A\to B$ is formally \'etale, then $A\to\isequiv(f)$, consider the pullback square
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[r] \arrow[d,swap,"f"] & \brck{A} \arrow[d,"\brck{f}"] \\
+B \arrow[r] & \brck{B},
+\end{tikzcd}
+\end{equation*}
+and let $a:A$. Then both $\brck{A}$ and $\brck{B}$ are contractible, so $\brck{f}:\brck{A}\to\brck{B}$ is an equivalence. Since equivalences are stable under pullback it follows that $f$ is an equivalence.
+
+Now suppose that $A\to \isequiv(f)$. Since $\isequiv(f)$ is a proposition, we also have $\brck{A}\to\isequiv(f)$. To see that the gap map
+\begin{equation*}
+A \to B\times_{\brck{B}}\brck{A}
+\end{equation*}
+is an equivalence, we will show that its fibers are contractible. Let $b:B$, $x:\brck{A}$ and $p:\bproj{b}=\brck{f}(x)$. Since $\brck{A}\to\isequiv(f)$, it follows that $f$ is an equivalence. Then $\brck{f}$ is also an equivalence, from which it follows that the naturality square is a pullback square. We conclude that the fibers of the gap map are contractible. 
+\end{eg}
+
+\begin{lem}\label{lem:etale_modal}
+Any map between $\modal$-modal types is formaly \'etale.
+\end{lem}
+
+\begin{proof}
+Suppose $f:X\to Y$ is a map between $\modal$-modal types. Then the top and bottom maps in the square
+\begin{equation*}
+\begin{tikzcd}
+X \arrow[r] \arrow[d] & \modal X \arrow[d] \\
+Y \arrow[r] & \modal Y
+\end{tikzcd}
+\end{equation*}
+are equivalences. Therefore this square is a pullback square, so $f$ is formally \'etale.
+\end{proof}
+
+The following theorem can be seen as a `modal flattening lemma'.
+\begin{thm}\label{thm:etale_flattening}
+Consider a pullback square
+\begin{equation*}
+\begin{tikzcd}
+E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
+B' \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+with $H:f\circ p'\htpy p\circ g$, where $X$ and $Y$ are modal types. Then the square
+\begin{equation*}
+\begin{tikzcd}
+\modal E' \arrow[r,"\tilde{g}"] \arrow[d,swap,"{\modal p'}"] & E \arrow[d,"p"] \\
+\modal B \arrow[r,swap,"\tilde{f}"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square, where $\tilde{f}$ and $\tilde{g}$ are the unique extensions of $f$ and $g$ along the modal units of $B'$ and $E'$, respectively.
+\end{thm}
+
+\begin{proof}
+Consider the diagram
+\begin{equation*}
+\begin{tikzcd}
+E' \arrow[r,"{\mathsf{gap}(p',g,H)}"] \arrow[d,swap,"{p'}"] &[2.5em] \modal B'\times_{B} E \arrow[r,"\pi_2"] \arrow[d,swap,"\pi_1"] & E \arrow[d,"p"] \\
+B' \arrow[r,swap,"\modalunit"] & \modal B' \arrow[r,swap,"\tilde{f}"] & B
+\end{tikzcd}
+\end{equation*}
+In this diagram, the square on the right is a pullback by definition, and the outer rectangle is a pullback by assumption, so the square on the left is also a pullback. Therefore the gap map $E'\to \modal B'\times_B E$ is $\modal$-connected. Moreover, since the modal types are closed under pullbacks it follows that $\modal B'\times_B E$ is modal, and therefore it follows that $\pi_2:\modal B'\times_B E\to E$ is a modal map. Therefore the composite
+\begin{equation*}
+\begin{tikzcd}
+E' \arrow[r,"{\mathsf{gap}(p',g,H)}"] &[2.5em] \modal B'\times_{B} E \arrow[r,"\pi_2"] & E 
+\end{tikzcd}
+\end{equation*}
+factors $g$ as a $\modal$-connected map followed by a $\modal$-modal map. Of course, another such factorization is the composite $g\htpy \tilde{g}\circ\modalunit$. Since factorizations are unique, the claim follows.
+\end{proof}
+
+Using modal flattening we establish partial left exactness of the modality.
+
+\begin{cor}\label{cor:etale_lex}
+Consider a pullback square
+\begin{equation*}
+\begin{tikzcd}
+A' \arrow[d,swap,"{f'}"] \arrow[r] & A \arrow[d,"f"] \\
+B' \arrow[r] & B,
+\end{tikzcd}
+\end{equation*}
+where $f$ is assumed to be formally \'etale. Then the square
+\begin{equation*}
+\begin{tikzcd}
+\modal A' \arrow[d,swap,"{\modal f'}"] \arrow[r] & \modal A \arrow[d,"\modal f"] \\
+\modal B' \arrow[r] & \modal B,
+\end{tikzcd}
+\end{equation*}
+is again a pullback square.
+\end{cor}
+
+\begin{proof}
+Since $f$ is assumed to be formally \'etale, the square on the right in the diagram
+\begin{equation*}
+\begin{tikzcd}
+A' \arrow[r] \arrow[d,swap,"{f'}"] & A \arrow[r] \arrow[d,swap,"f"] & \modal A \arrow[d,"\modal f"] \\
+B' \arrow[r] & B \arrow[r] & \modal B
+\end{tikzcd}
+\end{equation*}
+is a pullback square. Therefore the outer rectangle is a pullback square by the pullback pasting lemma. Now the claim follows from modal flattening \cref{thm:etale_flattening}, using the outer rectangle.
+\end{proof}
+
+\begin{cor}\label{cor:etale_pb}
+Consider a pullback square
+\begin{equation*}
+\begin{tikzcd}
+E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
+B' \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*} 
+and suppose that $p:E\to B$ is formally \'etale. Then $p':E'\to B'$ is formally \'etale.
+\end{cor}
+
+\begin{proof}
+Consider the commuting cube
+\begin{equation*}
+\begin{tikzcd}
+&[-.5ex] E' \arrow[dr] \arrow[d] \arrow[dl] \\
+\modal E' \arrow[d] & B' \arrow[dl] \arrow[dr] & E \arrow[dl,crossing over] \arrow[d] \\
+\modal B' \arrow[dr] & \modal E \arrow[d] \arrow[from=ul,crossing over] & B \arrow[dl] \\
+& \modal B.
+\end{tikzcd}
+\end{equation*}
+The vertical squares on the back right and front right are pullback squares by assumption.
+Then it follows from \cref{cor:etale_lex} that the vertical square on the front left is a pullback square.
+Therefore the square on the back left is a pullback square by the pullback pasting property.
+\end{proof}
+
+\begin{defn}
+Let $X$ be a type. We will define an operation
+\begin{equation*}
+\etmap:\Big(\sm{A:\UU_\modal}A\to\modal X\Big)\to\Big(\sm{Y:\UU}{g:Y\to X}\isetale(g)\Big)
+\end{equation*}
+\end{defn}
+
+\begin{constr}
+Given a map $f:A\to \modal X$ we take the pullback
+\begin{equation*}
+\begin{tikzcd}
+X\times_{\modal X}A \arrow[d,swap,"\pi_1"] \arrow[r,"\pi_2"] & A \arrow[d,"f"] \\
+X \arrow[r,swap,"\modalunit"] & \modal X.
+\end{tikzcd}
+\end{equation*}
+Then the map $\pi_1:X\times_{\modal X}A\to X$ is formally \'etale by \cref{lem:etale_modal,cor:etale_pb}.
+\end{constr}
+
+The following is a descent theorem for formally étale maps.
+
+\begin{thm}[Modal descent]
+For any modality $\modal$, and any type $X$, the operation
+\begin{equation*}
+\etmap:\Big(\sm{A:\UU_\modal}A\to\modal X\Big)\to\Big(\sm{Y:\UU}{g:Y\to X}\isetale(g)\Big)
+\end{equation*}
+is an equivalence.
+\end{thm}
+
+\begin{proof}
+If $g:Y\to X$ is formally \'etale, then the square
+\begin{equation*}
+\begin{tikzcd}
+Y \arrow[d,swap,"g"] \arrow[r,"\modalunit"] & \modal Y \arrow[d,"\modal g"] \\
+X \arrow[r,swap,"\modalunit"] & \modal X
+\end{tikzcd}
+\end{equation*}
+is a pullback square. Therefore $g:Y\to X$ is in the fiber of $\etmap$ at $\modal g : \modal Y\to\modal X$. 
+
+It remains to show that for any map $f:A\to\modal X$ with modal domain, there is an equivalence $\eqv{A}{\modal (X\times_{\modal X} A)}$ such that the triangle
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[dr,swap,"f"] \arrow[rr,"\eqvsym"] & & \modal (X\times_{\modal X} A) \arrow[dl,"\modal(\etmap(f))"] \\
+& \modal X
+\end{tikzcd}
+\end{equation*}
+commutes. To see this, note that both $f\circ \pi_2$ and $\modal(\etmap(f))\circ \modalunit$ factor the same map as a $\modal$-connected map followed by a modal map, so the claim follows from uniqueness of factorizations.
+\end{proof}
+
+\begin{cor}\label{cor:etale}
+The class of formally \'etale maps is precisely the class of maps that arise as pullbacks of maps between modal types.
+\end{cor}
+
+\section{The reflective factorization system}
+
+In this section we investigate a second factorization system that can be obtained from any modality, of which the right class is the class of formally \'etale maps. The left class is the class of \emph{$\modal$-equivalences}.
+
+\begin{defn}
+We say that a map $f:A\to B$ is an \define{$\modal$-equivalence} if $\modal f:\modal A\to \modal B$ is an equivalence.
+\end{defn}
+
+\begin{rmk}
+The difference between the notions of $\modal$-equivalences and $\modal$-connected maps is best explained by an example. In the case of $n$-truncation, the $n$-equivalences are precisely the maps that induce isomorphisms on the first $n$ homotopy groups. The $n$-connected maps are the maps that induce isomorphisms on the first $n$ homotopy groups, and moreover induce an epimorphism on the $(n+1)$-st homotopy group. 
+
+We also note that the $n$-equivalences are not stable under pullbacks, whereas the $n$-connected maps are. Consider for instance the pullback square
+\begin{equation*}
+\begin{tikzcd}
+\loopspace {\sphere{n+1}} \arrow[r] \arrow[d] & \unit \arrow[d] \\
+\unit\arrow[r] & \sphere{n+1}
+\end{tikzcd}
+\end{equation*}
+Here the map on the right is an $n$-equivalence, since $\sphere{n+1}$ is $n$-connected. However, the map on the left is not an $n$-equivalence, since the $n$-th homotpy group of $\loopspace{\sphere{n+1}}$ is not trivial: it is the $(n+1)$-st homotopy group of $\sphere{n+1}$, which is $\Z$.
+\end{rmk}
+
+\begin{defn}
+The \define{reflective factorization system} associated to a modality $\modal$ consists of the $\modal$-equivalences as the left class, and the formally \'etale maps as the right class.
+\end{defn}
+
+Our goal in this section is to show that the reflective factorization system associated to a modality is an orthogonal factorization system.
+
+\begin{lem}\label{lem:3for2_mequiv}
+The $\modal$-equivalences satisfy the 3-for-2 property: given a commuting triangle
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[rr,"h"] \arrow[dr,swap,"f"] & & B \arrow[dl,"g"] \\
+& C,
+\end{tikzcd}
+\end{equation*}
+if any two of $f$, $g$, and $h$ are $\modal$-equivalences, then so is the third.
+\end{lem}
+
+\begin{proof}
+Apply $\modal$ to the commuting triangle, and use the 3-for-2 property of equivalences.
+\end{proof}
+
+\begin{lem}\label{lem:modal_equivalence}
+For a map $f : A \to B$ the following are equivalent:
+\begin{enumerate}
+\item $f$ is an $\modal$-equivalence.
+\item For any modal type $X$, the precomposition map
+\begin{equation*}
+\precomp{f} : (B \to X) \to (A \to X)
+\end{equation*}
+is an equivalence.
+\end{enumerate}
+\end{lem}
+
+\begin{proof} 
+Suppose first that $f$ is an $\modal$-equivalence, and let $X$ be $\modal$-modal. Then the square
+\begin{equation*}
+\begin{tikzcd}
+X^B \arrow[r,"\precomp{f}"] \arrow[d,swap,"\precomp{\eta}"] & X^A \arrow[d,"\precomp{\eta}"] \\
+X^{\modal B} \arrow[r,swap,"\precomp{\modal f}"] & X^{\modal A}
+\end{tikzcd}
+\end{equation*}
+commutes. In this square the two vertical maps are equivalences by the universal property of modalization, and the bottom map is an equivalence since $\modal f$ is an equivalence. Therefore the map $\precomp{f}:X^B\to X^A$ is an equivalence, as desired.
+
+Conversely, assume that $\precomp{f} : X^B \to X^A$ is an equivalence for every $\modal$-modal type $X$. By the square above it follows that $\precomp{\modal f}:X^{\modal B}\to X^{\modal A}$ is an equivalence for every $\modal$-modal type $X$. The fiber of $\modal A^{\modal B}\to \modal A^{\modal A}$ at $\idfunc:\modal A\to \modal A$ is contractible, so we obtain a retraction $g$ of $\modal f$. To see that $g$ is also a section observe that the fiber of $\modal B^{\modal B}\to \modal B^{\modal A}$ at $\modal f$ is contractible. This fiber contains $(\idfunc[\modal B],\refl{\modal f})$. However, we also have an identification $p:\precomp{\modal f}(\modal f\circ g)=\modal f$, since
+\begin{equation*}
+\precomp{\modal f}(\modal f\circ g)\jdeq (\modal f \circ g)\circ \modal f\jdeq \modal f \circ (g\circ \modal f) = \modal f. 
+\end{equation*}
+Therefore $(\modal f\circ g,p)$ is in the fiber of $\precomp{\modal f}:\modal B^{\modal B}\to \modal B^{\modal A}$ at $\modal f$. By the contractibility of the fibers it follows that $(\modal f\circ g,p)=(\idfunc[\modal B],\refl{\modal f})$, so it follows that $\modal f\circ g=\idfunc[\modal B]$. In other words, $g$ is both a retraction and a section of $\modal f$, so $\modal f$ is an equivalence.
+\end{proof}
+
+\begin{cor}\label{cor:mequiv_mconn}
+Every $\modal$-connected map is a $\modal$-equivalence.
+\end{cor}
+
+\begin{lem}\label{lem:rfs_factor}
+Every map factors as a $\modal$-equivalence followed by a formally \'etale map.
+\end{lem}
+
+\begin{proof}
+Consider a map $f:A\to B$, and the diagram
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[ddr,bend right=15,swap,"f"] \arrow[drr,bend left=15,"\modalunit"] \arrow[dr,"\mathsf{gap}" description] \\
+& B\times_{\modal B} \modal A \arrow[d,swap,"\pi_1"] \arrow[r,"\pi_2"] & \modal A \arrow[d,"\modal f"] \\
+& B \arrow[r,swap,"\modalunit"] & \modal B.
+\end{tikzcd}
+\end{equation*}
+Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is formally \'etale by \cref{cor:etale}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
+\end{proof}
+
+Recall that a map $i:A\to B$ is said to be \define{left orthogonal} to a map $f:X\to Y$, or that the map $f$ is \define{right orthogonal} to the map $i$,
+if each commuting square of the form
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[r] \arrow[d,swap,"i"] & X \arrow[d,"f"] \\
+B \arrow[r] & Y
+\end{tikzcd}
+\end{equation*}
+has a unique diagonal filler. Following \cite{AnelBiedermanFinsterJoyal}, we note that this can be expressed conviniently as the condition that the square
+\begin{equation*}
+\begin{tikzcd}
+X^B \arrow[r,"f\circ\blank"] \arrow[d,swap,"\blank\circ i"] & Y^B \arrow[d,"\blank\circ i"] \\
+X^A \arrow[r,swap,"f\circ\blank"] & Y^A
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+
+\begin{lem}\label{lem:rfs_orthogonal}
+The class of $\modal$-equivalences is left orthogonal to the class of formally \'etale maps.
+\end{lem}
+
+\begin{proof}
+We have to show that for every $\modal$-equivalence $i:A\to B$, and every formally \'etale map $f:X\to Y$, the square
+\begin{equation*}
+\begin{tikzcd}
+X^B \arrow[r] \arrow[d] & Y^B \arrow[d] \\
+X^A \arrow[r] & Y^A
+\end{tikzcd}
+\end{equation*}
+is a pullback square. Consider the commuting cube
+\begin{equation*}
+\begin{tikzcd}
+&[-1ex] X^B \arrow[dl] \arrow[d] \arrow[dr] \\
+(\modal X)^B \arrow[d] & X^A \arrow[dl] \arrow[dr] & Y^B \arrow[d] \arrow[dl,crossing over] \\
+(\modal X)^A \arrow[dr] & (\modal Y)^B \arrow[from=ul,crossing over] \arrow[d] & Y^A \arrow[dl] \\
+& (\modal Y)^A
+\end{tikzcd}
+\end{equation*}
+In this cube the top and bottom squares are pullback by the assumption that $f$ is formally \'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
+\end{proof}
+
+\begin{cor}
+For any map $f:X\to Y$, the type of factorizations into a $\modal$-connected map followed by a formally \'etale map is contractible.
+\end{cor}
+
+\section{Formally \'etale maps for the $n$-truncations}
+
+The $n$-equivalences are easily described: they are just the maps that induce isomorphisms on the first $n$ homotopy groups. In this section our goal is to characterize the formally \'etale maps for the $n$-truncations. We call such maps \define{formally $n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
+
+\begin{lem}\label{lem:etale_char}
+Let $\modal$ be a modality for which all propositions are modal, and consider a map $f:A\to B$. The following are equivalent:
+\begin{enumerate}
+\item $f$ is formally \'etale.
+\item The commuting square
+\begin{equation*}
+\begin{tikzcd}[column sep=large]
+A\times_{\modal A} A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\pi_1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{enumerate}
+\end{lem}
+
+\begin{rmk}
+The condition that the propositions need to be modal isn't sharp. The characterization of \'etale maps also works when the modality is $(-2)$-truncation. It holds for every modality of separated types, since any proposition is separated for any modality.
+\end{rmk}
+
+\begin{proof}
+Suppose first that $f$ is formally \'etale, and consider the commuting cube
+\begin{equation*}
+\begin{tikzcd}
+& A\times_{\modal A} A \arrow[dl] \arrow[d] \arrow[dr] \\
+A \arrow[d] & B\times_{\modal B} B \arrow[dl] \arrow[dr] & A \arrow[dl,crossing over] \arrow[d] \\
+B \arrow[dr] & \modal A \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+& \modal B
+\end{tikzcd}
+\end{equation*}
+Since the top, bottom, and both front squares are pullback squares, it follows that both back squares are pullback. This proves that (i) implies (ii).
+
+Now suppose that (ii) holds. Then the map
+\begin{equation*}
+\fib{\modalunit}{\modalunit(a)}\to \fib{\modalunit}{\modalunit(f(a))}
+\end{equation*}
+is an equivalence for every $a:A$. Since all propositions are assumed to be modal, it follows that
+\begin{equation*}
+\fib{\modalunit}{t}\to \fib{\modalunit}{\modal f(t)}
+\end{equation*}
+is an equivalence for every $t:\modal A$. Thus it follows that the square
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[d,swap,"\modalunit"] \arrow[r] & B \arrow[d,"\modalunit"] \\
+\modal A \arrow[r] & \modal B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{proof}
+
+\begin{thm}
+A map $f:A\to B$ is formally $0$-\'etale if and only if for each $a:A$ the restriction
+\begin{equation*}
+\begin{tikzcd}
+\sm{x:A}\brck{a=x} \arrow[d,swap,"\proj 1"] \arrow[r,densely dotted,"f"] & \sm{y:B}\brck{f(a)=y} \arrow[d,"\proj 1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+of $f$ to the connected component at $a$ of $A$ is an equivalence. 
+\end{thm}
+
+\begin{proof}
+By \cref{lem:etale_char} and the fact that $\eqv{(\tproj{0}{a}=\tproj{0}{x})}{\brck{a=x}}$, it follows that $f$ is formally $0$-\'etale if and only if the square
+\begin{equation*}
+\begin{tikzcd}[column sep=huge]
+\sm{a,x:A}\brck{a=x} \arrow[d,swap,"\pi_1"] \arrow[r,"\total{\brck{\apfunc{f}}}"] & \sm{b,y:B}\brck{b=y} \arrow[d,"\pi_1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square. Furhtermore, this square is a pullback if and only if the induced map
+\begin{equation*}
+\Big(\sm{x:A}\brck{a=x}\Big)\to\Big(\sm{y:B}\brck{f(a)=y}\Big)
+\end{equation*}
+is an equivalence, for each $a:A$.
+\end{proof}
+
+\begin{cor}
+If $f:A\to B$ is formally \'etale, then the square
+\begin{equation*}
+\begin{tikzcd}[column sep=large]
+A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
+A\times_{\modal A} A \arrow[r,swap,"f\times_{\modal f}f"] & B\times_{\modal B} B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{cor}
+
+\begin{proof}
+Consider the diagram
+\begin{equation*}
+\begin{tikzcd}[column sep=large]
+A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
+A\times_{\modal A} A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\pi_1"] \\
+A \arrow[r,"f"] & B
+\end{tikzcd}
+\end{equation*}
+The bottom square is a pullback square by \cref{lem:etale_char}, and the outer rectangle is a pullback since both vertical composites are homotopic to the respective identity functions. Therefore the top square is a pullback.
+\end{proof}
+\end{document}

@@ -88,12 +88,12 @@ localization is the identity functor.
 
 \section{Modal descent}
 
-Felix Wellen introduced the notion of formally \'etale maps for an arbitrary modality $\modal$.
+Felix Wellen introduced the notion of $\modal$-\'etale maps for an arbitrary modality $\modal$.
 The results in this section have been established in discussions with Felix Wellen and Mike Shulman.
 Preliminary ideas about modal descent were presented by the author in June 2017 at the Big Proofs meeting in Cambridge, UK, in joint work with Bas Spitters.
 
 \begin{defn}
-We say that a map $f:A\to B$ is \define{formally \'etale} if the square
+We say that a map $f:A\to B$ is \define{$\modal$-\'etale} if the square
 \begin{equation*}
 \begin{tikzcd}
 A \arrow[r,"f"] \arrow[d,swap,"\eta"] & B \arrow[d,"\eta"] \\
@@ -106,12 +106,12 @@ is a pullback square. We will write
 \end{equation*}
 \end{defn}
 
-It is immediate from the definition that any equivalence is formally \'etale, and that the formally \'etale maps are closed under composition.
+It is immediate from the definition that any equivalence is $\modal$-\'etale, and that the $\modal$-\'etale maps are closed under composition.
 
 \begin{eg}\label{eg:etale_prop}
-We claim that a map $f:A\to B$ is formally \'etale with respect to propositional truncation if and only if $A\to \isequiv(f)$. Examples of maps that satisfy this condition include equivalences, maps between propositions, and any map of the form $\emptyt\to B$.
+We claim that a map $f:A\to B$ is $\brck{\blank}$-\'etale if and only if $A\to \isequiv(f)$. Examples of maps that satisfy this condition include equivalences, maps between propositions, and any map of the form $\emptyt\to B$.
 
-To see that if $f:A\to B$ is formally \'etale, then $A\to\isequiv(f)$, consider the pullback square
+To see that if $f:A\to B$ is $\modal$-\'etale, then $A\to\isequiv(f)$, consider the pullback square
 \begin{equation*}
 \begin{tikzcd}
 A \arrow[r] \arrow[d,swap,"f"] & \brck{A} \arrow[d,"\brck{f}"] \\
@@ -139,7 +139,7 @@ X \arrow[r] \arrow[d] & \modal X \arrow[d] \\
 Y \arrow[r] & \modal Y
 \end{tikzcd}
 \end{equation*}
-are equivalences. Therefore this square is a pullback square, so $f$ is formally \'etale.
+are equivalences. Therefore this square is a pullback square, so $f$ is $\modal$-\'etale.
 \end{proof}
 
 The following theorem can be seen as a `modal flattening lemma'.
@@ -188,7 +188,7 @@ A' \arrow[d,swap,"{f'}"] \arrow[r] & A \arrow[d,"f"] \\
 B' \arrow[r] & B,
 \end{tikzcd}
 \end{equation*}
-where $f$ is assumed to be formally \'etale. Then the square
+where $f$ is assumed to be $\modal$-\'etale. Then the square
 \begin{equation*}
 \begin{tikzcd}
 \modal A' \arrow[d,swap,"{\modal f'}"] \arrow[r] & \modal A \arrow[d,"\modal f"] \\
@@ -199,7 +199,7 @@ is again a pullback square.
 \end{cor}
 
 \begin{proof}
-Since $f$ is assumed to be formally \'etale, the square on the right in the diagram
+Since $f$ is assumed to be $\modal$-\'etale, the square on the right in the diagram
 \begin{equation*}
 \begin{tikzcd}
 A' \arrow[r] \arrow[d,swap,"{f'}"] & A \arrow[r] \arrow[d,swap,"f"] & \modal A \arrow[d,"\modal f"] \\
@@ -217,7 +217,7 @@ E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
 B' \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*} 
-and suppose that $p:E\to B$ is formally \'etale. Then $p':E'\to B'$ is formally \'etale.
+and suppose that $p:E\to B$ is $\modal$-\'etale. Then $p':E'\to B'$ is $\modal$-\'etale.
 \end{cor}
 
 \begin{proof}
@@ -250,10 +250,10 @@ X\times_{\modal X}A \arrow[d,swap,"\pi_1"] \arrow[r,"\pi_2"] & A \arrow[d,"f"] \
 X \arrow[r,swap,"\modalunit"] & \modal X.
 \end{tikzcd}
 \end{equation*}
-Then the map $\pi_1:X\times_{\modal X}A\to X$ is formally \'etale by \cref{lem:etale_modal,cor:etale_pb}.
+Then the map $\pi_1:X\times_{\modal X}A\to X$ is $\modal$-\'etale by \cref{lem:etale_modal,cor:etale_pb}.
 \end{constr}
 
-The following is a descent theorem for formally étale maps.
+The following is a descent theorem for $\modal$-\'etale maps.
 
 \begin{thm}[Modal descent]
 For any modality $\modal$, and any type $X$, the operation
@@ -264,7 +264,7 @@ is an equivalence.
 \end{thm}
 
 \begin{proof}
-If $g:Y\to X$ is formally \'etale, then the square
+If $g:Y\to X$ is $\modal$-\'etale, then the square
 \begin{equation*}
 \begin{tikzcd}
 Y \arrow[d,swap,"g"] \arrow[r,"\modalunit"] & \modal Y \arrow[d,"\modal g"] \\
@@ -284,11 +284,11 @@ commutes. To see this, note that both $f\circ \pi_2$ and $\modal(\etmap(f))\circ
 \end{proof}
 
 \begin{cor}\label{cor:etale}
-The class of formally \'etale maps is precisely the class of maps that arise as pullbacks of maps between modal types.
+The class of $\modal$-\'etale maps is precisely the class of maps that arise as pullbacks of maps between modal types.
 \end{cor}
 
 \begin{cor}
-Suppose $P:X\to\UU_\modal$ is a family of modal types such that the projection map $\proj 1:\big(\sm{x:X}P(x)\big)\to X$ is formally \'etale. Then $P$ has a unique extension
+Suppose $P:X\to\UU_\modal$ is a family of modal types such that the projection map $\proj 1:\big(\sm{x:X}P(x)\big)\to X$ is $\modal$-\'etale. Then $P$ has a unique extension
 \begin{equation*}
 \begin{tikzcd}
 X \arrow[d,swap,"\modalunit"] \arrow[r,"P"] & \UU_\modal. \\
@@ -307,7 +307,7 @@ is a pullback square. In particular the top map is $\modal$-connected, so this s
 
 \section{The reflective factorization system}
 
-In this section we investigate a second factorization system that can be obtained from any modality, of which the right class is the class of formally \'etale maps. The left class is the class of \emph{$\modal$-equivalences}.
+In this section we investigate a second factorization system that can be obtained from any modality, of which the right class is the class of $\modal$-\'etale maps. The left class is the class of \emph{$\modal$-equivalences}.
 
 \begin{defn}
 We say that a map $f:A\to B$ is an \define{$\modal$-equivalence} if $\modal f:\modal A\to \modal B$ is an equivalence.
@@ -327,7 +327,7 @@ Here the map on the right is an $n$-equivalence, since $\sphere{n+1}$ is $n$-con
 \end{rmk}
 
 \begin{defn}
-The \define{reflective factorization system} associated to a modality $\modal$ consists of the $\modal$-equivalences as the left class, and the formally \'etale maps as the right class.
+The \define{reflective factorization system} associated to a modality $\modal$ consists of the $\modal$-equivalences as the left class, and the $\modal$-\'etale maps as the right class.
 \end{defn}
 
 Our goal in this section is to show that the reflective factorization system associated to a modality is an orthogonal factorization system.
@@ -381,7 +381,7 @@ Every $\modal$-connected map is a $\modal$-equivalence.
 \end{cor}
 
 \begin{lem}\label{lem:rfs_factor}
-Every map factors as a $\modal$-equivalence followed by a formally \'etale map.
+Every map factors as a $\modal$-equivalence followed by a $\modal$-\'etale map.
 \end{lem}
 
 \begin{proof}
@@ -393,7 +393,7 @@ A \arrow[ddr,bend right=15,swap,"f"] \arrow[drr,bend left=15,"\modalunit"] \arro
 & B \arrow[r,swap,"\modalunit"] & \modal B.
 \end{tikzcd}
 \end{equation*}
-Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is formally \'etale by \cref{cor:etale}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
+Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
 \end{proof}
 
 Recall that a map $i:A\to B$ is said to be \define{left orthogonal} to a map $f:X\to Y$, or that the map $f$ is \define{right orthogonal} to the map $i$,
@@ -414,11 +414,11 @@ X^A \arrow[r,swap,"f\circ\blank"] & Y^A
 is a pullback square.
 
 \begin{lem}\label{lem:rfs_orthogonal}
-The class of $\modal$-equivalences is left orthogonal to the class of formally \'etale maps.
+The class of $\modal$-equivalences is left orthogonal to the class of $\modal$-\'etale maps.
 \end{lem}
 
 \begin{proof}
-We have to show that for every $\modal$-equivalence $i:A\to B$, and every formally \'etale map $f:X\to Y$, the square
+We have to show that for every $\modal$-equivalence $i:A\to B$, and every $\modal$-\'etale map $f:X\to Y$, the square
 \begin{equation*}
 \begin{tikzcd}
 X^B \arrow[r] \arrow[d] & Y^B \arrow[d] \\
@@ -434,21 +434,21 @@ is a pullback square. Consider the commuting cube
 & (\modal Y)^A
 \end{tikzcd}
 \end{equation*}
-In this cube the top and bottom squares are pullback by the assumption that $f$ is formally \'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
+In this cube the top and bottom squares are pullback by the assumption that $f$ is $\modal$-\'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
 \end{proof}
 
 \begin{cor}
-For any map $f:X\to Y$, the type of factorizations into a $\modal$-connected map followed by a formally \'etale map is contractible.
+For any map $f:X\to Y$, the type of factorizations into a $\modal$-connected map followed by a $\modal$-\'etale map is contractible.
 \end{cor}
 
-\section{Formally \'etale maps for the $n$-truncations}
+\section{$\modal$-\'etale maps for the $n$-truncations}
 
-The $n$-equivalences are easily described: they are just the maps that induce isomorphisms on the first $n$ homotopy groups. In this section our goal is to characterize the formally \'etale maps for the $n$-truncations. We call such maps \define{formally $n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
+The $n$-equivalences are easily described: they are just the maps that induce isomorphisms on the first $n$ homotopy groups. In this section our goal is to characterize the $\modal$-\'etale maps for the $n$-truncations. We call such maps \define{$n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
 
 \begin{lem}\label{lem:etale_char}
 Let $\modal$ be a modality for which all propositions are modal, and consider a map $f:A\to B$. The following are equivalent:
 \begin{enumerate}
-\item $f$ is formally \'etale.
+\item $f$ is $\modal$-\'etale.
 \item The commuting square
 \begin{equation*}
 \begin{tikzcd}[column sep=large]
@@ -472,7 +472,7 @@ is a pullback square.
 \end{rmk}
 
 \begin{proof}
-Suppose first that $f$ is formally \'etale, and consider the commuting cube
+Suppose first that $f$ is $\modal$-\'etale, and consider the commuting cube
 \begin{equation*}
 \begin{tikzcd}
 & A\times_{\modal A} A \arrow[dl] \arrow[d] \arrow[dr] \\
@@ -502,7 +502,7 @@ is a pullback square.
 \end{proof}
 
 \begin{thm}
-A map $f:A\to B$ is formally $0$-\'etale if and only if for each $a:A$ the restriction
+A map $f:A\to B$ is $0$-\'etale if and only if for each $a:A$ the restriction
 \begin{equation*}
 \begin{tikzcd}
 \sm{x:A}\brck{a=x} \arrow[d,swap,"\proj 1"] \arrow[r,densely dotted,"f"] & \sm{y:B}\brck{f(a)=y} \arrow[d,"\proj 1"] \\
@@ -513,7 +513,7 @@ of $f$ to the connected component at $a$ of $A$ is an equivalence.
 \end{thm}
 
 \begin{proof}
-By \cref{lem:etale_char} and the fact that $\eqv{(\tproj{0}{a}=\tproj{0}{x})}{\brck{a=x}}$, it follows that $f$ is formally $0$-\'etale if and only if the square
+By \cref{lem:etale_char} and the fact that $\eqv{(\tproj{0}{a}=\tproj{0}{x})}{\brck{a=x}}$, it follows that $f$ is $0$-\'etale if and only if the square
 \begin{equation*}
 \begin{tikzcd}[column sep=huge]
 \sm{a,x:A}\brck{a=x} \arrow[d,swap,"\pi_1"] \arrow[r,"\total{\brck{\apfunc{f}}}"] & \sm{b,y:B}\brck{b=y} \arrow[d,"\pi_1"] \\
@@ -528,7 +528,7 @@ is an equivalence, for each $a:A$.
 \end{proof}
 
 \begin{cor}
-If $f:A\to B$ is formally \'etale, then the square
+If $f:A\to B$ is $\modal$-\'etale, then the square
 \begin{equation*}
 \begin{tikzcd}[column sep=large]
 A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\

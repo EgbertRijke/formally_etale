@@ -106,16 +106,6 @@ is a fiberwise equivalence.
 \item All $\modal$-connected maps are surjective.
 \end{enumerate}
 In particular it follows that all $n$-connected maps are surjective, for $n\geq -1$.
-\item For any modality $\modal$, the subuniverse of $\modal$-separated types consist of types with $\modal$-modal identity types. In other words, a type is $\modal$-separated if its diagonal is classified by $\UU_\modal$. The subuniverse of $\modal$-separated types is again a reflective subuniverse, and its reflection $\modal'$ is again a modality. Since all propositions are $\modal$-separated (because the unit type is $\modal$-modal), it follows that the $\modal'$-connected maps are surjective. Moreover, the following are equivalent for any map $f:A\to B$:
-\begin{enumerate}
-\item $f$ is $\modal'$-connected.
-\item $f$ is surjective and its diagonal is $\modal$-connected.
-\end{enumerate}
-For any map $f:A\to B$ the following are also equivalent:
-\begin{enumerate}
-\item $f$ is $\modal'$-modal.
-\item its diagonal is $\modal$-modal.
-\end{enumerate}
 \end{enumerate}
 
 \section{\texorpdfstring{$\modal$}{○}-\'etale maps}
@@ -392,7 +382,7 @@ Then the map $\pi_1:X\times_{\modal X}A\to X$ is $\modal$-\'etale by \cref{lem:e
 
 The following is a descent theorem for $\modal$-\'etale maps.
 
-\begin{thm}[Modal descent]
+\begin{thm}[Modal descent]\label{thm:modal_descent}
 For any modality $\modal$, and any type $X$, the operation
 \begin{equation*}
 \etmap:\Big(\sm{A:\UU_\modal}A\to\modal X\Big)\to\Big(\sm{Y:\UU}{g:Y\to X}\isetale(g)\Big)
@@ -437,6 +427,57 @@ X \arrow[r,swap,"\modalunit"] & \modal X
 \end{equation*}
 is a pullback square. In particular the top map is $\modal$-connected, so this square is in fact a $\modal$-naturality square.
 \end{cor}
+
+\begin{lem}
+If $f$ is $n$-\'etale, then it is right orthogonal to $\unit\to\sphere{n+1}$.
+\end{lem}
+
+\begin{proof}
+Suppose $f:X\to Y$ is $n$-\'etale, and consider the commuting cube
+\begin{equation*}
+\begin{tikzcd}
+&[-1ex] X^{\sphere{n+1}} \arrow[dl] \arrow[d] \arrow[dr] &[2ex] \\
+\trunc{n}{X}^{\sphere{n+1}} \arrow[d] & Y^{\sphere{n+1}} \arrow[dl] \arrow[dr] & X \arrow[dl,crossing over] \arrow[d] \\
+\trunc{n}{Y}^{\sphere{n+1}} \arrow[dr] & \trunc{n}{X} \arrow[d] \arrow[from=ul,crossing over] & Y \arrow[dl] \\
+& \trunc{n}{Y}
+\end{tikzcd}
+\end{equation*}
+In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
+\end{proof}
+
+\begin{conj}
+Let $f:X\to Y$ be a map, and let $n\geq -1$. The following are equivalent:
+\begin{enumerate}
+\item $f$ is $n$-\'etale.
+\item $f$ is right orthogonal to the maps $\sphere{n+1}\to 1$ and $\unit\to\sphere{n+1}$. 
+\end{enumerate}
+\end{conj}
+
+\begin{proof}[Incomplete proof]
+By \cref{thm:modal_descent} it suffices to show that the type $\trunc{n}{X}\to\UU^{\leq n}$ of families of $n$-types over $\trunc{n}{X}$ is equivalent to the type of families $P:X\to\UU^{\leq n}$ of $n$-types over $X$, for which the square
+\begin{equation*}
+\begin{tikzcd}[column sep=huge]
+\Big(\sm{x:X}P(x)\Big)^{\sphere{n+1}} \arrow[r,"{h\mapsto h(\base)}"] \arrow[d,swap,"\proj 1\circ\blank"] & \sm{x:X}P(x) \arrow[d,"\proj 1"] \\
+X^{\sphere{n+1}} \arrow[r,swap,"{h\mapsto h(\base)}"] & X
+\end{tikzcd}
+\end{equation*}
+is a pullback square. Note that this square is a pullback square if and only if the square
+\begin{equation*}
+\begin{tikzcd}[column sep=9em]
+\sm{f:X^{\sphere{n+1}}}\prd{t:\sphere{n+1}}P(f(t)) \arrow[r,"{(f,g)\mapsto (f(\base),g(\base))}"] \arrow[d,swap,"\proj 1"] & \sm{x:X}P(x) \arrow[d,"\proj 1"] \\
+X^{\sphere{n+1}} \arrow[r,swap,"{f\mapsto f(\base)}"] & X
+\end{tikzcd}
+\end{equation*}
+is a pullback square. This is equivalent to showing that the map
+\begin{equation*}
+g\mapsto g(\base):\Big(\prd{t:\sphere{n+1}}P(f(t))\Big)\to P(f(\base))
+\end{equation*}
+is an equivalence for every $f:\sphere{n+1}\to X$. The fiber of this map at $p:P(f(\base))$ is equivalent to the type
+\begin{equation*}
+\sm{q:P(f(\base))}\prd{t:\sphere{n}}\mathsf{tr}_P(\glue(t)
+\end{equation*}
+....
+\end{proof}
 
 \section{The reflective factorization system}
 

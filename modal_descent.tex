@@ -1,6 +1,11 @@
+% latexmk -pdflatex='pdflatex %O %S' -pvc -pdf modal_descent.tex
 \documentclass[9pt,twosided]{amsart}
 
 \usepackage{hott}
+\newcommand{\shape}{\int}
+\newcommand{\drawpb}[1]{\arrow[#1, phantom, "\text{\scriptsize(pb)}" description]}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\PP}{\mathbb P}
 
 \title{Modal descent}
 \author{Discussion with Shulman, Wellen, Frey, Awodey, Rijke}
@@ -614,5 +619,111 @@ In this cube the top and bottom squares are pullback by the assumption that $f$ 
 \begin{cor}
 For any map $f:X\to Y$, the type of factorizations into a $\modal$-connected map followed by a $\modal$-\'etale map is contractible.
 \end{cor}
+
+\section{Applications}
+
+So far, we discussed the n-truncations as an example from plain Homotopy Type Theory.
+Viewing Homotopy Type Theory as an internal language of ($\infty$,1)-toposes, 
+which is crucial for the following,
+special features of a particular topos may be introduced into the type theory as a modality.
+Important parts of the coverings theory for topological spaces hold for a general abstract modality.
+In the following, this will be explained for a special type theory which admits recovery of the classic topological situation.
+
+In \cite{ShulmanRealCohesion} Mike Shulman introduces Real Cohesive Homotopy Type Theory, as a candidate for an internal language
+of some of the ($\infty$,1)-toposes called \emph{cohesive}, a higher analog 
+of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
+
+In Real Cohesive Homotopy Type Theory,
+which will just be called Real Cohesion in the following, 
+some well behaved topological spaces, like, for example, topological manifolds
+are supposed to be included in the theory.
+It is important to note, that the types corresponding to these topological spaces
+are 0-types in Real Cohesion.
+This can lead to confusion with the common explanation for the Identity types in Homotopy Type Theory,
+as paths in a space and care has to be taken to separate concept of equality
+and topological paths, i.e. maps $\gamma:\RR\to X$ from the 0-type $\RR$ representing the real line with the euclidean topology.
+Let $\sphere{n}$ denote the topological sphere and $S^n$ the higher inductive type 
+introduced in \cite{UFP}.
+
+For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
+It maps topological spaces to their \emph{homotopy type}, so for example $\shape \sphere{1} =S^1$ 
+and $\shape \RR =1$. 
+In a 1-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
+The $\shape$ is a higher analog of this functor that extracts homotopical information on all h-levels, not just level 0.
+So if $X$ represents a topological space with a point $\ast: X$, 
+then $\shape X$ is also pointed and the n-th homotopy group of $X$ as a topological space 
+could be retrieved from its shape 
+as $\pi_n(X):\equiv\trunc{0}{\loopspace^n\shape X}$.
+
+Like $\Delta\circ\pi_0$ reflects into the subcategory of constant sheaves, $\shape$ reflects into the \emph{discrete} types.
+Note that ``discrete'' refers to the topological structure of a type, 
+not to a property of the $\infty$-groupoid structure given by its identity type.
+
+As all modalities, $\shape$ comes with a unit-map $\sigma_X\colon X \to \shape X$, for any type $X$.
+For any two points $x,y: X$ that are joined by a topological path, 
+the images $\sigma_X(x)$ and $\sigma_X(y)$ are equal in $\shape X$.
+
+\vspace{1cm}
+
+\textbf{Contribution.} From this point on, 
+let us assume that each type supposed to represent a topological space comes with a point ``$\ast$''
+and for $\ast:X$ let us abbreviate $\sigma_X(\ast)$ with $\ast$.
+  
+For many modalities, the fibers of their units are interesting.
+For $\sphere{1}$, this fiber
+\[ \sum_{x:\sphere{1}}\sigma_{\sphere{1}}(x)=\ast \]
+-- or more precisely its projection to $\sphere{1}$ -- turns out to be the universal cover of $\sphere{1}$.
+But this works only for spaces with trivial higher homotopy groups. 
+For the construction of the universal cover of an arbitrary type, this has to be adjusted:
+\[ \widetilde{X}:\equiv \sum_{x\colon X} \trunc{0}{\sigma_X(x)=\ast}. \]
+Note that this amounts to replacing the modality $\shape$ with the modality $\shape_1:\equiv\trunc{1}{\_}\circ\shape$.
+To justify calling $\widetilde{X}$ the universal cover of $X$, 
+we will define covering spaces relative to a modality and show a universal property.
+    
+For a modality $\bigcirc$ with unit $\eta$, we call a map $f:Y\to X$ a $\bigcirc$-cover, if the naturality square
+\begin{center}
+  \begin{tikzcd}
+    Y\arrow[d, "f", swap]\arrow[r, "\eta_Y"] & \bigcirc Y\arrow[d, "\bigcirc f"]\drawpb{dl} \\
+    X\arrow[r, "\eta_X", swap] & \bigcirc X 
+  \end{tikzcd}
+\end{center}
+is a pullback square. 
+For $\bigcirc\equiv\shape_1$, 
+covering spaces in topology have the universal property of this pullback for cones with a topological space as tip.
+
+For a $\shape_1$-cover $f:Y\to X$ there is always the trivial map $t:\widetilde{X}\to \shape_1Y$.
+Together with a $g:\ast =_{\shape_1 X}\ast $ this yields a cone for the universal property of
+the defining pullback of $f$ and therefore a unique map $\widetilde{X}\to Y$.
+
+Similarly, the construction of covering spaces corresponding to subgroups of $\pi_1(X)$ 
+can be done without using anything beyond the properties of a general modality:
+Any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete 0-type
+\footnote{This means we use the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} 
+and \cite[Section 7.1]{ulrik-higher-groups}}
+and therefore a map $BH\to \shape_1X$, with discrete $BH$.
+The pullback of this map is a $\shape_1$-cover with the correct fiber type.
+A calculation on the level of abstract modalities shows, that this gives the usual one-to-one correspondence.
+In its most natural abstract form this correspondence of maps $M\to \shape_1 X$ for modal $M$ 
+and $\shape_1$-covers includes maps with discrete 1-types as fibers. 
+
+For the modality $\shape$, this correspondence relates $\shape$-covers with 
+maps $M\to \shape X$ for discrete $M$.
+Since the latter are $\infty$-actions of $\shape X$ on discrete types, this seems to be a very natural generalization.
+The universal cover construction for $\shape$ yields a ``$\shape$-universal cover'' 
+which can have both non-discrete topological structure and
+non-propositional identity types.
+This occurs whenever $\shape X$ is not 1-truncated.
+For example, if we assume a type $\CC\PP^\infty$ representing the appropriate topological space,
+the $\shape$-universal cover will be a $1$-type over $\CC\PP^\infty$ with identity types merely $S^1$.
+The $\shape$-universal cover $\widetilde{X}$ of a space has always a contractible shape, i.e. $\shape X \simeq 1$.
+
+Similar generalizations of the classical topological correspondence are known on the classical side
+for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct} and topological 1-stacks \cite{noohi}.     
+The author sees one advantage in the clarity of the type theoretic proofs,
+since the correspondence and some related remarks are all straight forward to prove using one lemma,
+which is so far the only formalized part of this work.
+The statement of this lemma is a generalization of the fact that modalities preserve products:
+For any dependent type $B:\bigcirc A \to \mathcal U$, we have $\bigcirc \sum_{x:A}B(\eta_A(x)) \simeq \sum_{x:\bigcirc A}\bigcirc B(x)$.
+
 
 \end{document}

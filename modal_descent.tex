@@ -2,10 +2,23 @@
 \documentclass[9pt,twosided]{amsart}
 
 \usepackage{hott}
+
+
 \newcommand{\shape}{\int}
 \newcommand{\drawpb}[1]{\arrow[#1, phantom, "\text{\scriptsize(pb)}" description]}
 \newcommand{\CC}{\mathbb C}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
 \newcommand{\PP}{\mathbb P}
+\newcommand{\Zar}{\ensuremath{\mathfrak{Zar}}}
+\newcommand{\FSGrpOne}{\ensuremath{\mathrm{FSGrp}_1}}
+\newcommand{\FSGrp}{\ensuremath{\mathrm{FSGrp}}}
+\newcommand{\Spaces}{\ensuremath{\mathrm{Spaces}}}
+
+\addbibresource{literatur.bib}
+
+
 
 \title{Modal descent}
 \author{Discussion with Shulman, Wellen, Frey, Awodey, Rijke}
@@ -423,7 +436,7 @@ X \arrow[d,swap,"\modalunit"] \arrow[r,"P"] & \UU_\modal. \\
 \modal X \arrow[ur,densely dotted,swap,"\tilde{P}"] 
 \end{tikzcd}
 \end{equation*}
-It follows that the square commuting square
+It follows that the commuting square
 \begin{equation*}
 \begin{tikzcd}
 \sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \sm{t:\modal X}\tilde{P}(t) \arrow[d,"\proj 1"] \\
@@ -583,7 +596,7 @@ A \arrow[r] \arrow[d,swap,"i"] & X \arrow[d,"f"] \\
 B \arrow[r] & Y
 \end{tikzcd}
 \end{equation*}
-has a unique diagonal filler. Following \cite{AnelBiedermanFinsterJoyal}, we note that this can be expressed conviniently as the condition that the square
+has a unique diagonal filler. Following \cite{AnelBiedermanFinsterJoyal}, we note that this can be expressed conveniently as the condition that the square
 \begin{equation*}
 \begin{tikzcd}
 X^B \arrow[r,"f\circ\blank"] \arrow[d,swap,"\blank\circ i"] & Y^B \arrow[d,"\blank\circ i"] \\
@@ -626,8 +639,28 @@ So far, we discussed the n-truncations as an example from plain Homotopy Type Th
 Viewing Homotopy Type Theory as an internal language of ($\infty$,1)-toposes, 
 which is crucial for the following,
 special features of a particular topos may be introduced into the type theory as a modality.
-Important parts of the coverings theory for topological spaces hold for a general abstract modality.
-In the following, this will be explained for a special type theory which admits recovery of the classic topological situation.
+We will focus on one particular topos suitable for studying \emph{topological stacks}.
+These objects may have both topological \emph{and} homotopical structure, which are not the same.
+As a site, we can use the full subcategory of topological spaces spanned by
+\[ \{ \RR^n \vert n\in\NN\}\]
+with a topology given by covering collections of open subsets with contractible intersections.
+We will call the topos of sheaves on this site with values in $\infty$-groupoids $\Spaces$. 
+Theorem \ref{thm:modal_descent} will turn out to tell us in this context, that important parts of the theory of covering spaces of topological spaces hold for a general abstract modality.
+
+\begin{center}
+  \begin{tabular}{p{5cm}p{7cm}}
+    \toprule
+    $\modal$ & $\modal$-étale maps  \\
+    \midrule
+    $\trunc{n}{\_}$ on $\infty$-groupoids & Maps inducing equivalences on all $n$-connective covers of the codomain \\
+    $\Im$ on $\mathrm{Sh}(k\mathrm{-Alg}^\op ,\Zar)$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian schemes   \\
+    $\Im$ on $\FSGrp$ & Local diffeomorphisms, if domain and codomain are manifolds \\
+    $\trunc{1}{\_}\circ\shape$ on $\mathrm{Sh}(\{\RR^n\vert n\in\NN\})$ & Some notion of covering space for topological stacks \\
+    $\shape$ on $\Spaces$ & Generalization of covering spaces, where the universal cover is a stack with trivial homotopy type \\
+    $\sharp$ on $\Spaces$ & Maps where the domain carries the induced topology \\
+    \bottomrule
+  \end{tabular}
+\end{center}
 
 In \cite{ShulmanRealCohesion} Mike Shulman introduces Real Cohesive Homotopy Type Theory, as a candidate for an internal language
 of some of the ($\infty$,1)-toposes called \emph{cohesive}, a higher analog 
@@ -699,7 +732,7 @@ Similarly, the construction of covering spaces corresponding to subgroups of $\p
 can be done without using anything beyond the properties of a general modality:
 Any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete 0-type
 \footnote{This means we use the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} 
-and \cite[Section 7.1]{ulrik-higher-groups}}
+and \cite[Section 7.1]{ulrik-egbert-floris-groups}}
 and therefore a map $BH\to \shape_1X$, with discrete $BH$.
 The pullback of this map is a $\shape_1$-cover with the correct fiber type.
 A calculation on the level of abstract modalities shows, that this gives the usual one-to-one correspondence.
@@ -725,5 +758,6 @@ which is so far the only formalized part of this work.
 The statement of this lemma is a generalization of the fact that modalities preserve products:
 For any dependent type $B:\bigcirc A \to \mathcal U$, we have $\bigcirc \sum_{x:A}B(\eta_A(x)) \simeq \sum_{x:\bigcirc A}\bigcirc B(x)$.
 
+\printbibliography
 
 \end{document}

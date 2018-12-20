@@ -6,15 +6,15 @@
 
 \newcommand{\shape}{\int}
 \newcommand{\drawpb}[1]{\arrow[#1, phantom, "\text{\scriptsize(pb)}" description]}
-\newcommand{\CC}{\mathbb C}
-\newcommand{\NN}{\mathbb N}
-\newcommand{\RR}{\mathbb R}
-\newcommand{\ZZ}{\mathbb Z}
-\newcommand{\PP}{\mathbb P}
-\newcommand{\Zar}{\ensuremath{\mathfrak{Zar}}}
-\newcommand{\FSGrpOne}{\ensuremath{\mathrm{FSGrp}_1}}
-\newcommand{\FSGrp}{\ensuremath{\mathrm{FSGrp}}}
-\newcommand{\Spaces}{\ensuremath{\mathrm{Spaces}}}
+\newcommand{\bC}{\mathbb C}
+\newcommand{\bN}{\mathbb N}
+\newcommand{\bR}{\mathbb R}
+\newcommand{\bZ}{\mathbb Z}
+\newcommand{\bP}{\mathbb P}
+\newcommand{\Zar}{\ensuremath{\mathrm{Zar}}}
+\newcommand{\FSGrpOne}{\ensuremath{\mathsf{FSGrp}_1}}
+\newcommand{\FSGrp}{\ensuremath{\mathsf{FSGrp}}}
+\newcommand{\Spaces}{\ensuremath{\mathsf{Spaces}}}
 
 \addbibresource{literatur.bib}
 
@@ -104,6 +104,27 @@ is a discrete category, there are no nontrivial maps between
 representables, so every transformation is cartesian and the
 localization is the identity functor.
 
+
+\section{Introduction}
+\begin{itemize}
+\item In 2011 Urs Schreiber and Mike Shulman started to think about the concept of Modalities in Homotopy Type Theory,
+  with the idea to use these extended theories to reason about more specialized $(\infty,1)$-toposes.
+  One special application they had in mind was to use Homotopy Type Theory to talk about \emph{cohesive} $(\infty,1)$-toposes,
+  which is witnessed in the notes \cite{ShulmanSchreiber}.
+  This idea of a cohesive type theory was later worked out in \cite{ShulmanRealCohesion}.
+  While the applications of the theory in this article are at least close to these ideas,
+  we will work with a simpler setup of only one \emph{monadic} modality.
+\item Modality is defined in \cite{UFP}{Section 7.7}.
+  Modalities where studied extensively in \cite{RijkeSpittersShulman}.
+  There are two factorization systems associated to a modality which coincide in the case of a left exact modality,
+  we will study one of these factorization systems. The name of maps in the right class is inspired by algebraic geometry -- they are called $\modal$-étale,
+  where $\modal$ is the modality.
+\item The application \ref{sec:topological stacks} suggests a new notion of covering space for topological stacks and shows that
+  one interpretation of \ref{thm:modal descent} is an extension of the classcial fundamental theorem of the theory of covering spaces,
+  relating covering spaces over a fixed space with certain actions of its fundamental groupoid. 
+\end{itemize}
+
+
 \section{Preliminaries}
 \begin{enumerate}
 \item A commuting square
@@ -164,7 +185,7 @@ is an equivalence, we will show that its fibers are contractible. Let $b:B$, $x:
 \end{eg}
 
 \begin{lem}\label{lem:etale_modal}
-Any map between $\modal$-modal types is formaly \'etale.
+Any map between $\modal$-modal types is formally \'etale.
 \end{lem}
 
 \begin{proof}
@@ -633,19 +654,27 @@ In this cube the top and bottom squares are pullback by the assumption that $f$ 
 For any map $f:X\to Y$, the type of factorizations into a $\modal$-connected map followed by a $\modal$-\'etale map is contractible.
 \end{cor}
 
-\section{Applications}
+\section{Overview of applications}
 
 So far, we discussed the n-truncations as an example from plain Homotopy Type Theory.
 Viewing Homotopy Type Theory as an internal language of ($\infty$,1)-toposes, 
 which is crucial for the following,
 special features of a particular topos may be introduced into the type theory as a modality.
-We will focus on one particular topos suitable for studying \emph{topological stacks}.
-These objects may have both topological \emph{and} homotopical structure, which are not the same.
+
+In \cite{ShulmanRealCohesion} Mike Shulman introduces Real Cohesive Homotopy Type Theory, as a candidate for an internal language
+of some of the ($\infty$,1)-toposes called \emph{cohesive}, a higher analog 
+of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
+Let us look at a basic example of such a topos, which contains some \emph{topological stacks}.
+The objects may have both topological \emph{and} homotopical structure, which are not the same.
 As a site, we can use the full subcategory of topological spaces spanned by
-\[ \{ \RR^n \vert n\in\NN\}\]
+\[ \{ \bR^n \vert n\in\bN\}\]
 with a topology given by covering collections of open subsets with contractible intersections.
 We will call the topos of sheaves on this site with values in $\infty$-groupoids $\Spaces$. 
 Theorem \ref{thm:modal_descent} will turn out to tell us in this context, that important parts of the theory of covering spaces of topological spaces hold for a general abstract modality.
+
+Before we go into the details, it should be mentioned that this is not the only possible application of the theorems in this article to Geometry.
+The following table lists also examples in Algebraic Geometry and examples involving other modalities on $\Spaces$.
+We will provide details and definitions of the relevant categories for the other examples below.
 
 \begin{center}
   \begin{tabular}{p{5cm}p{7cm}}
@@ -653,19 +682,18 @@ Theorem \ref{thm:modal_descent} will turn out to tell us in this context, that i
     $\modal$ & $\modal$-étale maps  \\
     \midrule
     $\trunc{n}{\_}$ on $\infty$-groupoids & Maps inducing equivalences on all $n$-connective covers of the codomain \\
-    $\Im$ on $\mathrm{Sh}(k\mathrm{-Alg}^\op ,\Zar)$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian schemes   \\
+    $\Im$ on $\mathrm{Sh}(k\mathrm{-Alg}^\mathrm{op} ,\Zar)$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian schemes   \\
     $\Im$ on $\FSGrp$ & Local diffeomorphisms, if domain and codomain are manifolds \\
-    $\trunc{1}{\_}\circ\shape$ on $\mathrm{Sh}(\{\RR^n\vert n\in\NN\})$ & Some notion of covering space for topological stacks \\
+    $\trunc{1}{\_}\circ\shape$ on $\Spaces$ & Some notion of covering space for topological stacks \\
+    $\trunc{n}{\_}\circ\shape$ on $\Spaces$ & Generalization of covering space for topological stacks, where the universal cover is a topological stack with an $n$-connected homotopy type \\
     $\shape$ on $\Spaces$ & Generalization of covering spaces, where the universal cover is a stack with trivial homotopy type \\
     $\sharp$ on $\Spaces$ & Maps where the domain carries the induced topology \\
     \bottomrule
   \end{tabular}
 \end{center}
 
-In \cite{ShulmanRealCohesion} Mike Shulman introduces Real Cohesive Homotopy Type Theory, as a candidate for an internal language
-of some of the ($\infty$,1)-toposes called \emph{cohesive}, a higher analog 
-of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
-
+\section{Topological stacks}
+\label{sec:topological stacks}
 In Real Cohesive Homotopy Type Theory,
 which will just be called Real Cohesion in the following, 
 some well behaved topological spaces, like, for example, topological manifolds
@@ -674,13 +702,13 @@ It is important to note, that the types corresponding to these topological space
 are 0-types in Real Cohesion.
 This can lead to confusion with the common explanation for the Identity types in Homotopy Type Theory,
 as paths in a space and care has to be taken to separate concept of equality
-and topological paths, i.e. maps $\gamma:\RR\to X$ from the 0-type $\RR$ representing the real line with the euclidean topology.
+and topological paths, i.e. maps $\gamma:\bR\to X$ from the 0-type $\bR$ representing the real line with the euclidean topology.
 Let $\sphere{n}$ denote the topological sphere and $S^n$ the higher inductive type 
 introduced in \cite{UFP}.
 
 For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
 It maps topological spaces to their \emph{homotopy type}, so for example $\shape \sphere{1} =S^1$ 
-and $\shape \RR =1$. 
+and $\shape \bR =1$. 
 In a 1-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
 The $\shape$ is a higher analog of this functor that extracts homotopical information on all h-levels, not just level 0.
 So if $X$ represents a topological space with a point $\ast: X$, 
@@ -696,9 +724,7 @@ As all modalities, $\shape$ comes with a unit-map $\sigma_X\colon X \to \shape X
 For any two points $x,y: X$ that are joined by a topological path, 
 the images $\sigma_X(x)$ and $\sigma_X(y)$ are equal in $\shape X$.
 
-\vspace{1cm}
-
-\textbf{Contribution.} From this point on, 
+From this point on, 
 let us assume that each type supposed to represent a topological space comes with a point ``$\ast$''
 and for $\ast:X$ let us abbreviate $\sigma_X(\ast)$ with $\ast$.
   
@@ -746,17 +772,26 @@ The universal cover construction for $\shape$ yields a ``$\shape$-universal cove
 which can have both non-discrete topological structure and
 non-propositional identity types.
 This occurs whenever $\shape X$ is not 1-truncated.
-For example, if we assume a type $\CC\PP^\infty$ representing the appropriate topological space,
-the $\shape$-universal cover will be a $1$-type over $\CC\PP^\infty$ with identity types merely $S^1$.
+For example, if we assume a type $\bC\bP^\infty$ representing the appropriate topological space,
+the $\shape$-universal cover will be a $1$-type over $\bC\bP^\infty$ with identity types merely $S^1$.
 The $\shape$-universal cover $\widetilde{X}$ of a space has always a contractible shape, i.e. $\shape X \simeq 1$.
 
 Similar generalizations of the classical topological correspondence are known on the classical side
-for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct} and topological 1-stacks \cite{noohi}.     
-The author sees one advantage in the clarity of the type theoretic proofs,
-since the correspondence and some related remarks are all straight forward to prove using one lemma,
-which is so far the only formalized part of this work.
-The statement of this lemma is a generalization of the fact that modalities preserve products:
-For any dependent type $B:\bigcirc A \to \mathcal U$, we have $\bigcirc \sum_{x:A}B(\eta_A(x)) \simeq \sum_{x:\bigcirc A}\bigcirc B(x)$.
+for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct}.
+The second author sees one advantage in the clarity of the type theoretic proofs.
+
+\section{Algebraic and Differential Geometry}
+
+The $\modal$-étale maps for a special modality $\Im$ were already discussed in \cite{wellen-thesis} and \cite{wellen-cartan-geometry}.
+One basic topos where a corresponding functor can be defined is given as $\infty$-groupoid valued sheaves on the site $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fp}}$ of finitely presented affine schemes over a field with the Zariski topology. Here, for any $X\in\mathrm{Sh}(k\mathrm{Alg}^\mathrm{op}_{\mathrm{fp}})$ , the functor $\Im X$ defined pointwise by
+\[ (\Im X)(A):\equiv X(A/\sqrt{0})\]
+turns out to be a sheaf again. So $\Im$ is an endofunctor on the topos, which we will assume to correspond to a modality $\Im$ internally.
+In \cite{wellen-thesis}{Section 4.4} there is a calculation showing that the formally étale maps in the sense of \cite{GrothendieckDieudonne}{§ 17} are included in the $\Im$-étale maps, if we transfer this notion in the empty context to the topos.
+
+
+
+
+
 
 \printbibliography
 

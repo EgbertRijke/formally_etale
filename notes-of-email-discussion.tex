@@ -1,0 +1,86 @@
+\documentclass[9pt,twosided]{amsart}
+
+
+\title{Discussion with Shulman, Wellen, Frey, Awodey, Rijke}
+
+\begin{document}
+
+\maketitle
+
+Mike's observations:
+\begin{enumerate}
+\item Every factorization system $(\mathcal{E},\mathcal{M})$ has an underlying reflective
+subuniverse, for which the modal types are those such that $X\to \unit$ is
+in $\mathcal{M}$.  It is not clear whether every reflective subuniverse underlies
+a factorization system.  One natural definition takes $\mathcal{E}$ to be the maps
+inverted by the reflector $\modal$; another takes $\mathcal{M}$ to be the maps whose
+$\modal$-naturality square is a pullback.  These two classes of maps are
+always orthogonal, but factorizations do not always exist; i.e. they
+are a "prefactorization system".  The prefactorization systems
+obtained in this way from a reflective subuniverse are called
+*reflective*; they are precisely those for which $\mathcal{E}$ satisfies
+2-out-of-3.
+\item 
+\begin{enumerate}
+\item Every modality is, in particular, a reflective subuniverse, so the
+foregoing applies to it.  In this case, however, the putative explicit
+definitions of $\mathcal{E}$ and $\mathcal{M}$ are always a factorization system, with
+factorizations constructed by pulling back in the $\modal$-naturality square;
+thus we always obtain a reflective factorization system.  The
+modalities are precisely the reflective subuniverses that have \emph{stable
+units}, i.e. all the modal units $X\to\modal X$ are $\modal$-connected.  In \cite{CassidyHebertKelly}
+there are two weaker conditions on a reflective subcategory that
+ensure that the reflective prefactorization system has factorizations:
+being \emph{simple} (equivalent to the fact that factorizations can be
+constructed by pulling back in the $\modal$-naturality square) and being
+\emph{semi-left-exact}.  It is not clear whether in HoTT there exist
+semi-left-exact reflective subuniverses that are not modalities, or
+simple ones that are not semi-left-exact, or even reflective
+subuniverses that are not simple.
+\item Every modality also gives rise to a different factorization
+system, in which the right class is the maps with $\modal$-modal fibers and
+the left class is the maps with $\modal$-connected fibers.  This
+factorization system is \emph{stable}, i.e. the left class (and hence the
+factorizations) are stable under pullback.  Moreover, every stable
+factorization system arises in this way from a unique modality.
+\end{enumerate}
+\item The above two factorization systems associated to a modality do not
+in general coincide.  They can coincide only if the $\modal$-connected maps
+satisfy 2-out-of-3 (since the $\modal$-inverted maps always do), and only if
+the $\modal$-inverted maps are stable under pullback (since the $\modal$-connected
+maps always are).  However, both of these properties are sufficient
+to imply that $\modal$ is fully left exact, which in turn implies that the
+two factorization systems coincide.
+\item Another way of extending a reflective subuniverse to a
+factorization system is that if it's accessible, we can choose a
+generating family and then use the same generating family to generate
+a factorization system.  This works for any accessible reflective
+subuniverse, but in principle, at least, it seems as if the result may
+depend on the generating family chosen, and I don't see any reason for
+it to coincide with the reflective (pre)factorization system.  I also
+don't know whether anything special happens for modalites.
+\item If we have a factorization system $(\mathcal{E},\mathcal{M})$,
+with underlying reflective subuniverse $\modal$, then all maps between
+$\modal$-modal types are in $\mathcal{M}$, hence so are any of their pullbacks.  Thus,
+the reflective factorization system, if it exists, is the
+factorization system with the smallest class $\mathcal{M}$ that has a given
+underlying reflective subuniverse.  On the other hand, again for any
+$(\mathcal{E},\mathcal{M})$, any pullback of an $\mathcal{M}$-map is again in $\mathcal{M}$, hence all fibers of an
+$\mathcal{M}$-map are $\modal$-modal; thus the stable factorization system, if it exists
+(i.e. if $\modal$ is a modality), is the factorization system with the
+\emph{largest} class $\mathcal{M}$ that has a given underlying reflective subuniverse.
+\end{enumerate}
+
+In a presheaf topos, a natural transformation is cartesian if and only if it is right orthogonal to all maps between representables. 
+Question: What do we get if we localize inside an
+arbitrary presheaf topos at the maps between representables?  A
+general presheaf topos is not cohesive, so the discrete objects are
+not fully embedded and we can't produce a modality by "taking the
+colimit and then the discrete object".  But this localization seems to
+be trying to give us the closest possible approximation to such.  As
+an extreme example in the other direction, if the domain of presheaves
+is a discrete category, there are no nontrivial maps between
+representables, so every transformation is cartesian and the
+localization is the identity functor.
+
+\end{document}

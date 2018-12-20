@@ -128,10 +128,16 @@ Y \arrow[r] & \modal Y
 are equivalences. Therefore this square is a pullback square, so $f$ is $\modal$-\'etale.
 \end{proof}
 
-In this section our goal is to characterize the $\modal$-\'etale maps for the $n$-truncations. We call such maps \define{$n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
+In this section our goal is an almost general charachterization of $\modal$-étale maps and using it to characterize the $\modal$-\'etale maps for the $n$-truncations. We call such maps \define{$n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
+The characterization only works if the domain of the map in question has a surjective $\modalunit$.
+\begin{defn}
+  A map $\varphi:X\to Y$ is surjective, if all its fibers are merely inhabited.
+\end{defn}
+Note that using the connected-truncated factorization system from \cite{RijkeSpittersShulman}, we can see that all $\modalunit$ are surjective for some modality, if and only if all propositions are modal.
+So in case of $\trunc{n}{\_}$ with $n\geq -1$, the characterization always works.
 
 \begin{lem}\label{lem:etale_char}
-Let $\modal$ be a modality for which all propositions are modal, and consider a map $f:A\to B$. The following are equivalent:
+Let $\modal$ be a modality and $f:A\to B$ such that $\modalunit_A$ is surjective. The following are equivalent:
 \begin{enumerate}
 \item $f$ is $\modal$-\'etale.
 \item The commuting square
@@ -172,7 +178,8 @@ Now suppose that (ii) holds. Then the map
 \begin{equation*}
 \fib{\modalunit}{\modalunit(a)}\to \fib{\modalunit}{\modalunit(f(a))}
 \end{equation*}
-is an equivalence for every $a:A$. Since all propositions are assumed to be modal, it follows that
+is an equivalence for every $a:A$. Since $\modalunit_A$ is assumed to be surjective, there merely is an $a:A$ such that $\modalunit(a)=t$ for arbitrary $t:\modal A$.
+It follows that
 \begin{equation*}
 \fib{\modalunit}{t}\to \fib{\modalunit}{\modal f(t)}
 \end{equation*}
@@ -718,9 +725,9 @@ turns out to be a sheaf again. So $\Im$ is an endofunctor on the topos, which we
 In \cite{wellen-thesis}{Section 4.4} there is a calculation showing that the formally étale maps in the sense of \cite[§ 17]{GrothendieckDieudonne} are included in the $\Im$-étale maps, if we transfer this notion in the empty context to the topos.
 
 Let us look at the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char}.
-For a map $f:X\to Y$, the assumption that $\eta_X$ and $\eta_Y$ are surjective corresponds to a generalization of formal smoothness of $X$ and $Y$.
+For a map $f:X\to Y$, the assumption that $\eta_X$ is surjective corresponds to a generalization of formal smoothness of $X$.
 The latter is discussed in \cite[Section 4.4]{wellen-thesis}, where the author forgot to take the difference between pointwise surjections and epimorphisms of sheaves into account.
-If we assume this holds for $X$ and $Y$, the lemma tells us that $f$ is $\Im$-étale, if and only if, the following is a pullback:
+If we assume this holds for $X$, the lemma tells us that $f$ is $\Im$-étale, if and only if, the following is a pullback:
 \begin{equation*}
 \begin{tikzcd}[column sep=large]
 X\times_{\Im X} X \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\Im f} f}"] & Y\times_{\Im Y} Y \arrow[d,"\pi_1"] \\
@@ -731,7 +738,7 @@ In Algebraic Geometry, these pullbacks are called \emph{formal neighborhood of t
 A fiber $\pi_1^{-1}(x)$ is a formal disk $\bD_x$ around a point $x:X$.
 And the condition that the square above is precisely the condition that all induced maps
 \[ df_x:\bD_x\to\bD_{f(x)}\]
-are equivalences. So a translation of lemma \ref{lem:etale_char} into Algebraic Geometry could read ``A map between formally smooth spaces, is formally étale, if and only if, it induces an isomorphism on all formal disks.''.
+are equivalences. So a translation of lemma \ref{lem:etale_char} into Algebraic Geometry could read ``A map from a formally smooth space, is formally étale, if and only if, it induces an isomorphism on all formal disks.''.
 
 
 \printbibliography

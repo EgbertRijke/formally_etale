@@ -60,6 +60,7 @@ We gratefully acknowledge the support of the Air Force Office of Scientific Rese
 \begin{itemize}
 \item Rename sphere in the theory part of the article from $\bS$ to $S$
 \item ``Topological stacks'' still contains copy-pasted stuff from a different article
+\item Find a real argument at ``???''
 \end{itemize}
 
 \section{Preliminaries}
@@ -647,7 +648,7 @@ are supposed to be included in the theory as they are included in the category $
 It is important to note, that the types corresponding to these topological spaces
 are 0-types in Real Cohesion.
 This can lead to confusion with the common explanation for the Identity types in Homotopy Type Theory,
-as paths in a space and care has to be taken to separate concept of equality
+as paths in a space and care has to be taken to separate the concept of equality
 and topological paths, i.e. maps $\gamma:\bR\to X$ from the 0-type $\bR$ representing the real line with the euclidean topology.
 Let $\bS^{n}$ denote the topological sphere given by
 \[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
@@ -658,8 +659,6 @@ which are known to coincide with the exernal sheaf $\mathrm{Hom}_{\mathrm{Top}}(
 For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
 It maps topological spaces to their \emph{homotopy type}, so for example $\shape \sphere{1} =S^1$ 
 and $\shape \bR =1$.
-The latter may be viewed as a defining property of $\shape$ -- it can be defined as the nullification\footnote{Or localization at $\bR\to 1$.} at $\bR$.
-
 
 
 In a 1-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
@@ -667,15 +666,20 @@ The $\shape$ is a higher analog of this functor that extracts homotopical inform
 So if $X$ represents a topological space with a point $\ast: X$, 
 then $\shape X$ is also pointed and the n-th homotopy group of $X$ as a topological space 
 could be retrieved from its shape 
-as $\pi_n(X):\equiv\trunc{0}{\loopspace^n\shape X}$.
+as $\pi_n(X):\equiv\trunc{0}{\Omega^n(\shape X)}$.
 
 Like $\Delta\circ\pi_0$ reflects into the subcategory of constant sheaves, $\shape$ reflects into the \emph{discrete} types.
 Note that ``discrete'' refers to the topological structure of a type, 
 not to a property of the $\infty$-groupoid structure given by its identity type.
 
-As all modalities, $\shape$ comes with a unit-map $\sigma_X\colon X \to \shape X$, for any type $X$.
+The equation ``$\shape \bR=1$'' may be viewed as one of the defining properties of $\shape$
+-- it can be defined as the nullification-modality\footnote{Or localization at $\bR\to 1$.} at $\bR$.
+In Real Cohesion $\shape$ is also a right adjoint.
+Let us just assume that it has surjective units and preserves the colimits we need to reason about the homotopy types we are interested in, to keep things simple.
+
+As all modalities, $\shape$ comes with a unit-map $\modalunit_X\colon X \to \shape X$, for any type $X$.
 For any two points $x,y: X$ that are joined by a topological path, 
-the images $\sigma_X(x)$ and $\sigma_X(y)$ are equal in $\shape X$.
+the images $\modalunit_X(x)$ and $\modalunit_X(y)$ are equal in $\shape X$.
 
 From this point on, 
 let us assume that each type supposed to represent a topological space comes with a point ``$\ast$''
@@ -683,51 +687,88 @@ and for $\ast:X$ let us abbreviate $\sigma_X(\ast)$ with $\ast$.
   
 For many modalities, the fibers of their units are interesting.
 For $\sphere{1}$, this fiber
-\[ \sum_{x:\sphere{1}}\sigma_{\sphere{1}}(x)=\ast \]
+\[ \sum_{x:\sphere{1}}\modalunit_{\sphere{1}}(x)=\ast \]
 -- or more precisely its projection to $\sphere{1}$ -- turns out to be the universal cover of $\sphere{1}$.
 But this works only for spaces with trivial higher homotopy groups. 
 For the construction of the universal cover of an arbitrary type, this has to be adjusted:
-\[ \widetilde{X}:\equiv \sum_{x\colon X} \trunc{0}{\sigma_X(x)=\ast}. \]
+\[ \widetilde{X}:\equiv \sum_{x\colon X} \trunc{0}{\modalunit_X(x)=\ast}. \]
 Note that this amounts to replacing the modality $\shape$ with the modality $\shape_1:\equiv\trunc{1}{\_}\circ\shape$.
 To justify calling $\widetilde{X}$ the universal cover of $X$, 
 we will define covering spaces relative to a modality and show a universal property.
-    
-For a modality $\bigcirc$ with unit $\eta$, we call a map $f:Y\to X$ a $\bigcirc$-cover, if the naturality square
-\begin{center}
-  \begin{tikzcd}
-    Y\arrow[d, "f", swap]\arrow[r, "\eta_Y"] & \bigcirc Y\arrow[d, "\bigcirc f"]\drawpb{dl} \\
-    X\arrow[r, "\eta_X", swap] & \bigcirc X 
-  \end{tikzcd}
-\end{center}
-is a pullback square. 
-For $\bigcirc\equiv\shape_1$, 
-covering spaces in topology have the universal property of this pullback for cones with a topological space as tip.
 
-For a $\shape_1$-cover $f:Y\to X$ there is always the trivial map $t:\widetilde{X}\to \shape_1Y$.
-Together with a $g:\ast =_{\shape_1 X}\ast $ this yields a cone for the universal property of
-the defining pullback of $f$ and therefore a unique map $\widetilde{X}\to Y$.
+\begin{defn}
+  \begin{enumerate}
+  \item Let $\shape_n:\equiv\trunc{n}{\_}\circ\shape$ for $n\in\bN_{-1}$ and $\shape_\infty:\equiv\shape$
+  \item A map $f:X\to Y$ is called an \emph{$n$-covering space}, if it is $\shape_n$-étale for $n\in\bN_{-1}\cup\{\infty\}$.
+  \item For a pointed type $X$, let
+    \[ \widetilde{X}_n:\equiv\sum_{x:X}\modalunit_X(x)=\ast \]
+    be the \emph{universal $n$-covering space}, where $\modalunit_X$ is the unit of $\shape_n$ for some $n\in\bN_{-1}\cup\{\infty\}$.
+  \end{enumerate}
+\end{defn}
+The universal $n$-covering spaces are always $n$-covering spaces by lemma \ref{cor:etale_pb} and noticing that they are given as the pullback of $1\to\shape_nX$.
+This also shows that $\shape_n \widetilde{X}_n = 1$.
 
-Similarly, the construction of covering spaces corresponding to subgroups of $\pi_1(X)$ 
-can be done without using anything beyond the properties of a general modality:
-Any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete 0-type
+We could assume $X$ and $Y$ to be path connected to be closer to the common definition of covering spaces,
+however the definition chosen here turns out to be simpler for the following.
+
+Note that in contrast to the 1-categorical notion, the notion of 1-covering space for topological stacks given by this definition does not coincide with that of locally constant sheaves, since there can be nontrivial such sheaves on a simply connected space\footnote{One example can be derived from the Hopf-fibration ober $\bS^2$.}.
+As a general rule, $n$-covering spaces have to be reconstructible from data available in the $n$-truncation of the homotopy type of the base. 
+
+Now, we will take a closer look at 1-covering spaces.
+In the classical theory, there is usually a lemma about lifting properties of covering spaces.
+In \cite[Proposition 1.33, p. 61]{Hatcher} this takes the following form: \\
+\emph{Suppose given a covering space $p:({Y},{y}_0)\to (X,x_0)$ and a map $f:(Z,z_0)\to (X,x_0)$
+  with $Z$ path connected and locally path connected.
+  Then a lift $\widetilde{f}:(Z,z_0)\to(Y,{y}_0)$ of $f$ exists, iff $f_\ast(\pi_1(Z,z_0))\subset p_\ast(\pi_1({Y},{y}_0))$.} \\
+Let us assume we have a map $p:Y\to X$, representing a map between topological spaces.
+Now let $Z$ be any type with two maps to $X$ and $\shape_1 Y$.
+To analyze if $p$ is a 1-covering space, we can ask if the map $Z\to X$ has a ``lift'' to $Y$.
+\begin{equation*}
+\begin{tikzcd}
+Z\arrow[dr, swap, "f"]\arrow[rr, bend left=30, "\widetilde{f}"]  & Y\arrow[r, "\modalunit"]\arrow[d, "p"] & \shape_1 Y\arrow[d, "\shape_1 p"] \\
+& X\arrow[r, "\modalunit"]  & \shape_1 X 
+\end{tikzcd}
+\end{equation*}
+Since $X$ and $Y$ represent topological spaces, we can assume $Z$ to be 0-truncated as well.
+??? Now the cohesiveness of $\Spaces$ tells us, that we can assume $Z$ to be locally path connected.
+This means, if $p$ internally has the external property of covering spaces cited above from Hatcher's book, we can lift $f:Z\to X$, if $\shape_1 f$ lifts to $\shape_1 Y$.
+But the latter is given by factoring $\widetilde{f}$ over $\shape_1 Z$, so we know $p$ is a 1-covering space.
+Likewise, the lifting property from Hatcher is a direct consequence of the pullback property. 
+
+The construction of the covering spaces corresponding to a subgroup $H\subseteq \pi_1(X)$ for a path connected $X$,
+can be done by applying the delooping construction of \cite{LicataFinster} to the inclusion map of $H$ to get a map $Bi:BH\to\shape_1(X)$ and pulling $Bi$ back along $\modalunit$. In other words, we use that any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete 0-type
 \footnote{This means we use the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} 
 and \cite[Section 7.1]{ulrik-egbert-floris-groups}}
 and therefore a map $BH\to \shape_1X$, with discrete $BH$.
-The pullback of this map is a $\shape_1$-cover with the correct fiber type.
-A calculation on the level of abstract modalities shows, that this gives the usual one-to-one correspondence.
-In its most natural abstract form this correspondence of maps $M\to \shape_1 X$ for modal $M$ 
-and $\shape_1$-covers includes maps with discrete 1-types as fibers. 
 
+To get the full correspondence for some general type $X$ of actions of the fundamental groupoid of $X$ on sets and covering spaces over $X$,
+we can apply lemma \ref{lem:modal_descent} to $\shape_1$ to get:
+
+\begin{thm}
+  \begin{enumerate}
+  \item Let $X$ be a type. Then the type of 1-covering spaces over $X$ and the type of $\shape_1$-modal dependent types over $\shape_1 X$ are equivalent.
+  \item In particular the type of 1-covering spaces with 0-truncated fibers and the type of maps $\shape_1X\to \mathcal U_{\shape_0}$ are equivalent.
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  \begin{enumerate}
+  \item This is just lemma \ref{thm:modal_descent} applied to $\shape_1$.
+  \item By pullback pasting and surjectivity of $\modalunit_X$, fibers of 1-covering spaces over $X$ are always equivalent to values of the corresponding morphism $\shape_1 X\to \mathcal U_{\shape_1}$ and vice versa.
+  \end{enumerate}
+\end{proof}
+
+Of course, we have the same correspondence for any $n\in\bN_{-1}\cup\{\infty\}$.
 For the modality $\shape$, this correspondence relates $\shape$-covers with 
-maps $M\to \shape X$ for discrete $M$.
-Since the latter are $\infty$-actions of $\shape X$ on discrete types, this seems to be a very natural generalization.
+maps $\shape X\to\mathcal U_{\shape}$.
+Since the latter are $\infty$-actions of $\shape X$ on discrete types, this seems to be a very natural variation of the classical correspondence.
 The universal cover construction for $\shape$ yields a ``$\shape$-universal cover'' 
 which can have both non-discrete topological structure and
 non-propositional identity types.
 This occurs whenever $\shape X$ is not 1-truncated.
 For example, if we assume a type $\bC\bP^\infty$ representing the appropriate topological space,
 the $\shape$-universal cover will be a $1$-type over $\bC\bP^\infty$ with identity types merely $S^1$.
-The $\shape$-universal cover $\widetilde{X}$ of a space has always a contractible shape, i.e. $\shape X \simeq 1$.
+The $\shape$-universal cover $\widetilde{X}_\infty$ of a space has always a contractible shape, i.e. $\shape X \simeq 1$.
+
 
 Similar generalizations of the classical topological correspondence are known on the classical side
 for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct}.

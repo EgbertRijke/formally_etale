@@ -12,6 +12,8 @@
 \newcommand{\bR}{\mathbb R}
 \newcommand{\bZ}{\mathbb Z}
 \newcommand{\bP}{\mathbb P}
+\newcommand{\bA}{\mathbb A}
+\newcommand{\bS}{\mathbb S}
 \newcommand{\Zar}{\ensuremath{\mathrm{Zar}}}
 \newcommand{\FSGrpOne}{\ensuremath{\mathsf{FSGrp}_1}}
 \newcommand{\FSGrp}{\ensuremath{\mathsf{FSGrp}}}
@@ -53,6 +55,12 @@
 We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
 \end{itemize}
 
+
+\section{Issues -- to be removed some day...}
+\begin{itemize}
+\item Rename sphere in the theory part of the article from $\bS$ to $S$
+\item ``Topological stacks'' still contains copy-pasted stuff from a different article
+\end{itemize}
 
 \section{Preliminaries}
 \begin{enumerate}
@@ -598,7 +606,7 @@ which is crucial for the following,
 special features of a particular topos may be introduced into the type theory as a modality.
 
 In \cite{ShulmanRealCohesion} Mike Shulman introduces Real Cohesive Homotopy Type Theory, as a candidate for an internal language
-of some of the ($\infty$,1)-toposes called \emph{cohesive}, a higher analog 
+of some special cases of ($\infty$,1)-toposes called \emph{cohesive}, a higher analog 
 of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
 Let us look at a basic example of such a topos, which contains some \emph{topological stacks}.
 The objects may have both topological \emph{and} homotopical structure, which are not the same.
@@ -610,7 +618,7 @@ Theorem \ref{thm:modal_descent} will turn out to tell us in this context, that i
 
 Before we go into the details, it should be mentioned that this is not the only possible application of the theorems in this article to Geometry.
 The following table lists also examples in Algebraic Geometry and examples involving other modalities on $\Spaces$.
-We will provide details and definitions of the relevant categories for the other examples below.
+We will provide details and definitions of the relevant categories for the other examples in the following two sections.
 
 \begin{center}
   \begin{tabular}{p{5cm}p{7cm}}
@@ -627,24 +635,33 @@ We will provide details and definitions of the relevant categories for the other
     \bottomrule
   \end{tabular}
 \end{center}
-
+The list is certainly not complete and there are lots of obvious candidate situations that could turn out to be useful applications.
+It might even be more fruitful, to apply this theory to a situation where it is more difficult to figure out basic geometric notions.
+The second author has hope, that $\Im$-like functors exist in a meaningful way in derived algebraic and differential geometry, non-commutative geometry or algebraic geometry over deeper bases. The $\bA^1$-localization from motivic homotopy theory is certainly a lot like the $\shape$ above, but it is not known so far, how much our theory and modalities in general might help in this case. 
 \section{Topological stacks}
 \label{sec:topological_stacks}
-In Real Cohesive Homotopy Type Theory,
+In Real Cohesive Homotopy Type Theory\footnote{As given in \cite{ShulmanRealCohesion}.},
 which will just be called Real Cohesion in the following, 
 some well behaved topological spaces, like, for example, topological manifolds
-are supposed to be included in the theory.
+are supposed to be included in the theory as they are included in the category $\Spaces$ defined above.
 It is important to note, that the types corresponding to these topological spaces
 are 0-types in Real Cohesion.
 This can lead to confusion with the common explanation for the Identity types in Homotopy Type Theory,
 as paths in a space and care has to be taken to separate concept of equality
 and topological paths, i.e. maps $\gamma:\bR\to X$ from the 0-type $\bR$ representing the real line with the euclidean topology.
-Let $\sphere{n}$ denote the topological sphere and $S^n$ the higher inductive type 
-introduced in \cite{UFP}.
+Let $\bS^{n}$ denote the topological sphere given by
+\[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
+and $S^n$ the higher inductive type introduced in \cite{UFP}.
+The Reals ``$\bR$'' in this definition are, as in \cite{ShulmanRealCohesion}, the \emph{Dedekind Reals},
+which are known to coincide with the exernal sheaf $\mathrm{Hom}_{\mathrm{Top}}(\_,\bR)$ in $\Spaces$ and some similar toposes.
 
 For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
 It maps topological spaces to their \emph{homotopy type}, so for example $\shape \sphere{1} =S^1$ 
-and $\shape \bR =1$. 
+and $\shape \bR =1$.
+The latter may be viewed as a defining property of $\shape$ -- it can be defined as the nullification\footnote{Or localization at $\bR\to 1$.} at $\bR$.
+
+
+
 In a 1-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
 The $\shape$ is a higher analog of this functor that extracts homotopical information on all h-levels, not just level 0.
 So if $X$ represents a topological space with a point $\ast: X$, 
@@ -736,7 +753,7 @@ X \arrow[r,swap,"f"] & Y
 \end{equation*}
 In Algebraic Geometry, these pullbacks are called \emph{formal neighborhood of the diagonal}.
 A fiber $\pi_1^{-1}(x)$ is a formal disk $\bD_x$ around a point $x:X$.
-And the condition that the square above is precisely the condition that all induced maps
+And the condition that the square above is a pullback is precisely the condition that all induced maps
 \[ df_x:\bD_x\to\bD_{f(x)}\]
 are equivalences. So a translation of lemma \ref{lem:etale_char} into Algebraic Geometry could read ``A map from a formally smooth space, is formally étale, if and only if, it induces an isomorphism on all formal disks.''.
 

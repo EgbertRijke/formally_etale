@@ -50,9 +50,6 @@
   one interpretation of theorem \ref{thm:modal_descent} is an extension of the classcial fundamental theorem of the theory of covering spaces,
   relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
   This expands results of the second author from \cite{wellen-oxford-abstract}.
-\item Thanks to (at least) Jonas Frey and Mike Shulman for help in understanding factorization systems in the email discussion.
-  ...?
-  We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
 \item A map $f:A\to B$ is $n$-\'etale if and only if the square
   \begin{equation*}
     \begin{tikzcd}
@@ -61,6 +58,9 @@
     \end{tikzcd}
   \end{equation*}
   is a quasi-pullback square (i.e.~the gap map is surjective).
+\item Thanks to (at least) Jonas Frey and Mike Shulman for help in understanding factorization systems in the email discussion.
+  ...?
+  We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
 \end{itemize}
 
 \section{Preliminaries}
@@ -181,7 +181,7 @@ B \arrow[dr] & \modal A \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \
 & \modal B
 \end{tikzcd}
 \end{equation*}
-Since the top, bottom, and both front squares are pullback squares, it follows that both back squares are pullback. This proves that (i) implies (ii).
+Since the top, bottom, and both front squares are pullback squares, it follows that both back squares are pullbacks. This proves that (i) implies (ii).
 
 Now suppose that (ii) holds. Then the map
 \begin{equation*}
@@ -638,7 +638,8 @@ We will provide details and definitions of the relevant categories for the other
 \end{center}
 The list is certainly not complete and there are lots of obvious candidate situations that could turn out to be useful applications.
 It might even be more fruitful, to apply this theory to a situation where it is more difficult to figure out basic geometric notions.
-The second author has hope, that $\Im$-like functors exist in a meaningful way in derived algebraic and differential geometry, non-commutative geometry or algebraic geometry over deeper bases. The $\bA^1$-localization from motivic homotopy theory is certainly a lot like the $\shape$ above, but it is not known so far, how much our theory and modalities in general might help in this case. 
+The second author has hope, that $\Im$-like functors exist in a meaningful way in derived algebraic and differential geometry, non-commutative geometry or algebraic geometry over deeper bases. The $\bA^1$-localization from motivic homotopy theory is certainly a lot like the $\shape$ above, but it is not known so far, how much our theory and modalities in general might help in this case.
+
 \section{Topological stacks}
 \label{sec:topological_stacks}
 In Real Cohesive Homotopy Type Theory\footnote{As given in \cite{ShulmanRealCohesion}.},
@@ -745,7 +746,7 @@ and \cite[Section 7.1]{ulrik-egbert-floris-groups}}
 and therefore a map $BH\to \shape_1X$, with discrete $BH$.
 
 To get the full correspondence for some general type $X$ of actions of the fundamental groupoid of $X$ on sets and covering spaces over $X$,
-we can apply lemma \ref{lem:modal_descent} to $\shape_1$ to get:
+we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
 
 \begin{thm}
   \begin{enumerate}
@@ -797,10 +798,56 @@ X \arrow[r,swap,"f"] & Y
 \end{equation*}
 In Algebraic Geometry, these pullbacks are called \emph{formal neighborhood of the diagonal} if $X$ represents a noetherian scheme.
 A fiber $\pi_1^{-1}(x)$ is a formal disk $\bD_x$ around a point $x:X$.
+Formal disks can be defined internally for any modality by the pullback
+\begin{equation*}
+  \begin{tikzcd}
+    \bD_x\arrow[r]\arrow[d] & 1\arrow[d, "\eta_X(x)"] \\
+    X \arrow[r] & \Im X
+  \end{tikzcd}
+\end{equation*}
 And the condition that the square above is a pullback is precisely the condition that all induced maps
 \[ df_x:\bD_x\to\bD_{f(x)}\]
 are equivalences. So a translation of lemma \ref{lem:etale_char} into Algebraic Geometry could read ``A map from a formally smooth space, is formally étale, if and only if, it induces an isomorphism on all formal disks.''.
 
+We will conclude the applications and the article with a more visual reformulation of the lemma, stating roughly, that a map is formally étale, if and only if it is trivial over all formal disks in its image.
+Let $f:X\to Y$ be any map, $x:X$, $\tilde{y}:\equiv \eta_Y(f(x))$ and let us look at the following cube:
+\begin{equation*}
+  \begin{tikzcd}
+                        &[-1ex] \eta_X^\ast(\Im f)^{-1}(\tilde{y})\arrow[dr]\arrow[dl]\arrow[d] &                         \\
+(\Im f)^{-1}(\tilde{y})\arrow[d] & X\arrow[dr, "f" near start]\arrow[dl, "\eta_X" near start, swap]     & \bD_{f(x)}\arrow[d]\arrow[dl, crossing over]   \\
+ \Im X\arrow[dr, "\Im f",swap]  & 1\arrow[d ,"\tilde{y}"]\arrow[from=ul, crossing over] & Y\arrow[dl] \\
+          & \Im Y &
+  \end{tikzcd}
+\end{equation*}
+The front squares and the back right square are pullbacks by definition. The left back square is a pullback by pullback-pasting. So all vertical squares are pullbacks.
+If $f:X\to Y$ is formally étale, the bottom square is a pullback and therefore, by pullback-pasting the top square is a pullback.
+This could be summarized in the statement that for a formally étale $f:X\to Y$ and any $x:X$, we have a pullback square:
+\begin{equation*}
+  \begin{tikzcd}
+    \bD_{f(x)}\times(\Im f)^{-1}(\tilde{y})\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+    \bD_{f(x)} \arrow[r] & Y
+  \end{tikzcd}
+\end{equation*}
+which means that ``a formally étale map is trivialized over any formal disk''.
+
+Let us assume $\eta_X$ is surjective, so we can use lemma \ref{lem:etale_char} to go back.
+According to what we established above, it is enough to show, that all $df_x:\bD_x\to \bD_{f(x)}$ are equivalences.
+The assumption is, that the top square in the cube above is a pullback.
+We can paste the fiber square to the left back square of the cube:
+\begin{equation*}
+  \begin{tikzcd}
+      \pi^{-1}(\ast)\arrow[r]\arrow[d] & \eta_X^\ast(\Im f)^{-1}(\tilde{y})\arrow[r]\arrow[d, "\pi"] & X\arrow[d] \\
+      1\arrow[r]                                & (\Im f)^{-1}(\tilde{y})\arrow[r] & \Im X
+  \end{tikzcd}
+\end{equation*}
+So the fiber $\pi^{-1}(\ast)$ is $\bD_x$ by pullback pasting. Now we repaste the left square to the top square:
+\begin{equation*}
+  \begin{tikzcd}
+      \bD_x\arrow[d]\arrow[r] & \eta_X^\ast(\Im f)^{-1}(\tilde{y})\arrow[r]\arrow[d, "\pi"] & \bD_{f(x)}\arrow[d] \\
+      1\arrow[r]                                & (\Im f)^{-1}(\tilde{y})\arrow[r] & 1 
+  \end{tikzcd}
+\end{equation*}
+Which gives us a pullback square witnessing that $df_x$ is an equivalence.  
 
 \printbibliography
 

@@ -63,13 +63,6 @@
   is a quasi-pullback square (i.e.~the gap map is surjective).
 \end{itemize}
 
-
-\section{Issues -- to be removed some day...}
-\begin{itemize}
-\item ``Topological stacks'' still contains copy-pasted stuff from a different article
-\item Find a real argument at ``???''
-\end{itemize}
-
 \section{Preliminaries}
 \begin{enumerate}
 \item A commuting square
@@ -659,12 +652,12 @@ as paths in a space and care has to be taken to separate the concept of equality
 and topological paths, i.e. maps $\gamma:\bR\to X$ from the 0-type $\bR$ representing the real line with the euclidean topology.
 Let $\bS^{n}$ denote the topological sphere given by
 \[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
-and $S^n$ the higher inductive type introduced in \cite{UFP}.
+and $\sphere{n}$ the higher inductive type introduced in \cite{UFP}.
 The Reals ``$\bR$'' in this definition are, as in \cite{ShulmanRealCohesion}, the \emph{Dedekind Reals},
 which are known to coincide with the exernal sheaf $\mathrm{Hom}_{\mathrm{Top}}(\_,\bR)$ in $\Spaces$ and some similar toposes.
 
 For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
-It maps topological spaces to their \emph{homotopy type}, so for example $\shape \sphere{1} =S^1$ 
+It maps topological spaces to their \emph{homotopy type}, so for example $\shape \bS^{1} =\sphere{1}$ 
 and $\shape \bR =1$.
 
 
@@ -693,9 +686,9 @@ let us assume that each type supposed to represent a topological space comes wit
 and for $\ast:X$ let us abbreviate $\sigma_X(\ast)$ with $\ast$.
   
 For many modalities, the fibers of their units are interesting.
-For $\sphere{1}$, this fiber
-\[ \sum_{x:\sphere{1}}\modalunit_{\sphere{1}}(x)=\ast \]
--- or more precisely its projection to $\sphere{1}$ -- turns out to be the universal cover of $\sphere{1}$.
+For $\bS^{1}$, this fiber
+\[ \sum_{x:\bS^{1}}\modalunit_{\bS^{1}}(x)=\ast \]
+-- or more precisely its projection to $\bS^{1}$ -- turns out to be the universal cover of $\bS^{1}$.
 But this works only for spaces with trivial higher homotopy groups. 
 For the construction of the universal cover of an arbitrary type, this has to be adjusted:
 \[ \widetilde{X}:\equiv \sum_{x\colon X} \trunc{0}{\modalunit_X(x)=\ast}. \]
@@ -737,7 +730,10 @@ Z\arrow[dr, swap, "f"]\arrow[rr, bend left=30, "\widetilde{f}"]  & Y\arrow[r, "\
 \end{tikzcd}
 \end{equation*}
 Since $X$ and $Y$ represent topological spaces, we can assume $Z$ to be 0-truncated as well.
-??? Now the cohesiveness of $\Spaces$ tells us, that we can assume $Z$ to be locally path connected.
+In $\Spaces$, the representables are $\mathrm{Hom}(\_,\bR)$ which are isomorphic to open balls.
+This means every sheaf in $\Spaces$ is a colimit of open balls and therefore locally path connected. 
+So we can assume $Z$ to be locally path connected.
+
 This means, if $p$ internally has the external property of covering spaces cited above from Hatcher's book, we can lift $f:Z\to X$, if $\shape_1 f$ lifts to $\shape_1 Y$.
 But the latter is given by factoring $\widetilde{f}$ over $\shape_1 Z$, so we know $p$ is a 1-covering space.
 Likewise, the lifting property from Hatcher is a direct consequence of the pullback property. 
@@ -784,10 +780,10 @@ The second author sees one advantage in the clarity of the type theoretic proofs
 \section{Algebraic and Differential Geometry}
 
 The $\modal$-étale maps for a special modality $\Im$ were already discussed in \cite{wellen-thesis} and \cite{wellen-cartan-geometry}.
-One basic topos where a corresponding functor can be defined is given as $\infty$-groupoid valued sheaves on the site $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fp}}$ of finitely presented affine schemes over a field with the Zariski topology. Here, for any $X\in\mathrm{Sh}(k\mathrm{Alg}^\mathrm{op}_{\mathrm{fp}})$ , the functor $\Im X$ defined pointwise by
+One basic topos where a corresponding functor can be defined is given as $\infty$-groupoid valued sheaves on the site $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fp}}$ of finitely presented affine schemes over a field with the Zariski topology. Here, for any $X\in\mathrm{Sh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fp}})$ , the functor $\Im X$ defined pointwise by
 \[ (\Im X)(A):\equiv X(A/\sqrt{0})\]
 turns out to be a sheaf again. So $\Im$ is an endofunctor on the topos, which we will assume to correspond to a modality $\Im$ internally.
-In \cite{wellen-thesis}{Section 4.4} there is a calculation showing that the formally étale maps in the sense of \cite[§ 17]{GrothendieckDieudonne} are included in the $\Im$-étale maps, if we transfer this notion in the empty context to the topos.
+In \cite[Section 4.4]{wellen-thesis} there is a calculation showing that the formally étale maps in the sense of \cite[§ 17]{GrothendieckDieudonne} are included in the $\Im$-étale maps, if we transfer this notion in the empty context to the topos.
 
 Let us look at the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char}.
 For a map $f:X\to Y$, the assumption that $\eta_X$ is surjective corresponds to a generalization of formal smoothness of $X$.
@@ -799,7 +795,7 @@ X\times_{\Im X} X \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\Im f} f}"] & Y\tim
 X \arrow[r,swap,"f"] & Y
 \end{tikzcd}
 \end{equation*}
-In Algebraic Geometry, these pullbacks are called \emph{formal neighborhood of the diagonal}.
+In Algebraic Geometry, these pullbacks are called \emph{formal neighborhood of the diagonal} if $X$ represents a noetherian scheme.
 A fiber $\pi_1^{-1}(x)$ is a formal disk $\bD_x$ around a point $x:X$.
 And the condition that the square above is a pullback is precisely the condition that all induced maps
 \[ df_x:\bD_x\to\bD_{f(x)}\]

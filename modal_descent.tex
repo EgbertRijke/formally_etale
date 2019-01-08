@@ -202,6 +202,16 @@ The characterization only works if the domain of the map in question has a surje
 Note that using the connected-truncated factorization system from \cite{RijkeSpittersShulman}, we can see that all $\modalunit$ are surjective for some modality, if and only if all propositions are modal.
 So in case of $\trunc{n}{\_}$ with $n\geq -1$, the characterization always works.
 
+We recall from \cite{WellenPhD} the notion of formal disc associated to a modality.
+
+\begin{defn}
+  Let $\modal$ be a modality, and let $a:A$. The \define{formal disc} $D^{\modal}(A,a)$ of $A$ at $a$ is defined by
+  \begin{equation*}
+    D^\modal(A,a)\defeq \sm{x:A}\eta(a)=\eta(x).
+  \end{equation*}
+  In other words, the formal disc $D^\modal(A,a)$ is the fiber of $\eta:A\to\modal A$ at $\eta(a)$. In the special case where $\modal$ is the $n$-truncation, we write $D^n(A,a)$ for the formal disc at $a$. 
+\end{defn}
+
 \begin{lem}\label{lem:etale_char}
 Let $\modal$ be a modality and $f:A\to B$ such that $\modalunit_A$ is surjective. The following are equivalent:
 \begin{enumerate}
@@ -209,7 +219,7 @@ Let $\modal$ be a modality and $f:A\to B$ such that $\modalunit_A$ is surjective
 \item The commuting square
 \begin{equation*}
 \begin{tikzcd}[column sep=large]
-A\times_{\modal A} A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\pi_1"] \\
+\sm{x:A}D^\modal(A,x) \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\modal f} f}"] & \sm{y:B}D^\modal(B,y) \arrow[d,"\pi_1"] \\
 A \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
@@ -221,8 +231,8 @@ is a pullback square.
 Suppose first that $f$ is $\modal$-\'etale, and consider the commuting cube
 \begin{equation*}
 \begin{tikzcd}
-& A\times_{\modal A} A \arrow[dl] \arrow[d] \arrow[dr] \\
-A \arrow[d] & B\times_{\modal B} B \arrow[dl] \arrow[dr] & A \arrow[dl,crossing over] \arrow[d] \\
+& \sm{x:A}D^\modal(A,x) \arrow[dl] \arrow[d] \arrow[dr] \\
+A \arrow[d] & \sm{y:B}D^\modal(B,y) \arrow[dl] \arrow[dr] & A \arrow[dl,crossing over] \arrow[d] \\
 B \arrow[dr] & \modal A \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
 & \modal B
 \end{tikzcd}

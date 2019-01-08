@@ -50,79 +50,10 @@
   one interpretation of theorem \ref{thm:modal_descent} is an extension of the classcial fundamental theorem of the theory of covering spaces,
   relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
   This expands results of the second author from \cite{wellen-oxford-abstract}.
-\item A map $f:A\to B$ is $n$-\'etale if and only if the square
-  \begin{equation*}
-    \begin{tikzcd}
-      A^{\sphere{n+1}} \arrow[r] \arrow[d] & B^{\sphere{n+1}} \arrow[d] \\
-      A \arrow[r] & B
-    \end{tikzcd}
-  \end{equation*}
-  is a quasi-pullback square (i.e.~the gap map is surjective).
 \item Thanks to (at least) Jonas Frey and Mike Shulman for help in understanding factorization systems in the email discussion.
   ...?
   We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
 \end{itemize}
-
-\begin{thm}
-  For any map $f:A\to B$ and any $n\geq -1$, the following are equivalent:
-  \begin{enumerate}
-  \item The map $f$ is $n$-\'etale.
-  \item The commuting square
-    \begin{equation*}
-      \begin{tikzcd}
-        A^{\sphere{n+1}} \arrow[r] \arrow[d] & B^{\sphere{n+1}} \arrow[d] \\
-        A \arrow[r] & B
-      \end{tikzcd}
-    \end{equation*}
-    is a pullback square.
-  \end{enumerate}
-\end{thm}
-
-\begin{rmk}
-  For $n\jdeq -2$ the statement does not make sense, since there is no evaluation map
-  $A^{\sphere{-1}}\to A$. On the other hand, it is easy to see that a map is $-2$-\'etale if and only if it is an equivalence.
-\end{rmk}
-
-
-\begin{proof}
-  The case of $n\jdeq -1$ is already covered in \cref{rmk:-1etale}, so we assume that $n$ is at least $0$.
-  
-  The forward direction is shown in \cref{lem:n-etale-forward}. For the converse, suppose that the square in the statement is a pullback square. It follows that the (equivalent) square
-  \begin{equation*}
-    \begin{tikzcd}
-      \sm{x:A}\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \arrow[r] \arrow[d] & \sm{y:B} \mathsf{Map}_\ast(\sphere{n},\loopspace{B,y}) \arrow[d] \\
-      A \arrow[r] & B
-    \end{tikzcd}
-  \end{equation*}
-' is a pullback square.
-  Since a square is a pullback square if and only if the top map is a fiberwise equivalence, it follows that the map
-  \begin{equation*}
-    \mathsf{Map}_\ast(\sphere{n},\loopspace{f,x}):\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \to \mathsf{Map}_\ast(\loopspace{B,f(x)})
-  \end{equation*}
-  of pointed mapping spaces is an equivalence. To show that $f$ is $n$-\'etale, it is equivalent to show that the square
-  \begin{equation*}
-    \begin{tikzcd}
-      A\times_{\trunc{n}{A}} A \arrow[r] \arrow[d] & B \times_{\trunc{n}{B}} B \arrow[d] \\
-      A \arrow[r] & B
-    \end{tikzcd}
-  \end{equation*}
-  is a pullback square, which is equivalent to showing that the induced map
-  \begin{equation*}
-    D^{n}(f,x):D^{n}(A,x)\to D^{n}(B,f(x))
-  \end{equation*}
-  on formal discs is an equivalence for each $x:A$. We note that the formal discs are the fibers of the unit $\eta:A \to \trunc{n}{A}$, so they are $n$-connected. It follows immediately that the map $D^{n}(f,x)$ is $(n-1)$-connected. Therefore it suffices to show that $D^{n}(f,x)$ is an $(n-1)$-truncated map.
-
-  Recall that a map $\varphi$ between ($0$-)connected types is $(n-1)$-truncated if and only if $\varphi^{\sphere{n+1}}$ is an equivalence. Using our assumption that $n\geq 0$ we know that the formal discs under consideration are at least connected. Therefore it suffices to show that $(D^{n}(f,x))^{\sphere{n+1}}$ is an equivalence. Now we observe that the square
-  \begin{equation*}
-    \begin{tikzcd}
-      \mathsf{Map}_\ast(\sphere{n+1},D^{n}(A,x)) \arrow[r] \arrow[d] & \mathsf{Map}_\ast(\sphere{n+1},D^{n}(B,f(x))) \arrow[d] \\
-      \mathsf{Map}_\ast(\sphere{n+1},(A,x)) \arrow[r] & \mathsf{Map}_\ast(\sphere{n+1},(B,f(x)))
-    \end{tikzcd}
-  \end{equation*}
-  commutes, and has equivalences on both the left and right sides. Moreover, the bottom map is an equivalence by the suspension-loop space adjunction, and the fact that $\mathsf{Map}_\ast(\sphere{n},\loopspace{f,x})$ is an equivalence. We conclude that the top map is an equivalence, which completes the proof.
-\end{proof}
-
-
 
 \section{Preliminaries}
 \begin{enumerate}
@@ -221,17 +152,6 @@ is a pullback square.
 \end{enumerate}
 \end{lem}
 
-\begin{rmk}\label{rmk:-1etale}
-In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square
-\begin{equation*}
-\begin{tikzcd}
-A\times A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times f}"] & B\times B \arrow[d,"\pi_1"] \\
-A \arrow[r,swap,"f"] & B
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\end{rmk}
-
 \begin{proof}
 Suppose first that $f$ is $\modal$-\'etale, and consider the commuting cube
 \begin{equation*}
@@ -263,6 +183,7 @@ A \arrow[d,swap,"\modalunit"] \arrow[r] & B \arrow[d,"\modalunit"] \\
 is a pullback square.
 \end{proof}
 
+\begin{comment}%I don't think we need this
 \begin{cor}
 If $f:A\to B$ is $\modal$-\'etale, then the square
 \begin{equation*}
@@ -285,8 +206,27 @@ A \arrow[r,"f"] & B
 \end{equation*}
 The bottom square is a pullback square by \cref{lem:etale_char}, and the outer rectangle is a pullback since both vertical composites are homotopic to the respective identity functions. Therefore the top square is a pullback.
 \end{proof}
+\end{comment}
 
-\begin{thm}
+\begin{rmk}\label{rmk:-1etale}
+In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square
+\begin{equation*}
+\begin{tikzcd}
+A\times A \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times f}"] & B\times B \arrow[d,"\pi_1"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square. Phrased differently, we see that a map is $(-1)$-\'etale if and only if the square
+\begin{equation*}
+\begin{tikzcd}
+A^{\sphere{0}} \arrow[d,swap,"\mathsf{ev}_\ast"] \arrow[r,"f^{\sphere{0}}"] & B^{\sphere{0}} \arrow[d,"\mathsf{ev}_\ast"] \\
+A \arrow[r,swap,"f"] & B
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{rmk}
+
+\begin{rmk}
 A map $f:A\to B$ is $0$-\'etale if and only if for each $a:A$ the restriction
 \begin{equation*}
 \begin{tikzcd}
@@ -294,10 +234,8 @@ A map $f:A\to B$ is $0$-\'etale if and only if for each $a:A$ the restriction
 A \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
-of $f$ to the connected component at $a$ of $A$ is an equivalence. 
-\end{thm}
+of $f$ to the connected component at $a$ of $A$ is an equivalence.
 
-\begin{proof}
 By \cref{lem:etale_char} and the fact that $\eqv{(\tproj{0}{a}=\tproj{0}{x})}{\brck{a=x}}$, it follows that $f$ is $0$-\'etale if and only if the square
 \begin{equation*}
 \begin{tikzcd}[column sep=huge]
@@ -310,6 +248,86 @@ is a pullback square. Furhtermore, this square is a pullback if and only if the 
 \Big(\sm{x:A}\brck{a=x}\Big)\to\Big(\sm{y:B}\brck{f(a)=y}\Big)
 \end{equation*}
 is an equivalence, for each $a:A$.
+
+We note that a map $f:A\to B$ between pointed connected types is an equivalence if and only if it is an embedding, which happens if and only if $f^{\sphere{1}}:A^{\sphere{1}} \to B^{\sphere{1}}$ is an equivalence. We can use this fact to conclude that a map is $0$-connected if and only if the square
+    \begin{equation*}
+      \begin{tikzcd}
+        A^{\sphere{1}} \arrow[r] \arrow[d] & B^{\sphere{1}} \arrow[d] \\
+        A \arrow[r] & B
+      \end{tikzcd}
+    \end{equation*}
+\end{rmk}
+
+These remarks suggest the following theorem.
+
+\begin{thm}
+  For any map $f:A\to B$ and any $n\geq -1$, the following are equivalent:
+  \begin{enumerate}
+  \item The map $f$ is $n$-\'etale.
+  \item The map $f$ is right orthogonal to $\unit\to\sphere{n+1}$.
+  \end{enumerate}
+\end{thm}
+
+\begin{rmk}
+  For $n\jdeq -2$ the statement does not make sense, since there is no evaluation map
+  $A^{\sphere{-1}}\to A$. On the other hand, it is easy to see that a map is $-2$-\'etale if and only if it is an equivalence.
+\end{rmk}
+
+
+\begin{proof}
+  The case of $n\jdeq -1$ is already covered in \cref{rmk:-1etale}, so we assume that $n$ is at least $0$. Furthermore, recall that $f$ is right orthogonal to $\unit\to\sphere{n+1}$ if and only if the commuting square
+    \begin{equation*}
+      \begin{tikzcd}
+        A^{\sphere{n+1}} \arrow[r] \arrow[d] & B^{\sphere{n+1}} \arrow[d] \\
+        A \arrow[r] & B
+      \end{tikzcd}
+    \end{equation*}
+    is a pullback square.
+
+  For the forward direction, suppose $f:X\to Y$ is $n$-\'etale, and consider the commuting cube
+\begin{equation*}
+\begin{tikzcd}
+&[-1ex] X^{\sphere{n+1}} \arrow[dl] \arrow[d] \arrow[dr] &[2ex] \\
+\trunc{n}{X}^{\sphere{n+1}} \arrow[d] & Y^{\sphere{n+1}} \arrow[dl] \arrow[dr] & X \arrow[dl,crossing over] \arrow[d] \\
+\trunc{n}{Y}^{\sphere{n+1}} \arrow[dr] & \trunc{n}{X} \arrow[d] \arrow[from=ul,crossing over] & Y \arrow[dl] \\
+& \trunc{n}{Y}
+\end{tikzcd}
+\end{equation*}
+In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
+
+  For the converse, suppose that the square in the statement is a pullback square. It follows that the (equivalent) square
+  \begin{equation*}
+    \begin{tikzcd}
+      \sm{x:A}\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \arrow[r] \arrow[d] & \sm{y:B} \mathsf{Map}_\ast(\sphere{n},\loopspace{B,y}) \arrow[d] \\
+      A \arrow[r] & B
+    \end{tikzcd}
+  \end{equation*}
+' is a pullback square.
+  Since a square is a pullback square if and only if the top map is a fiberwise equivalence, it follows that the map
+  \begin{equation*}
+    \mathsf{Map}_\ast(\sphere{n},\loopspace{f,x}):\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \to \mathsf{Map}_\ast(\loopspace{B,f(x)})
+  \end{equation*}
+  of pointed mapping spaces is an equivalence. To show that $f$ is $n$-\'etale, it is equivalent to show that the square
+  \begin{equation*}
+    \begin{tikzcd}
+      A\times_{\trunc{n}{A}} A \arrow[r] \arrow[d] & B \times_{\trunc{n}{B}} B \arrow[d] \\
+      A \arrow[r] & B
+    \end{tikzcd}
+  \end{equation*}
+  is a pullback square, which is equivalent to showing that the induced map
+  \begin{equation*}
+    D^{n}(f,x):D^{n}(A,x)\to D^{n}(B,f(x))
+  \end{equation*}
+  on formal discs is an equivalence for each $x:A$. We note that the formal discs are the fibers of the unit $\eta:A \to \trunc{n}{A}$, so they are $n$-connected. It follows immediately that the map $D^{n}(f,x)$ is $(n-1)$-connected. Therefore it suffices to show that $D^{n}(f,x)$ is an $(n-1)$-truncated map.
+
+  Recall that a map $\varphi$ between ($0$-)connected types is $(n-1)$-truncated if and only if $\varphi^{\sphere{n+1}}$ is an equivalence. Using our assumption that $n\geq 0$ we know that the formal discs under consideration are at least connected. Therefore it suffices to show that $(D^{n}(f,x))^{\sphere{n+1}}$ is an equivalence. Now we observe that the square
+  \begin{equation*}
+    \begin{tikzcd}
+      \mathsf{Map}_\ast(\sphere{n+1},D^{n}(A,x)) \arrow[r] \arrow[d] & \mathsf{Map}_\ast(\sphere{n+1},D^{n}(B,f(x))) \arrow[d] \\
+      \mathsf{Map}_\ast(\sphere{n+1},(A,x)) \arrow[r] & \mathsf{Map}_\ast(\sphere{n+1},(B,f(x)))
+    \end{tikzcd}
+  \end{equation*}
+  commutes, and has equivalences on both the left and right sides. Moreover, the bottom map is an equivalence by the suspension-loop space adjunction, and the fact that $\mathsf{Map}_\ast(\sphere{n},\loopspace{f,x})$ is an equivalence. We conclude that the top map is an equivalence, which completes the proof.
 \end{proof}
 
 \section{Modal descent}
@@ -323,7 +341,7 @@ E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
 B' \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
-with $H:f\circ p'\htpy p\circ g$, where $X$ and $Y$ are modal types. Then the square
+with $H:f\circ p'\htpy p\circ g$, where $E$ and $B$ are modal types. Then the square
 \begin{equation*}
 \begin{tikzcd}
 \modal E' \arrow[r,"\tilde{g}"] \arrow[d,swap,"{\modal p'}"] & E \arrow[d,"p"] \\
@@ -472,57 +490,6 @@ X \arrow[r,swap,"\modalunit"] & \modal X
 \end{equation*}
 is a pullback square. In particular the top map is $\modal$-connected, so this square is in fact a $\modal$-naturality square.
 \end{cor}
-
-\begin{lem}\label{lem:n-etale-forward}
-If $f$ is $n$-\'etale, then it is right orthogonal to $\unit\to\sphere{n+1}$.
-\end{lem}
-
-\begin{proof}
-Suppose $f:X\to Y$ is $n$-\'etale, and consider the commuting cube
-\begin{equation*}
-\begin{tikzcd}
-&[-1ex] X^{\sphere{n+1}} \arrow[dl] \arrow[d] \arrow[dr] &[2ex] \\
-\trunc{n}{X}^{\sphere{n+1}} \arrow[d] & Y^{\sphere{n+1}} \arrow[dl] \arrow[dr] & X \arrow[dl,crossing over] \arrow[d] \\
-\trunc{n}{Y}^{\sphere{n+1}} \arrow[dr] & \trunc{n}{X} \arrow[d] \arrow[from=ul,crossing over] & Y \arrow[dl] \\
-& \trunc{n}{Y}
-\end{tikzcd}
-\end{equation*}
-In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
-\end{proof}
-
-\begin{conj}
-Let $f:X\to Y$ be a map, and let $n\geq -1$. The following are equivalent:
-\begin{enumerate}
-\item $f$ is $n$-\'etale.
-\item $f$ is right orthogonal to the maps $\sphere{n+1}\to 1$ and $\unit\to\sphere{n+1}$. 
-\end{enumerate}
-\end{conj}
-
-\begin{proof}[Incomplete proof]
-By \cref{thm:modal_descent} it suffices to show that the type $\trunc{n}{X}\to\UU^{\leq n}$ of families of $n$-types over $\trunc{n}{X}$ is equivalent to the type of families $P:X\to\UU^{\leq n}$ of $n$-types over $X$, for which the square
-\begin{equation*}
-\begin{tikzcd}[column sep=huge]
-\Big(\sm{x:X}P(x)\Big)^{\sphere{n+1}} \arrow[r,"{h\mapsto h(\base)}"] \arrow[d,swap,"\proj 1\circ\blank"] & \sm{x:X}P(x) \arrow[d,"\proj 1"] \\
-X^{\sphere{n+1}} \arrow[r,swap,"{h\mapsto h(\base)}"] & X
-\end{tikzcd}
-\end{equation*}
-is a pullback square. Note that this square is a pullback square if and only if the square
-\begin{equation*}
-\begin{tikzcd}[column sep=9em]
-\sm{f:X^{\sphere{n+1}}}\prd{t:\sphere{n+1}}P(f(t)) \arrow[r,"{(f,g)\mapsto (f(\base),g(\base))}"] \arrow[d,swap,"\proj 1"] & \sm{x:X}P(x) \arrow[d,"\proj 1"] \\
-X^{\sphere{n+1}} \arrow[r,swap,"{f\mapsto f(\base)}"] & X
-\end{tikzcd}
-\end{equation*}
-is a pullback square. This is equivalent to showing that the map
-\begin{equation*}
-g\mapsto g(\base):\Big(\prd{t:\sphere{n+1}}P(f(t))\Big)\to P(f(\base))
-\end{equation*}
-is an equivalence for every $f:\sphere{n+1}\to X$. The fiber of this map at $p:P(f(\base))$ is equivalent to the type
-\begin{equation*}
-\sm{q:P(f(\base))}\prd{t:\sphere{n}}\mathsf{tr}_P(\glue(t)
-\end{equation*}
-....
-\end{proof}
 
 \section{The reflective factorization system}
 

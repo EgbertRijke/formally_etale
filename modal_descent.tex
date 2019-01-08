@@ -292,33 +292,33 @@ These remarks suggest the following theorem.
 
 \begin{proof}
   The case of $n\jdeq -1$ is already covered in \cref{rmk:-1etale}, so we assume that $n$ is at least $0$. Furthermore, recall that $f$ is right orthogonal to $\unit\to\sphere{n+1}$ if and only if the commuting square
-    \begin{equation*}
+    \begin{equation}\label{eq:orth}
       \begin{tikzcd}
         A^{\sphere{n+1}} \arrow[r] \arrow[d] & B^{\sphere{n+1}} \arrow[d] \\
         A \arrow[r] & B
       \end{tikzcd}
-    \end{equation*}
+    \end{equation}
     is a pullback square.
 
-  For the forward direction, suppose $f:X\to Y$ is $n$-\'etale, and consider the commuting cube
+  For the forward direction, suppose $f:A\to B$ is $n$-\'etale, and consider the commuting cube
 \begin{equation*}
 \begin{tikzcd}
-&[-1ex] X^{\sphere{n+1}} \arrow[dl] \arrow[d] \arrow[dr] &[2ex] \\
-\trunc{n}{X}^{\sphere{n+1}} \arrow[d] & Y^{\sphere{n+1}} \arrow[dl] \arrow[dr] & X \arrow[dl,crossing over] \arrow[d] \\
-\trunc{n}{Y}^{\sphere{n+1}} \arrow[dr] & \trunc{n}{X} \arrow[d] \arrow[from=ul,crossing over] & Y \arrow[dl] \\
-& \trunc{n}{Y}
+&[-1ex] A^{\sphere{n+1}} \arrow[dl] \arrow[d] \arrow[dr] &[2ex] \\
+\trunc{n}{A}^{\sphere{n+1}} \arrow[d] & B^{\sphere{n+1}} \arrow[dl] \arrow[dr] & A \arrow[dl,crossing over] \arrow[d] \\
+\trunc{n}{B}^{\sphere{n+1}} \arrow[dr] & \trunc{n}{A} \arrow[d] \arrow[from=ul,crossing over] & B \arrow[dl] \\
+& \trunc{n}{B}
 \end{tikzcd}
 \end{equation*}
 In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
 
-  For the converse, suppose that the square in the statement is a pullback square. It follows that the (equivalent) square
+  For the converse, suppose that the square in \cref{eq:orth} is a pullback square. It follows that the (equivalent) square
   \begin{equation*}
     \begin{tikzcd}
       \sm{x:A}\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \arrow[r] \arrow[d] & \sm{y:B} \mathsf{Map}_\ast(\sphere{n},\loopspace{B,y}) \arrow[d] \\
       A \arrow[r] & B
     \end{tikzcd}
   \end{equation*}
-' is a pullback square.
+is a pullback square.
   Since a square is a pullback square if and only if the top map is a fiberwise equivalence, it follows that the map
   \begin{equation*}
     \mathsf{Map}_\ast(\sphere{n},\loopspace{f,x}):\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \to \mathsf{Map}_\ast(\loopspace{B,f(x)})
@@ -598,11 +598,15 @@ A \arrow[ddr,bend right=15,swap,"f"] \arrow[drr,bend left=15,"\modalunit"] \arro
 Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale_pb}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
 \end{proof}
 
-\begin{lem}\label{lem:rfs_orthogonal}
-The class of $\modal$-equivalences is left orthogonal to the class of $\modal$-\'etale maps.
-\end{lem}
+We use the notion of orthogonal factorization systems of \cite{RijkeShulmanSpitters}.
+
+\begin{thm}\label{lem:rfs_orthogonal}
+  The pair $(\mathcal{L},\mathcal{R})$, where $\mathcal{L}$ is the class of $\modal$-equivalences, and $\mathcal{R}$ is the class of $\modal$-\'etale maps, is an orthogonal factorization system.
+\end{thm}
 
 \begin{proof}
+  We have already shown that every map factors as a left map followed by a right map. Therefore it suffices to show that the class of $\modal$-equivalences is left orthogonal to the class of $\modal$-\'etale maps.
+  
 We have to show that for every $\modal$-equivalence $i:A\to B$, and every $\modal$-\'etale map $f:X\to Y$, the square
 \begin{equation*}
 \begin{tikzcd}
@@ -621,10 +625,6 @@ is a pullback square. Consider the commuting cube
 \end{equation*}
 In this cube the top and bottom squares are pullback by the assumption that $f$ is $\modal$-\'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
 \end{proof}
-
-\begin{cor}
-For any map $f:X\to Y$, the type of factorizations into a $\modal$-connected map followed by a $\modal$-\'etale map is contractible.
-\end{cor}
 
 \section{Overview of applications}
 

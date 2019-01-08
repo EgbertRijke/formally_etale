@@ -75,6 +75,22 @@ is a fiberwise equivalence.
 \item All $\modal$-connected maps are surjective.
 \end{enumerate}
 In particular it follows that all $n$-connected maps are surjective, for $n\geq -1$.
+\item Recall that a map $i:A\to B$ is said to be \define{left orthogonal} to a map $f:X\to Y$, or that the map $f$ is \define{right orthogonal} to the map $i$,
+if each commuting square of the form
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[r] \arrow[d,swap,"i"] & X \arrow[d,"f"] \\
+B \arrow[r] & Y
+\end{tikzcd}
+\end{equation*}
+has a unique diagonal filler. Following \cite{AnelBiedermanFinsterJoyal}, we note that this can be expressed conveniently as the condition that the square
+\begin{equation*}
+\begin{tikzcd}
+X^B \arrow[r,"f\circ\blank"] \arrow[d,swap,"\blank\circ i"] & Y^B \arrow[d,"\blank\circ i"] \\
+X^A \arrow[r,swap,"f\circ\blank"] & Y^A
+\end{tikzcd}
+\end{equation*}
+is a pullback square.
 \end{enumerate}
 
 \section{\texorpdfstring{$\modal$}{○}-\'etale maps}
@@ -581,23 +597,6 @@ A \arrow[ddr,bend right=15,swap,"f"] \arrow[drr,bend left=15,"\modalunit"] \arro
 \end{equation*}
 Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale_pb}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
 \end{proof}
-
-Recall that a map $i:A\to B$ is said to be \define{left orthogonal} to a map $f:X\to Y$, or that the map $f$ is \define{right orthogonal} to the map $i$,
-if each commuting square of the form
-\begin{equation*}
-\begin{tikzcd}
-A \arrow[r] \arrow[d,swap,"i"] & X \arrow[d,"f"] \\
-B \arrow[r] & Y
-\end{tikzcd}
-\end{equation*}
-has a unique diagonal filler. Following \cite{AnelBiedermanFinsterJoyal}, we note that this can be expressed conveniently as the condition that the square
-\begin{equation*}
-\begin{tikzcd}
-X^B \arrow[r,"f\circ\blank"] \arrow[d,swap,"\blank\circ i"] & Y^B \arrow[d,"\blank\circ i"] \\
-X^A \arrow[r,swap,"f\circ\blank"] & Y^A
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
 
 \begin{lem}\label{lem:rfs_orthogonal}
 The class of $\modal$-equivalences is left orthogonal to the class of $\modal$-\'etale maps.

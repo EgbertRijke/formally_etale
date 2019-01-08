@@ -22,7 +22,6 @@
 \addbibresource{literatur.bib}
 
 
-
 \title{Modal descent}
 \author{Egbert Rijke and Felix Wellen}
 \date{\today}
@@ -33,32 +32,46 @@
 \maketitle
 
 \begin{abstract}
-We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. In the special case of the $n$-truncation, we characterize the $n$-\'etale maps as the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We prove a `modal flattening lemma' and a `modal descent theorem'. The latter asserts that a $\modal$-\'etale map into a type $X$ is the same thing as a family of modal types over $\modal X$. Furthermore we describe a wide range of applications.
+  We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. In the special case of the $n$-truncation, we characterize the $n$-\'etale maps as the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We prove a `modal flattening lemma' and a `modal descent theorem'. The latter asserts that a $\modal$-\'etale map into a type $X$ is the same thing as a family of modal types over $\modal X$. Furthermore we describe a wide range of applications building on the conjectured interpretation of Homotopy Type Theory in certain $(\infty,1)$-sheaf-toposes. We discuss three fields of application, where $\modal$-étale maps contain formally étale maps from Algebraic Geometry, local diffeomorphisms between manifolds or projections from covering spaces in Topology. The latter also suggests a theory of covering spaces for topological stacks.
 \end{abstract}
 
 
 \section{Introduction}
-\begin{itemize}
-\item In 2011 Urs Schreiber and Mike Shulman started to think about the concept of Modalities in Homotopy Type Theory,
-  with the idea to use these extended theories to reason about more specialized $(\infty,1)$-toposes.
-  One special application they had in mind was to use Homotopy Type Theory to talk about \emph{cohesive} $(\infty,1)$-toposes,
-  which is witnessed in the notes \cite{ShulmanSchreiber}.
-  This idea of a cohesive type theory was later worked out in \cite{ShulmanRealCohesion}.
-  While the applications of the theory in this article are at least close to these ideas,
-  we will work with a simpler setup of only one \emph{monadic} modality.
-\item Modality is defined in \cite[Section 7.7]{UFP}.
-  Modalities where studied extensively in \cite{RijkeSpittersShulman}.
-  There are two factorization systems associated to a modality which coincide in the case of a left exact modality,
-  we will study one of these factorization systems. The name of maps in the right class is inspired by algebraic geometry -- they are called $\modal$-étale,
-  where $\modal$ is the modality.
-\item The application \ref{sec:topological_stacks} suggests a new notion of covering space for topological stacks and shows that
-  one interpretation of theorem \ref{thm:modal_descent} is an extension of the classcial fundamental theorem of the theory of covering spaces,
-  relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
-  This expands results of the second author from \cite{wellen-oxford-abstract}.
-\item Thanks to (at least) Jonas Frey and Mike Shulman for help in understanding factorization systems in the email discussion.
-  ...?
-  We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
-\end{itemize}
+In 2011 Urs Schreiber and Mike Shulman introduced Modalities to Homotopy Type Theory,
+with the idea to use these extended theories to reason about more specialized $(\infty,1)$-toposes.
+One special application they had in mind was to use Homotopy Type Theory to talk about \emph{cohesive} $(\infty,1)$-toposes,
+which is witnessed in the notes \cite{ShulmanSchreiber}.
+This idea of a cohesive type theory was later developed in \cite{ShulmanRealCohesion} for a special case.
+While the applications of the theory in this article are at least close to these ideas,
+we will work with a simpler setup of only one \emph{monadic} modality, given in the most straight forward way -- as a list of axioms.
+And for most of the article we will only apply our theory to the commonly known truncation modalities.
+  
+Modalities are defined in \cite[Section 7.7]{UFP} and where studied extensively in \cite{RijkeSpittersShulman}.
+There are two factorization systems associated to a modality which coincide in the case of a left exact modality,
+we will study one of these factorization systems, the other one has been studied in \cite{RijkeSpittersShulman}.
+The factorization system studied in this article was already used in Category Theory, in \cite{cassidy_hebert_kelly_1986}, where the reflector of a reflective subcategory takes the role of the modality.
+The left maps are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square.
+The name of maps in the right class is inspired by algebraic geometry -- they are called $\modal$-étale,
+where $\modal$ is the modality.
+
+In \cref{thm:char_n_etale} we use the abstract our abstract theory to prove the following characterization of étale maps for the $n$-truncations ($n\geq -1$): \\
+A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to $\unit\to\sphere{n+1}$.
+
+The application in \cref{sec:topological_stacks} suggests a new notion of covering space for topological stacks that is indexed by a degree and shows that
+one interpretation of \cref{thm:modal_descent} is an extension of the classcial fundamental theorem of the theory of covering spaces,
+relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
+The usual covering theory is recovered by setting the degree to 1, since it is concerned with the 1-truncated homotopy type of a topological space.
+This expands results of the second author from \cite{wellen-oxford-abstract}.
+We also give characterizations and descriptions of formally étale maps in the sense of Algebraic Geometry.
+Thus, via their common abstraction as $\modal$-étale maps for different modalities, the analogy between covering spaces and étale maps is made precise.
+
+The reader has to keep in mind, that to conclude theorems about common objects from pure mathematics like manifolds, schemes and topological or algebraic stacks automatically, the conjectural interpretation of Homotopy Type Theory in $(\infty,1)$-toposes is needed. 
+
+  
+We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018.
+Discussions with and remarks of Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
+We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
+
 
 \section{Preliminaries}
 We assume the reader is familiar with the basics of homotopy type theory. To the reader who is not familiar with HoTT we recommend \cite{UFP}.
@@ -152,10 +165,7 @@ A \arrow[r,"f"] \arrow[d,swap,"\eta"] & B \arrow[d,"\eta"] \\
 \modal A \arrow[r,swap,"\modal f"] & \modal B
 \end{tikzcd}
 \end{equation*}
-is a pullback square. We will write
-\begin{equation*}
-\isetale(f)\defeq\ispullback(f,\eta_A,\natunit_\modal(f)).
-\end{equation*}
+is a pullback square. We will write $\isetale(f)$ for this proposition.
 \end{defn}
 
 It is immediate from the definition that any equivalence is $\modal$-\'etale, and that the $\modal$-\'etale maps are closed under composition.
@@ -202,14 +212,14 @@ The characterization only works if the domain of the map in question has a surje
 Note that using the connected-truncated factorization system from \cite{RijkeSpittersShulman}, we can see that all $\modalunit$ are surjective for some modality, if and only if all propositions are modal.
 So in case of $\trunc{n}{\_}$ with $n\geq -1$, the characterization always works.
 
-We recall from \cite{wellen-thesis} the notion of formal disc associated to a modality.
+We recall from \cite{wellen-thesis} the notion of formal disk associated to a modality.
 
 \begin{defn}
-  Let $\modal$ be a modality, and let $a:A$. The \define{formal disc} $D^{\modal}(A,a)$ of $A$ at $a$ is defined by
+  Let $\modal$ be a modality, and let $a:A$. The \define{formal disk} $D^{\modal}(A,a)$ of $A$ at $a$ is defined by
   \begin{equation*}
     D^\modal(A,a)\defeq \sm{x:A}\eta(a)=\eta(x).
   \end{equation*}
-  In other words, the formal disc $D^\modal(A,a)$ is the fiber of $\eta:A\to\modal A$ at $\eta(a)$. In the special case where $\modal$ is the $n$-truncation, we write $D^n(A,a)$ for the formal disc at $a$. 
+  In other words, the formal disk $D^\modal(A,a)$ is the fiber of $\eta:A\to\modal A$ at $\eta(a)$. In the special case where $\modal$ is the $n$-truncation, we write $D^n(A,a)$ for the formal disk at $a$. 
 \end{defn}
 
 \begin{lem}\label{lem:etale_char}
@@ -336,6 +346,7 @@ We note that a map $f:A\to B$ between pointed connected types is an equivalence 
 These remarks suggest the following theorem.
 
 \begin{thm}
+  \label{thm:char_n_etale}
   For any map $f:A\to B$ and any $n\geq -1$, the following are equivalent:
   \begin{enumerate}
   \item The map $f$ is $n$-\'etale.
@@ -380,7 +391,7 @@ In this cube the front right square is a pullback square by the assumption that 
 is a pullback square.
   Since a square is a pullback square if and only if the top map is a fiberwise equivalence, it follows that the map
   \begin{equation*}
-    \mathsf{Map}_\ast(\sphere{n},\loopspace{f,x}):\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \to \mathsf{Map}_\ast(\loopspace{B,f(x)})
+    \mathsf{Map}_\ast(\sphere{n},\loopspace{f,x}):\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \to \mathsf{Map}_\ast(\sphere{n},\loopspace{B,f(x)})
   \end{equation*}
   of pointed mapping spaces is an equivalence. To show that $f$ is $n$-\'etale, it is equivalent to show that the square
   \begin{equation*}
@@ -393,9 +404,9 @@ is a pullback square.
   \begin{equation*}
     D^{n}(f,x):D^{n}(A,x)\to D^{n}(B,f(x))
   \end{equation*}
-  on formal discs is an equivalence for each $x:A$. We note that the formal discs are the fibers of the unit $\eta:A \to \trunc{n}{A}$, so they are $n$-connected. It follows immediately that the map $D^{n}(f,x)$ is $(n-1)$-connected. Therefore it suffices to show that $D^{n}(f,x)$ is an $(n-1)$-truncated map.
+  on formal disks is an equivalence for each $x:A$. We note that the formal disks are the fibers of the unit $\eta:A \to \trunc{n}{A}$, so they are $n$-connected. It follows immediately that the map $D^{n}(f,x)$ is $(n-1)$-connected. Therefore it suffices to show that $D^{n}(f,x)$ is an $(n-1)$-truncated map.
 
-  Recall that a map $\varphi$ between ($0$-)connected types is $(n-1)$-truncated if and only if $\varphi^{\sphere{n+1}}$ is an equivalence. Using our assumption that $n\geq 0$ we know that the formal discs under consideration are at least connected. Therefore it suffices to show that $(D^{n}(f,x))^{\sphere{n+1}}$ is an equivalence. Now we observe that the square
+  Recall that a map $\varphi$ between ($0$-)connected types is $(n-1)$-truncated if and only if $\varphi^{\sphere{n+1}}$ is an equivalence. Using our assumption that $n\geq 0$ we know that the formal disks under consideration are at least connected. Therefore it suffices to show that $(D^{n}(f,x))^{\sphere{n+1}}$ is an equivalence. Now we observe that the square
   \begin{equation*}
     \begin{tikzcd}
       \mathsf{Map}_\ast(\sphere{n+1},D^{n}(A,x)) \arrow[r] \arrow[d] & \mathsf{Map}_\ast(\sphere{n+1},D^{n}(B,f(x))) \arrow[d] \\
@@ -427,7 +438,7 @@ with $H:f\circ p'\htpy p\circ g$, where $E$ and $B$ are modal types. Then the fo
     \end{tikzcd}
   \end{equation*}
   is a pullback square, where $\tilde{f}$ and $\tilde{g}$ are the unique extensions of $f$ and $g$ along the modal units of $B'$ and $E'$, respectively.
-\item The square in \cref{eq:etale_flattening} is a pullback square.
+\item The square in \cref{thm:etale_flattening} is a pullback square.
 \end{enumerate}
 \end{thm}
 
@@ -670,7 +681,7 @@ A \arrow[ddr,bend right=15,swap,"f"] \arrow[drr,bend left=15,"\modalunit"] \arro
 Then $\pi_1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale_pb}. Furthermore, the map $\pi_2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
 \end{proof}
 
-We use the notion of orthogonal factorization systems of \cite{RijkeShulmanSpitters}.
+We use the notion of orthogonal factorization systems of \cite{RijkeSpittersShulman}.
 
 \begin{thm}\label{lem:rfs_orthogonal}
   The pair $(\mathcal{L},\mathcal{R})$, where $\mathcal{L}$ is the class of $\modal$-equivalences, and $\mathcal{R}$ is the class of $\modal$-\'etale maps, is an orthogonal factorization system.
@@ -803,7 +814,7 @@ we will define covering spaces relative to a modality and show a universal prope
   \item Let $\shape_n:\equiv\trunc{n}{\_}\circ\shape$ for $n\in\bN_{-1}$ and $\shape_\infty:\equiv\shape$
   \item A map $f:X\to Y$ is called an \emph{$n$-covering space}, if it is $\shape_n$-étale for $n\in\bN_{-1}\cup\{\infty\}$.
   \item For a pointed type $X$, let
-    \[ \widetilde{X}_n:\equiv\sum_{x:X}\modalunit_X(x)=\ast \]
+    \[ \widetilde{X}_n:\equiv D^{\shape_n}(X,\ast) \equiv \sum_{x:X}\modalunit_X(x)=\ast \]
     be the \emph{universal $n$-covering space}, where $\modalunit_X$ is the unit of $\shape_n$ for some $n\in\bN_{-1}\cup\{\infty\}$.
   \end{enumerate}
 \end{defn}
@@ -873,7 +884,7 @@ This occurs whenever $\shape X$ is not 1-truncated.
 For example, if we assume a type $\bC\bP^\infty$ representing the appropriate topological space,
 the $\shape$-universal cover will be a $1$-type over $\bC\bP^\infty$ with identity types merely $S^1$.
 The $\shape$-universal cover $\widetilde{X}_\infty$ of a space has always a contractible shape, i.e. $\shape X \simeq 1$.
-
+So the $\infty$-universal cover $\widetilde{\bC\bP^\infty}_\infty$ of $\bC\bP^\infty$ has both, non-trivial identity types and non-trivial topology, but they happen to cancel each other, when taking the shape, since we have $\shape(\widetilde{\bC\bP^\infty}_\infty)\simeq 1$.
 
 Similar generalizations of the classical topological correspondence are known on the classical side
 for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct}.
@@ -898,7 +909,7 @@ X \arrow[r,swap,"f"] & Y
 \end{tikzcd}
 \end{equation*}
 In Algebraic Geometry, these pullbacks are called \emph{formal neighborhood of the diagonal} if $X$ represents a noetherian scheme.
-A fiber $\pi_1^{-1}(x)$ is a formal disk $\bD_x$ around a point $x:X$.
+A fiber $\pi_1^{-1}(x)$ is a formal disk $\bD_x:\equiv D^\Im(X,x)$ around a point $x:X$.
 Formal disks can be defined internally for any modality by the pullback
 \begin{equation*}
   \begin{tikzcd}
@@ -907,7 +918,7 @@ Formal disks can be defined internally for any modality by the pullback
   \end{tikzcd}
 \end{equation*}
 And the condition that the square above is a pullback is precisely the condition that all induced maps
-\[ df_x:\bD_x\to\bD_{f(x)}\]
+\[ df_x:\bD_x\to\bD_{f(x)}\text{, (so $df_x\equiv D^\Im(f,x)$) }\]
 are equivalences. So a translation of lemma \ref{lem:etale_char} into Algebraic Geometry could read ``A map from a formally smooth space, is formally étale, if and only if, it induces an isomorphism on all formal disks.''.
 
 We will conclude the applications and the article with a more visual reformulation of the lemma, stating roughly, that a map is formally étale, if and only if it is trivial over all formal disks in its image.
@@ -949,6 +960,12 @@ So the fiber $\pi^{-1}(\ast)$ is $\bD_x$ by pullback pasting. Now we repaste the
   \end{tikzcd}
 \end{equation*}
 Which gives us a pullback square witnessing that $df_x$ is an equivalence.  
+
+These results apply as well in Differential Geometry if formal manifolds are introduced.
+One more basic way to do this is to start with the $\bR$-algebras of smooth $\bR$-valued functions on all \emph{smooth manifolds} $\bR^n$ and extend this category by certain nilpotent algebras.
+Then a functor $\Im$ may be defined precisely as above, by reducing in the argument.
+Then the above characterizations hold for local diffeomorphisms, the $\Im$-étale maps in this setup.
+Quite some Differential Geometry can be done using $\Im$ and its abstract properties, for more details see \cite{SyntheticPDEs}.
 
 \printbibliography
 

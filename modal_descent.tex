@@ -56,42 +56,86 @@
 \end{itemize}
 
 \section{Preliminaries}
+We assume the reader is familiar with the basics of homotopy type theory. To the reader who is not familiar with HoTT we recommend \cite{hottbook}.
+
+We make extensive use of homotopy pullbacks. The most important property we will be relying on is the following theorem
+
+\begin{thm}
+  Consider a commuting square
+  \begin{equation*}
+    \begin{tikzcd}
+      A \arrow[r,"h"] \arrow[d,swap,"f"] & X \arrow[d,"g"] \\
+      B \arrow[r,swap,"i"] & Y
+    \end{tikzcd}
+  \end{equation*}
+  with homotopy $H:i\circ f\htpy g\circ h$. Then the following are equivalent:
+  \begin{enumerate}
+  \item The square is a pullback square.
+  \item For each $b:B$ the induced map on fibers
+    \begin{equation*}
+      \fib{f}{b} \to \fib{g}{i(b)}
+    \end{equation*}
+    is an equivalence.
+  \end{enumerate}
+\end{thm}
+
+For an arbitrary commuting square, the induced map into the pullback is called the \define{gap map}. One can show that the fibers of the gap map are equivalent to the fibers of the induced maps on fibers. This observation implies the above theorem.
+
+The main object of study in this work is a modality, of which the primary examples are the $n$-truncations. There are many equivalent ways of saying what a modality is. The most convenient definition for our purpose is that of a \emph{stable orthogonal factorization system}, which we recall now.
+
+\begin{defn}
+  An orthogonal factorization system is a pair $(\mathcal{L},\mathcal{R})$ of classes of maps
+  \begin{align*}
+    \mathcal{L} & : \prd{X,Y:\UU} (X \to Y) \to \mathsf{Prop} \\
+    \mathcal{R} & : \prd{X,Y:\UU} (X \to Y) \to \mathsf{Prop} 
+  \end{align*}
+  such that
+  \begin{enumerate}
+  \item Both $\mathcal{L}$ and $\mathcal{R}$ contain all equivalences and are closed under composition.
+  \item Every map $f:X\to Y$ factors as a left map (i.e.~a map in $\mathcal{L}$) followed by a right map (i.e.~a map in $\mathcal{R}$). More precisely, for every map $f:X\to Y$ there is a type $\mathsf{im}_{(\mathcal{L},\mathcal{R})}(f)$ equipped with maps $f_{\mathcal{L}}:X\to \mathsf{im}_{(\mathcal{L},\mathcal{R})}(f)$, $f_{\mathcal{R}}:\mathsf{im}_{(\mathcal{L},\mathcal{R})}(f) \to Y$ and a homotopy witnessing that the triangle
+    \begin{equation*}
+      \begin{tikzcd}
+        X \arrow[rr,"f"] \arrow[dr,swap,"f_{\mathcal{L}}"] & & Y \\
+        & \mathsf{im}_{(\mathcal{L},\mathcal{R})}(f) \arrow[ur,swap,"f_{\mathcal{R}}"]
+      \end{tikzcd}
+    \end{equation*}
+    commutes.
+  \item Every map in the left class is \define{left orthogonal} to every map in the right class (we also say that every map in $\mathcal{R}$ is right orthogonal to every map in $\mathcal{L}$). Following the observations of \cite{AnelBiedermanFinsterJoyal}, this means that for any map $i:A \to B$ in $\mathcal{L}$ and any map $f:X \to Y$ in $\mathcal{R}$, the square
+    \begin{equation*}
+      \begin{tikzcd}
+        X^B \arrow[r] \arrow[d] & Y^B \arrow[d] \\
+        X^A \arrow[r] & Y^A
+      \end{tikzcd}
+    \end{equation*}
+    is a pullback square.
+  \end{enumerate}
+  An orthogonal factorization system is said to be \define{stable} if the left class is stable under pullbacks. That is, for any pullback square
+    \begin{equation*}
+      \begin{tikzcd}
+        A \arrow[r,"h"] \arrow[d,swap,"f"] & X \arrow[d,"g"] \\
+        B \arrow[r,swap,"i"] & Y
+      \end{tikzcd}
+    \end{equation*}
+    in which the map $g:X \to Y$ is in $\mathcal{L}$, it is required that $f$ is also in $\mathcal{L}$. A \define{modality} is defined to be a stable orthogonal factorization system.
+\end{defn}
+
+Given a stable orthogonal factorization system, we say that a type $X$ is modal if the terminal projection $X\to \unit$ is in $\mathcal{R}$. 
+There is an operation $\modal:\UU\to\UU$ associated to any stable orthogonal factorization, which is often called the modality. It is defined as
+\begin{equation*}
+\modal X \defeq \mathsf{im}_{(\mathcal{L},\mathcal{R})}(X\to \unit).
+\end{equation*}
+The left factor $X \to \modal X$ of this factorization is called the \define{modal unit} and is denoted by $\eta:X\to \modal X$. One can show that for any family $P:\modal X \to \UU$ of modal types, the pre-composition map
+\begin{equation*}
+\blank\circ \eta : \Big(\prd{x:\modal X}P(x)\Big)\to \Big(\prd{x:X}P(\eta(x))\Big)
+\end{equation*}
+is an equivalence. This property is called the \define{unique elimination principle} for modalities, and modalities can be defined equivalently in terms of the unique elimination principle.
+
+We recall that for any two modalities $(\mathcal{L},\mathcal{R})$ and $(\mathcal{L}',\mathcal{R}')$ the following are equivalent:
 \begin{enumerate}
-\item A commuting square
-\begin{equation*}
-\begin{tikzcd}
-A \arrow[d,swap,"f"] \arrow[r] & B \arrow[d,"g"] \\
-X \arrow[r,swap,"h"] & Y
-\end{tikzcd}
-\end{equation*}
-is a pullback square if and only if the induced map on fibers
-\begin{equation*}
-\prd{x:X}\fib{f}{x}\to\fib{g}{h(x)}
-\end{equation*}
-is a fiberwise equivalence.
-\item For any modality $\modal$ the following are equivalent:
-\begin{enumerate}
-\item All propositions are modal.
-\item All $\modal$-connected maps are surjective.
+\item Every $(\mathcal{L},\mathcal{R})$-modal type is $(\mathcal{L}',\mathcal{R}')$-modal.
+\item The modal units of the modality $(\mathcal{L}',\mathcal{R}')$ are in $\mathcal{L}$.
 \end{enumerate}
-In particular it follows that all $n$-connected maps are surjective, for $n\geq -1$.
-\item Recall that a map $i:A\to B$ is said to be \define{left orthogonal} to a map $f:X\to Y$, or that the map $f$ is \define{right orthogonal} to the map $i$,
-if each commuting square of the form
-\begin{equation*}
-\begin{tikzcd}
-A \arrow[r] \arrow[d,swap,"i"] & X \arrow[d,"f"] \\
-B \arrow[r] & Y
-\end{tikzcd}
-\end{equation*}
-has a unique diagonal filler. Following \cite{AnelBiedermanFinsterJoyal}, we note that this can be expressed conveniently as the condition that the square
-\begin{equation*}
-\begin{tikzcd}
-X^B \arrow[r,"f\circ\blank"] \arrow[d,swap,"\blank\circ i"] & Y^B \arrow[d,"\blank\circ i"] \\
-X^A \arrow[r,swap,"f\circ\blank"] & Y^A
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\end{enumerate}
+In particular: for any modality it follows that every proposition is modal if and only if the modal units are surjective.
 
 \section{\texorpdfstring{$\modal$}{○}-\'etale maps}
 

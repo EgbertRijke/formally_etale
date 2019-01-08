@@ -398,26 +398,39 @@ is a pullback square.
 \section{Modal descent}
 
 The following theorem can be seen as a `modal flattening lemma'.
+
 \begin{thm}\label{thm:etale_flattening}
-Consider a pullback square
+Consider a commuting square
 \begin{equation*}
 \begin{tikzcd}
 E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
 B' \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
-with $H:f\circ p'\htpy p\circ g$, where $E$ and $B$ are modal types. Then the square
-\begin{equation*}
-\begin{tikzcd}
-\modal E' \arrow[r,"\tilde{g}"] \arrow[d,swap,"{\modal p'}"] & E \arrow[d,"p"] \\
-\modal B \arrow[r,swap,"\tilde{f}"] & B
-\end{tikzcd}
-\end{equation*}
-is a pullback square, where $\tilde{f}$ and $\tilde{g}$ are the unique extensions of $f$ and $g$ along the modal units of $B'$ and $E'$, respectively.
+with $H:f\circ p'\htpy p\circ g$, where $E$ and $B$ are modal types. Then the following are equivalent:
+\begin{enumerate}
+\item The square
+  \begin{equation*}
+    \begin{tikzcd}
+      \modal E' \arrow[r,"\tilde{g}"] \arrow[d,swap,"{\modal p'}"] & E \arrow[d,"p"] \\
+      \modal B \arrow[r,swap,"\tilde{f}"] & B
+    \end{tikzcd}
+  \end{equation*}
+  is a pullback square, where $\tilde{f}$ and $\tilde{g}$ are the unique extensions of $f$ and $g$ along the modal units of $B'$ and $E'$, respectively.
+\item The square in \cref{eq:etale_flattening} is a pullback square.
+\end{enumerate}
 \end{thm}
 
 \begin{proof}
-Consider the diagram
+  The forward direction is immediate by the pasting lemma for pullbacks, since we have the rectangle
+  \begin{equation*}
+    \begin{tikzcd}
+      E' \arrow[r] \arrow[d] & \modal E' \arrow[r] \arrow[d] & E \arrow[d] \\
+      B' \arrow[r] & \modal B' \arrow[r] & B
+    \end{tikzcd}
+  \end{equation*}
+  of commuting squares.
+For the converse, consider the diagram
 \begin{equation*}
 \begin{tikzcd}
 E' \arrow[r,"{\mathsf{gap}(p',g,H)}"] \arrow[d,swap,"{p'}"] &[2.5em] \modal B'\times_{B} E \arrow[r,"\pi_2"] \arrow[d,swap,"\pi_1"] & E \arrow[d,"p"] \\
@@ -530,9 +543,9 @@ is a pullback square. Therefore $g:Y\to X$ is in the fiber of $\etmap$ at $\moda
 
 It remains to show that for any map $f:A\to\modal X$ with modal domain, there is an equivalence $\eqv{A}{\modal (X\times_{\modal X} A)}$ such that the triangle
 \begin{equation*}
-\begin{tikzcd}
+\begin{tikzcd}[column sep=0]
 A \arrow[dr,swap,"f"] \arrow[rr,"\eqvsym"] & & \modal (X\times_{\modal X} A) \arrow[dl,"\modal(\etmap(f))"] \\
-& \modal X
+\phantom{\modal (X\times_{\modal X} A)} & \modal X
 \end{tikzcd}
 \end{equation*}
 commutes. To see this, note that both $f\circ \pi_2$ and $\modal(\etmap(f))\circ \modalunit$ factor the same map as a $\modal$-connected map followed by a modal map, so the claim follows from uniqueness of factorizations.
@@ -712,6 +725,8 @@ We will provide details and definitions of the relevant categories for the other
     \bottomrule
   \end{tabular}
 \end{center}
+
+\bigskip
 The list is certainly not complete and there are lots of obvious candidate situations that could turn out to be useful applications.
 It might even be more fruitful, to apply this theory to a situation where it is more difficult to figure out basic geometric notions.
 The second author has hope, that $\Im$-like functors exist in a meaningful way in derived algebraic and differential geometry, non-commutative geometry or algebraic geometry over deeper bases. The $\bA^1$-localization from motivic homotopy theory is certainly a lot like the $\shape$ above, but it is not known so far, how much our theory and modalities in general might help in this case.

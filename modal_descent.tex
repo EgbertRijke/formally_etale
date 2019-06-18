@@ -18,6 +18,8 @@
 \newcommand{\FSGrpOne}{\ensuremath{\mathsf{FSGrp}_1}}
 \newcommand{\FSGrp}{\ensuremath{\mathsf{FSGrp}}}
 \newcommand{\Spaces}{\ensuremath{\mathsf{Spaces}}}
+\newcommand{\todo}[1]{{\color{red}#1}}
+\newcommand{\ignore}[1]{}
 
 \addbibresource{literatur.bib}
 
@@ -234,26 +236,23 @@ A \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
 is a pullback square.
+\item For all $x:A$ and $y:\equiv f(x)$ there is a map $\varphi_x:\modal(f)^{-1}(\eta(y))\times D^\modal(B,y)\to A$ such that
+  \begin{equation*}
+    \begin{tikzcd}[column sep=large]
+      \modal(f)^{-1}(\eta(y))\arrow[r,"\varphi_x"]\arrow[d,swap,"\pi_2"]\times D^\modal(B,y)   &  A\arrow[d,"f"] \\
+      D^\modal(B,y)\arrow[r,"\pi_1",swap]  & B
+    \end{tikzcd}
+  \end{equation*}
+is a pullback square.
 \end{enumerate}
 \end{lem}
 
 \begin{proof}
-Suppose first that $f$ is $\modal$-\'etale, and consider the commuting cube
+Suppose that (ii) holds. Equivalently, the induced map
 \begin{equation*}
-\begin{tikzcd}
-& \sm{x:A}D^\modal(A,x) \arrow[dl] \arrow[d] \arrow[dr] \\
-A \arrow[d] & \sm{y:B}D^\modal(B,y) \arrow[dl] \arrow[dr] & A \arrow[dl,crossing over] \arrow[d] \\
-B \arrow[dr] & \modal A \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
-& \modal B
-\end{tikzcd}
+D^\modal(A,x)\to D^\modal(B,f(x))
 \end{equation*}
-Since the top, bottom, and both front squares are pullback squares, it follows that both back squares are pullbacks. This proves that (i) implies (ii).
-
-Now suppose that (ii) holds. Then the map
-\begin{equation*}
-\fib{\modalunit}{\modalunit(a)}\to \fib{\modalunit}{\modalunit(f(a))}
-\end{equation*}
-is an equivalence for every $a:A$. Since $\modalunit_A$ is assumed to be surjective, there merely is an $a:A$ such that $\modalunit(a)=t$ for arbitrary $t:\modal A$.
+is an equivalence for every $x:A$. Since $\modalunit_A$ is assumed to be surjective, there merely is an $x:A$ such that $\modalunit(x)=t$ for arbitrary $t:\modal A$.
 It follows that
 \begin{equation*}
 \fib{\modalunit}{t}\to \fib{\modalunit}{\modal f(t)}
@@ -265,7 +264,45 @@ A \arrow[d,swap,"\modalunit"] \arrow[r] & B \arrow[d,"\modalunit"] \\
 \modal A \arrow[r] & \modal B
 \end{tikzcd}
 \end{equation*}
-is a pullback square.
+is a pullback square, showing that (i) holds.
+
+Now let us show that (i) implies (iii).
+Let $f:A\to B$ be any map, $x:A$, $y:\equiv f(x)$ and let us look at the following cube: 
+\begin{equation*}
+  \begin{tikzcd}
+    &[-1ex] \eta_A^\ast(\modal f)^{-1}(\eta(y))\arrow[dr]\arrow[dl]\arrow[d] &                         \\
+(\modal f)^{-1}(\eta(y))\arrow[d] & A\arrow[dr, "f" near start]\arrow[dl, "\eta_A" near start, swap]     & D(B,y)\arrow[d]\arrow[dl, crossing over]   \\
+ \modal A\arrow[dr, "\modal f",swap]  & 1\arrow[d ,"\eta(y)"]\arrow[from=ul, crossing over] & B\arrow[dl] \\
+          & \modal B &
+  \end{tikzcd}
+\end{equation*}
+-- where $\eta_A^\ast$ denotes the pullback along $\eta_A$.
+The front squares and the back left square are pullbacks by definition. The back right square is a pullback by pullback-pasting. So all vertical squares are pullbacks.
+If $f:A\to B$ is $\modal$-étale, the bottom square is a pullback and therefore, by pullback-pasting the top square is a pullback. This shows that (iii) follows from (i).
+
+Now let us conclude the proof of the lemma by showing that (iii) implies (ii).
+It is enough to show, that the induced maps
+\[ D^\modal(A,x)\to D^\modal(B,f(x)) \]
+are equivalences for all $x:A$.
+
+We can paste the fiber square to the back left square of the cube:
+\begin{equation*}
+  \begin{tikzcd}
+      \pi^{-1}(\eta(x))\arrow[r]\arrow[d] & \eta_A^\ast(\modal f)^{-1}(\eta(y))\arrow[r]\arrow[d, "\pi"] & A\arrow[d] \\
+      1\arrow[r,"\eta(x)"]                                & (\modal f)^{-1}(\eta(y))\arrow[r] & \modal A
+  \end{tikzcd}
+\end{equation*}
+So the fiber $\pi^{-1}(\eta(x))$ is $D^\modal(A,x)$ by pullback pasting.
+We assume (iii), so the top square in the cube above is a pullback.
+Now we paste the left square to the top square:
+\begin{equation*}
+  \begin{tikzcd}
+      D^\modal(A,x)\arrow[d]\arrow[r] & \eta_A^\ast(\modal f)^{-1}(\eta(y))\arrow[r]\arrow[d, "\pi"] & D^\modal(B,y)\arrow[d] \\
+      1\arrow[r]                                & (\modal f)^{-1}(\eta(y))\arrow[r] & 1 
+  \end{tikzcd}
+\end{equation*}
+The result is a pullback square witnessing that the induced map in question is an equivalence.
+
 \end{proof}
 
 \begin{comment}%I don't think we need this
@@ -921,18 +958,8 @@ And the condition that the square above is a pullback is precisely the condition
 \[ df_x:\bD_x\to\bD_{f(x)}\text{, (so $df_x\equiv D^\Im(f,x)$) }\]
 are equivalences. So a translation of lemma \ref{lem:etale_char} into Algebraic Geometry could read ``A map from a formally smooth space, is formally étale, if and only if, it induces an isomorphism on all formal disks.''.
 
-We will conclude the applications and the article with a more visual reformulation of the lemma, stating roughly, that a map is formally étale, if and only if it is trivial over all formal disks in its image.
-Let $f:X\to Y$ be any map, $x:X$, $\tilde{y}:\equiv \eta_Y(f(x))$ and let us look at the following cube:
-\begin{equation*}
-  \begin{tikzcd}
-                        &[-1ex] \eta_X^\ast(\Im f)^{-1}(\tilde{y})\arrow[dr]\arrow[dl]\arrow[d] &                         \\
-(\Im f)^{-1}(\tilde{y})\arrow[d] & X\arrow[dr, "f" near start]\arrow[dl, "\eta_X" near start, swap]     & \bD_{f(x)}\arrow[d]\arrow[dl, crossing over]   \\
- \Im X\arrow[dr, "\Im f",swap]  & 1\arrow[d ,"\tilde{y}"]\arrow[from=ul, crossing over] & Y\arrow[dl] \\
-          & \Im Y &
-  \end{tikzcd}
-\end{equation*}
-The front squares and the back right square are pullbacks by definition. The left back square is a pullback by pullback-pasting. So all vertical squares are pullbacks.
-If $f:X\to Y$ is formally étale, the bottom square is a pullback and therefore, by pullback-pasting the top square is a pullback.
+\todo{content was moved from here to section 3 -- the article is in a rewriting process in response to reviews}
+\ignore{
 This could be summarized in the statement that for a formally étale $f:X\to Y$ and any $x:X$, we have a pullback square:
 \begin{equation*}
   \begin{tikzcd}
@@ -941,31 +968,20 @@ This could be summarized in the statement that for a formally étale $f:X\to Y$ 
   \end{tikzcd}
 \end{equation*}
 which means that ``a formally étale map is trivialized over any formal disk''.
+}
 
-Let us assume $\eta_X$ is surjective, so we can use lemma \ref{lem:etale_char} to go back.
-According to what we established above, it is enough to show, that all $df_x:\bD_x\to \bD_{f(x)}$ are equivalences.
-The assumption is, that the top square in the cube above is a pullback.
-We can paste the fiber square to the left back square of the cube:
-\begin{equation*}
-  \begin{tikzcd}
-      \pi^{-1}(\ast)\arrow[r]\arrow[d] & \eta_X^\ast(\Im f)^{-1}(\tilde{y})\arrow[r]\arrow[d, "\pi"] & X\arrow[d] \\
-      1\arrow[r]                                & (\Im f)^{-1}(\tilde{y})\arrow[r] & \Im X
-  \end{tikzcd}
-\end{equation*}
-So the fiber $\pi^{-1}(\ast)$ is $\bD_x$ by pullback pasting. Now we repaste the left square to the top square:
-\begin{equation*}
-  \begin{tikzcd}
-      \bD_x\arrow[d]\arrow[r] & \eta_X^\ast(\Im f)^{-1}(\tilde{y})\arrow[r]\arrow[d, "\pi"] & \bD_{f(x)}\arrow[d] \\
-      1\arrow[r]                                & (\Im f)^{-1}(\tilde{y})\arrow[r] & 1 
-  \end{tikzcd}
-\end{equation*}
-Which gives us a pullback square witnessing that $df_x$ is an equivalence.  
 
 These results apply as well in Differential Geometry if formal manifolds are introduced.
 One more basic way to do this is to start with the $\bR$-algebras of smooth $\bR$-valued functions on all \emph{smooth manifolds} $\bR^n$ and extend this category by certain nilpotent algebras.
 Then a functor $\Im$ may be defined precisely as above, by reducing in the argument.
 Then the above characterizations hold for local diffeomorphisms, the $\Im$-étale maps in this setup.
 Quite some Differential Geometry can be done using $\Im$ and its abstract properties, for more details see \cite{SyntheticPDEs}.
+
+\section{Conclusion}
+\todo{react to suggestions for conclusions:}
+applications: match with DMRs notion of 2-covering space
+motivic things
+general theory: line up with study of reflective factorization systems and coreflective fs
 
 \printbibliography
 

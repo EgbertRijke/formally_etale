@@ -57,13 +57,13 @@ where $\modal$ is the modality.
 In \cref{thm:char_n_etale} we use our abstract theory to prove the following characterization of étale maps for the $n$-truncations ($n\geq -1$): \\
 A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to $\unit\to\sphere{n+1}$.
 
-The application in \cref{sec:topological_stacks} suggests a new notion of covering space for topological stacks and shows that
+The application in \cref{subsection:toplogical stacks} suggests a new notion of covering space for topological stacks and shows that
 one interpretation of the modal descent theorem (\cref{thm:modal_descent}) is an extension of the classical fundamental theorem of the theory of covering spaces,
 relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
 A version of modal descent for the fundamental infinity groupoid functor of a cohesive $(\infty,1)$-topos was proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
 The usual covering theory is recovered by restricting to maps between 0-types and setting the homotopy level to 1,
 since it is concerned with the 1-truncated homotopy type of a topological space.
-This expands on an idea of the second author from \cite{wellen-oxford-abstract}.
+This expands on an idea of the first author from \cite{wellen-oxford-abstract}.
 We also give characterizations and descriptions of formally étale maps in the sense of Algebraic Geometry.
   
 We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018.
@@ -850,7 +850,7 @@ For the construction of the universal cover of an arbitrary type, this has to be
 Note that this type would again be a fiber of a unit, if we had a modality that takes the shape and 1-truncates it.
 It is not clear to us, if the simple definition $\shape_1:\equiv\trunc{1}{\_}\circ\shape$ works.
 One way to make it work, would be to show that truncations of discrete types are again discrete types.
-But it is not known by the authors if this is true and it seems to be an open problem.
+But it is not known by the authors if this is true and it seems to be an open problem
 \footnote{We have to thank one of our anonymous reviewers for pointing out the problem with the simple definition and the solution we use below.}.
 In \cite[Theorem 3.28]{RijkeSpittersShulman} it is shown that for any two accessible modalities,
 there is a modality such that its modal types are the meet of the modal types of the two modalities.
@@ -874,7 +874,7 @@ With $\shape_1$ and its unit $\eta$, covering spaces and the universal cover are
 
 \end{defn}
 The following basic observations give some justification to those names:
-\begin{prop}
+\begin{rmk}
   Let $X$ be any pointed type.
   \begin{enumerate}
   \item The projection from the universal cover $\widetilde{X}$ is a covering space.
@@ -883,7 +883,7 @@ The following basic observations give some justification to those names:
     A map $g:Z\to X$ lifts uniquely to $Y$, if $\shape_1 g$ lifts to $\shape_1 Y$ along $\shape_1 f$.
   \item Let $f:Y\to X$ be a covering space and a pointed map. Then there is a unique map $\widetilde{X}\to Y$ over $X$.
   \end{enumerate}
-\end{prop}
+\end{rmk}
 \begin{proof}
   \begin{enumerate}
   \item By lemma \ref{cor:etale_pb}. 
@@ -924,7 +924,8 @@ The authors see an advantage of their approach in the clarity of the type theore
 
 \subsection{Algebraic and Differential Geometry}
 \label{subsection:algebraic and differential geometry}
-A topos for differentiable stacks could be built from a site with the same objects as $\Spaces$ but only smooth maps as morphisms.
+\todo{make section coherent again..}
+A topos for differentiable stacks can be built from a site with the same objects as $\Spaces$ but only smooth maps as morphisms.
 It turns out that we have even more interesting modalities, if we extend the site by \emph{infinitesimal disks} to arrive at the topos of
 formally smooth $\infty$-groupoids $\FSGrp$ as defined in \cite[Definition 2.11]{SyntheticPDEs} which we will explain briefly now.
 
@@ -946,14 +947,101 @@ The more specific name was used in \cite{wellen-thesis}, which reused the name f
 The original definition of formally étale maps is from algebraic geometry (see \cite[§ 17]{GrothendieckDieudonne}).
 \begin{defn}
   A morphisms of schemes $\varphi:X\to Y$ is \emph{formally étale},
-  if \todo{fill in definition}
+  if for all rings $R$ and all nilpotent ideals $N$ in $R$ all squares
+  \begin{center}
+    \begin{tikzcd}
+      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(R)}\arrow[r]\arrow[ru, dashed, "\exists!"] & Y
+    \end{tikzcd}
+  \end{center}
+  have a unique lift like indicated in the diagram.
 \end{defn}
-We will now repeat a proof from \cite[Section 4.4]{wellen-thesis} of the following proposition explaining how the word ``étale'' entered modal type theory:
-\begin{prop}
-\todo{fill in prop}   
-\end{prop}
+We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
+The proof is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
+We use the fact, that the noetherian schemes are also sheaves in the Zariski Topos and that we have the functor $\Im$ like above.
+\begin{rmk}
+  A morphism of $f:X\to Y$ noetherian schemes $X,Y$ is formally étale if and only if the naturality square
+  \begin{center}
+    \begin{tikzcd}
+      X\arrow[r]\arrow[d, "f", swap] & \Im X\arrow[d, "\Im f"] \\
+      Y\arrow[r] & \Im Y
+    \end{tikzcd}
+  \end{center}
+  is a pullback square.
+\end{rmk}
 \begin{proof}
-  \todo{fill in proof}   
+  Let $X$ and $Y$ be noetherian schemes\footnote{These means they are covered by $\mathrm{Spec}$s of finitely generated algebras.}. 
+  We will first show that a morphism of schemes $f:X\to Y$ is formally étale,
+  if and only if for all noetherian rings $R$ all squares
+  \begin{center}
+    \begin{tikzcd}
+      \mathrm{Spec(R/\sqrt{0})}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(R)}\arrow[r]\arrow[ru, dashed, "\exists!"] & Y
+    \end{tikzcd}
+  \end{center}
+  have a unique lift like indicated in the diagram. Let us call this property (1).
+  Since $\sqrt{0}$ is always nilpotent in a noetherian ring, (1) is implied if $f$ is formally étale.
+  
+  The property formally étale is known to be local in the source (\todo{reference}), so we can assume $X$ and $Y$ to be affine.
+  For affine $X=\mathrm{Spec(S)}$ and $Y=\mathrm{Spec(S)}$, all squares
+  \begin{center}
+    \begin{tikzcd}
+      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(R)}\arrow[r, "\mathrm{Spec}(\varphi)"] & Y
+    \end{tikzcd}
+  \end{center}
+  factor as 
+  \begin{center}
+    \begin{tikzcd}
+      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & \mathrm{Spec}(\mathrm{im}(\varphi)/(\mathrm{im}(\varphi)\cap N))\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(R)}\arrow[r] & \mathrm{Spec}(\mathrm{im}(\varphi))\arrow[r] & Y
+    \end{tikzcd}
+  \end{center}
+  That means we can assume $R$ to be noetherian, if $X$ and $Y$ are noetherian for the sake of checking if $f$ is formally étale.
+  So let us assume (1) holds. Let $R$ be noetherian and let us construct a unique lift in
+  \begin{center}
+    \begin{tikzcd}
+      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(R)}\arrow[r] & Y
+    \end{tikzcd}
+  \end{center}
+  We extend the square by reducing $R$ or equivalently $R/N$:
+  \begin{center}
+    \begin{tikzcd}
+      \mathrm{Spec}(R/\sqrt{0})\arrow[rd]\arrow[d] & \\
+      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(R)}\arrow[r] & Y
+    \end{tikzcd}
+  \end{center}
+  There are two ways to view the boundary of this diagram as a square, so we can apply (1) in two different ways.
+  One application tells us, that the map $\mathrm{Spec}(R/N)\to X$ is the unique one making the diagram commute.
+  The second application yields a unique lift:
+  \begin{center}
+    \begin{tikzcd}
+      \mathrm{Spec}(R/\sqrt{0})\arrow[rd]\arrow[d] & \\
+      \mathrm{Spec(R/N)}\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(R)}\arrow[r]\arrow[ur, dashed] & Y
+    \end{tikzcd}
+  \end{center}
+  which is also a lift in the original square by the uniqueness of the map $\mathrm{Spec}(R/N)\to X$.
+  This proves that (1) implies that $f$ is formally étale.
+
+  So what remains to be shown is that (1) is equivalent to 
+  \begin{center}
+    \begin{tikzcd}
+      X\arrow[r]\arrow[d, "f", swap] & \Im X\arrow[d, "\Im f"] \\
+      Y\arrow[r] & \Im Y
+    \end{tikzcd}
+  \end{center}
+  being a pullback. This is true if and only if it is true pointwise, i.e. for all rings $R$,
+  the squares 
+  \begin{center}
+    \begin{tikzcd}
+      X(R)\arrow[r]\arrow[d, "f_R", swap] & \Im X(R)\arrow[d, "\Im f_R"] & = X(R/\sqrt{0}) \\
+      Y(R)\arrow[r] & \Im Y(R) & = Y(R/\sqrt{0})
+    \end{tikzcd}
+  \end{center}
+  have to be pullback squares. But this is just (1) by Yoneda.
 \end{proof}
 
 Let us look at the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char}.

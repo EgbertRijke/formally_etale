@@ -19,7 +19,7 @@
 \newcommand{\FSGrpOne}{\ensuremath{\mathsf{FSGrp}_1}}
 \newcommand{\FSGrp}{\ensuremath{\mathsf{FSGrp}}}
 \newcommand{\Spaces}{\ensuremath{\mathrm{Etop}\infty\mathrm{Gpd}}}
-\newcommand{\todo}[1]{{\color{red}#1}}
+\newcommand{\todo}[1]{{\color{red}TODO: #1 \\}}
 \newcommand{\ignore}[1]{}
 
 \addbibresource{literatur.bib}
@@ -67,7 +67,7 @@ This expands on an idea of the first author from \cite{wellen-oxford-abstract}.
 We also give characterizations and descriptions of formally étale maps in the sense of Algebraic Geometry.
   
 We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018.
-Discussions with and remarks of Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
+Discussions with and remarks of Jonathan Zachhuber, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
 The anonymous reviewers greatly improved the article with their comments and suggestions. 
 We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053.
 Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
@@ -762,6 +762,7 @@ Another goal of this section, which is probably the most important, is to make t
 
 The following table is an overview of the applications that will be discussed in this section.
 Details on the topos ``$\Spaces$'' can be found under ``\ref{subsection:toplogical stacks} Topology'' below the other toposes and modalities are under ``\ref{subsection:algebraic and differential geometry} Algebraic and Differential Geometry''.
+\todo{Make table correct (composition of the modalities is not known to be valid)}
 \begin{center}
   \begin{tabular}{p{3.5cm}p{8.5cm}}
     \toprule
@@ -982,7 +983,7 @@ We use the fact, that the noetherian schemes are also sheaves in the Zariski Top
   have a unique lift like indicated in the diagram. Let us call this property (1).
   Since $\sqrt{0}$ is always nilpotent in a noetherian ring, (1) is implied if $f$ is formally étale.
   
-  The property formally étale is known to be local in the source (\todo{reference}), so we can assume $X$ and $Y$ to be affine.
+  The property formally étale is known to be local in the source \cite[§ 17.1.6]{GrothendieckDieudonne}, so we can assume $X$ and $Y$ to be affine.
   For affine $X=\mathrm{Spec(S)}$ and $Y=\mathrm{Spec(S)}$, all squares
   \begin{center}
     \begin{tikzcd}
@@ -1044,30 +1045,27 @@ We use the fact, that the noetherian schemes are also sheaves in the Zariski Top
   have to be pullback squares. But this is just (1) by Yoneda.
 \end{proof}
 
-Let us look at the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char}.
-For a map $f:X\to Y$, the assumption that $\eta_X$ is surjective corresponds to a generalization of formal smoothness of $X$.
-The latter is discussed in \cite[Section 4.4]{wellen-thesis}, where the author forgot to take the difference between pointwise surjections and epimorphisms of sheaves into account.
-If we assume this holds for $X$, the lemma tells us that $f$ is $\Im$-étale, if and only if, the following is a pullback:
-\begin{equation*}
-\begin{tikzcd}[column sep=large]
-X\times_{\Im X} X \arrow[d,swap,"\pi_1"] \arrow[r,"{f\times_{\Im f} f}"] & Y\times_{\Im Y} Y \arrow[d,"\pi_1"] \\
-X \arrow[r,swap,"f"] & Y
-\end{tikzcd}
-\end{equation*}
-In Algebraic Geometry, these pullbacks are called \emph{formal neighborhoods of the diagonal} if $X$ represents a noetherian scheme.
-A fiber $\pi_1^{-1}(x)$ is a $\modal$-disk $\bD_x:\equiv D^\Im(X,x)$ around a point $x:X$.
-$\modal$-disks can be defined internally for any modality by the pullback
-\begin{equation*}
-  \begin{tikzcd}
-    \bD_x\arrow[r]\arrow[d] & 1\arrow[d, "\eta_X(x)"] \\
-    X \arrow[r] & \Im X
-  \end{tikzcd}
-\end{equation*}
-And the condition that the square above is a pullback is precisely the condition that all induced maps
-\[ df_x:\bD_x\to\bD_{f(x)}\text{, (so $df_x\equiv D^\Im(f,x)$) }\]
-are equivalences. So a translation of lemma \ref{lem:etale_char} into Algebraic Geometry could read
-``A map from a formally smooth space, is formally étale, if and only if, it induces an isomorphism on all $\modal$-disks.''.
-\todo{say how this can be plugged into real cohesion or done in a similar style}
+For this special case, the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char} becomes:
+
+Let $X$ and $Y$ be notherian schemes such that the natural map $X\to \Im X$ is an epimorphism,
+then $f:X\to Y$ is formally étale if and only if it induces an isomorphism $D^\Im(X,x)\to D^\Im(Y,f(x))$\footnote{We will make precise what we mean by $D^\Im$ in the next remark. } for all $x\in X$.
+
+The condition that $\eta_X:X\to \Im X$ is an epimorphism is implied by formal smoothness which is a reformulation of pointwise surjectivity of $\eta_X$.
+The sheaves $D^\Im(X,x)$ turn out to be something well known in Algebraic Geometry: 
+\begin{rmk}
+  Let $X$ be a noetherian scheme and $D^\Im(X,x)$ be given as the pullback:
+  \begin{center}
+    \begin{tikzcd}
+      D^\Im(X,x)\arrow[d]\arrow[r] & 1\arrow[d, "x"] \\
+      X\arrow[r] & \Im X
+    \end{tikzcd}
+  \end{center}
+  Then $D^\Im(X,x)$ is the formal neighborhood of $x$ in $X$. 
+\end{rmk}
+\begin{proof}
+  \todo{prove...}
+\end{proof}
+
 
 \section{Conclusion}
 \todo{React to suggestions for conclusions and write something about factorization systems.}

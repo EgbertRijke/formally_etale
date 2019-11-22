@@ -17,6 +17,11 @@
 \newcommand{\bS}{\mathbb S}
 \newcommand{\Zar}{\ensuremath{\mathrm{Zar}}}
 \newcommand{\FSGrpOne}{\ensuremath{\mathsf{FSGrp}_1}}
+\newcommand{\Spec}{\ensuremath{\mathrm{Spec}}}
+\newcommand{\Spf}{\ensuremath{\mathrm{Spf}}}
+\newcommand{\fgkAlg}{\ensuremath{k\mathrm{-Alg}_{\mathrm{fg}}}}
+\newcommand{\fgkAlgTop}{\ensuremath{k\mathrm{-Alg}_{\mathrm{fg,top}}}}
+\newcommand{\Hom}{\ensuremath{\mathrm{Hom}}}
 \newcommand{\FSGrp}{\ensuremath{\mathsf{FSGrp}}}
 \newcommand{\Spaces}{\ensuremath{\mathrm{Etop}\infty\mathrm{Gpd}}}
 \newcommand{\todo}[1]{{\color{red}TODO: #1 \\}}
@@ -67,7 +72,7 @@ This expands on an idea of the first author from \cite{wellen-oxford-abstract}.
 We also give characterizations and descriptions of formally étale maps in the sense of Algebraic Geometry.
   
 We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018.
-Discussions with and remarks of Jonathan Zachhuber, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
+Discussions with and remarks of Jonathan Zachhuber, Tobias Columbus, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
 The anonymous reviewers greatly improved the article with their comments and suggestions. 
 We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053.
 Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
@@ -923,29 +928,41 @@ The introduction of the latter also gives more details on the history of the sub
 in particular concerning definitions of covering spaces topological and differentiable stacks.
 The authors see an advantage of their approach in the clarity of the type theoretic proofs.
 
-\subsection{Algebraic and Differential Geometry}
-\label{subsection:algebraic and differential geometry}
+\subsection{Algebraic Geometry}
+\label{subsection:algebraic geometry}
 \todo{make section coherent again..}
-A topos for differentiable stacks can be built from a site with the same objects as $\Spaces$ but only smooth maps as morphisms.
-It turns out that we have even more interesting modalities, if we extend the site by \emph{infinitesimal disks} to arrive at the topos of
-formally smooth $\infty$-groupoids $\FSGrp$ as defined in \cite[Definition 2.11]{SyntheticPDEs} which we will explain briefly now.
 
-For the following it is important to note that the functor $\mathcal C^\infty$ sending a smooth manifold, in our case $\bR^n$ to its $\bR$-algebra of smooth functions is fully faithful.
-The site $S$ of $\FSGrp$ has objects we call $\bR^n\times\bD_A$ for any $n\in\bN$ and any finitely generated $\bR$-algebra $A$,
-such that any $x\in A$ with $x\notin\bR$ is nilpotent.
-The morphisms $f:\bR^n\times\bD_A\to \bR^k\times\bD_B$ in $S$ are given as opposites of the $\bR$-algebra homomorphisms
-\[ \mathcal C^\infty(\bR^k)\otimes_\bR B \to \mathcal C^\infty(\bR^n)\otimes_\bR A\text{.} \]
-The topology is essentially given by good open covers of open immersions\footnote{See \cite[Definition 2.11]{SyntheticPDEs} for details.}.
+This provides examples demonstrating, how a special functor can be used to express concepts associated with \emph{differentiability}.
+This functor, $\Im$, arises most naturally in Algebraic Geometry but can also be adapted to Differential Geometry.
+Section \ref{subsection:differential geometry} will give an example in the latter direction.
 
-The $\modal$-étale maps for a special modality $\Im$ were already discussed in \cite{wellen-thesis} and \cite{wellen-cartan-geometry}.
-One basic topos where a corresponding functor can be defined is given as $\infty$-groupoid valued sheaves on the site $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fp}}$ of finitely presented affine schemes over a field $k$ with the Zariski topology. Here, for any $X\in\mathrm{Sh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fp}})$ ,
+In the following, $k$ will always be a field and all rings and algebras are assumed to be commutative and equipped with a unit for multiplication.
+We denote the category of finitely generated algebras over $k$ with $k\mathrm{-Alg}_{\mathrm{fg}}$.
+That entails, that any $A\in k\mathrm{-Alg}_{\mathrm{fg}}$ is a quotient $A=k[x_1,\dots,x_n]/(f_1,\dots,f_m)$.
+These algebras may contain nilpotent elements, i.e. elements $x\in A$, such that $x\neq 0$, but $x^n=0$ for some $n\in\bN$.
+Nilpotent elements are important for the following -- they represent infinitesimals.
+This can roughly be explained by the analogy
+that the elements of the algebras are to be thought of as generalized coordinate functions
+and the nilpotents represent coordinates that are so (infinitesimally) small, that some power is actually zero. 
+
+We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}(A,\_)$ from $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}}$ to the category of sets.
+These functors represent so called \emph{affine noetherian $k$-schemes} and they form the basic building blocks of spaces called noetherian $k$-schemes
+(see \cite[Chapter II]{hartshorne} for more on schemes).
+We will use not any property of noetherian $k$-schemes here, except that are locally of the form $\Spec(A)$ for some $A\in\fgkAlg$.
+
+For any $A\in k\mathrm{-Alg}_{\mathrm{fg}}$ and $s\in A$ we denote the localization at $s$ with $A_s$.
+A collection of canocial morphisms $\Spec A_{s_i}\to \Spec A$ is a basic cover if $s_1+\dots+s_n=1$.
+The topology generated by these basic covers on $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}}$ is called the Zariski topology
+and we will denote the sheaf topos with $\mathrm{Sh}(k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}},\mathrm{Zar})$.
+
+For any $X\in\mathrm{Sh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ ,
 the functor $\Im X$ defined pointwise by
 \[ (\Im X)(A):\equiv X(A/\sqrt{0})\]
 turns out to be a sheaf again. So $\Im$ is an endofunctor on the sheaf-topos which turns out to be well behaved enough to generate a modality\todo{reference}.
 
 The name $\modal$-étale is an adaption of the name ``formally étale'' for general modalities.
 The more specific name was used in \cite{wellen-thesis}, which reused the name from \cite{SyntheticPDEs}.
-The original definition of formally étale maps is from algebraic geometry (see \cite[§ 17]{GrothendieckDieudonne}).
+The original definition of formally étale maps is from Algebraic Geometry (see \cite[§ 17]{GrothendieckDieudonne}):
 \begin{defn}
   A morphisms of schemes $\varphi:X\to Y$ is \emph{formally étale},
   if for all rings $R$ and all nilpotent ideals $N$ in $R$ all squares
@@ -958,8 +975,8 @@ The original definition of formally étale maps is from algebraic geometry (see 
   have a unique lift like indicated in the diagram.
 \end{defn}
 We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
-The proof is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
-We use the fact, that the noetherian schemes are also sheaves in the Zariski Topos and that we have the functor $\Im$ like above.
+The presented fact is certainly well known to experts and the proof we present here is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
+We use the fact, that the noetherian $k$-schemes are also sheaves in the Zariski Topos and that we have the functor $\Im$ like above.
 \begin{rmk}
   A morphism of $f:X\to Y$ noetherian schemes $X,Y$ is formally étale if and only if the naturality square
   \begin{center}
@@ -971,13 +988,13 @@ We use the fact, that the noetherian schemes are also sheaves in the Zariski Top
   is a pullback square.
 \end{rmk}
 \begin{proof}
-  Let $X$ and $Y$ be noetherian schemes\footnote{These means they are covered by $\mathrm{Spec}$s of finitely generated algebras.}. 
+  Let $X$ and $Y$ be noetherian $k$-schemes. 
   We will first show that a morphism of schemes $f:X\to Y$ is formally étale,
-  if and only if for all noetherian rings $R$ all squares
+  if and only if for all $A\in\fgkAlg$ all squares
   \begin{center}
     \begin{tikzcd}
-      \mathrm{Spec(R/\sqrt{0})}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
-      \mathrm{Spec(R)}\arrow[r]\arrow[ru, dashed, "\exists!"] & Y
+      \mathrm{Spec(A/\sqrt{0})}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(A)}\arrow[r]\arrow[ru, dashed, "\exists!"] & Y
     \end{tikzcd}
   \end{center}
   have a unique lift like indicated in the diagram. Let us call this property (1).
@@ -987,44 +1004,44 @@ We use the fact, that the noetherian schemes are also sheaves in the Zariski Top
   For affine $X=\mathrm{Spec(S)}$ and $Y=\mathrm{Spec(S)}$, all squares
   \begin{center}
     \begin{tikzcd}
-      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
-      \mathrm{Spec(R)}\arrow[r, "\mathrm{Spec}(\varphi)"] & Y
+      \mathrm{Spec(A/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(A)}\arrow[r, "\mathrm{Spec}(\varphi)"] & Y
     \end{tikzcd}
   \end{center}
   factor as 
   \begin{center}
     \begin{tikzcd}
-      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & \mathrm{Spec}(\mathrm{im}(\varphi)/(\mathrm{im}(\varphi)\cap N))\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
-      \mathrm{Spec(R)}\arrow[r] & \mathrm{Spec}(\mathrm{im}(\varphi))\arrow[r] & Y
+      \mathrm{Spec(A/N)}\arrow[r]\arrow[d] & \mathrm{Spec}(\mathrm{im}(\varphi)/(\mathrm{im}(\varphi)\cap N))\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(A)}\arrow[r] & \mathrm{Spec}(\mathrm{im}(\varphi))\arrow[r] & Y
     \end{tikzcd}
   \end{center}
-  That means we can assume $R$ to be noetherian, if $X$ and $Y$ are noetherian for the sake of checking if $f$ is formally étale.
-  So let us assume (1) holds. Let $R$ be noetherian and let us construct a unique lift in
+  That means we can assume $A$ to be noetherian, if $X$ and $Y$ are noetherian for the sake of checking if $f$ is formally étale.
+  So let us assume (1) holds. Let $A$ be noetherian and let us construct a unique lift in
   \begin{center}
     \begin{tikzcd}
-      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
-      \mathrm{Spec(R)}\arrow[r] & Y
+      \mathrm{Spec(A/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(A)}\arrow[r] & Y
     \end{tikzcd}
   \end{center}
   We extend the square by reducing $R$ or equivalently $R/N$:
   \begin{center}
     \begin{tikzcd}
-      \mathrm{Spec}(R/\sqrt{0})\arrow[rd]\arrow[d] & \\
-      \mathrm{Spec(R/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
-      \mathrm{Spec(R)}\arrow[r] & Y
+      \mathrm{Spec}(A/\sqrt{0})\arrow[rd]\arrow[d] & \\
+      \mathrm{Spec(A/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(A)}\arrow[r] & Y
     \end{tikzcd}
   \end{center}
   There are two ways to view the boundary of this diagram as a square, so we can apply (1) in two different ways.
-  One application tells us, that the map $\mathrm{Spec}(R/N)\to X$ is the unique one making the diagram commute.
+  One application tells us, that the map $\mathrm{Spec}(A/N)\to X$ is the unique one making the diagram commute.
   The second application yields a unique lift:
   \begin{center}
     \begin{tikzcd}
-      \mathrm{Spec}(R/\sqrt{0})\arrow[rd]\arrow[d] & \\
-      \mathrm{Spec(R/N)}\arrow[d] & X\arrow[d, "f"] \\
-      \mathrm{Spec(R)}\arrow[r]\arrow[ur, dashed] & Y
+      \mathrm{Spec}(A/\sqrt{0})\arrow[rd]\arrow[d] & \\
+      \mathrm{Spec(A/N)}\arrow[d] & X\arrow[d, "f"] \\
+      \mathrm{Spec(A)}\arrow[r]\arrow[ur, dashed] & Y
     \end{tikzcd}
   \end{center}
-  which is also a lift in the original square by the uniqueness of the map $\mathrm{Spec}(R/N)\to X$.
+  which is also a lift in the original square by the uniqueness of the map $\mathrm{Spec}(A/N)\to X$.
   This proves that (1) implies that $f$ is formally étale.
 
   So what remains to be shown is that (1) is equivalent to 
@@ -1034,12 +1051,12 @@ We use the fact, that the noetherian schemes are also sheaves in the Zariski Top
       Y\arrow[r] & \Im Y
     \end{tikzcd}
   \end{center}
-  being a pullback. This is true if and only if it is true pointwise, i.e. for all rings $R$,
+  being a pullback. This is true if and only if it is true pointwise, i.e. for all $k$-algebras $A$,
   the squares 
   \begin{center}
     \begin{tikzcd}
-      X(R)\arrow[r]\arrow[d, "f_R", swap] & \Im X(R)\arrow[d, "\Im f_R"] & = X(R/\sqrt{0}) \\
-      Y(R)\arrow[r] & \Im Y(R) & = Y(R/\sqrt{0})
+      X(A)\arrow[r]\arrow[d, "f_A", swap] & \Im X(A)\arrow[d, "\Im f_A"] & = X(A/\sqrt{0}) \\
+      Y(A)\arrow[r] & \Im Y(A) & = Y(A/\sqrt{0})
     \end{tikzcd}
   \end{center}
   have to be pullback squares. But this is just (1) by Yoneda.
@@ -1047,11 +1064,27 @@ We use the fact, that the noetherian schemes are also sheaves in the Zariski Top
 
 For this special case, the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char} becomes:
 
-Let $X$ and $Y$ be notherian schemes such that the natural map $X\to \Im X$ is an epimorphism,
+Let $X$ and $Y$ be notherian $k$-schemes such that the natural map $X\to \Im X$ is an epimorphism,
 then $f:X\to Y$ is formally étale if and only if it induces an isomorphism $D^\Im(X,x)\to D^\Im(Y,f(x))$\footnote{We will make precise what we mean by $D^\Im$ in the next remark. } for all $x\in X$.
 
 The condition that $\eta_X:X\to \Im X$ is an epimorphism is implied by formal smoothness which is a reformulation of pointwise surjectivity of $\eta_X$.
-The sheaves $D^\Im(X,x)$ turn out to be something well known in Algebraic Geometry: 
+The sheaves $D^\Im(X,x)$ turn out to be something well known in Algebraic Geometry, which we will explore now.
+
+In Algebraic Geometry, there is the concept of the \emph{formal completion} of a closed subspace (see \cite[p.194]{hartshorne} or \cite[10.8]{ega}).
+Roughly, the formal completion of a subspace may be thought of as the subspace together with
+all points from the surrounding space which are infinitesimally close to the subspace.
+In the affine case, where a closed subspace of $\Spec(A)$ is given by an ideal $I\subseteq A$, we can construct a topological ring $\hat{A}$
+as the limit of the sequence of quotients by powers of $I$ with discrete topology:
+\begin{center}
+    \begin{tikzcd}
+      \dots\arrow[r] & A/I^3\arrow[r] & A/I^2\arrow[r] & A/I.
+    \end{tikzcd}
+\end{center}
+Let us write $\Delta(A)$ for $A\in\fgkAlg$ with the discrete topology.
+The completion yields a Zariski sheaf:
+\[ \Spf(\hat{A}) := \fgkAlgTop(\hat{A},\Delta(\_))\]
+\todo{proof or reference, that this is a sheaf}
+
 \begin{rmk}
   Let $X$ be a noetherian scheme and $D^\Im(X,x)$ be given as the pullback:
   \begin{center}
@@ -1066,6 +1099,23 @@ The sheaves $D^\Im(X,x)$ turn out to be something well known in Algebraic Geomet
   \todo{prove...}
 \end{proof}
 
+
+
+\subsection{Differential Geometry}
+\label{subsection:differential geometry}
+\todo{rewrite...}
+The $\modal$-étale maps for a special modality $\Im$ were already discussed in \cite{wellen-thesis} and \cite{wellen-cartan-geometry}.
+
+A topos for differentiable manifolds can be built from a site with the same objects as $\Spaces$ but only smooth maps as morphisms.
+It turns out that we have even more interesting modalities, if we extend the site by \emph{infinitesimal disks} to arrive at the topos of
+formally smooth $\infty$-groupoids $\FSGrp$ as defined in \cite[Definition 2.11]{SyntheticPDEs} which we will explain briefly now.
+
+For the following it is important to note that the functor $\mathcal C^\infty$ sending a smooth manifold, in our case $\bR^n$ to its $\bR$-algebra of smooth functions is fully faithful.
+The site $S$ of $\FSGrp$ has objects we call $\bR^n\times\bD_A$ for any $n\in\bN$ and any finitely generated $\bR$-algebra $A$,
+such that any $x\in A$ with $x\notin\bR$ is nilpotent.
+The morphisms $f:\bR^n\times\bD_A\to \bR^k\times\bD_B$ in $S$ are given as opposites of the $\bR$-algebra homomorphisms
+\[ \mathcal C^\infty(\bR^k)\otimes_\bR B \to \mathcal C^\infty(\bR^n)\otimes_\bR A\text{.} \]
+The topology is essentially given by good open covers of open immersions\footnote{See \cite[Definition 2.11]{SyntheticPDEs} for details.}.
 
 \section{Conclusion}
 \todo{React to suggestions for conclusions and write something about factorization systems.}

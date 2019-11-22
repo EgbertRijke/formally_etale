@@ -1086,17 +1086,45 @@ The completion yields a Zariski sheaf:
 \todo{proof or reference, that this is a sheaf}
 
 \begin{rmk}
-  Let $X$ be a noetherian scheme and $D^\Im(X,x)$ be given as the pullback:
+  Let $X$ be a noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
   \begin{center}
     \begin{tikzcd}
-      D^\Im(X,x)\arrow[d]\arrow[r] & 1\arrow[d, "x"] \\
+      D^\Im(X,x)\arrow[d]\arrow[r] & 1\arrow[d, "\eta_X\circ x"] \\
       X\arrow[r] & \Im X
     \end{tikzcd}
   \end{center}
   Then $D^\Im(X,x)$ is the formal neighborhood of $x$ in $X$. 
 \end{rmk}
 \begin{proof}
-  \todo{prove...}
+  Since formal completions are defined by descending to affine schemes, we can assume $X=\Spec(A)$ with $A\in\fgkAlg$.
+  Then $x:1\to X$ can be rewritten as $x:\Spec(k)\to\Spec(A)$ and thus corresponds to a $k$-algebrahomomorphism $A\to k$,
+  which is given by modding out a maximal ideal $m\subseteq A$. Let us write $\mathrm{pr}_I$ for the morphism to the quotient by an ideal $I$.
+  So the formal neighborhood of $x$ in $X$ is $\Spf(\hat{A})$, where $\hat{A}$ is the completion with respect to $m$.
+  This means what we need to show is, that for all $B\in\fgkAlg$, the square
+  \begin{center}
+    \begin{tikzcd}
+      \fgkAlgTop(\hat{A}, \Delta(B))\arrow[r]\arrow[d] & \fgkAlg(k,B)\arrow[d, "\mathrm{pr}_{\sqrt{0}}\circ\_\circ\mathrm{pr}_m"] \\
+      \fgkAlg(A,B)\arrow[r,"\mathrm{pr}_{\sqrt{0}}\circ\_", swap] & \fgkAlg(A,B/\sqrt{0})
+    \end{tikzcd}
+  \end{center}
+  is a pullback square. This amounts to the following universal property of $\hat{A}$:
+
+  For any $k$-algebrahomomorphism $\varphi:A\to B$ such that $\varphi(m)\subseteq \sqrt{0}$, there exists a unique morphisms
+  $\hat{\varphi}:\hat{A}\to B$ such that composition with the canonical $A\to\hat{A}$ is $\varphi$.
+  For the construction of $\hat{\varphi}$, we may assume that $\hat{A}$ is the limit of
+  \begin{center}
+    \begin{tikzcd}
+      \dots\arrow[r] & A/m^{n+2}\arrow[r] & A/m^{n+1}\arrow[r] & A/m^{n}
+    \end{tikzcd}
+  \end{center}
+  for some $n\in\bN$ such that $\varphi(m^n)=\varphi(m)^n={0}$. So we have a map of sequences:
+  \begin{center}
+    \begin{tikzcd}
+      \dots\arrow[r] & A/m^{n+2}\arrow[r]\arrow[d,"\varphi"] & A/m^{n+1}\arrow[r]\arrow[d,"\varphi"] & A/m^{n}\arrow[d,"\varphi"] \\
+      \dots\arrow[r,"\mathrm{id}", swap] & B\arrow[r,"\mathrm{id}", swap] & B\arrow[r,"\mathrm{id}", swap] & B
+    \end{tikzcd}
+  \end{center}
+  And therefore an induced $\hat{\varphi}:\hat{A}\to B$.
 \end{proof}
 
 

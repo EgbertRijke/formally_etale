@@ -937,7 +937,7 @@ The authors see an advantage of their approach in the clarity of the type theore
 
 This provides examples demonstrating, how a special functor can be used to express concepts associated with \emph{differentiability}.
 This functor, $\Im$, arises most naturally in Algebraic Geometry but can also be adapted to Differential Geometry.
-Section \ref{subsection:differential geometry} will give an example in the latter direction.
+How an analogous functor can be used in Differential Geometry is described and studied intensively in \cite{SyntheticPDEs}.
 
 In the following, $k$ will always be a field and all rings and algebras are assumed to be commutative and equipped with a unit for multiplication.
 We denote the category of finitely generated algebras over $k$ with $k\mathrm{-Alg}_{\mathrm{fg}}$.
@@ -1129,24 +1129,6 @@ The completion yields a Zariski sheaf:
   \end{center}
   And therefore an induced $\hat{\varphi}:\hat{A}\to B$.
 \end{proof}
-
-
-
-\subsection{Differential Geometry}
-\label{subsection:differential geometry}
-\todo{rewrite...}
-The $\modal$-étale maps for a special modality $\Im$ were already discussed in \cite{wellen-thesis} and \cite{wellen-cartan-geometry}.
-
-A topos for differentiable manifolds can be built from a site with the same objects as $\Spaces$ but only smooth maps as morphisms.
-It turns out that we have even more interesting modalities, if we extend the site by \emph{infinitesimal disks} to arrive at the topos of
-formally smooth $\infty$-groupoids $\FSGrp$ as defined in \cite[Definition 2.11]{SyntheticPDEs} which we will explain briefly now.
-
-For the following it is important to note that the functor $\mathcal C^\infty$ sending a smooth manifold, in our case $\bR^n$ to its $\bR$-algebra of smooth functions is fully faithful.
-The site $S$ of $\FSGrp$ has objects we call $\bR^n\times\bD_A$ for any $n\in\bN$ and any finitely generated $\bR$-algebra $A$,
-such that any $x\in A$ with $x\notin\bR$ is nilpotent.
-The morphisms $f:\bR^n\times\bD_A\to \bR^k\times\bD_B$ in $S$ are given as opposites of the $\bR$-algebra homomorphisms
-\[ \mathcal C^\infty(\bR^k)\otimes_\bR B \to \mathcal C^\infty(\bR^n)\otimes_\bR A\text{.} \]
-The topology is essentially given by good open covers of open immersions\footnote{See \cite[Definition 2.11]{SyntheticPDEs} for details.}.
 
 \section{Conclusion}
 \todo{React to suggestions for conclusions and write something about factorization systems.}

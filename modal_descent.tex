@@ -781,7 +781,7 @@ Details on the topos ``$\Spaces$'' can be found under ``\ref{subsection:toplogic
     $\trunc{n}{\_}\circ\shape$ on $\Spaces$ & Generalization of covering space for topological stacks, where the universal cover is a topological stack with an $n$-connected homotopy type \\
     $\shape$ on $\Spaces$ & Generalization of covering spaces, where the universal cover is a stack with trivial homotopy type \\
     $\sharp$ on $\Spaces$ & Maps where the domain carries the induced topology \\
-    $\Im$ on $\mathrm{Sh}(k\mathrm{-Alg}^\mathrm{op} ,\Zar)$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian $k$-schemes   \\
+    $\Im$ on $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op})$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian $k$-schemes   \\
     $\Im$ on $\FSGrp$ & Local diffeomorphisms, if domain and codomain are manifolds \\
     \bottomrule
   \end{tabular}
@@ -830,7 +830,6 @@ which are known to coincide with the external sheaf $\mathrm{Hom}_{\mathrm{Top}}
 For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
 It maps topological spaces to their \emph{homotopy type}, so for example $\shape \bS^{1} =\sphere{1}$ 
 and $\shape \bR =1$.
-
 
 In a 1-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
 The $\shape$ is a higher analog of this functor that extracts homotopical information on all h-levels, not just level 0.
@@ -933,8 +932,6 @@ The authors see an advantage of their approach in the clarity of the type theore
 
 \subsection{Analogous constructions in Algebraic Geometry}
 \label{subsection:algebraic geometry}
-\todo{make section coherent again..}
-
 The purpose of this section is to show what the name-giving analogs of $\modal$-étale maps and $\modal$-disks from Algebraic Geometry are.
 Noetherian schemes are spaces of interest in Algebraic Geometry. There is a notion of formally étale maps between such schemes.
 One purpose of this section is to show that such maps are characterized in very much the same way as $\modal$-étale maps:
@@ -959,7 +956,7 @@ These functors represent so called \emph{affine noetherian $k$-schemes} and they
 (see \cite[Chapter II]{hartshorne} for more on schemes).
 We will use not any property of noetherian $k$-schemes here, except that are locally of the form $\Spec(A)$ for some $A\in\fgkAlg$.
 
-For any $X\in\mathrm{Sh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ ,
+For any $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ ,
 the functor $\Im X$ defined pointwise by
 \[ (\Im X)(A):\equiv X(A/\sqrt{0})\]
 turns out to be a sheaf again. So $\Im$ is an endofunctor on the sheaf-topos which turns out to be well behaved enough to generate a modality\todo{reference}.
@@ -1069,7 +1066,8 @@ We use the fact, that the noetherian $k$-schemes are also sheaves in the Zariski
 For this special case, the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char} becomes:
 
 Let $X$ and $Y$ be notherian $k$-schemes such that the natural map $X\to \Im X$ is an epimorphism,
-then $f:X\to Y$ is formally étale if and only if it induces an isomorphism $D^\Im(X,x)\to D^\Im(Y,f(x))$\footnote{We will make precise what we mean by $D^\Im$ in the next remark. } for all $x\in X$.
+then $f:X\to Y$ is formally étale if and only if it induces an isomorphism $D^\Im(X,x)\to D^\Im(Y,f(x))$
+\footnote{We will make precise what we mean by $D^\Im$ in the next remark. } for all $x\in X$.
 
 The condition that $\eta_X:X\to \Im X$ is an epimorphism is implied by formal smoothness which is a reformulation of pointwise surjectivity of $\eta_X$.
 The sheaves $D^\Im(X,x)$ turn out to be something well known in Algebraic Geometry, which we will explore now.
@@ -1085,9 +1083,8 @@ as the limit of the sequence of quotients by powers of $I$ with discrete topolog
     \end{tikzcd}
 \end{center}
 Let us write $\Delta(A)$ for $A\in\fgkAlg$ with the discrete topology.
-The completion yields a Zariski sheaf:
+The completion yields a functor:
 \[ \Spf(\hat{A}) := \fgkAlgTop(\hat{A},\Delta(\_))\]
-\todo{proof or reference, that this is a sheaf}
 
 \begin{rmk}
   Let $X$ be a noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:

@@ -82,11 +82,18 @@ Any opinions, findings and conclusions or recommendations expressed in this mate
 
 
 \section{Preliminaries}
-We assume the reader is familiar with the basics of homotopy type theory. To the reader who is not familiar with HoTT we recommend \cite{UFP}.
+We assume the reader is familiar with the basics of homotopy type theory. To the reader who is not familiar with HoTT we recommend \cite{UFP}. Just as in \cite{UFP}, we write $x=y$ for the type of identifications of $x$ and $y$, provided that both $x$ and $y$ have a common type $X$. Sometimes we call identifications paths. We write
+\begin{equation*}
+  \apfunc{f}:(x=y)\to (f(x)=f(y))
+\end{equation*}
+for the action on paths of a function $f$. Path concatenation is written in diagrammatic order, i.e., we write $\ct{p}{q}$ for the concatenation of $p:x=y$ and $q:y=z$. The fiber of a map $f:A\to B$ at $b:B$ is defined to be the type
+\begin{equation*}
+  \fib{f}{b}\defeq \sm{x:A}f(x)=b.
+\end{equation*}
 
 We make extensive use of homotopy pullbacks. The most important property we will be relying on is the following theorem:
 
-\begin{thm}
+\begin{thm}\label{thm:pullback}
   Consider a commuting square
   \begin{equation*}
     \begin{tikzcd}
@@ -101,13 +108,13 @@ We make extensive use of homotopy pullbacks. The most important property we will
     \begin{equation*}
       \fib{f}{b} \to \fib{g}{i(b)}
     \end{equation*}
-    is an equivalence.
+    given by $(a,p)\mapsto (h(a),\ct{H(a)^{-1}}{\ap{i}{p}})$, is an equivalence.
   \end{enumerate}
 \end{thm}
 
 For an arbitrary commuting square, the induced map into the pullback is called the \define{gap map}. One can show that the fibers of the gap map are equivalent to the fibers of the induced maps on fibers. This observation implies the above theorem.
 
-The main object of study in this article is a modality, of which the primary examples are the $n$-truncations. There are many equivalent ways of saying what a modality is \cite{RijkeSpittersShulman}. The most convenient definition for our purpose is that of a \emph{stable orthogonal factorization system}, which we recall now.
+The main object of study in this article is a modality, of which the canonical examples are the $n$-truncations. There are many equivalent ways of saying what a modality is \cite{RijkeSpittersShulman}. The most convenient definition for our purpose is that of a \emph{stable orthogonal factorization system}, which we recall now.
 
 \begin{defn}
   An orthogonal factorization system is a pair $(\mathcal{L},\mathcal{R})$ of classes of maps
@@ -156,12 +163,21 @@ The left factor $X \to \modal X$ of this factorization is called the \define{mod
 \end{equation*}
 is an equivalence. This property is called the \define{unique elimination principle} for modalities, and modalities can be defined equivalently in terms of the unique elimination principle.
 
-We recall that for any two modalities $(\mathcal{L},\mathcal{R})$ and $(\mathcal{L}',\mathcal{R}')$ the following are equivalent:
+We recall one more usefule general fact about modalities.
+
+\begin{thm}
+  For any two modalities $(\mathcal{L},\mathcal{R})$ and $(\mathcal{L}',\mathcal{R}')$ the following are equivalent:
 \begin{enumerate}
 \item Every $(\mathcal{L},\mathcal{R})$-modal type is $(\mathcal{L}',\mathcal{R}')$-modal.
 \item The modal units of the modality $(\mathcal{L}',\mathcal{R}')$ are in $\mathcal{L}$.
 \end{enumerate}
-In particular: for any modality it follows that every proposition is modal if and only if the modal units are surjective.
+\end{thm}
+
+Recall that a map is said to be \define{surjective} if all its fibers are merely inhabited. Therefore we have the following corollary.
+
+\begin{cor}\label{cor:units-surjective}
+  For any modality, every proposition is modal if and only if the modal units are surjective.
+\end{cor}
 
 \section{\texorpdfstring{$\modal$}{○}-\'etale maps}
 
@@ -176,11 +192,15 @@ A \arrow[r,"f"] \arrow[d,swap,"\eta"] & B \arrow[d,"\eta"] \\
 is a pullback square. We will write $\isetale(f)$ for this proposition.
 \end{defn}
 
-Using that $\modal$ preserves equivalences and composition up to homotopy,
+Using the fact that $\modal$ preserves equivalences and composition up to homotopy,
 it is immediate from the definition that any equivalence is $\modal$-\'etale, and that the $\modal$-\'etale maps are closed under composition.
 
 \begin{eg}\label{eg:etale_prop}
-We claim that a map $f:A\to B$ is $\brck{\blank}$-\'etale if and only if $A\to \isequiv(f)$. Examples of maps that satisfy this condition include equivalences, maps between propositions, and any map of the form $\emptyt\to B$.
+  We claim that a map $f:A\to B$ is $\brck{\blank}$-\'etale if and only if it satisfies the condition
+  \begin{equation*}
+    A\to \isequiv(f).
+  \end{equation*}
+  Examples of maps that satisfy this condition include equivalences, maps between propositions, and any map of the form $\emptyt\to B$.
 
 To see that if $f:A\to B$ is $\modal$-\'etale, then $A\to\isequiv(f)$, consider the pullback square
 \begin{equation*}
@@ -198,6 +218,8 @@ A \to B\times_{\brck{B}}\brck{A}
 is an equivalence, we will show that its fibers are contractible. Let $b:B$, $x:\brck{A}$ and $p:\bproj{b}=\brck{f}(x)$. Since $\brck{A}\to\isequiv(f)$, it follows that $f$ is an equivalence. Then $\brck{f}$ is also an equivalence, from which it follows that the naturality square is a pullback square. We conclude that the fibers of the gap map are contractible. 
 \end{eg}
 
+We saw in the above example that any map between propositions is $\brck{\blank}$-\'etale. This fact generalizes to all modalities.
+
 \begin{lem}\label{lem:etale_modal}
 Any map between $\modal$-modal types is $\modal$-\'etale.
 \end{lem}
@@ -213,51 +235,149 @@ Y \arrow[r] & \modal Y
 are equivalences. Therefore this square is a pullback square, so $f$ is $\modal$-\'etale.
 \end{proof}
 
-In this section our goal is an almost general charachterization of $\modal$-étale maps and using it to characterize the $\modal$-\'etale maps for the $n$-truncations. We call such maps \define{$n$-\'etale}. Note that the case of propositional truncation has already been addressed in \cref{eg:etale_prop}.
-The characterization only works if the domain of the map in question has a surjective $\modalunit$.
-\begin{defn}
-  A map $\varphi:X\to Y$ is surjective, if all its fibers are merely inhabited.
-\end{defn}
-Note that using the connected-truncated factorization system from \cite{RijkeSpittersShulman}, we can see that all $\modalunit$ are surjective for some modality, if and only if all propositions are modal.
-So in case of $\trunc{n}{\_}$ with $n\geq -1$, the characterization always works.
+Our goal in this section is to show that a map is \'etale for the $n$-truncation if and only if it is right orthogonal to the point inclusion $\unit\to\sphere{n+1}$. Maps that are \'etale for the $n$-truncation are also called $\define{$n$-\'etale}$.
+Before we prove this fact, we give a characterization of $\modal$-\'etale maps that only works if the domain of the map in question has a surjective $\modalunit$. Recall by \cref{cor:units-surjective} that this happens if and only if all the propositions are modal. In particular, it is immediate that the units of the $n$-truncation are all surjective.
 
 We recall from \cite{wellen-thesis} the notion of formal disk associated to a modality and give it a more generic name.
 
 \begin{defn}
-  Let $\modal$ be a modality, and let $a:A$. The $\modal$-disk $D^{\modal}(A,a)$ of $A$ at $a$ is defined by
+  Let $\modal$ be a modality, and let $a:A$. The \define{$\modal$-disk} $D^{\modal}(A,a)$ of $A$ at $a$ is defined by
   \begin{equation*}
     D^\modal(A,a)\defeq \sm{x:A}\eta(a)=\eta(x).
   \end{equation*}
-  In other words, the $\modal$-disk $D^\modal(A,a)$ is the fiber of $\eta:A\to\modal A$ at $\eta(a)$. In the special case where $\modal$ is the $n$-truncation, we write $D^n(A,a)$ for the $\trunc{n}{\_}$-disk at $a$ and if the modality is clear from the context, we allow ourselves to drop ``$\modal$'' from the notation and write just $D(A,a)$.
+  In the special case where $\modal$ is the $n$-truncation, we write $D^n(A,a)$ for the $\trunc{n}{\blank}$-disk at $a$ and if the modality is clear from the context, we allow ourselves to drop ``$\modal$'' from the notation and write just $D(A,a)$.
 \end{defn}
 
-There is always a map $\proj 1:D^\modal(A,a)\to A$.
+Note that the $\modal$-disk fits in a fiber sequence
+\begin{equation*}
+  \begin{tikzcd}
+    D^\modal(A,a) \arrow[r,hook] & A \arrow[r,->>] & \modal(A).
+  \end{tikzcd}
+\end{equation*}
+Moreover, we observe that the $\modal$-disk is connected, since the modal unit $\eta:A\to\modal(A)$ is a connected map. Therefore the $\modal$-disk is also known as the \define{$\modal$-connected cover} of $A$ at $a$.
 
-The following lemma characterizes $\modal$-étale maps $f:A\to B$ for $A$ with surjective $\eta_A$.
-The characterization (ii) can be informally described as: ``A $\modal$-étale map $f:A\to B$ is a trivial fibration over any $\modal$-disk  in $B$'',
-while (i) can be stated as: ``A $\modal$-étale map $f:A\to B$ is $\modal$-étale if and only if it induces an equivalence on $\modal$-disks $D^\modal(A,x)$ for all $x:A$''. 
+Note that $D^\modal$ acts functorially: given a map $f:A\to B$ and a point $a:A$, we obtain a map
+\begin{equation*}
+  D^\modal(f,a) : D^\modal(A,a)\to D^\modal(B,f(a)).
+\end{equation*}
+
+\begin{defn}
+  Consider a map $f:A\to B$, and write
+  \begin{align*}
+    F_y & \defeq \fib{\modal f}{y} \\
+    D_y & \defeq \fib{\eta}{y}
+  \end{align*}
+  for any $y:\modal B$. We say that $f$ is \define{$\modal$-locally trivial} if for each $y:\modal B$ there is a map $\varphi_y:F_y\times D_y \to A$ such that the cube
+  \begin{equation*}
+    \begin{tikzcd}
+      & F_y\times D_y \arrow[dl] \arrow[d,dashed,"\varphi_y"] \arrow[dr] \\
+      F_y \arrow[d] & A \arrow[dl] \arrow[dr] & D_y \arrow[d] \arrow[dl,crossing over] \\
+      \modal A \arrow[dr] & \unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+      & \modal B
+    \end{tikzcd}
+  \end{equation*}
+  commutes, and the back-right square is a pullback square.
+\end{defn}
+
+By the assumption that the square
+\begin{equation*}
+  \begin{tikzcd}
+    F_y\times D_y \arrow[r] \arrow[d] & D_y \arrow[d] \\
+    A \arrow[r] & B
+  \end{tikzcd}
+\end{equation*}
+is a pullback square, we see that a $\modal$-locally trivial map is a map that becomes a trivial fibration when it is restricted to a $\modal$-disk. Indeed we obtain a family of equivalences
+\begin{equation*}
+  \alpha : \prd{d:D^\modal(B,y)} F\simeq \fib{f}{\proj 1(d)}.
+\end{equation*}
+by this pullback square. The commutativity of the cube is assumed to ensure that the map $\varphi_y$ is uniquely determined, as we will soon see.
+
+For the following proposition, recall that a family of commuting squares
+\begin{equation*}
+  \begin{tikzcd}
+    A_i \arrow[d,swap,"f_i"] \arrow[r] & X \arrow[d,"g"] \\
+    B_i \arrow[r] & Y
+  \end{tikzcd}
+\end{equation*}
+indexed by $i:I$ is a family of pullback squares if and only if the induced square
+\begin{equation*}
+  \begin{tikzcd}
+    \sm{i:I}A_i \arrow[d] \arrow[r] & X \arrow[d,"g"] \\
+    \sm{i:I}B_i \arrow[r] & Y
+  \end{tikzcd}
+\end{equation*}
+is a pullback square. This follows easily from \cref{thm:pullback}. We also recall that if the left square in a diagram of the form
+\begin{equation*}
+  \begin{tikzcd}
+    A \arrow[d] \arrow[r] & X \arrow[d] \arrow[r] & V \arrow[d] \\
+    B \arrow[r,swap,"h"] & Y \arrow[r] & W
+  \end{tikzcd}
+\end{equation*}
+is a pullback, and the map $h:B\to Y$ is assumed to be surjective, then the outer rectangle is a pullback if and only if the right square is a pullback. Again, this follows from \cref{thm:pullback}.
+
+\begin{prp}
+  Consider a map $f:A\to B$. Then the following are equivalent:
+  \begin{enumerate}
+  \item The map $f$ is $\modal$-\'etale.
+  \item The map $f$ is $\modal$-locally trivial.
+  \end{enumerate}
+\end{prp}
+
+\begin{proof}
+  Suppose that $f$ is $\modal$-\'etale, and consider the cube
+    \begin{equation*}
+    \begin{tikzcd}
+      & F_y\times D_y \arrow[dl] \arrow[d,dashed,"\varphi_y"] \arrow[dr] & \phantom{\modal A}\\
+      F_y \arrow[d] & A \arrow[dl] \arrow[dr] & D_y \arrow[d] \arrow[dl,crossing over] \\
+      \modal A \arrow[dr] & \unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+      & \modal B.
+    \end{tikzcd}
+  \end{equation*}
+  In this cube, the map $\varphi_y$ is the unique map such that the cube commutes, obtained from the assumption that the bottom square is a pullback square. Now observe that the bottom, front-left, front-right, and top squares are all pullback squares. Therefore it follows immediately that the remaining squares are pullback squares. Hence $f$ is $\modal$-locally trivial.
+
+  Now assume that $f$ is $\modal$-locally trivial, and consider the commuting cube
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny]
+      & \sm{y:\modal B}F_y\times D_y \arrow[dl] \arrow[d] \arrow[dr] & \phantom{\modal A} \\
+      \sm{y:\modal B}F_y \arrow[d] & A \arrow[dl] \arrow[dr] & \sm{y:\modal B}D_y \arrow[dl,crossing over] \arrow[d] \\
+      \modal A \arrow[dr] & \sm{y:\modal B}\unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+      & \modal B
+    \end{tikzcd}
+  \end{equation*}
+  The back-right square is a pullback square by the assumption that $f$ is $\modal$-locally trivial. We also note that the vertical maps on the left, right and in the front are equivalences. Moreover, we observe that the top square and the front-left square are pullback squares. Therefore it follows that the rectangle 
+  \begin{equation*}
+    \begin{tikzcd}
+      \sm{y:\modal B} F_y\times D_y \arrow[r] \arrow[d] & A \arrow[d,"f"] \arrow[r] & \modal A \arrow[d,"\modal f"] \\
+      \sm{y:\modal B} \arrow[r] & B \arrow[r] & \modal B 
+    \end{tikzcd}
+  \end{equation*}
+  consisting of the back-right square and the bottom square in the cube, is a pullback square. Since the map $\sm{y:\modal B}D_y\to B$ is an equivalence, we conclude that the square on the right is a pullback square, i.e., that $f$ is $\modal$-\'etale.
+\end{proof}
+
+\begin{cor}
+  Being $\modal$-locally trivial is a property.
+\end{cor}
+
+\begin{proof}
+  Since $f$ is $\modal$-\'etale whenever it is $\modal$-locally trivial, it follows that the type of maps $\varphi_y:F_y\times D_y\to A$ such that the cube commutes is contractible.
+\end{proof}
+
+In the following lemma we show that if $f:A\to B$ is $\modal$-\'etale, then $f$ is $\modal$-locally trivial, and $D^\modal(f,a)$ is an equivalence for every $a:A$. Moreover, we the converse of this claim holds if $\eta_A:A\to\modal(A)$ is surjective.
 
 \begin{lem}\label{lem:etale_char}
   Let $\modal$ be a modality and $f:A\to B$ any map.
   If $f$ is $\modal$-\'etale, then (i) and (ii) below hold.
-  If $\eta_A$ is surjective, then (i) and (ii) are equivalent and imply that f is $\modal$-étale.
+  Moreover, if $\eta_A$ is surjective, then (i) and (ii) are equivalent and imply that f is $\modal$-étale.
 \begin{enumerate}
 \item The commuting square
 \begin{equation*}
-\begin{tikzcd}[column sep=large]
-\sm{x:A}D^\modal(A,x) \arrow[d,swap,"\proj 1"] \arrow[r,"{f\times_{\modal f} f}"] & \sm{y:B}D^\modal(B,y) \arrow[d,"\proj 1"] \\
+\begin{tikzcd}[column sep=10em]
+\sm{x:A}D^\modal(A,x) \arrow[d,swap,"\proj 1"] \arrow[r,"{(x,d)\mapsto(f(x),D^\modal(f,x,d))}"] & \sm{y:B}D^\modal(B,y) \arrow[d,"\proj 1"] \\
 A \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
 is a pullback square.
-\item For all $x:A$ and $y:\equiv f(x)$ there is a map $\varphi_x:\modal(f)^{-1}(\eta(y))\times D(B,y)\to A$ such that
-  \begin{equation*}
-    \begin{tikzcd}[column sep=large]
-      \modal(f)^{-1}(\eta(y))\arrow[r,"\varphi_x"]\arrow[d,swap,"\proj 2"]\times D(B,y)   &  A\arrow[d,"f"] \\
-      D(B,y)\arrow[r,"\proj 1",swap]  & B
-    \end{tikzcd}
-  \end{equation*}
-is a pullback square.
+\item The map $f$ is $\modal$-locally trivial.
 \end{enumerate}
 \end{lem}
 
@@ -776,9 +896,9 @@ Details on the topos ``$\Spaces$'' can be found under ``\ref{subsection:toplogic
     \toprule
     $\modal$ & $\modal$-étale maps  \\
     \midrule
-    $\trunc{n}{\_}$ on $\infty$-groupoids & For $n\geq -1$: maps right orthogonal to $1\to S^{n+1}$ by \cref{thm:rfs_orthogonal}. \\
-    $\trunc{1}{\_}\circ\shape$ on $\Spaces$ & Some notion of covering space for topological stacks \\
-    $\trunc{n}{\_}\circ\shape$ on $\Spaces$ & Generalization of covering space for topological stacks, where the universal cover is a topological stack with an $n$-connected homotopy type \\
+    $\trunc{n}{\blank}$ on $\infty$-groupoids & For $n\geq -1$: maps right orthogonal to $1\to S^{n+1}$ by \cref{thm:rfs_orthogonal}. \\
+    $\trunc{1}{\blank}\circ\shape$ on $\Spaces$ & Some notion of covering space for topological stacks \\
+    $\trunc{n}{\blank}\circ\shape$ on $\Spaces$ & Generalization of covering space for topological stacks, where the universal cover is a topological stack with an $n$-connected homotopy type \\
     $\shape$ on $\Spaces$ & Generalization of covering spaces, where the universal cover is a stack with trivial homotopy type \\
     $\sharp$ on $\Spaces$ & Maps where the domain carries the induced topology \\
     $\Im$ on $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op})$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian $k$-schemes   \\
@@ -825,7 +945,7 @@ Let $\bS^{n}$ denote the topological sphere given by
 \[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
 and $\sphere{n}$ the higher inductive type introduced in \cite{UFP}, which we already used freely throughout the article.
 The Reals ``$\bR$'' in this definition are, as in \cite{ShulmanRealCohesion}, the \emph{Dedekind Reals},
-which are known to coincide with the external sheaf $\mathrm{Hom}_{\mathrm{Top}}(\_,\bR)$ in $\Spaces$ and some similar toposes.
+which are known to coincide with the external sheaf $\mathrm{Hom}_{\mathrm{Top}}(\blank,\bR)$ in $\Spaces$ and some similar toposes.
 
 For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
 It maps topological spaces to their \emph{homotopy type}, so for example $\shape \bS^{1} =\sphere{1}$ 
@@ -856,7 +976,7 @@ But this works only for spaces with trivial higher homotopy groups.
 For the construction of the universal cover of an arbitrary type, this has to be adjusted:
 \[ \widetilde{X}:\equiv \sum_{x\colon X} \trunc{0}{\modalunit_X(x)=\ast}. \]
 Note that this type would again be a fiber of a unit, if we had a modality that takes the shape and 1-truncates it.
-It is not clear to us, if the simple definition $\shape_1:\equiv\trunc{1}{\_}\circ\shape$ works.
+It is not clear to us, if the simple definition $\shape_1:\equiv\trunc{1}{\blank}\circ\shape$ works.
 One way to make it work, would be to show that truncations of discrete types are again discrete types.
 But it is not known by the authors if this is true and it seems to be an open problem
 \footnote{We have to thank one of our anonymous reviewers for pointing out the problem with the simple definition and the solution we use below.}.
@@ -864,7 +984,7 @@ In \cite[Theorem 3.28]{RijkeSpittersShulman} it is shown that for any two access
 there is a modality such that its modal types are the meet of the modal types of the two modalities.
 So we can make the following definition:
 \begin{defn}
-Let the 1-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\_}$ and $\shape$ with $\shape_1$.
+Let the 1-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\blank}$ and $\shape$ with $\shape_1$.
 \end{defn}
 Then, also from \cite{RijkeSpittersShulman} we know, that a type is $\shape_1$-modal if and only if it is discrete and 1-truncated.
 In \cite[Theorem 6.21]{ShulmanRealCohesion} it is shown that crisply discrete types have discrete $n$-truncations.
@@ -951,7 +1071,7 @@ This can roughly be explained by the analogy
 that the elements of the algebras are to be thought of as generalized coordinate functions
 and the nilpotents represent coordinates that are so (infinitesimally) small, that some power is actually zero. 
 
-We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}(A,\_)$ from $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}}$ to the category of sets.
+We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}(A,\blank)$ from $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}}$ to the category of sets.
 These functors represent so called \emph{affine noetherian $k$-schemes} and they form the basic building blocks of spaces called noetherian $k$-schemes
 (see \cite[Chapter II]{hartshorne} for more on schemes).
 We will use not any property of noetherian $k$-schemes here, except that are locally of the form $\Spec(A)$ for some $A\in\fgkAlg$.
@@ -1105,8 +1225,8 @@ The completion yields a functor:
   This means what we need to show is, that for all $B\in\fgkAlg$, the square
   \begin{center}
     \begin{tikzcd}
-      \fgkAlgTop(\hat{A}, \Delta(B))\arrow[r]\arrow[d] & \fgkAlg(k,B)\arrow[d, "\mathrm{pr}_{\sqrt{0}}\circ\_\circ\mathrm{pr}_m"] \\
-      \fgkAlg(A,B)\arrow[r,"\mathrm{pr}_{\sqrt{0}}\circ\_", swap] & \fgkAlg(A,B/\sqrt{0})
+      \fgkAlgTop(\hat{A}, \Delta(B))\arrow[r]\arrow[d] & \fgkAlg(k,B)\arrow[d, "\mathrm{pr}_{\sqrt{0}}\circ\blank\circ\mathrm{pr}_m"] \\
+      \fgkAlg(A,B)\arrow[r,"\mathrm{pr}_{\sqrt{0}}\circ\blank", swap] & \fgkAlg(A,B/\sqrt{0})
     \end{tikzcd}
   \end{center}
   is a pullback square. This amounts to the following universal property of $\hat{A}$:

@@ -1,0 +1,9 @@
+*latexmk
+*.bcf
+*~
+*.aux
+*.pdf
+*.out
+*.log
+*.fls
+*.run.xml

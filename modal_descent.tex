@@ -256,111 +256,35 @@ Note that the $\modal$-disk fits in a fiber sequence
 \end{equation*}
 Moreover, we observe that the $\modal$-disk is connected, since the modal unit $\eta:A\to\modal(A)$ is a connected map. Therefore the $\modal$-disk is also known as the \define{$\modal$-connected cover} of $A$ at $a$.
 
-Note that $D^\modal$ acts functorially: given a map $f:A\to B$ and a point $a:A$, we obtain a map
+We also recall the notion of $\modal$-tangent space from \cite{wellen-thesis}.
+
+\begin{defn}
+  For any type $A$, we define the \define{$\modal$-tangent space}
+  \begin{equation*}
+    T^\modal A \defeq \sm{x:A}D^\modal(A,x).
+  \end{equation*}
+\end{defn}
+
+Note that the $\modal$-tangent space fits in a pullback square
+\begin{equation*}
+  \begin{tikzcd}
+    T^\modal A \arrow[r] \arrow[d] & A \arrow[d] \\
+    A \arrow[r] & \modal A.
+  \end{tikzcd}
+\end{equation*}
+
+Note that $D^\modal$ and $T^\modal$ act functorially: given a map $f:A\to B$ and a point $a:A$, we obtain a map
 \begin{equation*}
   D^\modal(f,a) : D^\modal(A,a)\to D^\modal(B,f(a)).
 \end{equation*}
-
-\begin{defn}
-  Consider a map $f:A\to B$, and write
-  \begin{align*}
-    F_y & \defeq \fib{\modal f}{y} \\
-    D_y & \defeq \fib{\eta}{y}
-  \end{align*}
-  for any $y:\modal B$. We say that $f$ is \define{$\modal$-locally trivial} if for each $y:\modal B$ there is a map $\varphi_y:F_y\times D_y \to A$ such that the cube
-  \begin{equation*}
-    \begin{tikzcd}
-      & F_y\times D_y \arrow[dl] \arrow[d,dashed,"\varphi_y"] \arrow[dr] \\
-      F_y \arrow[d] & A \arrow[dl] \arrow[dr] & D_y \arrow[d] \arrow[dl,crossing over] \\
-      \modal A \arrow[dr] & \unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
-      & \modal B
-    \end{tikzcd}
-  \end{equation*}
-  commutes, and the back-right square is a pullback square.
-\end{defn}
-
-By the assumption that the square
+This family of maps induces a map $T^\modal f:T^\modal A \to T^\modal B$ for which the square
 \begin{equation*}
-  \begin{tikzcd}
-    F_y\times D_y \arrow[r] \arrow[d] & D_y \arrow[d] \\
-    A \arrow[r] & B
+  \begin{tikzcd}[column sep=large]
+    T^\modal A \arrow[r,"T^\modal f"] \arrow[d,swap,"\proj 1"] & T^\modal B \arrow[d,"\proj 1"] \\
+    A \arrow[r,swap,"f"] & B
   \end{tikzcd}
 \end{equation*}
-is a pullback square, we see that a $\modal$-locally trivial map is a map that becomes a trivial fibration when it is restricted to a $\modal$-disk. Indeed we obtain a family of equivalences
-\begin{equation*}
-  \alpha : \prd{d:D^\modal(B,y)} F\simeq \fib{f}{\proj 1(d)}.
-\end{equation*}
-by this pullback square. The commutativity of the cube is assumed to ensure that the map $\varphi_y$ is uniquely determined, as we will soon see.
-
-For the following proposition, recall that a family of commuting squares
-\begin{equation*}
-  \begin{tikzcd}
-    A_i \arrow[d,swap,"f_i"] \arrow[r] & X \arrow[d,"g"] \\
-    B_i \arrow[r] & Y
-  \end{tikzcd}
-\end{equation*}
-indexed by $i:I$ is a family of pullback squares if and only if the induced square
-\begin{equation*}
-  \begin{tikzcd}
-    \sm{i:I}A_i \arrow[d] \arrow[r] & X \arrow[d,"g"] \\
-    \sm{i:I}B_i \arrow[r] & Y
-  \end{tikzcd}
-\end{equation*}
-is a pullback square. This follows easily from \cref{thm:pullback}. We also recall that if the left square in a diagram of the form
-\begin{equation*}
-  \begin{tikzcd}
-    A \arrow[d] \arrow[r] & X \arrow[d] \arrow[r] & V \arrow[d] \\
-    B \arrow[r,swap,"h"] & Y \arrow[r] & W
-  \end{tikzcd}
-\end{equation*}
-is a pullback, and the map $h:B\to Y$ is assumed to be surjective, then the outer rectangle is a pullback if and only if the right square is a pullback. Again, this follows from \cref{thm:pullback}.
-
-\begin{prp}
-  Consider a map $f:A\to B$. Then the following are equivalent:
-  \begin{enumerate}
-  \item The map $f$ is $\modal$-\'etale.
-  \item The map $f$ is $\modal$-locally trivial.
-  \end{enumerate}
-\end{prp}
-
-\begin{proof}
-  Suppose that $f$ is $\modal$-\'etale, and consider the cube
-    \begin{equation*}
-    \begin{tikzcd}
-      & F_y\times D_y \arrow[dl] \arrow[d,dashed,"\varphi_y"] \arrow[dr] & \phantom{\modal A}\\
-      F_y \arrow[d] & A \arrow[dl] \arrow[dr] & D_y \arrow[d] \arrow[dl,crossing over] \\
-      \modal A \arrow[dr] & \unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
-      & \modal B.
-    \end{tikzcd}
-  \end{equation*}
-  In this cube, the map $\varphi_y$ is the unique map such that the cube commutes, obtained from the assumption that the bottom square is a pullback square. Now observe that the bottom, front-left, front-right, and top squares are all pullback squares. Therefore it follows immediately that the remaining squares are pullback squares. Hence $f$ is $\modal$-locally trivial.
-
-  Now assume that $f$ is $\modal$-locally trivial, and consider the commuting cube
-  \begin{equation*}
-    \begin{tikzcd}[column sep=tiny]
-      & \sm{y:\modal B}F_y\times D_y \arrow[dl] \arrow[d] \arrow[dr] & \phantom{\modal A} \\
-      \sm{y:\modal B}F_y \arrow[d] & A \arrow[dl] \arrow[dr] & \sm{y:\modal B}D_y \arrow[dl,crossing over] \arrow[d] \\
-      \modal A \arrow[dr] & \sm{y:\modal B}\unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
-      & \modal B
-    \end{tikzcd}
-  \end{equation*}
-  The back-right square is a pullback square by the assumption that $f$ is $\modal$-locally trivial. We also note that the vertical maps on the left, right and in the front are equivalences. Moreover, we observe that the top square and the front-left square are pullback squares. Therefore it follows that the rectangle 
-  \begin{equation*}
-    \begin{tikzcd}
-      \sm{y:\modal B} F_y\times D_y \arrow[r] \arrow[d] & A \arrow[d,"f"] \arrow[r] & \modal A \arrow[d,"\modal f"] \\
-      \sm{y:\modal B} \arrow[r] & B \arrow[r] & \modal B 
-    \end{tikzcd}
-  \end{equation*}
-  consisting of the back-right square and the bottom square in the cube, is a pullback square. Since the map $\sm{y:\modal B}D_y\to B$ is an equivalence, we conclude that the square on the right is a pullback square, i.e., that $f$ is $\modal$-\'etale.
-\end{proof}
-
-\begin{cor}
-  Being $\modal$-locally trivial is a property.
-\end{cor}
-
-\begin{proof}
-  Since $f$ is $\modal$-\'etale whenever it is $\modal$-locally trivial, it follows that the type of maps $\varphi_y:F_y\times D_y\to A$ such that the cube commutes is contractible.
-\end{proof}
+commutes.
 
 In the following lemma we show that if $f:A\to B$ is $\modal$-\'etale, then $f$ is $\modal$-locally trivial, and $D^\modal(f,a)$ is an equivalence for every $a:A$. Moreover, we the converse of this claim holds if $\eta_A:A\to\modal(A)$ is surjective.
 
@@ -582,6 +506,113 @@ is a pullback square.
     \end{tikzcd}
   \end{equation*}
   commutes, and has equivalences on both the left and right sides. Moreover, the bottom map is an equivalence by the suspension-loop space adjunction, and the fact that $\mathsf{Map}_\ast(\sphere{n},\loopspace{f,x})$ is an equivalence. We conclude that the top map is an equivalence, which completes the proof.
+\end{proof}
+
+\section{Locally trivial maps}
+
+  In this section we consider a map $f:A\to B$, and write
+  \begin{align*}
+    F_y & \defeq \fib{\modal f}{y} \\
+    D_y & \defeq \fib{\eta}{y}
+  \end{align*}
+  for any $y:\modal B$. The type $D_y$ can be thought of as a $\modal$-disk, except that it is not centered at a point in $B$.
+
+  Recall that $f$ can be seen as a fibration, of which the fiber at $b:B$ is the type $\fib{f}{b}$. We will show that the condition of being $\modal$-\'etale is related to the condition that the fibration $f$ is trivial on the types $D_y$. We define this condition more precisely as follows.
+  
+\begin{defn}
+ We say that $f$ is \define{$\modal$-locally trivial} if for each $y:\modal B$ there is a map $\varphi_y:F_y\times D_y \to A$ such that the cube
+  \begin{equation*}
+    \begin{tikzcd}
+      & F_y\times D_y \arrow[dl,swap,"\proj 1"] \arrow[d,dashed,"\varphi_y"] \arrow[dr,"\proj 2"] \\
+      F_y \arrow[d] & A \arrow[dl] \arrow[dr] & D_y \arrow[d] \arrow[dl,crossing over] \\
+      \modal A \arrow[dr] & \unit \arrow[from=ul,crossing over] \arrow[d,"y"] & B \arrow[dl] \\
+      & \modal B
+    \end{tikzcd}
+  \end{equation*}
+  commutes, and the back-right square is a pullback square.
+\end{defn}
+
+By the assumption that the square
+\begin{equation*}
+  \begin{tikzcd}
+    F_y\times D_y \arrow[r,"\proj 2"] \arrow[d,swap,"\varphi_y"] & D_y \arrow[d,"i"] \\
+    A \arrow[r,swap,"f"] & B
+  \end{tikzcd}
+\end{equation*}
+is a pullback square, we see that a $\modal$-locally trivial map is a map that becomes a trivial fibration when it is restricted to a $\modal$-disk. Indeed, by this pullback square we obtain a family of equivalences
+\begin{equation*}
+  F_y \simeq \fib{f}{i(z)}
+\end{equation*}
+indexed by $z:D_y$, where $i:D_y\to B$ is the fiber inclusion of the (unpointed) fiber sequence $D_y\hookrightarrow B\twoheadrightarrow\modal B$. The commutativity of the cube is assumed to ensure that the map $\varphi_y$ is uniquely determined, as we will soon see.
+
+For the following proposition, recall that a family of commuting squares
+\begin{equation*}
+  \begin{tikzcd}
+    A_i \arrow[d,swap,"f_i"] \arrow[r] & X \arrow[d,"g"] \\
+    B_i \arrow[r] & Y
+  \end{tikzcd}
+\end{equation*}
+indexed by $i:I$ is a family of pullback squares if and only if the induced square
+\begin{equation*}
+  \begin{tikzcd}
+    \sm{i:I}A_i \arrow[d] \arrow[r] & X \arrow[d,"g"] \\
+    \sm{i:I}B_i \arrow[r] & Y
+  \end{tikzcd}
+\end{equation*}
+is a pullback square. This follows easily from \cref{thm:pullback}. We also recall that if the left square in a diagram of the form
+\begin{equation*}
+  \begin{tikzcd}
+    A \arrow[d] \arrow[r] & X \arrow[d] \arrow[r] & V \arrow[d] \\
+    B \arrow[r,swap,"h"] & Y \arrow[r] & W
+  \end{tikzcd}
+\end{equation*}
+is a pullback, and if the map $h:B\to Y$ is assumed to be surjective, then the outer rectangle is a pullback if and only if the right square is a pullback. Again, this follows from \cref{thm:pullback}.
+
+\begin{prp}
+  The following are equivalent:
+  \begin{enumerate}
+  \item The map $f$ is $\modal$-\'etale.
+  \item The map $f$ is $\modal$-locally trivial.
+  \end{enumerate}
+\end{prp}
+
+\begin{proof}
+  Suppose that $f$ is $\modal$-\'etale, and consider the cube
+    \begin{equation*}
+    \begin{tikzcd}
+      & F_y\times D_y \arrow[dl] \arrow[d,dashed,"\varphi_y"] \arrow[dr] & \phantom{\modal A}\\
+      F_y \arrow[d] & A \arrow[dl] \arrow[dr] & D_y \arrow[d] \arrow[dl,crossing over] \\
+      \modal A \arrow[dr] & \unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+      & \modal B.
+    \end{tikzcd}
+  \end{equation*}
+  In this cube, the map $\varphi_y$ is the unique map such that the cube commutes, obtained from the assumption that the bottom square is a pullback square. Now observe that the bottom, front-left, front-right, and top squares are all pullback squares. Therefore it follows immediately that the remaining squares are pullback squares. Hence $f$ is $\modal$-locally trivial.
+
+  Now assume that $f$ is $\modal$-locally trivial, and consider the commuting cube
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny]
+      & \sm{y:\modal B}F_y\times D_y \arrow[dl] \arrow[d] \arrow[dr] & \phantom{\modal A} \\
+      \sm{y:\modal B}F_y \arrow[d] & A \arrow[dl] \arrow[dr] & \sm{y:\modal B}D_y \arrow[dl,crossing over] \arrow[d] \\
+      \modal A \arrow[dr] & \sm{y:\modal B}\unit \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+      & \modal B
+    \end{tikzcd}
+  \end{equation*}
+  The back-right square is a pullback square by the assumption that $f$ is $\modal$-locally trivial. We also note that the vertical maps on the left, right and in the front are equivalences. Moreover, we observe that the top square and the front-left square are pullback squares. Therefore it follows that the rectangle 
+  \begin{equation*}
+    \begin{tikzcd}
+      \sm{y:\modal B} F_y\times D_y \arrow[r] \arrow[d] & A \arrow[d,"f"] \arrow[r] & \modal A \arrow[d,"\modal f"] \\
+      \sm{y:\modal B}D_y \arrow[r] & B \arrow[r] & \modal B 
+    \end{tikzcd}
+  \end{equation*}
+  consisting of the back-right square and the bottom square in the cube, is a pullback square. Since the map $\sm{y:\modal B}D_y\to B$ is an equivalence, we conclude that the square on the right is a pullback square, i.e., that $f$ is $\modal$-\'etale.
+\end{proof}
+
+\begin{cor}
+  Being $\modal$-locally trivial is a property.
+\end{cor}
+
+\begin{proof}
+  Since a map is $\modal$-\'etale whenever it is $\modal$-locally trivial, it follows that the type of maps $\varphi_y:F_y\times D_y\to A$ such that the cube commutes is contractible.
 \end{proof}
 
 \section{Modal descent}
@@ -1185,7 +1216,7 @@ We use the fact, that the noetherian $k$-schemes are also sheaves in the Zariski
 
 For this special case, the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char} becomes:
 
-Let $X$ and $Y$ be notherian $k$-schemes such that the natural map $X\to \Im X$ is an epimorphism,
+Let $X$ and $Y$ be Noetherian $k$-schemes such that the natural map $X\to \Im X$ is an epimorphism,
 then $f:X\to Y$ is formally étale if and only if it induces an isomorphism $D^\Im(X,x)\to D^\Im(Y,f(x))$
 \footnote{We will make precise what we mean by $D^\Im$ in the next remark. } for all $x\in X$.
 

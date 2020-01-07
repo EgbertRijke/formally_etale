@@ -875,12 +875,77 @@ We end this section with an observation that we learned in a discussion with Ane
   By the modal descent theorem (\cref{thm:modal_descent}) it follows that the maps $\eta^\ast$ are equivalences. Furthermore, the map $\modal f$ is assumed to be an equivalence. Therefore it follows that $f^\ast$ is an equivalence.
 \end{proof}
 
-\begin{thm}
-  Suppose $(\mathcal{L},\mathcal{R})$ is an orthogonal factorization system such that $\mathcal{R}$ descends along $\mathcal{L}$, in the sense that for any $f:A\to B$ in $\mathcal{L}$, the operation
+\section{Characterizing reflective factorization systems}
+
+In this section we will describe conditions on an orthogonal factorization system $(\mathcal{L},\mathcal{R})$ that are necessary and sufficient to show that $(\mathcal{L},\mathcal{R})$ is the reflective factorization system of a modality. We begin with two propositions about the reflective factorization system of a modality, where we obtain these conditions.
+
+\begin{prp}\label{prop:LR-cartesian}
+  Any commuting square of the form
   \begin{equation*}
-    f^\ast : \mathcal{R}/B \to \mathcal{R}/A
+    \begin{tikzcd}
+      E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
+      B' \arrow[r,swap,"f"] & B
+    \end{tikzcd}
   \end{equation*}
-  is an equivalence. Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the reflective factorization system of a modality.
+  in which $p$ and $p'$ are $\modal$-\'etale and $f$ and $g$ are $\modal$-equivalences, is a pullback square.
+\end{prp}
+
+\begin{proof}
+  Consider the cube
+  \begin{equation*}
+    \begin{tikzcd}
+      & E' \arrow[dl] \arrow[d] \arrow[dr] & \phantom{\modal E'} \\
+      \modal E' \arrow[d] & B' \arrow[dl] \arrow[dr] & E \arrow[d] \arrow[dl,crossing over] \\
+      \modal B' \arrow[dr] & \modal E \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+      & \modal B & \phantom{\modal B'}
+    \end{tikzcd}
+  \end{equation*}
+  In this cube the back-left square and the front-right square are pullback squares by the assumption that $p'$ and $p$ are $\modal$-\'etale. Moreover, the maps $\modal B'\to\modal B$ and $\modal E'\to\modal E$ are equivalences by the assumption that $f$ and $g$ are $\modal$-equivalences. Therefore it follows that the front-left square is a pullback square. We conclude that the back-right square is a pullback square.
+\end{proof}
+
+\begin{prp}\label{prop:R-stable}
+  Suppose $p_i:E_i\to B_i$ is a $\modal$-\'etale map for each $i:I$, where $I$ is assumed to be a $\modal$-modal type. Then the induced map on total spaces
+  \begin{equation*}
+    \total{p} : \sm{i:I}E_i\to \sm{i:I}B_i
+  \end{equation*}
+  is also $\modal$-\'etale.
+\end{prp}
+
+\begin{proof}
+  Since pullback squares are preserved by $\Sigma$, it follows from our assumption that the square
+  \begin{equation*}
+    \begin{tikzcd}
+      \sm{i:I}E_i \arrow[r] \arrow[d] & \sm{i:I}\modal E_i \arrow[d] \\
+      \sm{i:I}B_i \arrow[r] & \sm{i:I}\modal B_i
+    \end{tikzcd}
+  \end{equation*}
+  is a pullback square. The vertical map on the right is a map between $\modal$-modal types by the assumption that $I$ is modal. Therefore it follows that the map on the left is $\modal$-\'etale.
+\end{proof}
+
+Now we show that if an orthogonal factorization system satisfies the conditions described in \cref{prop:LR-cartesian,prop:R-stable}
+
+\begin{thm}\label{thm:rfs}
+  Suppose $(\mathcal{L},\mathcal{R})$ is an orthogonal factorization system satisfying the following two properties:
+  \begin{enumerate}
+  \item Any commuting square of the form
+    \begin{equation*}
+      \begin{tikzcd}
+        E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
+        B' \arrow[r,swap,"f"] & B
+      \end{tikzcd}
+    \end{equation*}
+    in which $p',p\in\mathcal{R}$ and $f,g\in\mathcal{L}$, is a pullback square.
+  \item For any family of $\mathcal{R}$-maps
+    \begin{equation*}
+      p_i:E_i\to B_i
+    \end{equation*}
+    indexed by a type $I$ such that the terminal projection $I\to\unit$ is in $\mathcal{R}$, the induced map on total spaces
+    \begin{equation*}
+      \total{p}:\sm{i:I}E_i\to\sm{i:I}B_i
+    \end{equation*}
+    is also in $\mathcal{R}$. 
+  \end{enumerate}
+  Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the reflective factorization system of a modality.
 \end{thm}
 
 \begin{proof}
@@ -901,7 +966,28 @@ We end this section with an observation that we learned in a discussion with Ane
       \unit^{\modal X} \arrow[r] & \unit^X
     \end{tikzcd}
   \end{equation*}
-  is a pullback square if $Y\to\unit$ is in $\mathcal{R}$. 
+  is a pullback square if $Y\to\unit$ is in $\mathcal{R}$.
+
+  Next, we show that the reflective subuniverse $\modal$ is $\Sigma$-closed, which is one of the equivalent conditions on a reflective subuniverse to be a modality. Consider a type $X$ such that the terminal projection $X\to\unit$ is in $\mathcal{R}$, and consider a type family $P$ over $X$ such that the terminal projection $P(x) \to \unit$ is in $\mathcal{R}$ for each $x:X$. Then it follows by assumption (ii) that the map
+  \begin{equation*}
+    \Big(\sm{x:X}P(x)\Big)\to\Big(\sm{x:X}\unit\Big)
+  \end{equation*}
+  is in $\mathcal{R}$. Thus we see that the composite
+  \begin{equation*}
+    \begin{tikzcd}
+      \sm{x:X}P(x) \arrow[r] & X \arrow[r] & \unit
+    \end{tikzcd}
+  \end{equation*}
+  is in $\mathcal{R}$, which shows that the reflective subuniverse $\modal$ is $\Sigma$-closed. We conclude that it is a modality.
+
+  It remains to show that a map is in $\mathcal{R}$ if and only if it is $\modal$-\'etale. To see this, consider the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      E \arrow[d,swap,"p"] \arrow[r] & \modal E \arrow[d,"\modal p"] & \unit \arrow[d] \\
+      B \arrow[r] & \modal B \arrow[r] & \unit,
+    \end{tikzcd}
+  \end{equation*}
+  where $p$ is assumed to be in $\mathcal{R}$. The top and bottom maps in the left square are $\mathcal{L}$-maps. Moreover, all the maps in the right square are $\mathcal{R}$-maps. Hence the left square is a pullback by assumption (i).
 \end{proof}
 
 \section{Conjectural Applications in Geometry}

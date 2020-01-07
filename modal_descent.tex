@@ -69,8 +69,8 @@ The application in \cref{subsection:topological stacks} suggests a new notion of
 one interpretation of the modal descent theorem (\cref{thm:modal_descent}) is an extension of the classical fundamental theorem of the theory of covering spaces,
 relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
 A version of modal descent for the fundamental infinity groupoid functor of a cohesive $(\infty,1)$-topos was proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
-The usual covering theory is recovered by restricting to maps between 0-types and setting the homotopy level to 1,
-since it is concerned with the 1-truncated homotopy type of a topological space.
+The usual covering theory is recovered by restricting to maps between $0$-types and setting the homotopy level to 1,
+since it is concerned with the $1$-truncated homotopy type of a topological space.
 This expands on an idea of the first author from \cite{wellen-oxford-abstract}.
 We also give characterizations and descriptions of formally étale maps in the sense of Algebraic Geometry.
   
@@ -188,7 +188,7 @@ There is an operation $\modal:\UU\to\UU$ associated to any stable orthogonal fac
 \begin{equation*}
 \modal X \defeq \mathsf{im}_{(\mathcal{L},\mathcal{R})}(X\to \unit).
 \end{equation*}
-The left factor $X \to \modal X$ of this factorization is called the \define{modal unit} and is denoted by $\eta:X\to \modal X$. One can show that for any family $P:\modal X \to \UU$ of modal types, the pre-composition map
+The left factor $X \to \modal X$ of this factorization is called the \define{modal unit} and is denoted by $\eta:X\to \modal X$. One can show that for any family $P:\modal X \to \UU$ of modal types, the precomposition map
 \begin{equation*}
 \blank\circ \eta : \Big(\prd{x:\modal X}P(x)\Big)\to \Big(\prd{x:X}P(\eta(x))\Big)
 \end{equation*}
@@ -532,7 +532,7 @@ By the assumption that the square
     A \arrow[r,swap,"f"] & B
   \end{tikzcd}
 \end{equation*}
-is a pullback square, we see that a $\modal$-locally trivial map is a map that becomes a trivial fibration when it is restricted to a $\modal$-disk. Indeed, with \cref{thm:pullback} we obtain by this pullback square a family of equivalences
+is a pullback square, we see that a $\modal$-locally trivial map is a map that becomes a trivial fibration when it is restricted to a $\modal$-disk. Indeed, with \cref{thm:pullback} we obtain from this pullback square a family of equivalences
 \begin{equation*}
   F_y \simeq \fib{f}{i(z)}
 \end{equation*}
@@ -589,51 +589,42 @@ indexed by $z:D_y$, where $i:D_y\to B$ is the fiber inclusion of the (unpointed)
 
 The following theorem can be seen as a `modal flattening lemma'.
 
-\begin{thm}\label{thm:etale_flattening}
-Consider a commuting square
+\begin{prp}\label{thm:etale_flattening}
+Consider a pullback square
 \begin{equation*}
 \begin{tikzcd}
 E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
 B' \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
-with $H:f\circ p'\htpy p\circ g$, where $E$ and $B$ are modal types. Then the following are equivalent:
-\begin{enumerate}
-\item The square
+in which we assume that $E$ and $B$ are modal types. Then the square
   \begin{equation*}
     \begin{tikzcd}
       \modal E' \arrow[r,"\tilde{g}"] \arrow[d,swap,"{\modal p'}"] & E \arrow[d,"p"] \\
-      \modal B \arrow[r,swap,"\tilde{f}"] & B
+      \modal B \arrow[r,swap,"\tilde{f}"] & B,
     \end{tikzcd}
   \end{equation*}
-  is a pullback square, where $\tilde{f}$ and $\tilde{g}$ are the unique extensions of $f$ and $g$ along the modal units of $B'$ and $E'$, respectively.
-\item The square in \cref{thm:etale_flattening} is a pullback square.
-\end{enumerate}
-\end{thm}
+  where $\tilde{f}$ and $\tilde{g}$ are the unique extensions of $f$ and $g$ along the modal units of $B'$ and $E'$, is also a pullback square.
+\end{prp}
 
 \begin{proof}
-  The forward direction is immediate by the pasting lemma for pullbacks, since we have the rectangle
-  \begin{equation*}
-    \begin{tikzcd}
-      E' \arrow[r] \arrow[d] & \modal E' \arrow[r] \arrow[d] & E \arrow[d] \\
-      B' \arrow[r] & \modal B' \arrow[r] & B
-    \end{tikzcd}
-  \end{equation*}
-  of commuting squares.
-For the converse, consider the diagram
+Consider the diagram
 \begin{equation*}
 \begin{tikzcd}
-E' \arrow[r,"{\mathsf{gap}(p',g,H)}"] \arrow[d,swap,"{p'}"] &[2.5em] \modal B'\times_{B} E \arrow[r,"\proj 2"] \arrow[d,swap,"\proj 1"] & E \arrow[d,"p"] \\
+E' \arrow[r,dashed] \arrow[d,swap,"{p'}"] & \modal B'\times_{B} E \arrow[r,"\proj 2"] \arrow[d,swap,"\proj 1"] & E \arrow[d,"p"] \\
 B' \arrow[r,swap,"\modalunit"] & \modal B' \arrow[r,swap,"\tilde{f}"] & B
 \end{tikzcd}
 \end{equation*}
-In this diagram, the square on the right is a pullback by definition, and the outer rectangle is a pullback by assumption, so the square on the left is also a pullback. Therefore the gap map $E'\to \modal B'\times_B E$ is $\modal$-connected. Moreover, since the modal types are closed under pullbacks it follows that $\modal B'\times_B E$ is modal, and therefore it follows that $\proj 2:\modal B'\times_B E\to E$ is a modal map. Therefore the composite
+In this diagram, the square on the right is a pullback by definition, and the outer rectangle is a pullback by assumption, so the square on the left is also a pullback. Therefore the map $E'\to \modal B'\times_B E$ is $\modal$-connected. Moreover, since the modal types are closed under pullbacks it follows that $\modal B'\times_B E$ is modal. Therefore we obtain a commuting diagram of the form
 \begin{equation*}
-\begin{tikzcd}
-E' \arrow[r,"{\mathsf{gap}(p',g,H)}"] &[2.5em] \modal B'\times_{B} E \arrow[r,"\proj 2"] & E 
-\end{tikzcd}
+  \begin{tikzcd}[row sep=small]
+    \modal E' \arrow[dd] \arrow[rr] \arrow[dr] & & \modal B'\times_B E \arrow[dd] \arrow[dl] \\
+    \phantom{\modal B'\times_B E} & E \\
+    \modal B' \arrow[rr] \arrow[dr] & & \modal B' \arrow[dl] \\
+    & B \arrow[from=uu,crossing over]
+  \end{tikzcd}
 \end{equation*}
-factors $g$ as a $\modal$-connected map followed by a $\modal$-modal map. Of course, another such factorization is the composite $g\htpy \tilde{g}\circ\modalunit$. Since factorizations are unique, the claim follows.
+in which the horizontal maps on the left are equivalences. Since the square on the right side is a pullback square, the claim follows.
 \end{proof}
 
 Using modal flattening we establish partial left exactness of the modality.
@@ -642,55 +633,35 @@ Using modal flattening we establish partial left exactness of the modality.
 Consider a pullback square
 \begin{equation*}
 \begin{tikzcd}
-A' \arrow[d,swap,"{f'}"] \arrow[r] & A \arrow[d,"f"] \\
+E' \arrow[d,swap,"{p'}"] \arrow[r] & E \arrow[d,"p"] \\
 B' \arrow[r] & B,
 \end{tikzcd}
 \end{equation*}
-where $f$ is assumed to be $\modal$-\'etale. Then the square
+where $p$ is assumed to be $\modal$-\'etale. We make two claims:
+\begin{enumerate}
+\item The square
 \begin{equation*}
 \begin{tikzcd}
-\modal A' \arrow[d,swap,"{\modal f'}"] \arrow[r] & \modal A \arrow[d,"\modal f"] \\
+\modal E' \arrow[d,swap,"{\modal p'}"] \arrow[r] & \modal E \arrow[d,"\modal p"] \\
 \modal B' \arrow[r] & \modal B,
 \end{tikzcd}
 \end{equation*}
 is again a pullback square.
+\item The map $p'$ is $\modal$-\'etale.
+\end{enumerate}
 \end{cor}
 
 \begin{proof}
-Since $f$ is assumed to be $\modal$-\'etale, the square on the right in the diagram
-\begin{equation*}
-\begin{tikzcd}
-A' \arrow[r] \arrow[d,swap,"{f'}"] & A \arrow[r] \arrow[d,swap,"f"] & \modal A \arrow[d,"\modal f"] \\
-B' \arrow[r] & B \arrow[r] & \modal B
-\end{tikzcd}
-\end{equation*}
-is a pullback square. Therefore the outer rectangle is a pullback square by the pullback pasting lemma. Now the claim follows from modal flattening \cref{thm:etale_flattening}, using the outer rectangle.
-\end{proof}
-
-\begin{cor}\label{cor:etale_pb}
-Consider a pullback square
-\begin{equation*}
-\begin{tikzcd}
-E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
-B' \arrow[r,swap,"f"] & B
-\end{tikzcd}
-\end{equation*} 
-and suppose that $p:E\to B$ is $\modal$-\'etale. Then $p':E'\to B'$ is $\modal$-\'etale.
-\end{cor}
-
-\begin{proof}
-Consider the commuting cube
-\begin{equation*}
-\begin{tikzcd}
-&[-.5ex] E' \arrow[dr] \arrow[d] \arrow[dl] \\
-\modal E' \arrow[d] & B' \arrow[dl] \arrow[dr] & E \arrow[dl,crossing over] \arrow[d] \\
-\modal B' \arrow[dr] & \modal E \arrow[d] \arrow[from=ul,crossing over] & B \arrow[dl] \\
-& \modal B.
-\end{tikzcd}
-\end{equation*}
-The vertical squares on the back right and front right are pullback squares by assumption.
-Then it follows from \cref{cor:etale_lex} that the vertical square on the front left is a pullback square.
-Therefore the square on the back left is a pullback square by the pullback pasting property.
+  Consider the commuting cube
+  \begin{equation*}
+    \begin{tikzcd}
+      &[-.5ex] E' \arrow[dr] \arrow[d] \arrow[dl] \\
+      \modal E' \arrow[d] & B' \arrow[dl] \arrow[dr] & E \arrow[dl,crossing over] \arrow[d] \\
+      \modal B' \arrow[dr] & \modal E \arrow[d] \arrow[from=ul,crossing over] & B \arrow[dl] \\
+      & \modal B.
+    \end{tikzcd}
+  \end{equation*}
+  Since $f$ is assumed to be $\modal$-\'etale, the front-right square is a pullback square. Moreover, the back-right square is also a pullback square by assumption. Therefore the front-left square is a pullback by \cref{thm:etale_flattening}, so the first claim follows. Moreover, we conclude that the back-left square is a pullback, so the second claim follows.
 \end{proof}
 
 \begin{defn}
@@ -708,7 +679,7 @@ X\times_{\modal X}A \arrow[d,swap,"\proj 1"] \arrow[r,"\proj 2"] & A \arrow[d,"f
 X \arrow[r,swap,"\modalunit"] & \modal X.
 \end{tikzcd}
 \end{equation*}
-Then the map $\proj 1:X\times_{\modal X}A\to X$ is $\modal$-\'etale by \cref{lem:etale_modal,cor:etale_pb}.
+Then the map $\proj 1:X\times_{\modal X}A\to X$ is $\modal$-\'etale by \cref{lem:etale_modal,cor:etale_lex}.
 \end{constr}
 
 The following is a descent theorem for $\modal$-\'etale maps.
@@ -847,7 +818,7 @@ A \arrow[ddr,bend right=15,swap,"f"] \arrow[drr,bend left=15,"\modalunit"] \arro
 & B \arrow[r,swap,"\modalunit"] & \modal B.
 \end{tikzcd}
 \end{equation*}
-Then $\proj 1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale_pb}. Furthermore, the map $\proj 2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
+Then $\proj 1:B\times_{\modal B} \modal A\to B$ is a pullback of a map between modal types, so it is $\modal$-\'etale by \cref{cor:etale_lex}. Furthermore, the map $\proj 2:B\times_{\modal B}\modal A\to \modal A$ is a pullback of a $\modal$-connected map, so it is $\modal$-connected. It follows from \cref{cor:mequiv_mconn} that it is a $\modal$-equivalence. Since the modal unit $\modalunit :A\to\modal A$ is also $\modal$-connected, and therefore a $\modal$-equivalence, we obtain by the 3-for-2 property of $\modal$-equivalences established in \cref{lem:3for2_mequiv} that the gap map is also a $\modal$-equivalence.
 \end{proof}
 
 We use the notion of orthogonal factorization systems of \cite{RijkeSpittersShulman}.
@@ -939,7 +910,7 @@ are $0$-types in Real Cohesion.
 
 This can lead to confusion with the common explanation for the identity types in Homotopy Type Theory,
 as paths in a space, since that would give us \emph{two different} notion of path. 
-On the one hand, there are topological paths, i.e. maps $\gamma:\bR\to X$ from the 0-type $\bR$ representing the real line with the euclidean topology.
+On the one hand, there are topological paths, i.e. maps $\gamma:\bR\to X$ from the $0$-type $\bR$ representing the real line with the euclidean topology.
 And in the common Homotopy Type Theory terminology, the elements of identity types $x=_A y$ in some type $A$ are also called path but are very different from the topological paths. To avoid confusion, we will follow Mike Shulman's terminology from \cite{ShulmanRealCohesion} and refer to topological paths as paths and to elements of identity types as equalities in the following.
 
 Let $\bS^{n}$ denote the topological sphere given by
@@ -952,7 +923,7 @@ For the present work, the shape modality ``$\shape$'' from Real Cohesion is of s
 It maps topological spaces to their \emph{homotopy type}, so for example $\shape \bS^{1} =\sphere{1}$ 
 and $\shape \bR =1$.
 
-In a 1-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
+In a $1$-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
 The $\shape$ is a higher analog of this functor that extracts homotopical information on all h-levels, not just level 0.
 So if $X$ represents a topological space with a point $\ast: X$, 
 then $\shape X$ is also pointed and the n-th homotopy group of $X$ as a topological space 
@@ -976,7 +947,7 @@ turns out to be the universal cover of $\bS^{1}$.
 But this works only for spaces with trivial higher homotopy groups. 
 For the construction of the universal cover of an arbitrary type, this has to be adjusted:
 \[ \widetilde{X}:\equiv \sum_{x\colon X} \trunc{0}{\modalunit_X(x)=\ast}. \]
-Note that this type would again be a fiber of a unit, if we had a modality that takes the shape and 1-truncates it.
+Note that this type would again be a fiber of a unit, if we had a modality that takes the shape and $1$-truncates it.
 It is not clear to us, if the simple definition $\shape_1:\equiv\trunc{1}{\blank}\circ\shape$ works.
 One way to make it work, would be to show that truncations of discrete types are again discrete types.
 But it is not known by the authors if this is true and it seems to be an open problem
@@ -985,9 +956,9 @@ In \cite[Theorem 3.28]{RijkeSpittersShulman} it is shown that for any two access
 there is a modality such that its modal types are the meet of the modal types of the two modalities.
 So we can make the following definition:
 \begin{defn}
-Let the 1-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\blank}$ and $\shape$ with $\shape_1$.
+Let the $1$-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\blank}$ and $\shape$ with $\shape_1$.
 \end{defn}
-Then, also from \cite{RijkeSpittersShulman} we know, that a type is $\shape_1$-modal if and only if it is discrete and 1-truncated.
+Then, also from \cite{RijkeSpittersShulman} we know, that a type is $\shape_1$-modal if and only if it is discrete and $1$-truncated.
 In \cite[Theorem 6.21]{ShulmanRealCohesion} it is shown that crisply discrete types have discrete $n$-truncations.
 So for crisp types $X$, we have
 \[ \trunc{1}{\shape X} \simeq \shape_1 X\text{.} \]
@@ -1015,7 +986,7 @@ The following basic observations give some justification to those names:
 \end{rmk}
 \begin{proof}
   \begin{enumerate}
-  \item By lemma \ref{cor:etale_pb}. 
+  \item By lemma \ref{cor:etale_lex}. 
   \item Applying \ref{thm:modal_descent} to $1\to \shape_1 X$ yields this result directly.
   \item This is the universal property of the pullback square from the definition of $\modal$-étale maps.
   \item This is an application of (iii).
@@ -1023,7 +994,7 @@ The following basic observations give some justification to those names:
 \end{proof}
 
 The construction of the covering spaces corresponding to a subgroup $H\subseteq \pi_1(X)$ for a path connected $X$,
-can be done by applying the delooping construction of \cite{LicataFinster} to the inclusion map of $H$ to get a map $Bi:BH\to\shape_1(X)$ and pulling $Bi$ back along $\modalunit$. In other words, we use that any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete 0-type
+can be done by applying the delooping construction of \cite{LicataFinster} to the inclusion map of $H$ to get a map $Bi:BH\to\shape_1(X)$ and pulling $Bi$ back along $\modalunit$. In other words, we use that any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete $0$-type
 \footnote{This means we use the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} 
 and \cite[Section 7.1]{ulrik-egbert-floris-groups}}
 and therefore a map $BH\to \shape_1X$, with discrete $BH$.
@@ -1035,13 +1006,13 @@ we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
   \begin{enumerate}
   \item Let $X$ be a type. Then the type of $\shape_1$-étale maps into $X$ and the type of $\shape_1$-modal dependent types over $\shape_1 X$ are equivalent.
   \item In particular the type of covering spaces and the type of maps $\shape_1X\to \mathcal U_{\shape_0}$ are equivalent.
-    If $X$ is pointed and $\shape_1 X$ connected, $\shape_1X\to \mathcal U_{\shape_0}$ is the type of actions of the fundamental group $\Omega(\shape_1 X)$ on discrete 0-types.
+    If $X$ is pointed and $\shape_1 X$ connected, $\shape_1X\to \mathcal U_{\shape_0}$ is the type of actions of the fundamental group $\Omega(\shape_1 X)$ on discrete $0$-types.
   \end{enumerate}
 \end{thm}
 \begin{proof}
   \begin{enumerate}
   \item This is just lemma \ref{thm:modal_descent} applied to $\shape_1$.
-  \item By pullback pasting and surjectivity of $\modalunit_X$, fibers of 1-covering spaces over $X$ are always equivalent to values of the corresponding morphism $\shape_1 X\to \mathcal U_{\shape_1}$ and vice versa.
+  \item By pullback pasting and surjectivity of $\modalunit_X$, fibers of $1$-covering spaces over $X$ are always equivalent to values of the corresponding morphism $\shape_1 X\to \mathcal U_{\shape_1}$ and vice versa.
   \end{enumerate}
 \end{proof}
 

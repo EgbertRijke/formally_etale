@@ -65,7 +65,7 @@ This intuition is reflected in \ref{}.
 In \cref{thm:char_n_etale} we use our abstract theory to prove the following characterization of étale maps for the $n$-truncations ($n\geq -1$): \\
 A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to $\unit\to\sphere{n+1}$.
 
-The application in \cref{subsection:toplogical stacks} suggests a new notion of covering space for topological stacks and shows that
+The application in \cref{subsection:topological stacks} suggests a new notion of covering space for topological stacks and shows that
 one interpretation of the modal descent theorem (\cref{thm:modal_descent}) is an extension of the classical fundamental theorem of the theory of covering spaces,
 relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
 A version of modal descent for the fundamental infinity groupoid functor of a cohesive $(\infty,1)$-topos was proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
@@ -194,7 +194,7 @@ The left factor $X \to \modal X$ of this factorization is called the \define{mod
 \end{equation*}
 is an equivalence. This property is called the \define{unique elimination principle} for modalities, and modalities can be defined equivalently in terms of the unique elimination principle.
 
-We recall one more usefule general fact about modalities.
+We recall one more useful general fact about modalities.
 
 \begin{thm}
   For any two modalities $(\mathcal{L},\mathcal{R})$ and $(\mathcal{L}',\mathcal{R}')$ the following are equivalent:
@@ -777,7 +777,7 @@ We also note that the $n$-equivalences are not stable under pullbacks, whereas t
 \unit\arrow[r] & \sphere{n+1}
 \end{tikzcd}
 \end{equation*}
-Here the map on the right is an $n$-equivalence, since $\sphere{n+1}$ is $n$-connected. However, the map on the left is not an $n$-equivalence, since the $n$-th homotpy group of $\loopspace{\sphere{n+1}}$ is not trivial: it is the $(n+1)$-st homotopy group of $\sphere{n+1}$, which is $\Z$.
+Here the map on the right is an $n$-equivalence, since $\sphere{n+1}$ is $n$-connected. However, the map on the left is not an $n$-equivalence, since the $n$-th homotopy group of $\loopspace{\sphere{n+1}}$ is not trivial: it is the $(n+1)$-st homotopy group of $\sphere{n+1}$, which is $\Z$.
 \end{rmk}
 
 \begin{defn}
@@ -902,7 +902,7 @@ Details on the topos ``$\Spaces$'' can be found under ``\ref{subsection:toplogic
     $\trunc{n}{\blank}\circ\shape$ on $\Spaces$ & Generalization of covering space for topological stacks, where the universal cover is a topological stack with an $n$-connected homotopy type \\
     $\shape$ on $\Spaces$ & Generalization of covering spaces, where the universal cover is a stack with trivial homotopy type \\
     $\sharp$ on $\Spaces$ & Maps where the domain carries the induced topology \\
-    $\Im$ on $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op})$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian $k$-schemes   \\
+    $\Im$ on $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op})$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are Noetherian $k$-schemes   \\
     $\Im$ on $\FSGrp$ & Local diffeomorphisms, if domain and codomain are manifolds \\
     \bottomrule
   \end{tabular}
@@ -964,7 +964,7 @@ Note that ``discrete'' refers to the topological structure of a type,
 not to a property of the $\infty$-groupoid structure given by its identity type.
 
 The equation ``$\shape \bR=1$'' may be viewed as one of the defining properties of $\shape$
--- it can be defined as the modality \emph{nullifiying} $\bR$ (see \cite[Section 2.3]{RijkeSpittersShulman} for details on nullification modalities).
+-- it can be defined as the modality \emph{nullifying} $\bR$ (see \cite[Section 2.3]{RijkeSpittersShulman} for details on nullification modalities).
 
 As all modalities, $\shape$ comes with a unit-map $\modalunit_X\colon X \to \shape X$, for any type $X$.
 For any two points $x,y: X$ that are joined by a topological path, 
@@ -1056,7 +1056,7 @@ The authors see an advantage of their approach in the clarity of the type theore
 The purpose of this section is to show what the name-giving analogs of $\modal$-étale maps and $\modal$-disks from Algebraic Geometry are.
 Noetherian schemes are spaces of interest in Algebraic Geometry. There is a notion of formally étale maps between such schemes.
 One purpose of this section is to show that such maps are characterized in very much the same way as $\modal$-étale maps:
-We will define a pointed endofunctor on a category containing noetherian schemes
+We will define a pointed endofunctor on a category containing Noetherian schemes
 such that the maps with cartesian naturality squares are precisely the formally étale maps.
 Also in this section, we will show that formal disks or neighbourhoods of points can be constructed analogous to $\modal$-disks.
 
@@ -1073,9 +1073,9 @@ that the elements of the algebras are to be thought of as generalized coordinate
 and the nilpotents represent coordinates that are so (infinitesimally) small, that some power is actually zero. 
 
 We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}(A,\blank)$ from $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}}$ to the category of sets.
-These functors represent so called \emph{affine noetherian $k$-schemes} and they form the basic building blocks of spaces called noetherian $k$-schemes
+These functors represent so called \emph{affine Noetherian $k$-schemes} and they form the basic building blocks of spaces called Noetherian $k$-schemes
 (see \cite[Chapter II]{hartshorne} for more on schemes).
-We will use not any property of noetherian $k$-schemes here, except that are locally of the form $\Spec(A)$ for some $A\in\fgkAlg$.
+We will use not any property of Noetherian $k$-schemes here, except that are locally of the form $\Spec(A)$ for some $A\in\fgkAlg$.
 
 For any $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ ,
 the functor $\Im X$ defined pointwise by
@@ -1098,9 +1098,9 @@ The original definition of formally étale maps is from Algebraic Geometry (see 
 \end{defn}
 We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
 The presented fact is certainly well known to experts and the proof we present here is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
-We use the fact, that the noetherian $k$-schemes are also sheaves in the Zariski Topos and that we have the functor $\Im$ like above.
+We use the fact, that the Noetherian $k$-schemes are also sheaves in the Zariski Topos and that we have the functor $\Im$ like above.
 \begin{rmk}
-  A morphism of $f:X\to Y$ noetherian schemes $X,Y$ is formally étale if and only if the naturality square
+  A morphism of $f:X\to Y$ Noetherian schemes $X,Y$ is formally étale if and only if the naturality square
   \begin{center}
     \begin{tikzcd}
       X\arrow[r]\arrow[d, "f", swap] & \Im X\arrow[d, "\Im f"] \\
@@ -1110,7 +1110,7 @@ We use the fact, that the noetherian $k$-schemes are also sheaves in the Zariski
   is a pullback square.
 \end{rmk}
 \begin{proof}
-  Let $X$ and $Y$ be noetherian $k$-schemes. 
+  Let $X$ and $Y$ be Noetherian $k$-schemes. 
   We will first show that a morphism of schemes $f:X\to Y$ is formally étale,
   if and only if for all $A\in\fgkAlg$ all squares
   \begin{center}
@@ -1120,7 +1120,7 @@ We use the fact, that the noetherian $k$-schemes are also sheaves in the Zariski
     \end{tikzcd}
   \end{center}
   have a unique lift like indicated in the diagram. Let us call this property (1).
-  Since $\sqrt{0}$ is always nilpotent in a noetherian ring, (1) is implied if $f$ is formally étale.
+  Since $\sqrt{0}$ is always nilpotent in a Noetherian ring, (1) is implied if $f$ is formally étale.
   
   The property formally étale is known to be local in the source \cite[§ 17.1.6]{GrothendieckDieudonne}, so we can assume $X$ and $Y$ to be affine.
   For affine $X=\mathrm{Spec(S)}$ and $Y=\mathrm{Spec(S)}$, all squares
@@ -1137,8 +1137,8 @@ We use the fact, that the noetherian $k$-schemes are also sheaves in the Zariski
       \mathrm{Spec(A)}\arrow[r] & \mathrm{Spec}(\mathrm{im}(\varphi))\arrow[r] & Y
     \end{tikzcd}
   \end{center}
-  That means we can assume $A$ to be noetherian, if $X$ and $Y$ are noetherian for the sake of checking if $f$ is formally étale.
-  So let us assume (1) holds. Let $A$ be noetherian and let us construct a unique lift in
+  That means we can assume $A$ to be Noetherian, if $X$ and $Y$ are Noetherian for the sake of checking if $f$ is formally étale.
+  So let us assume (1) holds. Let $A$ be Noetherian and let us construct a unique lift in
   \begin{center}
     \begin{tikzcd}
       \mathrm{Spec(A/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
@@ -1209,7 +1209,7 @@ The completion yields a functor:
 
 \todo{proof or reference, that $\Spf$ is an embedding..}
 \begin{rmk}
-  Let $X$ be a noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
+  Let $X$ be a Noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
   \begin{center}
     \begin{tikzcd}
       D^\Im(X,x)\arrow[d]\arrow[r] & 1\arrow[d, "\eta_X\circ x"] \\
@@ -1220,7 +1220,7 @@ The completion yields a functor:
 \end{rmk}
 \begin{proof}
   Since formal completions are defined by descending to affine schemes, we can assume $X=\Spec(A)$ with $A\in\fgkAlg$.
-  Then $x:1\to X$ can be rewritten as $x:\Spec(k)\to\Spec(A)$ and thus corresponds to a $k$-algebrahomomorphism $A\to k$,
+  Then $x:1\to X$ can be rewritten as $x:\Spec(k)\to\Spec(A)$ and thus corresponds to a $k$-algebra homomorphism $A\to k$,
   which is given by modding out a maximal ideal $m\subseteq A$. Let us write $\mathrm{pr}_I$ for the morphism to the quotient by an ideal $I$.
   So the formal neighborhood of $x$ in $X$ is $\Spf(\hat{A})$, where $\hat{A}$ is the completion with respect to $m$.
   This means what we need to show is, that for all $B\in\fgkAlg$, the square
@@ -1232,7 +1232,7 @@ The completion yields a functor:
   \end{center}
   is a pullback square. This amounts to the following universal property of $\hat{A}$:
 
-  For any $k$-algebrahomomorphism $\varphi:A\to B$ such that $\varphi(m)\subseteq \sqrt{0}$, there exists a unique morphisms
+  For any $k$-algebra homomorphism $\varphi:A\to B$ such that $\varphi(m)\subseteq \sqrt{0}$, there exists a unique morphisms
   $\hat{\varphi}:\hat{A}\to B$ such that composition with the canonical $A\to\hat{A}$ is $\varphi$.
   For the construction of $\hat{\varphi}$, we may assume that $\hat{A}$ is the limit of
   \begin{center}

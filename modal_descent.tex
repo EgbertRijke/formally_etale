@@ -26,6 +26,7 @@
 \newcommand{\Spaces}{\ensuremath{\mathrm{Etop}\infty\mathrm{Gpd}}}
 \newcommand{\todo}[1]{{\color{red}TODO: #1 \\}}
 \newcommand{\ignore}[1]{}
+\newcommand{\et}{\mathsf{et}}
 
 \addbibresource{literatur.bib}
 
@@ -665,10 +666,14 @@ is again a pullback square.
 \end{proof}
 
 \begin{defn}
-Let $X$ be a type. We will define an operation
-\begin{equation*}
-\etmap:\Big(\sm{A:\UU_\modal}A\to\modal X\Big)\to\Big(\sm{Y:\UU}{g:Y\to X}\isetale(g)\Big)
-\end{equation*}
+  Let $X$ be a type in a universe $\UU$, and define the type
+  \begin{equation*}
+    \et/X\defeq \sm{Y:\UU}{g:Y\to X}\isetale(g)
+  \end{equation*}
+  We will define an operation
+  \begin{equation*}
+    \etmap:\Big(\sm{A:\UU_\modal}A\to\modal X\Big)\to\et/X.
+  \end{equation*}
 \end{defn}
 
 \begin{constr}
@@ -687,7 +692,7 @@ The following is a descent theorem for $\modal$-\'etale maps.
 \begin{thm}[Modal descent]\label{thm:modal_descent}
 For any modality $\modal$, and any type $X$, the operation
 \begin{equation*}
-\etmap:\Big(\sm{A:\UU_\modal}A\to\modal X\Big)\to\Big(\sm{Y:\UU}{g:Y\to X}\isetale(g)\Big)
+\etmap:\Big(\sm{A:\UU_\modal}A\to\modal X\Big)\to\et/X
 \end{equation*}
 is an equivalence.
 \end{thm}
@@ -847,6 +852,56 @@ is a pullback square. Consider the commuting cube
 \end{tikzcd}
 \end{equation*}
 In this cube the top and bottom squares are pullback by the assumption that $f$ is $\modal$-\'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
+\end{proof}
+
+We end this section with an observation that we learned in a discussion with Anel, Awodey, Joyal, and Shulman: The factorization system of $\modal$-equivalences and $\modal$-\'etale maps is an orthogonal factorization system that satisfies the property that the right class descends along maps in the left class:
+
+\begin{prp}
+  For any $\modal$-equivalence $f:A\to B$, the pullback operation
+  \begin{equation*}
+    f^\ast : \et/B\to\et/A
+  \end{equation*}
+  is an equivalence.
+\end{prp}
+
+\begin{proof}
+  Given a $\modal$-equivalence $f:A\to B$, consider the commuting square
+  \begin{equation*}
+    \begin{tikzcd}
+      \et/(\modal B) \arrow[r,"\modal f^\ast"] \arrow[d,"\eta^\ast"] & \et/(\modal A) \arrow[d,"\eta^\ast"] \\
+      \et/B \arrow[r,"f^\ast"] & \et/A
+    \end{tikzcd}
+  \end{equation*}
+  By the modal descent theorem (\cref{thm:modal_descent}) it follows that the maps $\eta^\ast$ are equivalences. Furthermore, the map $\modal f$ is assumed to be an equivalence. Therefore it follows that $f^\ast$ is an equivalence.
+\end{proof}
+
+\begin{thm}
+  Suppose $(\mathcal{L},\mathcal{R})$ is an orthogonal factorization system such that $\mathcal{R}$ descends along $\mathcal{L}$, in the sense that for any $f:A\to B$ in $\mathcal{L}$, the operation
+  \begin{equation*}
+    f^\ast : \mathcal{R}/B \to \mathcal{R}/A
+  \end{equation*}
+  is an equivalence. Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the reflective factorization system of a modality.
+\end{thm}
+
+\begin{proof}
+  The subuniverse of modal types is defined to be the subuniverse of types $X$ such that the terminal projection $X\to \unit$ is in $\mathcal{R}$. The modal operator $\modal$ is defined by the $(\mathcal{L},\mathcal{R})$-factorization of the terminal projection:
+  \begin{equation*}
+    \begin{tikzcd}
+      X \arrow[r,"\in\mathcal{L}"] & \modal X \arrow[r,"\in\mathcal{R}"] & \unit.
+    \end{tikzcd}
+  \end{equation*}
+  We first show that this is a reflective subuniverse. Thus, we have to show that for any $\modal$-modal type $Y$, the precomposition function
+  \begin{equation*}
+    (\modal X\to Y)\to (X\to Y)
+  \end{equation*}
+  is an equivalence. This follows from orthogonality, since the square
+  \begin{equation*}
+    \begin{tikzcd}
+      Y^{\modal X} \arrow[r] \arrow[d] & Y^X \arrow[d] \\
+      \unit^{\modal X} \arrow[r] & \unit^X
+    \end{tikzcd}
+  \end{equation*}
+  is a pullback square if $Y\to\unit$ is in $\mathcal{R}$. 
 \end{proof}
 
 \section{Conjectural Applications in Geometry}

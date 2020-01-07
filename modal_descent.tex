@@ -114,6 +114,37 @@ We make extensive use of homotopy pullbacks. The most important property we will
 
 For an arbitrary commuting square, the induced map into the pullback is called the \define{gap map}. One can show that the fibers of the gap map are equivalent to the fibers of the induced maps on fibers. This observation implies the above theorem.
 
+\cref{thm:pullback} has many nice consequences. We mention two here, both of which can be seen as descent theorems.
+
+\begin{thm}[Descent theorem for $\Sigma$-types]\label{thm:descent-sigma}
+  A family of commuting squares
+\begin{equation*}
+  \begin{tikzcd}
+    A_i \arrow[d,swap,"f_i"] \arrow[r] & X \arrow[d,"g"] \\
+    B_i \arrow[r] & Y
+  \end{tikzcd}
+\end{equation*}
+indexed by $i:I$ is a family of pullback squares if and only if the induced square
+\begin{equation*}
+  \begin{tikzcd}
+    \sm{i:I}A_i \arrow[d] \arrow[r] & X \arrow[d,"g"] \\
+    \sm{i:I}B_i \arrow[r] & Y
+  \end{tikzcd}
+\end{equation*}
+is a pullback square.
+\end{thm}
+
+\begin{thm}[Descent theorem for surjective maps]\label{thm:descent-surjective}
+  Consider a diagram of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      A \arrow[d] \arrow[r] & X \arrow[d] \arrow[r] & V \arrow[d] \\
+      B \arrow[r,swap,"h"] & Y \arrow[r] & W,
+    \end{tikzcd}
+  \end{equation*}
+  in which the left square is a pullback square, and suppose that the map $h:B\to Y$ is surjective. Then the outer rectangle is a pullback if and only if the right square is a pullback.
+\end{thm}
+
 The main object of study in this article is a modality, of which the canonical examples are the $n$-truncations. There are many equivalent ways of saying what a modality is \cite{RijkeSpittersShulman}. The most convenient definition for our purpose is that of a \emph{stable orthogonal factorization system}, which we recall now.
 
 \begin{defn}
@@ -286,78 +317,39 @@ This family of maps induces a map $T^\modal f:T^\modal A \to T^\modal B$ for whi
 \end{equation*}
 commutes.
 
-In the following lemma we show that if $f:A\to B$ is $\modal$-\'etale, then $f$ is $\modal$-locally trivial, and $D^\modal(f,a)$ is an equivalence for every $a:A$. Moreover, the converse of this claim holds if $\eta_A:A\to\modal(A)$ is surjective.
-
-\begin{lem}\label{lem:etale_char}
-  Let $\modal$ be a modality and $f:A\to B$ any map.
-  If $f$ is $\modal$-\'etale, then (i) and (ii) below hold.
-  Moreover, if $\eta_A$ is surjective, then (i) and (ii) are equivalent and imply that f is $\modal$-étale.
-\begin{enumerate}
-\item The commuting square
-\begin{equation*}
-\begin{tikzcd}[column sep=10em]
-\sm{x:A}D^\modal(A,x) \arrow[d,swap,"\proj 1"] \arrow[r,"{(x,d)\mapsto(f(x),D^\modal(f,x,d))}"] & \sm{y:B}D^\modal(B,y) \arrow[d,"\proj 1"] \\
-A \arrow[r,swap,"f"] & B
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\item The map $f$ is $\modal$-locally trivial.
-\end{enumerate}
-\end{lem}
+\begin{prp}\label{lem:etale_char}
+  Let $\modal$ be a modality and $f:A\to B$ any map, and consider the following two statements:
+  \begin{enumerate}
+  \item The map $f$ is $\modal$-\'etale.
+  \item The square
+    \begin{equation*}
+      \begin{tikzcd}
+        T^\modal A \arrow[r,"T^\modal f"] \arrow[d,swap,"\proj 1"] & T^\modal B \arrow[d,"\proj 1"] \\
+        A \arrow[r,swap,"f"] & B
+      \end{tikzcd}
+    \end{equation*}
+    is cartesian.
+  \end{enumerate}
+  We have (i) implies (ii). Moreover, if $\eta_A:A\to\modal A$ is surjective, then (ii) implies (i).
+\end{prp}
 
 \begin{proof}
-Let $f:A\to B$ be any map, $x:A$ and $y:\equiv f(x)$ then there is a commuting cube (where $\eta_A^\ast$ denotes the pullback along $\eta_A$):
-\begin{equation*}
-  \begin{tikzcd}
-    &[-1ex] \eta_A^\ast\left((\modal f)^{-1}(\eta(y))\right)\arrow[dr,dashed]\arrow[dl,"\pi",swap]\arrow[d] &                         \\
-(\modal f)^{-1}(\eta(y))\arrow[d] & A\arrow[dr, "f" near start]\arrow[dl, "\eta_A" near start, swap]     & D(B,y)\arrow[d,"\proj 1"]\arrow[dl, crossing over]   \\
- \modal A\arrow[dr, "\modal f",swap]  & 1\arrow[d ,"\eta(y)"]\arrow[from=ul, crossing over] & B\arrow[dl,"\eta_B"] \\
-          & \modal B &
-  \end{tikzcd}
-\end{equation*}
-The front squares and the back left square are pullbacks by definition. The back right square is a pullback by pullback-pasting. So all vertical squares are pullbacks.
-If $f:A\to B$ is $\modal$-étale, the bottom square is a pullback and therefore, by pullback-pasting the top square is a pullback. This shows that (ii) holds if $f$ is $\modal$-étale, since in this case the top element is canonically identified with the product from (ii) which turns the back right square into the pullback square from (ii).
-
-We will show now, that (ii) implies (i).
-It is enough to show, that the induced maps
-\[ D^\modal(A,x)\to D^\modal(B,y) \]
-are equivalences for all $x:A$ and $y:\equiv f(x)$.
-
-We paste a fiber square to the back left square of the cube:
-\begin{equation*}
-  \begin{tikzcd}
-      \pi^{-1}(\eta(x))\arrow[r]\arrow[d] & \eta_A^\ast(\modal f)^{-1}(\eta(y))\arrow[r]\arrow[d, "\pi"] & A\arrow[d] \\
-      1\arrow[rr,bend right=20,"\eta(x)",swap]\arrow[r,dashed]  & (\modal f)^{-1}(\eta(y))\arrow[r] & \modal A
-  \end{tikzcd}
-\end{equation*}
-So the fiber $\pi^{-1}(\eta(x))$ is $D^\modal(A,x)$ by pullback pasting.
-We assume (ii), so the top square in the cube above is a pullback.
-Now we paste the left square to the top square:
-\begin{equation*}
-  \begin{tikzcd}
-      D^\modal(A,x)\arrow[d]\arrow[r] & \eta_A^\ast(\modal f)^{-1}(\eta(y))\arrow[r]\arrow[d, "\pi"] & D^\modal(B,y)\arrow[d] \\
-      1\arrow[r]                                & (\modal f)^{-1}(\eta(y))\arrow[r] & 1 
-  \end{tikzcd}
-\end{equation*}
-The result is a pullback square witnessing that the induced map in question is an equivalence.
-
-  Suppose that (ii) holds and that $\modalunit_A$ is surjective. So the induced map
-\begin{equation*}
-D^\modal(A,x)\to D^\modal(B,f(x))
-\end{equation*}
-is an equivalence for every $x:A$. Since $\modalunit_A$ is assumed to be surjective, there merely is an $x:A$ such that $\modalunit(x)=t$ for arbitrary $t:\modal A$.
-It follows that
-\begin{equation*}
-\fib{\modalunit}{t}\to \fib{\modalunit}{\modal f(t)}
-\end{equation*}
-is an equivalence for every $t:\modal A$. Thus it follows that the square
-\begin{equation*}
-\begin{tikzcd}
-A \arrow[d,swap,"\modalunit"] \arrow[r] & B \arrow[d,"\modalunit"] \\
-\modal A \arrow[r] & \modal B
-\end{tikzcd}
-\end{equation*}
-is a pullback square, showing that $f$ is $\modal$-étale.
+  By \cref{thm:pullback} the square
+  \begin{equation*}
+    \begin{tikzcd}
+      A \arrow[r,"f"] \arrow[d,swap,"\eta_A"] & B \arrow[d,"\eta_B"] \\
+      \modal A \arrow[r,swap,"\modal f"] & \modal B
+    \end{tikzcd}
+  \end{equation*}
+  is a pullback square if and only if the induced map on fibers
+  \begin{equation*}
+    \fib{\eta_A}{x}\to \fib{\eta_B}{\modal f(x)}
+  \end{equation*}
+  is an equivalence for each $x:\modal A$. Thus we see that if $f$ is $\modal$-\'etale, then the map
+  \begin{equation*}
+    D^\modal(f,x) : D^\modal(A,x)\to D^\modal(B,f(x))
+  \end{equation*}
+  is an equivalence for each $x:A$. The property that each $D^\modal(f,x)$ is an equivalence is equivalent to (ii). This proves that (i) implies (ii). Furthermore, if $\eta_A$ is surjective, then the property that each $D^\modal(f,x)$ is an equivalence is equivalent to the property that each $\fib{\eta_A}{x}\to \fib{\eta_B}{\modal f(x)}$ is an equivalence. This proves that (ii) implies (i) in the case where $\eta_A$ is surjective.
 \end{proof}
 
 \begin{comment}%I don't think we need this
@@ -385,8 +377,8 @@ The bottom square is a pullback square by \cref{lem:etale_char}, and the outer r
 \end{proof}
 \end{comment}
 
-\begin{rmk}\label{rmk:-1etale}
-In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} (i) asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square
+\begin{eg}\label{rmk:-1etale}
+In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} (ii) asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square
 \begin{equation*}
 \begin{tikzcd}
 A\times A \arrow[d,swap,"\proj 1"] \arrow[r,"{f\times f}"] & B\times B \arrow[d,"\proj 1"] \\
@@ -400,10 +392,10 @@ A^{\sphere{0}} \arrow[d,swap,"\mathsf{ev}_\ast"] \arrow[r,"f^{\sphere{0}}"] & B^
 A \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
-is a pullback square.
-\end{rmk}
+is a pullback square. In other words, $f$ is $(-1)$-\'etale if and only if $f$ is right orthogonal to the base point inclusion $\unit\to\sphere{1}$. 
+\end{eg}
 
-\begin{rmk}
+\begin{eg}
 A map $f:A\to B$ is $0$-\'etale if and only if for each $a:A$ the restriction
 \begin{equation*}
 \begin{tikzcd}
@@ -420,35 +412,35 @@ By \cref{lem:etale_char} and the fact that $\eqv{(\tproj{0}{a}=\tproj{0}{x})}{\b
 A \arrow[r,swap,"f"] & B
 \end{tikzcd}
 \end{equation*}
-is a pullback square. Furhtermore, this square is a pullback if and only if the induced map
+is a pullback square. Furthermore, by \cref{thm:pullback} this square is a pullback if and only if the induced map
 \begin{equation*}
 \Big(\sm{x:A}\brck{a=x}\Big)\to\Big(\sm{y:B}\brck{f(a)=y}\Big)
 \end{equation*}
 is an equivalence, for each $a:A$.
 
 We note that a map $f:A\to B$ between pointed connected types is an equivalence if and only if it is an embedding, which happens if and only if $f^{\sphere{1}}:A^{\sphere{1}} \to B^{\sphere{1}}$ is an equivalence. We can use this fact to conclude that a map is $0$-connected if and only if the square
-    \begin{equation*}
-      \begin{tikzcd}
-        A^{\sphere{1}} \arrow[r] \arrow[d] & B^{\sphere{1}} \arrow[d] \\
-        A \arrow[r] & B
-      \end{tikzcd}
-    \end{equation*}
-\end{rmk}
+\begin{equation*}
+  \begin{tikzcd}
+    A^{\sphere{1}} \arrow[r] \arrow[d] & B^{\sphere{1}} \arrow[d] \\
+    A \arrow[r] & B
+  \end{tikzcd}
+\end{equation*}
+is a pullback square. Therefore we see that a map $f$ is $0$-\'etale if and only if it is right orthogonal to the base point inclusion $\unit\to\sphere{1}$.
+\end{eg}
 
-These remarks suggest the following theorem.
+These examples suggest the following theorem.
 
 \begin{thm}
   \label{thm:char_n_etale}
   For any map $f:A\to B$ and any $n\geq -1$, the following are equivalent:
   \begin{enumerate}
   \item The map $f$ is $n$-\'etale.
-  \item The map $f$ is right orthogonal to $\unit\to\sphere{n+1}$.
+  \item The map $f$ is right orthogonal to the base point inclusion $\unit\to\sphere{n+1}$.
   \end{enumerate}
 \end{thm}
 
 \begin{rmk}
-  For $n\jdeq -2$ the statement does not make sense, since there is no evaluation map
-  $A^{\sphere{-1}}\to A$. On the other hand, it is easy to see that a map is $-2$-\'etale if and only if it is an equivalence.
+  For $n\jdeq -2$ the statement does not make sense, since there is no base point inclusion $\unit\to\sphere{-1}$. On the other hand, the $(-2)$-\'etale maps are easily characterized: a map is $(-2)$-\'etale if and only if it is an equivalence.
 \end{rmk}
 
 
@@ -473,26 +465,27 @@ These remarks suggest the following theorem.
 \end{equation*}
 In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
 
-  For the converse, suppose that the square in \cref{eq:orth} is a pullback square. It follows that the (equivalent) square
+  For the converse, suppose that the square in \cref{eq:orth} is a pullback square. This square is equivalent to the square
   \begin{equation*}
     \begin{tikzcd}
       \sm{x:A}\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \arrow[r] \arrow[d] & \sm{y:B} \mathsf{Map}_\ast(\sphere{n},\loopspace{B,y}) \arrow[d] \\
-      A \arrow[r] & B
+      A \arrow[r] & B,
     \end{tikzcd}
   \end{equation*}
-is a pullback square.
-  Since a square is a pullback square if and only if the top map is a fiberwise equivalence, it follows that the map
+  so we see that this is a pullback square. By \cref{thm:pullback} it follows that the map
   \begin{equation*}
     \mathsf{Map}_\ast(\sphere{n},\loopspace{f,x}):\mathsf{Map}_\ast(\sphere{n},\loopspace{A,x}) \to \mathsf{Map}_\ast(\sphere{n},\loopspace{B,f(x)})
   \end{equation*}
-  of pointed mapping spaces is an equivalence. To show that $f$ is $n$-\'etale, it is equivalent to show that the square
+  of pointed mapping spaces is an equivalence, for each $x:A$.
+
+  Our goal is to show that $f$ is $n$-\'etale. By \cref{lem:etale_char} it is equivalent to show that the square
   \begin{equation*}
     \begin{tikzcd}
       A\times_{\trunc{n}{A}} A \arrow[r] \arrow[d] & B \times_{\trunc{n}{B}} B \arrow[d] \\
       A \arrow[r] & B
     \end{tikzcd}
   \end{equation*}
-  is a pullback square, which is equivalent to showing that the induced map
+  is a pullback square. By \cref{thm:pullback} this is equivalent to showing that the induced map
   \begin{equation*}
     D^{n}(f,x):D^{n}(A,x)\to D^{n}(B,f(x))
   \end{equation*}
@@ -539,34 +532,11 @@ By the assumption that the square
     A \arrow[r,swap,"f"] & B
   \end{tikzcd}
 \end{equation*}
-is a pullback square, we see that a $\modal$-locally trivial map is a map that becomes a trivial fibration when it is restricted to a $\modal$-disk. Indeed, by this pullback square we obtain a family of equivalences
+is a pullback square, we see that a $\modal$-locally trivial map is a map that becomes a trivial fibration when it is restricted to a $\modal$-disk. Indeed, with \cref{thm:pullback} we obtain by this pullback square a family of equivalences
 \begin{equation*}
   F_y \simeq \fib{f}{i(z)}
 \end{equation*}
 indexed by $z:D_y$, where $i:D_y\to B$ is the fiber inclusion of the (unpointed) fiber sequence $D_y\hookrightarrow B\twoheadrightarrow\modal B$. The commutativity of the cube implies that the map $\varphi_y$ is uniquely determined, as we will soon see.
-
-For the following proposition, recall that a family of commuting squares
-\begin{equation*}
-  \begin{tikzcd}
-    A_i \arrow[d,swap,"f_i"] \arrow[r] & X \arrow[d,"g"] \\
-    B_i \arrow[r] & Y
-  \end{tikzcd}
-\end{equation*}
-indexed by $i:I$ is a family of pullback squares if and only if the induced square
-\begin{equation*}
-  \begin{tikzcd}
-    \sm{i:I}A_i \arrow[d] \arrow[r] & X \arrow[d,"g"] \\
-    \sm{i:I}B_i \arrow[r] & Y
-  \end{tikzcd}
-\end{equation*}
-is a pullback square. This follows easily from \cref{thm:pullback}. We also recall that if the left square in a diagram of the form
-\begin{equation*}
-  \begin{tikzcd}
-    A \arrow[d] \arrow[r] & X \arrow[d] \arrow[r] & V \arrow[d] \\
-    B \arrow[r,swap,"h"] & Y \arrow[r] & W
-  \end{tikzcd}
-\end{equation*}
-is a pullback, and if the map $h:B\to Y$ is assumed to be surjective, then the outer rectangle is a pullback if and only if the right square is a pullback. Again, this follows from \cref{thm:pullback}.
 
 \begin{prp}
   The following are equivalent:
@@ -597,14 +567,14 @@ is a pullback, and if the map $h:B\to Y$ is assumed to be surjective, then the o
       & \modal B
     \end{tikzcd}
   \end{equation*}
-  The back-right square is a pullback square by the assumption that $f$ is $\modal$-locally trivial. We also note that the vertical maps on the left, right and in the front are equivalences. Moreover, we observe that the top square and the front-left square are pullback squares. Therefore it follows that the rectangle 
+  Using the descent theorem of $\Sigma$-types (\cref{thm:descent-sigma}) and the assumption that $f$ is $\modal$-locally trivial, we see that the back-right square is a pullback square. We also note that the vertical maps on the left, right and in the front are equivalences. Moreover, we observe that the top square and the front-left square are pullback squares. Therefore it follows that the rectangle 
   \begin{equation*}
     \begin{tikzcd}
       \sm{y:\modal B} F_y\times D_y \arrow[r] \arrow[d] & A \arrow[d,"f"] \arrow[r] & \modal A \arrow[d,"\modal f"] \\
       \sm{y:\modal B}D_y \arrow[r] & B \arrow[r] & \modal B 
     \end{tikzcd}
   \end{equation*}
-  consisting of the back-right square and the bottom square in the cube, is a pullback square. Since the map $\sm{y:\modal B}D_y\to B$ is an equivalence, we conclude that the square on the right is a pullback square, i.e., that $f$ is $\modal$-\'etale.
+  consisting of the back-right square and the bottom square in the cube, is a pullback square. Since the map $\sm{y:\modal B}D_y\to B$ is an equivalence, and in particular surjective, we use the descent theorem for surjective maps (\cref{thm:descent-surjective}) to conclude that the square on the right is a pullback square, i.e., that $f$ is $\modal$-\'etale.
 \end{proof}
 
 \begin{cor}
@@ -965,7 +935,7 @@ which will just be called Real Cohesion in the following,
 some well behaved topological spaces, like, for example, topological manifolds
 are supposed to be included in the theory as they are included in the category $\Spaces$ defined above.
 It is important to note, that the types corresponding to these topological spaces
-are 0-types in Real Cohesion.
+are $0$-types in Real Cohesion.
 
 This can lead to confusion with the common explanation for the identity types in Homotopy Type Theory,
 as paths in a space, since that would give us \emph{two different} notion of path. 

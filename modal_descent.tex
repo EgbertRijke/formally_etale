@@ -91,6 +91,14 @@ for the action on paths of a function $f$. Path concatenation is written in diag
 \begin{equation*}
   \fib{f}{b}\defeq \sm{x:A}f(x)=b.
 \end{equation*}
+We will frequently make use of the concept of \emph{proposition} in homotopy type theory. Propositions are types of which all identity types are contractible, i.e., a type $X$ is said to be a proposition if it comes equipped with a term of type
+\begin{equation*}
+  \isprop(X)\defeq\prd{x,y:X}\iscontr(x=y).
+\end{equation*}
+It is important in homotopy type theory to distinguish between properties and structures. A type $P(x)$ indexed by $x:X$ is said to be a \emph{property} of $X$ if the type $P(x)$ is a proposition. Otherwise, it is called a \emph{structure} on $x$. The type $\mathsf{Prop}$ of all propositions in a universe $\UU$ is defined by
+\begin{equation*}
+  \mathsf{Prop}\defeq \sm{X:\UU}\isprop(X).
+\end{equation*}
 
 We make extensive use of homotopy pullbacks. The most important property we will be relying on is the following theorem:
 
@@ -113,7 +121,14 @@ We make extensive use of homotopy pullbacks. The most important property we will
   \end{enumerate}
 \end{thm}
 
-For an arbitrary commuting square, the induced map into the pullback is called the \define{gap map}. One can show that the fibers of the gap map are equivalent to the fibers of the induced maps on fibers. This observation implies the above theorem.
+For an arbitrary commuting square, the induced map into the pullback is called the \define{gap map}. The gap map of a commuting square
+  \begin{equation*}
+    \begin{tikzcd}
+      A \arrow[r,"h"] \arrow[d,swap,"f"] & X \arrow[d,"g"] \\
+      B \arrow[r,swap,"i"] & Y
+    \end{tikzcd}
+  \end{equation*}
+is the unique map $A\to B\times_Y X$ obtained via the universal property of the pullback. One can show that the fibers of the gap map are equivalent to the fibers of the induced maps on fibers. This observation implies the above theorem.
 
 \cref{thm:pullback} has many nice consequences. We mention two here, both of which can be seen as descent theorems.
 
@@ -146,10 +161,46 @@ is a pullback square.
   in which the left square is a pullback square, and suppose that the map $h:B\to Y$ is surjective. Then the outer rectangle is a pullback if and only if the right square is a pullback.
 \end{thm}
 
-The main object of study in this article is a modality, of which the canonical examples are the $n$-truncations. There are many equivalent ways of saying what a modality is \cite{RijkeSpittersShulman}. The most convenient definition for our purpose is that of a \emph{stable orthogonal factorization system}, which we recall now.
+The main object of study in this article is a modality, of which the canonical examples are the $n$-truncations. There are many equivalent ways of saying what a modality is \cite{RijkeSpittersShulman}.
 
 \begin{defn}
-  An orthogonal factorization system is a pair $(\mathcal{L},\mathcal{R})$ of classes of maps
+  A \define{reflective subuniverse} consists of a subuniverse $P:\UU\to\mathsf{Prop}$ equipped with:
+  \begin{enumerate}
+  \item a \define{modal operator} $\modal :\UU\to\UU$ such that $P(\modal X)$ holds for any $X:\UU$,
+  \item a \define{modal unit} $\eta:X\to\modal X$ for each $X:\UU$, that satisfies the universal property of $P$-localization: the precomposition function
+    \begin{equation*}
+      \blank\circ\eta : (\modal X\to Y)\to (X\to Y)
+    \end{equation*}
+    is an equivalence for every type $Y:\UU$ such that $P(Y)$ holds.
+  \end{enumerate}
+\end{defn}
+
+By the universal property of reflective subuniverses, it follows that for every map $f:A\to B$, there is a unique map $\modal f : \modal A \to \modal B$ such that the square
+\begin{equation*}
+  \begin{tikzcd}
+    A \arrow[d,swap,"\eta"] \arrow[r,"f"] & B \arrow[d,"\eta"] \\
+    \modal A \arrow[r,dashed,swap,"\modal f"] & \modal B
+  \end{tikzcd}
+\end{equation*}
+commutes. This square is called the \define{$\modal$-naturality square} of $f$.
+
+\begin{prp}\label{prp:modality}
+  Given a reflective subuniverse $\modal$, the following two properties are equivalent:
+  \begin{enumerate}
+  \item For any family $B(x)$ of types in $P$, indexed by $x$ in a type $A$ that also satisfies $P$, the type $\sm{x:A}B(x)$ is also in the subuniverse $P$. We also say that $\modal$ is $\Sigma$-closed, if this property holds.
+  \item For any type $X$, and any family $B:\modal X\to\UU$ such that $B(y)$ is in $P$ for each $y:\modal X$, the precomposition function
+    \begin{equation*}
+      \blank\circ\eta : \Big(\prd{y:\modal X}B(y)\Big)\to\Big(\prd{x:X}B(\eta(x))\Big)
+    \end{equation*}
+    is an equivalence. We also say that $\modal$ is \define{uniquely eliminating} if this property holds.
+  \end{enumerate}
+  If either of these equivalent properties holds, then we say that the reflective subuniverse $\modal$ is a modality.
+\end{prp}
+
+Any modality determines a \emph{stable orthogonal factorization system}, which we recall now.
+
+\begin{defn}
+  An \define{orthogonal factorization system} is a pair $(\mathcal{L},\mathcal{R})$ of classes of maps
   \begin{align*}
     \mathcal{L} & : \prd{X,Y:\UU} (X \to Y) \to \mathsf{Prop} \\
     \mathcal{R} & : \prd{X,Y:\UU} (X \to Y) \to \mathsf{Prop} 
@@ -175,25 +226,38 @@ The main object of study in this article is a modality, of which the canonical e
     is a pullback square.
   \end{enumerate}
   An orthogonal factorization system is said to be \define{stable} if the left class is stable under pullbacks. That is, for any pullback square
-    \begin{equation*}
-      \begin{tikzcd}
-        A \arrow[r,"h"] \arrow[d,swap,"f"] & X \arrow[d,"g"] \\
-        B \arrow[r,swap,"i"] & Y
-      \end{tikzcd}
-    \end{equation*}
-    in which the map $g:X \to Y$ is in $\mathcal{L}$, it is required that $f$ is also in $\mathcal{L}$. A \define{modality} is defined to be a stable orthogonal factorization system.
+  \begin{equation*}
+    \begin{tikzcd}
+      A \arrow[r,"h"] \arrow[d,swap,"f"] & X \arrow[d,"g"] \\
+      B \arrow[r,swap,"i"] & Y
+    \end{tikzcd}
+  \end{equation*}
+  in which the map $g:X \to Y$ is in $\mathcal{L}$, it is required that $f$ is also in $\mathcal{L}$.
 \end{defn}
 
-Given a stable orthogonal factorization system, we say that a type $X$ is modal if the terminal projection $X\to \unit$ is in $\mathcal{R}$. 
-There is an operation $\modal:\UU\to\UU$ associated to any stable orthogonal factorization, which is often called the modality. It is defined as
+The stable orthogonal factorization system of a modality is obtained as follows:
+\begin{enumerate}
+\item The $\modal$-modal types are the types for which $\eta:X\to\modal X$ is an equivalence. Indeed, this property is equivalent to the property that $X$ is in the subuniverse of $\modal$.
+\item The class $\mathcal{R}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-modal types.
+\item The $\modal$-connected types are the types $X$ for which $\modal X$ is contractible.
+\item The class $\mathcal{L}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-connected.
+\end{enumerate}
+
+Conversely, given a stable orthogonal factorization system, we say that a type $X$ is modal if the terminal projection $X\to \unit$ is in $\mathcal{R}$. More generally, maps in $\mathcal{R}$ are called modal maps, and maps in $\mathcal{L}$ are called connected maps.
+
+There is a modal operator $\modal:\UU\to\UU$ associated to any stable orthogonal factorization. It is defined as
 \begin{equation*}
 \modal X \defeq \mathsf{im}_{(\mathcal{L},\mathcal{R})}(X\to \unit).
 \end{equation*}
-The left factor $X \to \modal X$ of this factorization is called the \define{modal unit} and is denoted by $\eta:X\to \modal X$. One can show that for any family $P:\modal X \to \UU$ of modal types, the precomposition map
-\begin{equation*}
-\blank\circ \eta : \Big(\prd{x:\modal X}P(x)\Big)\to \Big(\prd{x:X}P(\eta(x))\Big)
-\end{equation*}
-is an equivalence. This property is called the \define{unique elimination principle} for modalities, and modalities can be defined equivalently in terms of the unique elimination principle.
+The left factor $X \to \modal X$ of this factorization is called the \define{modal unit} and is denoted by $\eta:X\to \modal X$. One can show that the map $\eta$ defined in this way is indeed uniquely eliminating, in the sense of \cref{prp:modality}.
+
+Often, we only mention the modal operator $\modal$, when we refer to a modality. Indeed, the stable orthogonal factorization system that it originates from, can be recovered as follows:
+\begin{enumerate}
+\item The $\modal$-modal types are the types for which $\eta:X\to\modal X$ is an equivalence
+\item The class $\mathcal{R}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-modal types.
+\item The $\modal$-connected types are the types $X$ for which $\modal X$ is contractible.
+\item The class $\mathcal{L}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-connected.
+\end{enumerate}
 
 We recall one more useful general fact about modalities.
 
@@ -221,14 +285,14 @@ A \arrow[r,"f"] \arrow[d,swap,"\eta"] & B \arrow[d,"\eta"] \\
 \modal A \arrow[r,swap,"\modal f"] & \modal B
 \end{tikzcd}
 \end{equation*}
-is a pullback square. We will write $\isetale(f)$ for this proposition.
+is a pullback square. We will write $\isetale(f)$ for this proposition. In the special case where the modality $\modal$ is the $n$-truncation, we will say that a map is \define{$n$-\'etale} if it is $\modal$-\'etale.
 \end{defn}
 
 Using the fact that $\modal$ preserves equivalences and composition up to homotopy,
 it is immediate from the definition that any equivalence is $\modal$-\'etale, and that the $\modal$-\'etale maps are closed under composition.
 
 \begin{eg}\label{eg:etale_prop}
-  We claim that a map $f:A\to B$ is $\brck{\blank}$-\'etale if and only if it satisfies the condition
+  We claim that a map $f:A\to B$ is $(-1)$-\'etale if and only if it satisfies the condition
   \begin{equation*}
     A\to \isequiv(f).
   \end{equation*}
@@ -588,8 +652,6 @@ indexed by $z:D_y$, where $i:D_y\to B$ is the fiber inclusion of the (unpointed)
 
 \section{Modal descent}
 
-The following theorem can be seen as a `modal flattening lemma'.
-
 \begin{prp}\label{thm:etale_flattening}
 Consider a pullback square
 \begin{equation*}
@@ -602,7 +664,7 @@ in which we assume that $E$ and $B$ are modal types. Then the square
   \begin{equation*}
     \begin{tikzcd}
       \modal E' \arrow[r,"\tilde{g}"] \arrow[d,swap,"{\modal p'}"] & E \arrow[d,"p"] \\
-      \modal B \arrow[r,swap,"\tilde{f}"] & B,
+      \modal B' \arrow[r,swap,"\tilde{f}"] & B,
     \end{tikzcd}
   \end{equation*}
   where $\tilde{f}$ and $\tilde{g}$ are the unique extensions of $f$ and $g$ along the modal units of $B'$ and $E'$, is also a pullback square.
@@ -734,6 +796,16 @@ X \arrow[r,swap,"\modalunit"] & \modal X
 \end{equation*}
 is a pullback square. In particular the top map is $\modal$-connected, so this square is in fact a $\modal$-naturality square.
 \end{cor}
+
+\begin{proof}
+  Since the square is a pullback, and the bottom map is $\modal$-connected, it follows that the top map is $\modal$-connected. However, the codomain of the top map is $\modal$-modal, so it follows that the square is equivalent to the $\modal$-naturality square
+  \begin{equation*}
+    \begin{tikzcd}
+      \sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \modal\Big(\sm{x:X}P(x)\Big) \arrow[d,"\modal \proj 1"] \\
+X \arrow[r,swap,"\modalunit"] & \modal X.
+    \end{tikzcd}
+  \end{equation*}
+\end{proof}
 
 \section{The reflective factorization system}
 
@@ -1050,7 +1122,7 @@ It is important to note, that the types corresponding to these topological space
 are $0$-types in Real Cohesion.
 
 This can lead to confusion with the common explanation for the identity types in Homotopy Type Theory,
-as paths in a space, since that would give us \emph{two different} notion of path. 
+where identifications are commonly interpreted as paths in a space, since that would give us \emph{two different} notion of path. 
 On the one hand, there are topological paths, i.e. maps $\gamma:\bR\to X$ from the $0$-type $\bR$ representing the real line with the euclidean topology.
 And in the common Homotopy Type Theory terminology, the elements of identity types $x=_A y$ in some type $A$ are also called path but are very different from the topological paths. To avoid confusion, we will follow Mike Shulman's terminology from \cite{ShulmanRealCohesion} and refer to topological paths as paths and to elements of identity types as equalities in the following.
 

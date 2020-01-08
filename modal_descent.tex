@@ -53,18 +53,18 @@ we will work with a simpler setup of only one \emph{monadic} modality, given in 
 And for most of the article we will only apply our theory to the commonly known truncation modalities.
   
 Modalities are defined in \cite[Section 7.7]{UFP} and were studied extensively in \cite{RijkeSpittersShulman}.
-There are two factorization systems associated to a modality which coincide in the case of a left exact modality,
-we will study one of these factorization systems, the other one has been studied in \cite{RijkeSpittersShulman}.
-The factorization system studied in this article was already used in Category Theory, in \cite{cassidy_hebert_kelly_1985}, where the reflector of a reflective subcategory takes the role of the modality.
-The left maps are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square.
-For a modality $\modal$, we call the maps in the right class $\modal$-étale a name inspired by the formally étale maps from algebraic geometry.
+There are two orthogonal factorization systems associated to a modality which coincide in the case of a left exact modality: the \emph{stable} factorization system and the \emph{reflective} factorization system. The stable factorization system has been studied in \cite{RijkeSpittersShulman}. The reflective factorization system already used in category theory, in \cite{cassidy_hebert_kelly_1985}, where the reflector of a reflective subcategory takes the role of the modality. The fact that any modality also gives rise to a reflective factorization system, see \cref{thm:rfs_orthogonal}, is one of the main results of this paper. The left maps of the reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the reflective factorization system of a modality.
+
+We call the maps in the right class $\modal$-étale, where $\modal$ is the modality. This name is inspired by the formally étale maps from algebraic geometry.
 In \ref{subsection:algebraic geometry} we prove that the most relevant formally étale maps in algebraic geometry could be defined in the same spirit as the $\modal$-étale maps.
 As a further justification, the original idea by Grothendieck was, that an ``étale'' is calm or undisturbed on a small scale.
 This fits very nicely to our view what an $\modal$-étale map is -- on a scale determined by the modality the $\modal$-étale maps are trivial.
-This intuition is reflected in \ref{}.
+This intuition is reflected in \cref{prp:locally_trivial}, where we show that $\modal$-\'etale maps are locally trivial, using a notion of local that refers to the modality $\modal$.
+
+Another manifestation of $\modal$-\'etale maps being locally trivial, is the fact that a map $p:E\to B$ is $\modal$-\'etale if and only if it extends uniquely to a map $\tilde{p}:\tilde{E}\to \modal B$ with $\modal$-modal fibers. This claim, which we establish in \cref{thm:modal_descent}, is the modal descent theorem. 
 
 In \cref{thm:char_n_etale} we use our abstract theory to prove the following characterization of étale maps for the $n$-truncations ($n\geq -1$): \\
-A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to $\unit\to\sphere{n+1}$.
+A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to the base point inclusion $\unit\to\sphere{n+1}$.
 
 The application in \cref{subsection:topological stacks} suggests a new notion of covering space for topological stacks and shows that
 one interpretation of the modal descent theorem (\cref{thm:modal_descent}) is an extension of the classical fundamental theorem of the theory of covering spaces,
@@ -78,12 +78,13 @@ We also give characterizations and descriptions of formally étale maps in the s
 We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018.
 Discussions with and remarks of Jonathan Zachhuber, Tobias Columbus, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
 The anonymous reviewers greatly improved the article with their comments and suggestions. 
-We gratefully acknowledge the support of the Air Force Office of Scientific Research through MURI grant FA9550-15-1-0053.
-Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the AFOSR.
+This material is based upon work supported by the Air Force Office of Scientific Research under award number FA9550-17-1-0326, and through MURI grant FA9550-15-1-0053.
 
 
 \section{Preliminaries}
-We assume the reader is familiar with the basics of homotopy type theory. To the reader who is not familiar with HoTT we recommend \cite{UFP}. Just as in \cite{UFP}, we write $x=y$ for the type of identifications of $x$ and $y$, provided that both $x$ and $y$ have a common type $X$. Sometimes we call identifications paths. We write
+We assume that the reader is familiar with the basics of homotopy type theory \cite{UFP} and the basic theory of (idempotent, monadic) modalities, as presented in \cite{RijkeSpittersShulman}. In this preliminary section, we recall the basic concepts from those two sources.
+
+Just as in \cite{UFP}, we write $x=y$ for the type of identifications of $x$ and $y$, provided that both $x$ and $y$ have a common type $X$. Sometimes we call identifications paths. We write
 \begin{equation*}
   \apfunc{f}:(x=y)\to (f(x)=f(y))
 \end{equation*}
@@ -91,6 +92,12 @@ for the action on paths of a function $f$. Path concatenation is written in diag
 \begin{equation*}
   \fib{f}{b}\defeq \sm{x:A}f(x)=b.
 \end{equation*}
+Recall that a type $X$ is said to be \emph{contractible} if it comes equipped with a term of type
+\begin{equation*}
+  \iscontr(X)\defeq \sm{x:X}\prd{y:X}x=y.
+\end{equation*}
+A map is an equivalence if and only if all its fibers are contractible.
+
 We will frequently make use of the concept of \emph{proposition} in homotopy type theory. Propositions are types of which all identity types are contractible, i.e., a type $X$ is said to be a proposition if it comes equipped with a term of type
 \begin{equation*}
   \isprop(X)\defeq\prd{x,y:X}\iscontr(x=y).
@@ -187,7 +194,7 @@ commutes. This square is called the \define{$\modal$-naturality square} of $f$.
 \begin{prp}\label{prp:modality}
   Given a reflective subuniverse $\modal$, the following two properties are equivalent:
   \begin{enumerate}
-  \item For any family $B(x)$ of types in $P$, indexed by $x$ in a type $A$ that also satisfies $P$, the type $\sm{x:A}B(x)$ is also in the subuniverse $P$. We also say that $\modal$ is $\Sigma$-closed, if this property holds.
+  \item For any family $B(x)$ of types in $P$, indexed by $x$ in a type $A$ that also satisfies $P$, the type $\sm{x:A}B(x)$ is also in the subuniverse $P$. We also say that $\modal$ is \define{$\Sigma$-closed}, if this property holds.
   \item For any type $X$, and any family $B:\modal X\to\UU$ such that $B(y)$ is in $P$ for each $y:\modal X$, the precomposition function
     \begin{equation*}
       \blank\circ\eta : \Big(\prd{y:\modal X}B(y)\Big)\to\Big(\prd{x:X}B(\eta(x))\Big)
@@ -196,6 +203,12 @@ commutes. This square is called the \define{$\modal$-naturality square} of $f$.
   \end{enumerate}
   If either of these equivalent properties holds, then we say that the reflective subuniverse $\modal$ is a modality.
 \end{prp}
+
+It is not the case, however, that any reflective subuniverse is a modality. For example, the subuniverse of types $X$ that are $p$-local in the sense that the precomposition map
+\begin{equation*}
+  \mathsf{deg}(p) : X^{\sphere{1}}\to X^{\sphere{1}}
+\end{equation*}
+is an equivalence, where $\mathsf{deg}(p):\sphere{1}\to\sphere{1}$ is the degree $p$-map for some prime $p$, is not a modality \cite{CORS}.
 
 Any modality determines a \emph{stable orthogonal factorization system}, which we recall now.
 
@@ -235,29 +248,13 @@ Any modality determines a \emph{stable orthogonal factorization system}, which w
   in which the map $g:X \to Y$ is in $\mathcal{L}$, it is required that $f$ is also in $\mathcal{L}$.
 \end{defn}
 
-The stable orthogonal factorization system of a modality is obtained as follows:
-\begin{enumerate}
-\item The $\modal$-modal types are the types for which $\eta:X\to\modal X$ is an equivalence. Indeed, this property is equivalent to the property that $X$ is in the subuniverse of $\modal$.
-\item The class $\mathcal{R}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-modal types.
-\item The $\modal$-connected types are the types $X$ for which $\modal X$ is contractible.
-\item The class $\mathcal{L}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-connected.
-\end{enumerate}
+The stable orthogonal factorization system of a modality is obtained by the following steps. First we define the \define{$\modal$-modal} types to be types for which $\eta:X\to\modal X$ is an equivalence. Indeed, this property is equivalent to the property that $X$ is in the subuniverse of $\modal$. Then we say that a map $f:X\to Y$ is \define{$\modal$-modal} if all its fibers are $\modal$-modal. The class $\mathcal{R}$ is defined to be the class of $\modal$-modal maps. Next, we say that a type $X$ is \define{$\modal$-connected} if $\modal X$ is contractible. Similarly, we say that a map $f:X\to Y$ is \define{$\modal$-connected} if all of its fibers are $\modal$-connected. The class $\mathcal{L}$ is defined to be the class of $\modal$-connected maps. The pair $(\mathcal{L},\mathcal{R})$ is the stable orthogonal factorization system of the modality $\modal$.
 
-Conversely, given a stable orthogonal factorization system, we say that a type $X$ is modal if the terminal projection $X\to \unit$ is in $\mathcal{R}$. More generally, maps in $\mathcal{R}$ are called modal maps, and maps in $\mathcal{L}$ are called connected maps.
-
-There is a modal operator $\modal:\UU\to\UU$ associated to any stable orthogonal factorization. It is defined as
+Conversely, we can obtain a modality from an stable factorization system, in which a type $X$ is modal if and only if the terminal projection $X\to \unit$ is in $\mathcal{R}$. The modal operator of this modality is defined as
 \begin{equation*}
 \modal X \defeq \mathsf{im}_{(\mathcal{L},\mathcal{R})}(X\to \unit).
 \end{equation*}
-The left factor $X \to \modal X$ of this factorization is called the \define{modal unit} and is denoted by $\eta:X\to \modal X$. One can show that the map $\eta$ defined in this way is indeed uniquely eliminating, in the sense of \cref{prp:modality}.
-
-Often, we only mention the modal operator $\modal$, when we refer to a modality. Indeed, the stable orthogonal factorization system that it originates from, can be recovered as follows:
-\begin{enumerate}
-\item The $\modal$-modal types are the types for which $\eta:X\to\modal X$ is an equivalence
-\item The class $\mathcal{R}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-modal types.
-\item The $\modal$-connected types are the types $X$ for which $\modal X$ is contractible.
-\item The class $\mathcal{L}$ consists precisely of the maps $f:X\to Y$ of which the fibers are $\modal$-connected.
-\end{enumerate}
+and the modal unit is defined to be the left factor $X \to \modal X$ of the map $X\to \unit$. The orthogonality can be used to show that the map $\eta$ defined in this way is indeed uniquely eliminating, in the sense of \cref{prp:modality}.
 
 We recall one more useful general fact about modalities.
 
@@ -603,7 +600,7 @@ is a pullback square, we see that a $\modal$-locally trivial map is a map that b
 \end{equation*}
 indexed by $z:D_y$, where $i:D_y\to B$ is the fiber inclusion of the (unpointed) fiber sequence $D_y\hookrightarrow B\twoheadrightarrow\modal B$. The commutativity of the cube implies that the map $\varphi_y$ is uniquely determined, as we will soon see.
 
-\begin{prp}
+\begin{prp}\label{prp:locally_trivial}
   The following are equivalent:
   \begin{enumerate}
   \item The map $f$ is $\modal$-\'etale.
@@ -767,7 +764,7 @@ Y \arrow[d,swap,"g"] \arrow[r,"\modalunit"] & \modal Y \arrow[d,"\modal g"] \\
 X \arrow[r,swap,"\modalunit"] & \modal X
 \end{tikzcd}
 \end{equation*}
-is a pullback square. Therefore $g:Y\to X$ is in the fiber of $\etmap$ at $\modal g : \modal Y\to\modal X$. 
+is a pullback square. Therefore we see that the map $\modal g : \modal Y \to \modal X$ is in the fiber of $\etmap$ at $g : Y\to X$. 
 
 It remains to show that for any map $f:A\to\modal X$ with modal domain, there is an equivalence $\eqv{A}{\modal (X\times_{\modal X} A)}$ such that the triangle
 \begin{equation*}
@@ -780,7 +777,7 @@ commutes. To see this, note that both $f\circ \proj 2$ and $\modal(\etmap(f))\ci
 \end{proof}
 
 \begin{cor}
-Suppose $P:X\to\UU_\modal$ is a family of modal types such that the projection map $\proj 1:\big(\sm{x:X}P(x)\big)\to X$ is $\modal$-\'etale. Then $P$ has a unique extension
+Suppose $P:X\to\UU$ is a family of types such that the projection map $\proj 1:\big(\sm{x:X}P(x)\big)\to X$ is $\modal$-\'etale. Then $P(x)$ is $\modal$-modal for each $x:X$, and the map $P:X\to\UU_\modal$ has a unique extension
 \begin{equation*}
 \begin{tikzcd}
 X \arrow[d,swap,"\modalunit"] \arrow[r,"P"] & \UU_\modal. \\
@@ -864,12 +861,12 @@ is an equivalence.
 \begin{proof} 
 Suppose first that $f$ is an $\modal$-equivalence, and let $X$ be $\modal$-modal. Then the square
 \begin{equation*}
-\begin{tikzcd}
-X^B \arrow[r,"\precomp{f}"] \arrow[d,swap,"\precomp{\eta}"] & X^A \arrow[d,"\precomp{\eta}"] \\
-X^{\modal B} \arrow[r,swap,"\precomp{\modal f}"] & X^{\modal A}
+\begin{tikzcd}[column sep=large]
+X^{\modal B} \arrow[r,"\blank\circ (\modal f)"] \arrow[d,swap,"\blank\circ\eta"] & X^{\modal A} \arrow[d,"\blank\circ\eta"] \\
+X^{B} \arrow[r,swap,"\blank\circ f"] & X^A
 \end{tikzcd}
 \end{equation*}
-commutes. In this square the two vertical maps are equivalences by the universal property of modalization, and the bottom map is an equivalence since $\modal f$ is an equivalence. Therefore the map $\precomp{f}:X^B\to X^A$ is an equivalence, as desired.
+commutes. In this square the two vertical maps are equivalences by the universal property of modalization, and the top map is an equivalence since $\modal f$ is an equivalence. Therefore the map $\precomp{f}:X^B\to X^A$ is an equivalence, as desired.
 
 Conversely, assume that $\precomp{f} : X^B \to X^A$ is an equivalence for every $\modal$-modal type $X$. By the square above it follows that $\precomp{\modal f}:X^{\modal B}\to X^{\modal A}$ is an equivalence for every $\modal$-modal type $X$. The fiber of $\modal A^{\modal B}\to \modal A^{\modal A}$ at $\idfunc:\modal A\to \modal A$ is contractible, so we obtain a retraction $g$ of $\modal f$. To see that $g$ is also a section observe that the fiber of $\modal B^{\modal B}\to \modal B^{\modal A}$ at $\modal f$ is contractible. This fiber contains $(\idfunc[\modal B],\refl{\modal f})$. However, we also have an identification $p:\precomp{\modal f}(\modal f\circ g)=\modal f$, since
 \begin{equation*}
@@ -878,13 +875,15 @@ Conversely, assume that $\precomp{f} : X^B \to X^A$ is an equivalence for every 
 Therefore $(\modal f\circ g,p)$ is in the fiber of $\precomp{\modal f}:\modal B^{\modal B}\to \modal B^{\modal A}$ at $\modal f$. By the contractibility of the fibers it follows that $(\modal f\circ g,p)=(\idfunc[\modal B],\refl{\modal f})$, so it follows that $\modal f\circ g=\idfunc[\modal B]$. In other words, $g$ is both a retraction and a section of $\modal f$, so $\modal f$ is an equivalence.
 \end{proof}
 
+The following corollary is also established in \cite[Lemma 1.35]{RijkeSpittersShulman}.
+
 \begin{cor}\label{cor:mequiv_mconn}
 Every $\modal$-connected map is a $\modal$-equivalence.
 \end{cor}
 
-\begin{lem}\label{lem:rfs_factor}
+\begin{prp}\label{lem:rfs_factor}
 Every map factors as a $\modal$-equivalence followed by a $\modal$-\'etale map.
-\end{lem}
+\end{prp}
 
 \begin{proof}
 Consider a map $f:A\to B$, and the diagram
@@ -1017,7 +1016,7 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
     \end{equation*}
     is also in $\mathcal{R}$. 
   \end{enumerate}
-  Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the reflective factorization system of a modality.
+  Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the reflective factorization system of a modality. We say that $(\mathcal{L},\mathcal{R})$ \emph{is a reflective factorization system} if it satisfies the two properties above.
 \end{thm}
 
 \begin{proof}

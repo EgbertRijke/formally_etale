@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-  We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. In the special case of the $n$-truncation, we characterize the $n$-\'etale maps as the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We prove a `modal flattening lemma' and a `modal descent theorem'. The latter asserts that a $\modal$-\'etale map into a type $X$ is the same thing as a family of modal types over $\modal X$. Furthermore we describe a wide range of applications building on the conjectured interpretation of Homotopy Type Theory in certain $(\infty,1)$-sheaf-toposes. We discuss conjectural applications, where $\modal$-étale maps contain formally étale maps from Algebraic Geometry, local diffeomorphisms between manifolds or projections from covering spaces in Topology. The latter also suggests a theory of covering spaces for topological stacks.
+  We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. In the special case of the $n$-truncation, we characterize the $n$-\'etale maps as the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We prove a `modal flattening lemma' and a `modal descent theorem'. The latter asserts that a $\modal$-\'etale map into a type $X$ is the same thing as a family of modal types over $\modal X$. We discuss conjectural applications, where $\modal$-étale maps contain formally étale maps from Algebraic Geometry, local diffeomorphisms between manifolds or projections from covering spaces in Topology. 
 \end{abstract}
 
 \section{Introduction}
@@ -48,18 +48,24 @@ with the idea to use these extended theories to reason about more specialized $(
 One special application they had in mind was to use Homotopy Type Theory to talk about \emph{cohesive} $(\infty,1)$-toposes,
 which is witnessed in the notes \cite{ShulmanSchreiber}.
 This idea of a cohesive type theory was later developed in \cite{ShulmanRealCohesion} for a special case.
-While the applications of the theory in this article are at least close to these ideas,
-we will work with a simpler setup of only one \emph{monadic} modality, given in the most straightforward way -- as a list of axioms.
-And for most of the article we will only apply our theory to the commonly known truncation modalities.
+While almost all results in this article are about one \emph{monadic} modality,
+these ideas were relevant for the development of our results and we will discuss possible applications along these lines.
   
-Modalities are defined in \cite[Section 7.7]{UFP} and were studied extensively in \cite{RijkeSpittersShulman}.
-There are two orthogonal factorization systems associated to a modality which coincide in the case of a left exact modality: the \emph{stable} factorization system and the \emph{reflective} factorization system. The stable factorization system has been studied in \cite{RijkeSpittersShulman}. The reflective factorization system already used in category theory, in \cite{cassidy_hebert_kelly_1985}, where the reflector of a reflective subcategory takes the role of the modality. The fact that any modality also gives rise to a reflective factorization system, see \cref{thm:rfs_orthogonal}, is one of the main results of this paper. The left maps of the reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the reflective factorization system of a modality.
+Monadic modalities which we will call just modalities in this article were defined in \cite[Section 7.7]{UFP} and studied extensively in \cite{RijkeSpittersShulman}.
+There are two orthogonal factorization systems associated to a modality which coincide in the case of a left exact modality:
+the \emph{stable} factorization system and the \emph{reflective} factorization system.
+The stable factorization system has been studied in \cite{RijkeSpittersShulman}.
+The reflective factorization system was already used in category theory, e.g. in \cite{cassidy_hebert_kelly_1985},
+where the reflector of a reflective subcategory takes the role of the modality.
+The fact that any modality also gives rise to a reflective factorization system, see \cref{thm:rfs_orthogonal}, is one of the main results of this paper. The left maps of the reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the reflective factorization system of a modality.
 
-We call the maps in the right class $\modal$-étale, where $\modal$ is the modality. This name is inspired by the formally étale maps from algebraic geometry.
-In \ref{subsection:algebraic geometry} we prove that the most relevant formally étale maps in algebraic geometry could be defined in the same spirit as the $\modal$-étale maps.
-As a further justification, the original idea by Grothendieck was, that an ``étale'' is calm or undisturbed on a small scale.
-This fits very nicely to our view what an $\modal$-étale map is -- on a scale determined by the modality the $\modal$-étale maps are trivial.
-This intuition is reflected in \cref{prp:locally_trivial}, where we show that $\modal$-\'etale maps are locally trivial, using a notion of local that refers to the modality $\modal$.
+We call right maps of the reflective factorization system $\modal$-étale, where $\modal$ is the modality.
+This name is inspired by the formally étale maps from algebraic geometry,
+which are maps reminiscent of local homeomorphisms in topology.
+In Topology, ``local'' means that the maps are trivial over some open subset, while \emph{formally} étale maps are trivial on \emph{formal} disks.
+Hence we chose the name $\modal$-étale maps for maps which are trivial on $\modal$-disks in a sense made precise in \cref{prp:locally_trivial}.
+The relevant definitions from algebraic geometry are included in \ref{subsection:algebraic geometry}
+together with proofs that they could be defined analogous to our definitions of $\modal$-étale maps and $\modal$-disks.
 
 Another manifestation of $\modal$-\'etale maps being locally trivial, is the fact that a map $p:E\to B$ is $\modal$-\'etale if and only if it extends uniquely to a map $\tilde{p}:\tilde{E}\to \modal B$ with $\modal$-modal fibers. This claim, which we establish in \cref{thm:modal_descent}, is the modal descent theorem. 
 

@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-  We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. In the special case of the $n$-truncation, we characterize the $n$-\'etale maps as the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We prove a `modal flattening lemma' and a `modal descent theorem'. The latter asserts that a $\modal$-\'etale map into a type $X$ is the same thing as a family of modal types over $\modal X$. We discuss conjectural applications, where $\modal$-étale maps contain formally étale maps from Algebraic Geometry, local diffeomorphisms between manifolds or projections from covering spaces in Topology. 
+  We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. In the special case of the $n$-truncation, we characterize the $n$-\'etale maps as the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We prove a `modal flattening lemma' and a `modal descent theorem'. The latter asserts that a $\modal$-\'etale map into a type $X$ is the same thing as a family of modal types over $\modal X$. We conclude with an application to real-cohesive homotopy type theory and remarks how $\modal$-étale maps relate to the formally etale maps from algebraic geometry. 
 \end{abstract}
 
 \section{Introduction}
@@ -252,7 +252,7 @@ Any modality determines a \emph{stable orthogonal factorization system}, which w
 
 The stable orthogonal factorization system of a modality is obtained by the following steps. First we define the \define{$\modal$-modal} types to be types for which $\eta:X\to\modal X$ is an equivalence. Indeed, this property is equivalent to the property that $X$ is in the subuniverse of $\modal$. Then we say that a map $f:X\to Y$ is \define{$\modal$-modal} if all its fibers are $\modal$-modal. The class $\mathcal{R}$ is defined to be the class of $\modal$-modal maps. Next, we say that a type $X$ is \define{$\modal$-connected} if $\modal X$ is contractible. Similarly, we say that a map $f:X\to Y$ is \define{$\modal$-connected} if all of its fibers are $\modal$-connected. The class $\mathcal{L}$ is defined to be the class of $\modal$-connected maps. The pair $(\mathcal{L},\mathcal{R})$ is the stable orthogonal factorization system of the modality $\modal$.
 
-Conversely, we can obtain a modality from an stable factorization system, in which a type $X$ is modal if and only if the terminal projection $X\to \unit$ is in $\mathcal{R}$. The modal operator of this modality is defined as
+Conversely, we can obtain a modality from a stable factorization system, in which a type $X$ is modal if and only if the terminal projection $X\to \unit$ is in $\mathcal{R}$. The modal operator of this modality is defined as
 \begin{equation*}
 \modal X \defeq \mathsf{im}_{(\mathcal{L},\mathcal{R})}(X\to \unit).
 \end{equation*}
@@ -1063,12 +1063,9 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
   where $p$ is assumed to be in $\mathcal{R}$. The top and bottom maps in the left square are $\mathcal{L}$-maps. Moreover, all the maps in the right square are $\mathcal{R}$-maps. Hence the left square is a pullback by assumption (i).
 \end{proof}
 
-\section{Conjectural Applications in Geometry}
+\section{Applications in real-cohesive homotopy type theory}
 
-So far, we discussed the $n$-truncations as an example from plain Homotopy Type Theory.
-\emph{Viewing} Homotopy Type Theory as an internal language of $(\infty,1)$-toposes,
-which is crucial for the following,
-special features of a particular topos may be introduced into the type theory as modalities.
+So far, we discussed the $n$-truncations as an example from plain homotopy type theory.
 
 We speak of ``conjectural'' application in this section because we will neither describe how the toposes and modalities are constructed nor how the type theoretic results in this article can be applied to those toposes.
 However, what is presented in the following could be seen as an application in the sense that an \emph{internal} theory of algebraic or topological spaces can be advanced with our results.
@@ -1087,7 +1084,7 @@ Details on the topos ``$\Spaces$'' can be found under ``\ref{subsection:toplogic
     $\trunc{n}{\blank}\circ\shape$ on $\Spaces$ & Generalization of covering space for topological stacks, where the universal cover is a topological stack with an $n$-connected homotopy type \\
     $\shape$ on $\Spaces$ & Generalization of covering spaces, where the universal cover is a stack with trivial homotopy type \\
     $\sharp$ on $\Spaces$ & Maps where the domain carries the induced topology \\
-    $\Im$ on $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op})$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are Noetherian $k$-schemes   \\
+    $\Im$ on $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op})$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian $k$-schemes   \\
     $\Im$ on $\FSGrp$ & Local diffeomorphisms, if domain and codomain are manifolds \\
     \bottomrule
   \end{tabular}
@@ -1195,7 +1192,7 @@ The following basic observations give some justification to those names:
   \item We have $\shape_1 \widetilde{X} = 1$.
   \item Let $f:Y\to X$ be a covering space. Then we have the following lifting property:
     A map $g:Z\to X$ lifts uniquely to $Y$, if $\shape_1 g$ lifts to $\shape_1 Y$ along $\shape_1 f$.
-  \item Let $f:Y\to X$ be a covering space and a pointed map. Then there is a unique map $\widetilde{X}\to Y$ over $X$.
+  \item Let $f:Y\to X$ be a covering space and $f$ a pointed map. Then there is a unique map $\widetilde{X}\to Y$ over $X$.
   \end{enumerate}
 \end{rmk}
 \begin{proof}
@@ -1236,21 +1233,24 @@ The introduction of the latter also gives more details on the history of the sub
 in particular concerning definitions of covering spaces topological and differentiable stacks.
 The authors see an advantage of their approach in the clarity of the type theoretic proofs.
 
-\subsection{Analogous constructions in Algebraic Geometry}
+\section*{Appendix: Analogous constructions in algebraic geometry}
 \label{subsection:algebraic geometry}
-The purpose of this section is to show what the name-giving analogs of $\modal$-étale maps and $\modal$-disks from Algebraic Geometry are.
-Noetherian schemes are spaces of interest in Algebraic Geometry. There is a notion of formally étale maps between such schemes.
-One purpose of this section is to show that such maps are characterized in very much the same way as $\modal$-étale maps:
-We will define a pointed endofunctor on a category containing Noetherian schemes
-such that the maps with cartesian naturality squares are precisely the formally étale maps.
-Also in this section, we will show that formal disks or neighbourhoods of points can be constructed analogous to $\modal$-disks.
+The results we present here are certainly known to experts in algebraic geometry,
+but we were not able to find a suitable reference in the literature.
+The purpose of this section is to show what the name-giving analogs of $\modal$-étale maps and $\modal$-disks from algebraic geometry are.
 
-The functor $\Im$ we will define below, arises most naturally in Algebraic Geometry but can also be adapted to Differential Geometry.
-How an analogous functor can be used in Differential Geometry is described and studied intensively in \cite{SyntheticPDEs}.
+Noetherian schemes are spaces of interest in algebraic geometry. There is a notion of formally étale maps between such schemes.
+One purpose of this section is to show that such maps are characterized in very much the same way as $\modal$-étale maps:
+We will define a pointed endofunctor on a category containing noetherian schemes
+such that the maps with cartesian naturality squares are precisely the formally étale maps.
+Also in this section, we will show that formal disks or formal neighbourhoods of points can be constructed analogous to $\modal$-disks.
+
+The functor $\Im$ we will define below, arises most naturally in algebraic geometry but can also be adapted to differential geometry.
+How an analogous functor can be used in differential geometry is described and studied intensively in \cite{SyntheticPDEs}.
 
 In the following, $k$ will always be a field and all rings and algebras are assumed to be commutative and equipped with a unit for multiplication.
 We denote the category of finitely generated algebras over $k$ with $k\mathrm{-Alg}_{\mathrm{fg}}$.
-That entails, that any $A\in k\mathrm{-Alg}_{\mathrm{fg}}$ is a quotient $A=k[x_1,\dots,x_n]/(f_1,\dots,f_m)$.
+That means, that any $A\in k\mathrm{-Alg}_{\mathrm{fg}}$ is a quotient $A=k[x_1,\dots,x_n]/(f_1,\dots,f_m)$.
 These algebras may contain nilpotent elements, i.e. elements $x\in A$, such that $x\neq 0$, but $x^n=0$ for some $n\in\bN$.
 Nilpotent elements are important for the following -- they represent infinitesimals.
 This can roughly be explained by the analogy
@@ -1258,18 +1258,20 @@ that the elements of the algebras are to be thought of as generalized coordinate
 and the nilpotents represent coordinates that are so (infinitesimally) small, that some power is actually zero. 
 
 We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}(A,\blank)$ from $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}}$ to the category of sets.
-These functors represent so called \emph{affine Noetherian $k$-schemes} and they form the basic building blocks of spaces called Noetherian $k$-schemes
+These functors represent so called \emph{affine noetherian $k$-schemes} and they form the basic building blocks of spaces called noetherian $k$-schemes
 (see \cite[Chapter II]{hartshorne} for more on schemes).
-We will use not any property of Noetherian $k$-schemes here, except that are locally of the form $\Spec(A)$ for some $A\in\fgkAlg$.
+We will use no property of noetherian $k$-schemes here,
+except that we can descent to affine noetherian $k$-schemes .
 
-For any $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ ,
+For any $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$,
 the functor $\Im X$ defined pointwise by
 \[ (\Im X)(A):\equiv X(A/\sqrt{0})\]
-turns out to be a sheaf again. So $\Im$ is an endofunctor on the sheaf-topos which turns out to be well behaved enough to generate a modality\todo{reference}.
+is again a functor from $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ to the sets.
+So $\Im$ is an endofunctor on the presheaf category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
 
 The name $\modal$-étale is an adaption of the name ``formally étale'' for general modalities.
-The more specific name was used in \cite{wellen-thesis}, which reused the name from \cite{SyntheticPDEs}.
-The original definition of formally étale maps is from Algebraic Geometry (see \cite[§ 17]{GrothendieckDieudonne}):
+The name ``formally étale'' was used in \cite{wellen-thesis}, which reused the name from \cite{SyntheticPDEs}.
+The original definition of formally étale maps is from algebraic geometry (see \cite[§ 17]{GrothendieckDieudonne}):
 \begin{defn}
   A morphisms of schemes $\varphi:X\to Y$ is \emph{formally étale},
   if for all rings $R$ and all nilpotent ideals $N$ in $R$ all squares
@@ -1282,10 +1284,10 @@ The original definition of formally étale maps is from Algebraic Geometry (see 
   have a unique lift like indicated in the diagram.
 \end{defn}
 We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
-The presented fact is certainly well known to experts and the proof we present here is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
-We use the fact, that the Noetherian $k$-schemes are also sheaves in the Zariski Topos and that we have the functor $\Im$ like above.
+The presented fact and its proof is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
+We use the fact, that the noetherian $k$-schemes embbeds into the category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
 \begin{rmk}
-  A morphism of $f:X\to Y$ Noetherian schemes $X,Y$ is formally étale if and only if the naturality square
+  A morphism of $f:X\to Y$ noetherian schemes $X,Y$ is formally étale if and only if the naturality square
   \begin{center}
     \begin{tikzcd}
       X\arrow[r]\arrow[d, "f", swap] & \Im X\arrow[d, "\Im f"] \\
@@ -1295,7 +1297,7 @@ We use the fact, that the Noetherian $k$-schemes are also sheaves in the Zariski
   is a pullback square.
 \end{rmk}
 \begin{proof}
-  Let $X$ and $Y$ be Noetherian $k$-schemes. 
+  Let $X$ and $Y$ be noetherian $k$-schemes. 
   We will first show that a morphism of schemes $f:X\to Y$ is formally étale,
   if and only if for all $A\in\fgkAlg$ all squares
   \begin{center}
@@ -1305,7 +1307,7 @@ We use the fact, that the Noetherian $k$-schemes are also sheaves in the Zariski
     \end{tikzcd}
   \end{center}
   have a unique lift like indicated in the diagram. Let us call this property (1).
-  Since $\sqrt{0}$ is always nilpotent in a Noetherian ring, (1) is implied if $f$ is formally étale.
+  Since $\sqrt{0}$ is always nilpotent in a noetherian ring, (1) is implied if $f$ is formally étale.
   
   The property formally étale is known to be local in the source \cite[§ 17.1.6]{GrothendieckDieudonne}, so we can assume $X$ and $Y$ to be affine.
   For affine $X=\mathrm{Spec(S)}$ and $Y=\mathrm{Spec(S)}$, all squares
@@ -1322,8 +1324,8 @@ We use the fact, that the Noetherian $k$-schemes are also sheaves in the Zariski
       \mathrm{Spec(A)}\arrow[r] & \mathrm{Spec}(\mathrm{im}(\varphi))\arrow[r] & Y
     \end{tikzcd}
   \end{center}
-  That means we can assume $A$ to be Noetherian, if $X$ and $Y$ are Noetherian for the sake of checking if $f$ is formally étale.
-  So let us assume (1) holds. Let $A$ be Noetherian and let us construct a unique lift in
+  That means we can assume $A$ to be noetherian, if $X$ and $Y$ are noetherian for the sake of checking if $f$ is formally étale.
+  So let us assume (1) holds. Let $A$ be noetherian and let us construct a unique lift in
   \begin{center}
     \begin{tikzcd}
       \mathrm{Spec(A/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
@@ -1369,16 +1371,18 @@ We use the fact, that the Noetherian $k$-schemes are also sheaves in the Zariski
   have to be pullback squares. But this is just (1) by Yoneda.
 \end{proof}
 
-For this special case, the characterization of $\Im$-étale maps from lemma \ref{lem:etale_char} becomes:
+\ignore{ ... to much work now to dig up a reference for this one ...
+Early versions of the characterization of $\Im$-étale maps in \cref{lem:etale_char} were developed with :
 
-Let $X$ and $Y$ be Noetherian $k$-schemes such that the natural map $X\to \Im X$ is an epimorphism,
-then $f:X\to Y$ is formally étale if and only if it induces an isomorphism $D^\Im(X,x)\to D^\Im(Y,f(x))$
-\footnote{We will make precise what we mean by $D^\Im$ in the next remark. } for all $x\in X$.
+Let $X$ and $Y$ be noetherian $k$-schemes such that the natural map $X\to \Im X$ is pointwise surjective,
+then $f:X\to Y$ is formally étale if and only if it induces an isomorphism on the formal disk at $x$ for all $x\in X$.
 
-The condition that $\eta_X:X\to \Im X$ is an epimorphism is implied by formal smoothness which is a reformulation of pointwise surjectivity of $\eta_X$.
-The sheaves $D^\Im(X,x)$ turn out to be something well known in Algebraic Geometry, which we will explore now.
 
-In Algebraic Geometry, there is the concept of the \emph{formal completion} of a closed subspace (see \cite[p.194]{hartshorne} or \cite[10.8]{ega}).
+The condition that $\eta_X:X\to \Im X$ is surjective is implied by formal smoothness which is a reformulation of pointwise surjectivity of $\eta_X$.
+The sheaves $D^\Im(X,x)$ turn out to be something well known in algebraic geometry, which we will explore now.
+}
+
+In algebraic geometry, there is the concept of the \emph{formal completion} of a closed subspace (see \cite[p.194]{hartshorne} or \cite[10.8]{ega}).
 Roughly, the formal completion of a subspace may be thought of as the subspace together with
 all points from the surrounding space which are infinitesimally close to the subspace.
 In the affine case, where a closed subspace of $\Spec(A)$ is given by an ideal $I\subseteq A$, we can construct a topological ring $\hat{A}$
@@ -1391,10 +1395,8 @@ as the limit of the sequence of quotients by powers of $I$ with discrete topolog
 Let us write $\Delta(A)$ for $A\in\fgkAlg$ with the discrete topology.
 The completion yields a functor:
 \[ \Spf(\hat{A}) := \fgkAlgTop(\hat{A},\Delta(\_))\]
-
-\todo{proof or reference, that $\Spf$ is an embedding..}
 \begin{rmk}
-  Let $X$ be a Noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
+  Let $X$ be a noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
   \begin{center}
     \begin{tikzcd}
       D^\Im(X,x)\arrow[d]\arrow[r] & 1\arrow[d, "\eta_X\circ x"] \\

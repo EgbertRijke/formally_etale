@@ -48,7 +48,7 @@ with the idea to use these extended theories to reason about more specialized $(
 One special application they had in mind was to use Homotopy Type Theory to talk about \emph{cohesive} $(\infty,1)$-toposes,
 which is witnessed in the notes \cite{ShulmanSchreiber}.
 This idea of a cohesive type theory was later developed in \cite{ShulmanRealCohesion} for a special case.
-While almost all results in this article are about one \emph{monadic} modality,
+While the results in this article are about one \emph{monadic} modality,
 these ideas were relevant for the development of our results and we will discuss possible applications along these lines.
   
 Monadic modalities which we will call just modalities in this article were defined in \cite[Section 7.7]{UFP} and studied extensively in \cite{RijkeSpittersShulman}.
@@ -1064,35 +1064,6 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
 \end{proof}
 
 \section{Applications in real-cohesive homotopy type theory}
-
-So far, we discussed the $n$-truncations as an example from plain homotopy type theory.
-
-We speak of ``conjectural'' application in this section because we will neither describe how the toposes and modalities are constructed nor how the type theoretic results in this article can be applied to those toposes.
-However, what is presented in the following could be seen as an application in the sense that an \emph{internal} theory of algebraic or topological spaces can be advanced with our results.
-Another goal of this section, which is probably the most important, is to make the readers aware of the examples from geometry we had in mind when discovering the modal descent theorem \ref{thm:modal_descent} and lemma \ref{lem:etale_char}.
-
-The following table is an overview of the applications that will be discussed in this section.
-Details on the topos ``$\Spaces$'' can be found under ``\ref{subsection:toplogical stacks} Topology'' below the other toposes and modalities are under ``\ref{subsection:algebraic and differential geometry} Algebraic and Differential Geometry''.
-\todo{Make table correct (composition of the modalities is not known to be valid)}
-\begin{center}
-  \begin{tabular}{p{3.5cm}p{8.5cm}}
-    \toprule
-    $\modal$ & $\modal$-étale maps  \\
-    \midrule
-    $\trunc{n}{\blank}$ on $\infty$-groupoids & For $n\geq -1$: maps right orthogonal to $1\to S^{n+1}$ by \cref{thm:rfs_orthogonal}. \\
-    $\trunc{1}{\blank}\circ\shape$ on $\Spaces$ & Some notion of covering space for topological stacks \\
-    $\trunc{n}{\blank}\circ\shape$ on $\Spaces$ & Generalization of covering space for topological stacks, where the universal cover is a topological stack with an $n$-connected homotopy type \\
-    $\shape$ on $\Spaces$ & Generalization of covering spaces, where the universal cover is a stack with trivial homotopy type \\
-    $\sharp$ on $\Spaces$ & Maps where the domain carries the induced topology \\
-    $\Im$ on $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op})$ & Formally étale maps in the sense of \cite{GrothendieckDieudonne}, if domain and codomain are noetherian $k$-schemes   \\
-    $\Im$ on $\FSGrp$ & Local diffeomorphisms, if domain and codomain are manifolds \\
-    \bottomrule
-  \end{tabular}
-\end{center}
-
-\bigskip
-
-\subsection{Topology}
 \label{subsection:toplogical stacks}
 
 In \cite[Section 8]{ShulmanRealCohesion} Mike Shulman introduces real-cohesive homotopy type theory
@@ -1101,36 +1072,27 @@ This type theory is a candidate for an internal language for some quite specific
 The term ``cohesion'' refers to a higher analog 
 of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
 
-Let us look at an example of such a topos, which contains some \emph{topological stacks}.
-The objects may have both topological \emph{and} homotopical structure, which are not the same.
-As a site, we can use the full subcategory of topological spaces spanned by
-\[ \{ \bR^n \vert n\in\bN\}\]
-with a topology given by covering collections of open subsets with contractible intersections.
-We will call the topos of sheaves on this site with values in $\infty$-groupoids $\Spaces$. 
-Theorem \ref{thm:modal_descent} will turn out to tell us in this context,
-that important parts of the theory of covering spaces of topological spaces hold for a general abstract modality.
-One modality of interest for application of our theory of $\modal$-étale maps is based on the functor mapping a stack to its fundamental $\infty$-groupoid,
-which is an endofunctor if $\infty$-groupoids are identified with constant stacks. This modality is denoted $\shape$ in Shulman's article.
 
-In Real Cohesive Homotopy Type Theory\footnote{As given in \cite{ShulmanRealCohesion}.},
-which will just be called Real Cohesion in the following, 
-some well behaved topological spaces, like, for example, topological manifolds
-are supposed to be included in the theory as they are included in the category $\Spaces$ defined above.
+In real-cohesive homotopy type theory\footnote{As given in \cite{ShulmanRealCohesion}.},
+which will just be called real cohesion in the following,
+types can have \emph{both} topological structure and homotopical structure.
 It is important to note, that the types corresponding to these topological spaces
-are $0$-types in Real Cohesion.
+are $0$-types in real cohesion.
 
 This can lead to confusion with the common explanation for the identity types in Homotopy Type Theory,
 where identifications are commonly interpreted as paths in a space, since that would give us \emph{two different} notion of path. 
 On the one hand, there are topological paths, i.e. maps $\gamma:\bR\to X$ from the $0$-type $\bR$ representing the real line with the euclidean topology.
-And in the common Homotopy Type Theory terminology, the elements of identity types $x=_A y$ in some type $A$ are also called path but are very different from the topological paths. To avoid confusion, we will follow Mike Shulman's terminology from \cite{ShulmanRealCohesion} and refer to topological paths as paths and to elements of identity types as equalities in the following.
+And in the common Homotopy Type Theory terminology, the elements of identity types $x=_A y$ in some type $A$ are also called path but are very different from the topological paths.
+To avoid confusion, we will follow Mike Shulman's terminology from \cite{ShulmanRealCohesion}
+and refer to topological paths as paths and to elements of identity types as equalities.
 
 Let $\bS^{n}$ denote the topological sphere given by
 \[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
 and $\sphere{n}$ the higher inductive type introduced in \cite{UFP}, which we already used freely throughout the article.
-The Reals ``$\bR$'' in this definition are, as in \cite{ShulmanRealCohesion}, the \emph{Dedekind Reals},
-which are known to coincide with the external sheaf $\mathrm{Hom}_{\mathrm{Top}}(\blank,\bR)$ in $\Spaces$ and some similar toposes.
+The Reals ``$\bR$'' in this definition are, as in \cite{ShulmanRealCohesion}, the \emph{Dedekind Reals} which we assume to be a small type
+\footnote{This is true if propositional resizing is assumed.}.
 
-For the present work, the shape modality ``$\shape$'' from Real Cohesion is of special interest.
+For the present work, the shape modality ``$\shape$'' from real cohesion is of special interest.
 It maps topological spaces to their \emph{homotopy type}, so for example $\shape \bS^{1} =\sphere{1}$ 
 and $\shape \bR =1$.
 

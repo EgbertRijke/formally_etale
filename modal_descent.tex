@@ -72,14 +72,10 @@ Another manifestation of $\modal$-\'etale maps being locally trivial, is the fac
 In \cref{thm:char_n_etale} we use our abstract theory to prove the following characterization of étale maps for the $n$-truncations ($n\geq -1$):
 A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to the base point inclusion $\unit\to\sphere{n+1}$.
 
-The application in \cref{subsection:toplogical stacks} suggests a new notion of covering space for topological stacks and shows that
-one interpretation of the modal descent theorem (\cref{thm:modal_descent}) is an extension of the classical fundamental theorem of the theory of covering spaces,
-relating covering spaces over a fixed space with certain actions of its fundamental groupoid.
-A version of modal descent for the fundamental infinity groupoid functor of a cohesive $(\infty,1)$-topos was proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
-The usual covering theory is recovered by restricting to maps between $0$-types and setting the homotopy level to 1,
-since it is concerned with the $1$-truncated homotopy type of a topological space.
-This expands on an idea of the first author from \cite{wellen-oxford-abstract}.
-We also give characterizations and descriptions of formally étale maps in the sense of Algebraic Geometry.
+In \cref{subsection:toplogical stacks} we show how the modal decent theorem (\cref{thm:modal_descent})
+subsumes the classical fundamental theorem of the theory of covering spaces.
+This also yields a candidate extension of this classical theorem to topological stacks.
+In fact, it is essentially in this context that the modal descent theorem was already found and proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
   
 We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018.
 Discussions with and remarks of Jonathan Zachhuber, Tobias Columbus, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
@@ -355,16 +351,16 @@ Note that the $\modal$-disk fits in a fiber sequence
 \end{equation*}
 Moreover, we observe that the $\modal$-disk is connected, since the modal unit $\eta:A\to\modal(A)$ is a connected map. Therefore the $\modal$-disk is also known as the \define{$\modal$-connected cover} of $A$ at $a$.
 
-We also recall the notion of $\modal$-tangent space from \cite{wellen-thesis}.
+We also recall the notion of $\modal$-disk bundle from \cite{wellen-thesis}.
 
 \begin{defn}
-  For any type $A$, we define the \define{$\modal$-tangent space}
+  For any type $A$, we define the \define{$\modal$-disk bundle}
   \begin{equation*}
     T^\modal A \defeq \sm{x:A}D^\modal(A,x).
   \end{equation*}
 \end{defn}
 
-Note that the $\modal$-tangent space fits in a pullback square
+Note that the $\modal$-disk bundle fits in a pullback square
 \begin{equation*}
   \begin{tikzcd}
     T^\modal A \arrow[r] \arrow[d] & A \arrow[d] \\

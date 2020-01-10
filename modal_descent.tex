@@ -86,11 +86,11 @@ This material is based upon work supported by the Air Force Office of Scientific
 \section{Preliminaries}
 We assume that the reader is familiar with the basics of homotopy type theory \cite{UFP} and the basic theory of (idempotent, monadic) modalities, as presented in \cite{RijkeSpittersShulman}. In this preliminary section, we recall the basic concepts from those two sources.
 
-Just as in \cite{UFP}, we write $x=y$ for the type of identifications of $x$ and $y$, provided that both $x$ and $y$ have a common type $X$. Sometimes we call identifications paths. We write
+Just as in \cite{UFP}, we write $x=y$ for the type of identifications of $x$ and $y$, provided that both $x$ and $y$ have a common type $X$. Sometimes we call identifications equalities. We write
 \begin{equation*}
   \apfunc{f}:(x=y)\to (f(x)=f(y))
 \end{equation*}
-for the action on paths of a function $f$. Path concatenation is written in diagrammatic order, i.e., we write $\ct{p}{q}$ for the concatenation of $p:x=y$ and $q:y=z$. The fiber of a map $f:A\to B$ at $b:B$ is defined to be the type
+for the action on equalities of a function $f$. Concatenation of equalities is written in diagrammatic order, i.e., we write $\ct{p}{q}$ for the concatenation of $p:x=y$ and $q:y=z$. The fiber of a map $f:A\to B$ at $b:B$ is defined to be the type
 \begin{equation*}
   \fib{f}{b}\defeq \sm{x:A}f(x)=b.
 \end{equation*}

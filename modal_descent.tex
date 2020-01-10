@@ -7,11 +7,12 @@
 
 \newcommand{\shape}{\ensuremath{\mathord{\raisebox{0.5pt}{\text{\rm\esh}}}}}
 \newcommand{\drawpb}[1]{\arrow[#1, phantom, "\text{\scriptsize(pb)}" description]}
-\newcommand{\bC}{\mathbb C}
 \newcommand{\bD}{\mathbb D}
 \newcommand{\bN}{\mathbb N}
-\newcommand{\bR}{\mathbb R}
 \newcommand{\bZ}{\mathbb Z}
+\newcommand{\bQ}{\mathbb Q}
+\newcommand{\bR}{\mathbb R}
+\newcommand{\bC}{\mathbb C}
 \newcommand{\bP}{\mathbb P}
 \newcommand{\bA}{\mathbb A}
 \newcommand{\bS}{\mathbb S}
@@ -1066,56 +1067,58 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
 \section{Applications in real-cohesive homotopy type theory}
 \label{subsection:toplogical stacks}
 
-In \cite[Section 8]{ShulmanRealCohesion} Mike Shulman introduces real-cohesive homotopy type theory
-\footnote{In 8.1 of Shulman's paper, ``real-cohesive'' is used, if the axiom ``$\mathrm{R}\flat$'' is assumed, which we will assume here as well.}.
+In \cite[Section 8]{ShulmanRealCohesion} Mike Shulman introduces real-cohesive homotopy type theory.
 This type theory is a candidate for an internal language for some quite specific \emph{cohesive} ($\infty$,1)-toposes.
 The term ``cohesion'' refers to a higher analog 
 of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
 
+In this section, we will assume all the rules of Shulman's real-cohesive homotopy type theory,
+which we will just call real-cohesion from now on.
+The rules include Shulman's Axiom ``$\mathrm{R}\flat$''.
+We will use univalence wihtout mention and, as Shulman does, we will assume propositional resizing.
+Following Shulman's notation, we will write  ``$\bR$'' for the type of \emph{Dedekind Reals}, which will be small by propositional resizing.
 
-In real-cohesive homotopy type theory\footnote{As given in \cite{ShulmanRealCohesion}.},
-which will just be called real cohesion in the following,
-types can have \emph{both} topological structure and homotopical structure.
-It is important to note, that the types corresponding to these topological spaces
-are $0$-types in real cohesion.
+In real-cohesion, types can have \emph{both} topological structure and homotopical structure.
+We can probe the topological structure of some type $X$ by mapping $\bR$ into $X$,
+i.e. by looking at \emph{topological paths} $\gamma:\bR\to X$.
+Since having \emph{two different} notions of ``paths'' would be confusing,
+we follow the terminology of \cite{ShulmanRealCohesion} and call the elements of identity types identifications or equalities.
 
-This can lead to confusion with the common explanation for the identity types in Homotopy Type Theory,
-where identifications are commonly interpreted as paths in a space, since that would give us \emph{two different} notion of path. 
-On the one hand, there are topological paths, i.e. maps $\gamma:\bR\to X$ from the $0$-type $\bR$ representing the real line with the euclidean topology.
-And in the common Homotopy Type Theory terminology, the elements of identity types $x=_A y$ in some type $A$ are also called path but are very different from the topological paths.
-To avoid confusion, we will follow Mike Shulman's terminology from \cite{ShulmanRealCohesion}
-and refer to topological paths as paths and to elements of identity types as equalities.
+We will briefly recall some concepts from real-cohesion.
+There is an unfortunate name-clash, since 0-truncated types are sometimes called ``discrete''.
+The following definition is about \emph{topological} discreteness and is a priori not related to truncation levels.
+\begin{defn}
+  A type $X$ is \emph{discrete} if and only if the map
+  \[ x\mapsto (y\mapsto x) : X \to (\bR \to X) \]
+  is an equivalence.
+\end{defn}
+The Dedeking Reals $\bR$ are not discrete and 0-truncated.
+The rules of real-cohesion ensure that the following types are discrete:
+\[ \emptyset \quad 1 \quad \bN \quad \bZ \quad \bQ \quad \sphere{n} \]
+where $\emptyset$ is the empty type,
+$1$ is the unit-type and $\sphere{n}$ is the higher inductive type representing the homotopy type of $n$-sphere.
+Note that the latter is denoted with $\bS^n$ in \cite{UFP}, which we will use for the topological $n$-sphere:
+\begin{defn}
+  Let $\bS^{n}$ denote the topological sphere given by
+  \[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
+\end{defn}
 
-Let $\bS^{n}$ denote the topological sphere given by
-\[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
-and $\sphere{n}$ the higher inductive type introduced in \cite{UFP}, which we already used freely throughout the article.
-The Reals ``$\bR$'' in this definition are, as in \cite{ShulmanRealCohesion}, the \emph{Dedekind Reals} which we assume to be a small type
-\footnote{This is true if propositional resizing is assumed.}.
-
-For the present work, the shape modality ``$\shape$'' from real cohesion is of special interest.
-It maps topological spaces to their \emph{homotopy type}, so for example $\shape \bS^{1} =\sphere{1}$ 
-and $\shape \bR =1$.
-
-In a $1$-topos cohesive over Set, the functor $\Delta\circ\pi_0$ maps a sheaf to the sheaf constantly its set of connected components.
-The $\shape$ is a higher analog of this functor that extracts homotopical information on all h-levels, not just level 0.
-So if $X$ represents a topological space with a point $\ast: X$, 
-then $\shape X$ is also pointed and the n-th homotopy group of $X$ as a topological space 
-could be retrieved from its shape 
-as $\pi_n(X):\equiv\trunc{0}{\Omega^n(\shape X)}$.
-
-Like $\Delta\circ\pi_0$ reflects into the subcategory of constant sheaves, $\shape$ reflects into the \emph{discrete} types.
-Note that ``discrete'' refers to the topological structure of a type, 
-not to a property of the $\infty$-groupoid structure given by its identity type.
-
-The equation ``$\shape \bR=1$'' may be viewed as one of the defining properties of $\shape$
--- it can be defined as the modality \emph{nullifying} $\bR$ (see \cite[Section 2.3]{RijkeSpittersShulman} for details on nullification modalities).
+The discrete types are the modal types of a modality that can be constructed as \emph{nullification} at $\bR$,
+which is a general construction defined in \cite[Section 2.3]{RijkeSpittersShulman}.
+\begin{defn}
+  Let $\shape$ be a modality called ``shape'' given by nullification at $\bR$.
+\end{defn}
+By construction as a nullification at $\bR$, shape will nullify $\bR$, which means $\shape \bR=1$. 
+In general, shape may be thought of as mapping topological spaces to their \emph{homotopy types}.
+Using the rules of real-cohesion, Shulman computes $\shape \bS =\sphere{1}$.
 
 As all modalities, $\shape$ comes with a unit-map $\modalunit_X\colon X \to \shape X$, for any type $X$.
 For any two points $x,y: X$ that are joined by a topological path, 
-the images $\modalunit_X(x)$ and $\modalunit_X(y)$ are equal in $\shape X$.
+there is an equality joining $\modalunit_X(x)$ and $\modalunit_X(y)$ in $\shape X$.
 
-For $\bS^{1}$, this fiber or $\shape$-disk
-\[ \sum_{x:\bS^{1}}\modalunit_{\bS^{1}}(x)=\modalunit(\ast) \]
+Let $\ast:\bS^1$ be a fixed point on the topological circle.
+For $\bS^{1}$ the $\shape$-disk
+\[ D (\bS^1,\ast) \equiv \sum_{x:\bS^{1}}\modalunit_{\bS^{1}}(x)=\modalunit(\ast) \]
 turns out to be the universal cover of $\bS^{1}$.
 But this works only for spaces with trivial higher homotopy groups. 
 For the construction of the universal cover of an arbitrary type, this has to be adjusted:

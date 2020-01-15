@@ -79,7 +79,7 @@ This also yields a candidate extension of this classical theorem to topological 
 In fact, it is essentially in this context that the modal descent theorem was already found and proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
   
 We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018.
-Discussions with and remarks of Jonathan Zachhuber, Tobias Columbus, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal and Mathieu Anel were helpful for this work.
+Discussions with and remarks of Jonathan Zachhuber, Tobias Columbus, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal, Mathieu Anel, and Dan Christensen were helpful for this work.
 The anonymous reviewers greatly improved the article with their comments and suggestions. 
 This material is based upon work supported by the Air Force Office of Scientific Research under award number FA9550-17-1-0326, and through MURI grant FA9550-15-1-0053.
 
@@ -1062,6 +1062,27 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
     \end{tikzcd}
   \end{equation*}
   where $p$ is assumed to be in $\mathcal{R}$. The top and bottom maps in the left square are $\mathcal{L}$-maps. Moreover, all the maps in the right square are $\mathcal{R}$-maps. Hence the left square is a pullback by assumption (i).
+\end{proof}
+
+Recall from \cite[Section 1]{RijkeSpittersShulman} that there are four equivalent ways of saying what a modality is:
+\begin{enumerate}
+\item A higher modality.
+\item A uniquely eliminating modality.
+\item A $\Sigma$-stable reflective subuniverse.
+\item A stable orthogonal factorization system.
+\end{enumerate}
+In other words, the \emph{type} of higher modalities is equivalent to the \emph{type} of uniquely eliminating modalities, and so on. We can now add a fifth structure to this list:
+\begin{enumerate}
+  \setcounter{enumi}{4}
+\item A reflective factorization system.
+\end{enumerate}
+
+\begin{thm}
+  The type of modalities is equivalent to the type of reflective factorization systems.
+\end{thm}
+
+\begin{proof}
+  In the proof of \cref{thm:rfs} we showed that the right class $\mathcal{R}$ of a reflective factorization system is precisely the class of \'etale maps for the underlying modality. In other words, a reflective factorization system is completely determined by its modal types, so the claim follows.
 \end{proof}
 
 \section{Applications in real-cohesive homotopy type theory}

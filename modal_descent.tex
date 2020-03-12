@@ -63,17 +63,17 @@ The fact that any modality also gives rise to a reflective factorization system,
 We call right maps of the reflective factorization system $\modal$-étale, where $\modal$ is the modality.
 This name is inspired by the formally étale maps from algebraic geometry,
 which are maps reminiscent of local homeomorphisms in topology.
-In Topology, ``local'' means that the maps are trivial over some open subset, while \emph{formally} étale maps are trivial on \emph{formal} disks.
+In topology, ``local'' means that the maps are trivial over some open subset, while \emph{formally} étale maps are trivial on \emph{formal} disks.
 Hence we chose the name $\modal$-étale maps for maps which are trivial on $\modal$-disks in a sense made precise in \cref{prp:locally_trivial}.
-The relevant definitions from algebraic geometry are included in \ref{subsection:algebraic geometry}
+The relevant definitions from algebraic geometry are included in \cref{subsection:algebraic geometry}
 together with proofs that they could be defined analogous to our definitions of $\modal$-étale maps and $\modal$-disks.
 
-Another manifestation of $\modal$-\'etale maps being locally trivial, is the fact that a map $p:E\to B$ is $\modal$-\'etale if and only if it extends uniquely to a map $\tilde{p}:\tilde{E}\to \modal B$ with $\modal$-modal fibers. This claim, which we establish in \cref{thm:modal_descent}, is the modal descent theorem. 
+Another manifestation of $\modal$-\'etale maps being locally trivial is the fact that a map $p:E\to B$ is $\modal$-\'etale if and only if it extends uniquely to a map $\tilde{p}:\tilde{E}\to \modal B$ with $\modal$-modal fibers. This claim, which we establish in \cref{thm:modal_descent}, is the modal descent theorem. 
 
 In \cref{thm:char_n_etale} we use our abstract theory to prove the following characterization of étale maps for the $n$-truncations ($n\geq -1$):
 A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to the base point inclusion $\unit\to\sphere{n+1}$.
 
-In \cref{subsection:toplogical stacks} we show how the modal decent theorem (\cref{thm:modal_descent})
+In \cref{subsection:topological stacks} we show how the modal descent theorem (\cref{thm:modal_descent})
 subsumes the classical fundamental theorem of the theory of covering spaces.
 This also yields a candidate extension of this classical theorem to topological stacks.
 In fact, it is essentially in this context that the modal descent theorem was already found and proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
@@ -262,7 +262,7 @@ and the modal unit is defined to be the left factor $X \to \modal X$ of the map 
 We recall one more useful general fact about modalities.
 
 \begin{thm}
-  For any two modalities $(\mathcal{L},\mathcal{R})$ and $(\mathcal{L}',\mathcal{R}')$ the following are equivalent:
+  For any two stable orthogonal factorization systems $(\mathcal{L},\mathcal{R})$ and $(\mathcal{L}',\mathcal{R}')$ the following are equivalent:
 \begin{enumerate}
 \item Every $(\mathcal{L},\mathcal{R})$-modal type is $(\mathcal{L}',\mathcal{R}')$-modal.
 \item The modal units of the modality $(\mathcal{L}',\mathcal{R}')$ are in $\mathcal{L}$.
@@ -331,7 +331,7 @@ Y \arrow[r] & \modal Y
 are equivalences. Therefore this square is a pullback square, so $f$ is $\modal$-\'etale.
 \end{proof}
 
-Our goal in this section is to show that a map is \'etale for the $n$-truncation if and only if it is right orthogonal to the point inclusion $\unit\to\sphere{n+1}$. Maps that are \'etale for the $n$-truncation are also called $\define{$n$-\'etale}$.
+Our goal in this section is to show that a map is \'etale for the $n$-truncation if and only if it is right orthogonal to the point inclusion $\unit\to\sphere{n+1}$. Recall that $n$-\'etale maps are maps that are \'etale for the $n$-truncation.
 Before we prove this fact, we give a characterization of $\modal$-\'etale maps that only works if the domain of the map in question has a surjective $\modalunit$. Recall by \cref{cor:units-surjective} that this happens if and only if all the propositions are modal. In particular, it is immediate that the units of the $n$-truncation are all surjective.
 
 We recall from \cite{wellen-thesis} the notion of formal disk associated to a modality and give it a more generic name.
@@ -869,7 +869,7 @@ X^{\modal B} \arrow[r,"\blank\circ (\modal f)"] \arrow[d,swap,"\blank\circ\eta"]
 X^{B} \arrow[r,swap,"\blank\circ f"] & X^A
 \end{tikzcd}
 \end{equation*}
-commutes. In this square the two vertical maps are equivalences by the universal property of modalization, and the top map is an equivalence since $\modal f$ is an equivalence. Therefore the map $\precomp{f}:X^B\to X^A$ is an equivalence, as desired.
+commutes. In this square the two vertical maps are equivalences by the universal property of modalities, and the top map is an equivalence since $\modal f$ is an equivalence. Therefore the map $\precomp{f}:X^B\to X^A$ is an equivalence, as desired.
 
 Conversely, assume that $\precomp{f} : X^B \to X^A$ is an equivalence for every $\modal$-modal type $X$. By the square above it follows that $\precomp{\modal f}:X^{\modal B}\to X^{\modal A}$ is an equivalence for every $\modal$-modal type $X$. The fiber of $\modal A^{\modal B}\to \modal A^{\modal A}$ at $\idfunc:\modal A\to \modal A$ is contractible, so we obtain a retraction $g$ of $\modal f$. To see that $g$ is also a section observe that the fiber of $\modal B^{\modal B}\to \modal B^{\modal A}$ at $\modal f$ is contractible. This fiber contains $(\idfunc[\modal B],\refl{\modal f})$. However, we also have an identification $p:\precomp{\modal f}(\modal f\circ g)=\modal f$, since
 \begin{equation*}
@@ -925,7 +925,7 @@ is a pullback square. Consider the commuting cube
 & (\modal Y)^A
 \end{tikzcd}
 \end{equation*}
-In this cube the top and bottom squares are pullback by the assumption that $f$ is $\modal$-\'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
+In this cube the top and bottom squares are pullback squares by the assumption that $f$ is $\modal$-\'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
 \end{proof}
 
 We end this section with an observation that we learned in a discussion with Anel, Awodey, Joyal, and Shulman: The factorization system of $\modal$-equivalences and $\modal$-\'etale maps is an orthogonal factorization system that satisfies the property that the right class descends along maps in the left class:
@@ -961,7 +961,7 @@ In this section we will describe conditions on an orthogonal factorization syste
       B' \arrow[r,swap,"f"] & B
     \end{tikzcd}
   \end{equation*}
-  in which $p$ and $p'$ are $\modal$-\'etale and $f$ and $g$ are $\modal$-equivalences, is a pullback square.
+  in which $p$ and $p'$ are $\modal$-\'etale and $f$ and $g$ are $\modal$-equivalences is a pullback square.
 \end{prp}
 
 \begin{proof}
@@ -1008,7 +1008,7 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
         B' \arrow[r,swap,"f"] & B
       \end{tikzcd}
     \end{equation*}
-    in which $p',p\in\mathcal{R}$ and $f,g\in\mathcal{L}$, is a pullback square.
+    in which $p',p\in\mathcal{R}$ and $f,g\in\mathcal{L}$ is a pullback square.
   \item For any family of $\mathcal{R}$-maps
     \begin{equation*}
       p_i:E_i\to B_i
@@ -1097,7 +1097,7 @@ of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cit
 In this section, we will assume all the rules of Shulman's real-cohesive homotopy type theory,
 which we will just call real-cohesion from now on.
 The rules include Shulman's Axiom ``$\mathrm{R}\flat$''.
-We will use univalence wihtout mention and, as Shulman does, we will assume propositional resizing.
+We will use univalence without mention and, as Shulman does, we will assume propositional resizing.
 Following Shulman's notation, we will write  ``$\bR$'' for the type of \emph{Dedekind reals}, which will be small by propositional resizing.
 
 In real-cohesion, types can have \emph{both} topological structure and homotopical structure.
@@ -1114,7 +1114,7 @@ The following definition is about \emph{topological} discreteness and is a prior
   \[ x\mapsto (y\mapsto x) : X \to (\bR \to X) \]
   is an equivalence.
 \end{defn}
-The Dedeking reals $\bR$ are not discrete and 0-truncated.
+The Dedekind reals $\bR$ are not discrete and 0-truncated.
 The rules of real-cohesion ensure that the following types are discrete:
 \[ \emptyset \quad 1 \quad \bN \quad \bZ \quad \bQ \quad \sphere{n} \]
 where $\emptyset$ is the empty type,
@@ -1185,7 +1185,7 @@ The following basic observations give some justification to those names:
 \begin{proof}
   \begin{enumerate}
   \item By lemma \ref{cor:etale_lex}. 
-  \item Applying \ref{thm:modal_descent} to $1\to \shape_1 X$ yields this result directly.
+  \item Applying theorem \ref{thm:modal_descent} to $1\to \shape_1 X$ yields this result directly.
   \item This is the universal property of the pullback square from the definition of $\modal$-étale maps.
   \item This is an application of (iii).
   \end{enumerate}
@@ -1228,7 +1228,7 @@ The purpose of this section is to present the name-giving analogs of $\modal$-é
 
 Noetherian schemes are spaces of interest in algebraic geometry. There is a notion of formally étale maps between such spaces.
 One purpose of this section is to show that such maps are characterized in very much the same way as $\modal$-étale maps:
-We will define a pointed endofunctor on a category containing noetherian schemes
+We will define a pointed endofunctor on a category containing Noetherian schemes
 such that the maps with cartesian naturality squares are precisely the formally étale maps.
 Also in this section, we will show that formal disks or formal neighbourhoods of points can be constructed analogous to $\modal$-disks.
 
@@ -1245,10 +1245,10 @@ that the elements of the algebras are to be thought of as generalized coordinate
 and the nilpotents represent coordinates that are so (infinitesimally) small, that some power is actually zero. 
 
 We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}(A,\blank)$ from $k\mathrm{-Alg}^{\mathrm{op}}_{\mathrm{fg}}$ to the category of sets.
-These functors represent so called \emph{affine noetherian $k$-schemes} and they form the basic building blocks of spaces called noetherian $k$-schemes
+These functors represent so called \emph{affine Noetherian $k$-schemes} and they form the basic building blocks of spaces called Noetherian $k$-schemes
 (see \cite[Chapter II]{hartshorne} for more on schemes).
-We will use no property of noetherian $k$-schemes here,
-except that we can descent to affine noetherian $k$-schemes .
+We will use no property of Noetherian $k$-schemes here,
+except that we can descent to affine Noetherian $k$-schemes .
 
 For any $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$,
 the functor $\Im X$ defined pointwise by
@@ -1272,9 +1272,9 @@ The original definition of formally étale maps is from algebraic geometry (see 
 \end{defn}
 We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
 The presented fact and its proof is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
-We use the fact, that the noetherian $k$-schemes embbeds into the category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
+We use the fact, that the Noetherian $k$-schemes embeds into the category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
 \begin{rmk}
-  A morphism of $f:X\to Y$ noetherian schemes $X,Y$ is formally étale if and only if the naturality square
+  A morphism of $f:X\to Y$ Noetherian schemes $X,Y$ is formally étale if and only if the naturality square
   \begin{center}
     \begin{tikzcd}
       X\arrow[r]\arrow[d, "f", swap] & \Im X\arrow[d, "\Im f"] \\
@@ -1284,7 +1284,7 @@ We use the fact, that the noetherian $k$-schemes embbeds into the category $X\in
   is a pullback square.
 \end{rmk}
 \begin{proof}
-  Let $X$ and $Y$ be noetherian $k$-schemes. 
+  Let $X$ and $Y$ be Noetherian $k$-schemes. 
   We will first show that a morphism of schemes $f:X\to Y$ is formally étale,
   if and only if for all $A\in\fgkAlg$ all squares
   \begin{center}
@@ -1294,7 +1294,7 @@ We use the fact, that the noetherian $k$-schemes embbeds into the category $X\in
     \end{tikzcd}
   \end{center}
   have a unique lift like indicated in the diagram. Let us call this property (1).
-  Since $\sqrt{0}$ is always nilpotent in a noetherian ring, (1) is implied if $f$ is formally étale.
+  Since $\sqrt{0}$ is always nilpotent in a Noetherian ring, (1) is implied if $f$ is formally étale.
   
   The property formally étale is known to be local in the source \cite[§ 17.1.6]{GrothendieckDieudonne}, so we can assume $X$ and $Y$ to be affine.
   For affine $X=\mathrm{Spec(S)}$ and $Y=\mathrm{Spec(S)}$, all squares
@@ -1311,8 +1311,8 @@ We use the fact, that the noetherian $k$-schemes embbeds into the category $X\in
       \mathrm{Spec(A)}\arrow[r] & \mathrm{Spec}(\mathrm{im}(\varphi))\arrow[r] & Y
     \end{tikzcd}
   \end{center}
-  That means we can assume $A$ to be noetherian, if $X$ and $Y$ are noetherian for the sake of checking if $f$ is formally étale.
-  So let us assume (1) holds. Let $A$ be noetherian and let us construct a unique lift in
+  That means we can assume $A$ to be Noetherian, if $X$ and $Y$ are Noetherian for the sake of checking if $f$ is formally étale.
+  So let us assume (1) holds. Let $A$ be Noetherian and let us construct a unique lift in
   \begin{center}
     \begin{tikzcd}
       \mathrm{Spec(A/N)}\arrow[r]\arrow[d] & X\arrow[d, "f"] \\
@@ -1361,7 +1361,7 @@ We use the fact, that the noetherian $k$-schemes embbeds into the category $X\in
 \ignore{ ... to much work now to dig up a reference for this one ...
 Early versions of the characterization of $\Im$-étale maps in \cref{lem:etale_char} were developed with :
 
-Let $X$ and $Y$ be noetherian $k$-schemes such that the natural map $X\to \Im X$ is pointwise surjective,
+Let $X$ and $Y$ be Noetherian $k$-schemes such that the natural map $X\to \Im X$ is pointwise surjective,
 then $f:X\to Y$ is formally étale if and only if it induces an isomorphism on the formal disk at $x$ for all $x\in X$.
 
 
@@ -1383,7 +1383,7 @@ Let us write $\Delta(A)$ for $A\in\fgkAlg$ with the discrete topology.
 The completion yields a functor:
 \[ \Spf(\hat{A}) := \fgkAlgTop(\hat{A},\Delta(\_))\]
 \begin{rmk}
-  Let $X$ be a noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
+  Let $X$ be a Noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
   \begin{center}
     \begin{tikzcd}
       D^\Im(X,x)\arrow[d]\arrow[r] & 1\arrow[d, "\eta_X\circ x"] \\

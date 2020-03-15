@@ -40,7 +40,7 @@
 \maketitle
 
 \begin{abstract}
-  Any modality in homotopy type theory gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. This factorization system is called the reflective factorization system of a modality, and we give a precise characterization of the orthogonal factorization systems that arise as the reflective factorization system of a modality. In the special case of the $n$-truncation the reflective factorization system has a simple description: we show that the $n$-\'etale maps as the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We use the $\modal$-\'etale maps to prove a modal descent theorem: a map with modal fibers into $\modal X$ is the same thing as a $\modal$-\'etale map into a type $X$. We conclude with an application to real-cohesive homotopy type theory and remarks how $\modal$-étale maps relate to the formally etale maps from algebraic geometry. 
+  Any modality in homotopy type theory gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. This factorization system is called the reflective factorization system of a modality, and we give a precise characterization of the orthogonal factorization systems that arise as the reflective factorization system of a modality. In the special case of the $n$-truncation the reflective factorization system has a simple description: we show that the $n$-\'etale maps are the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We use the $\modal$-\'etale maps to prove a modal descent theorem: a map with modal fibers into $\modal X$ is the same thing as a $\modal$-\'etale map into a type $X$. We conclude with an application to real-cohesive homotopy type theory and remarks how $\modal$-étale maps relate to the formally etale maps from algebraic geometry. 
 \end{abstract}
 
 \section{Introduction}
@@ -67,8 +67,8 @@ Another way in which $\modal$-\'etale maps can be seen as locally trivial is the
 In \cref{thm:char_n_etale} we use our abstract theory to prove the following characterization of étale maps for the $n$-truncations, for $n\geq -1$:
 A map $f:A\to B$ is $n$-\'etale if and only if it is right orthogonal to the base point inclusion $\unit\to\sphere{n+1}$.
 
-In \cref{subsection:topological stacks} we show how the modal descent theorem (\cref{thm:modal_descent})
-subsumes the classical fundamental theorem of the theory of covering spaces.
+In \cref{subsection:toplogical stacks} we show how the modal descent theorem (\cref{thm:modal_descent})
+subsumes the classical fundamental theorem of the theory of covering spaces in real-cohesive homotopy type theory.
 This also yields a candidate extension of this classical theorem to topological stacks.
 In fact, it is essentially in this context that the modal descent theorem was already found and proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
   
@@ -255,9 +255,9 @@ Recall from \cite{RijkeSpittersShulman} that the stable orthogonal factorization
 
 Conversely, we can obtain a modality from a stable factorization system, in which a type $X$ is modal if and only if the terminal projection $X\to \unit$ is in $\mathcal{R}$. The modal operator of this modality is defined as
 \begin{equation*}
-\modal X \defeq \mathsf{im}_{(\mathcal{L},\mathcal{R})}(X\to \unit).
+\modal X \defeq \mathsf{im}_{(\mathcal{L},\mathcal{R})}(X\to \unit)
 \end{equation*}
-and the modal unit is defined to be the left factor $X \to \modal X$ of the map $X\to \unit$. The orthogonality can be used to show that the map $\eta$ defined in this way is indeed uniquely eliminating, in the sense of \cref{prp:modality}.
+and the modal unit is defined to be the left factor $X \to \modal X$ of the map $X\to \unit$. The orthogonality can be used to show that the map $\eta$ defined in this way is indeed uniquely eliminating in the sense of \cref{prp:modality}.
 
 We recall one more useful general fact about modalities.
 
@@ -516,7 +516,7 @@ These examples suggest the following theorem.
 & \trunc{n}{B}
 \end{tikzcd}
 \end{equation*}
-In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
+In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again a pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
 
   For the converse, suppose that the square in \cref{eq:orth} is a pullback square. This square is equivalent to the square
   \begin{equation*}
@@ -542,7 +542,7 @@ In this cube the front right square is a pullback square by the assumption that 
   \begin{equation*}
     D^{n}(f,x):D^{n}(A,x)\to D^{n}(B,f(x))
   \end{equation*}
-  on $\modal$-disks is an equivalence for each $x:A$. We note that the $\modal$-disks are the fibers of the unit $\eta:A \to \trunc{n}{A}$, so they are $n$-connected. It follows immediately that the map $D^{n}(f,x)$ is $(n-1)$-connected. Therefore it suffices to show that $D^{n}(f,x)$ is an $(n-1)$-truncated map.
+  on $\modal$-disks is an equivalence for each $x:A$. We note that the $\modal$-disks are fibers of the unit $\eta:A \to \trunc{n}{A}$, so they are $n$-connected. It follows immediately that the map $D^{n}(f,x)$ is $(n-1)$-connected. Therefore it suffices to show that $D^{n}(f,x)$ is an $(n-1)$-truncated map.
 
   Recall that a map $\varphi$ between ($0$-)connected types is $(n-1)$-truncated if and only if $\varphi^{\sphere{n+1}}$ is an equivalence. Using our assumption that $n\geq 0$ we know that the $\modal$-disks under consideration are at least connected. Therefore it suffices to show that $(D^{n}(f,x))^{\sphere{n+1}}$ is an equivalence. Now we observe that the square
   \begin{equation*}
@@ -792,7 +792,7 @@ X \arrow[r,swap,"\modalunit"] & \modal X.
 
 \section{Reflective factorization systems}\label{section:reflective-factorization-system}
 
-We will now define the reflective factorization system of a modality, of which the right class is the class of $\modal$-\'etale maps. The left class is the class of \emph{$\modal$-equivalences}, which were studied in \cref{CORS} in the case of reflective subuniverses.
+We will now define the reflective factorization system of a modality, of which the right class is the class of $\modal$-\'etale maps. The left class is the class of \emph{$\modal$-equivalences}, which were studied in \cite{CORS} in the case of reflective subuniverses.
 
 \begin{defn}
 We say that a map $f:A\to B$ is an \define{$\modal$-equivalence} if $\modal f:\modal A\to \modal B$ is an equivalence.
@@ -810,17 +810,20 @@ We also note that the $n$-equivalences are not stable under pullbacks, whereas t
 \end{equation*}
 Here the map on the right is an $n$-equivalence, since $\sphere{n+1}$ is $n$-connected. However, the map on the left is not an $n$-equivalence, since the $n$-th homotopy group of $\loopspace{\sphere{n+1}}$ is not trivial: it is the $(n+1)$-st homotopy group of $\sphere{n+1}$, which is $\Z$.
 \end{rmk}
-
 We recall from \cite{CORS} the following facts about $\modal$-equivalences:
-\begin{enumerate}
-\item The $\modal$-equivalences satisfy the 3-for-2 property.
-\item A map $f:A\to B$ is a $\modal$-equivalence if and only if for every $\modal$-modal type $X$, the precomposition map
-\begin{equation*}
-\precomp{f} : (B \to X) \to (A \to X)
-\end{equation*}
-is an equivalence.
-\item Every $\modal$-connected map is a $\modal$-equivalence.
-\end{enumerate}
+\begin{prp}
+  \label{lem:3for2_mequiv}\label{cor:mequiv_mconn}
+  \begin{enumerate}
+  \item The $\modal$-equivalences satisfy the 3-for-2 property.
+  \item A map $f:A\to B$ is a $\modal$-equivalence if and only if for every $\modal$-modal type $X$, the precomposition map
+    \begin{equation*}
+      \precomp{f} : (B \to X) \to (A \to X)
+    \end{equation*}
+    is an equivalence.
+  \item
+    Every $\modal$-connected map is a $\modal$-equivalence.
+  \end{enumerate}
+\end{prp}
 
 We also make the following observation, which we learned in a discussion with Anel, Awodey, Joyal, and Shulman: The factorization system of $\modal$-equivalences and $\modal$-\'etale maps is an orthogonal factorization system that satisfies the property that the right class descends along maps in the left class:
 
@@ -1020,23 +1023,23 @@ Note, however, that this does \emph{not} mean that an orthogonal factorization s
 \label{subsection:toplogical stacks}
 
 In \cite[Section 8]{ShulmanRealCohesion} Mike Shulman introduces real-cohesive homotopy type theory.
-This type theory is a candidate for an internal language for some quite specific \emph{cohesive} ($\infty$,1)-toposes.
+This type theory is a candidate for an internal language for some specific \emph{cohesive} ($\infty$,1)-toposes.
 The term ``cohesion'' refers to a higher analog 
 of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
 
-In this section, we will assume all the rules of Shulman's real-cohesive homotopy type theory,
-which we will just call real-cohesion from now on.
-The rules include Shulman's Axiom ``$\mathrm{R}\flat$''.
+In this section, we will assume all the rules of Shulman's real-cohesive homotopy type theory which he also assumes in his article.
+Additionally, we will assume Shulman's Axiom ``$\mathrm{R}\flat$''.
 We will use univalence without mention and, as Shulman does, we will assume propositional resizing.
+From now on, we will refer to this type theory as real-cohesion.
 Following Shulman's notation, we will write  ``$\bR$'' for the type of \emph{Dedekind reals}, which will be small by propositional resizing.
 
 In real-cohesion, types can have \emph{both} topological structure and homotopical structure.
 We can probe the topological structure of some type $X$ by mapping $\bR$ into $X$,
 i.e. by looking at \emph{topological paths} $\gamma:\bR\to X$.
 Since having \emph{two different} notions of ``paths'' would be confusing,
-we follow the terminology of \cite{ShulmanRealCohesion} and call the elements of identity types identifications or equalities.
+we decided to follow the terminology of \cite{ShulmanRealCohesion} in this article and call the elements of identity types identifications or equalities.
 
-We will briefly recall some concepts from real-cohesion.
+We will briefly recall some facts and definitions from real-cohesion.
 There is an unfortunate name-clash, since 0-truncated types are sometimes called ``discrete''.
 The following definition is about \emph{topological} discreteness and is a priori not related to truncation levels.
 \begin{defn}
@@ -1044,15 +1047,18 @@ The following definition is about \emph{topological} discreteness and is a prior
   \[ x\mapsto (y\mapsto x) : X \to (\bR \to X) \]
   is an equivalence.
 \end{defn}
-The Dedekind reals $\bR$ are not discrete and 0-truncated.
-The rules of real-cohesion ensure that the following types are discrete:
-\[ \emptyt \quad \unit \quad \bN \quad \bZ \quad \bQ \quad \sphere{n} \]
+Note that in real-cohesion, discreteness is defined without any reference to $\bR$.
+The definition in real-cohesion just uses the rules of this type theory and that it can be replaced with the definition above,
+is exactly the statement of the Axiom ``$\mathrm{R}\flat$'' (see \cite[Section 8]{ShulmanRealCohesion}).
+The Dedekind reals are 0-truncated and turn out to be not discrete.
+We import the fact, that the following types are discrete:
+\[ \emptyt \quad \unit \quad \bN \quad \bZ \quad \sphere{1} \]
 where $\emptyt$ is the empty type,
-$\unit$ is the unit-type and $\sphere{n}$ is the higher inductive type representing the homotopy type of $n$-sphere.
-Note that the latter is denoted with $\bS^n$ in \cite{UFP}, which we will use for the topological $n$-sphere:
+$\unit$ is the unit-type and $\sphere{1}$ is the higher inductive type representing the homotopy type of the $1$-sphere.
+Note that the latter is denoted with $\bS^1$ in \cite{UFP}, which we will use for the topological $1$-sphere:
 \begin{defn}
-  Let $\bS^{n}$ denote the topological sphere given by
-  \[ \bS^{n}:\equiv\left\{ (x_1,\dots,x_{n+1})\in\bR^{n+1}\left\vert \sum_{i=1}^{n+1}x_i^2=1\right.\right\}\]
+  Let $\bS^{1}$ denote the topological sphere given by
+  \[ \bS^{1}:\equiv\left\{ (x,y)\in\bR^{2}\left\vert x^2+y^2=1\right.\right\}.\]
 \end{defn}
 
 The discrete types are the modal types of a modality that can be constructed as \emph{nullification} at $\bR$,
@@ -1062,11 +1068,9 @@ which is a general construction defined in \cite[Section 2.3]{RijkeSpittersShulm
 \end{defn}
 By construction as a nullification at $\bR$, shape will nullify $\bR$, which means $\shape \bR=\unit$. 
 In general, shape may be thought of as mapping topological spaces to their \emph{homotopy types}.
-Using the rules of real-cohesion, Shulman computes $\shape \bS =\sphere{1}$.
+Using the rules of real-cohesion, Shulman computes $\shape \bS^1 =\sphere{1}$.
 
-As all modalities, $\shape$ comes with a unit-map $\modalunit_X\colon X \to \shape X$, for any type $X$.
-For any two points $x,y: X$ that are joined by a topological path, 
-there is an equality joining $\modalunit_X(x)$ and $\modalunit_X(y)$ in $\shape X$.
+We will denote the modal unit of $\shape$ with $\modalunit_X\colon X \to \shape X$, for a type $X$.
 
 Let $\ast:\bS^1$ be a fixed point on the topological circle.
 For $\bS^{1}$ the $\shape$-disk
@@ -1090,6 +1094,9 @@ Then, also from \cite{RijkeSpittersShulman} we know, that a type is $\shape_1$-m
 In \cite[Theorem 6.21]{ShulmanRealCohesion} it is shown that crisply discrete types have discrete $n$-truncations.
 So for crisp types $X$, we have
 \[ \trunc{1}{\shape X} \simeq \shape_1 X\text{.} \]
+If $X$ is a pointed type, the fundamental group with respect to its topological structure can be defined as the loop space
+\[ \Omega \left(\shape_1 X\right). \]
+Since we will use this notion only once, we will not denote it with $\pi_1$ to limited confusion with common definitions of homotopy type theory.
 
 With $\shape_1$ and its unit $\eta$, covering spaces and the universal cover are easy to define:
 \begin{defn}
@@ -1101,7 +1108,7 @@ With $\shape_1$ and its unit $\eta$, covering spaces and the universal cover are
   \end{enumerate}
 
 \end{defn}
-The following basic observations give some justification to those names:
+The following observations justify these names:
 \begin{rmk}
   Let $X$ be any pointed type.
   \begin{enumerate}
@@ -1109,7 +1116,14 @@ The following basic observations give some justification to those names:
   \item We have $\shape_1 \widetilde{X} = \unit$.
   \item Let $f:Y\to X$ be a covering space. Then we have the following lifting property:
     A map $g:Z\to X$ lifts uniquely to $Y$, if $\shape_1 g$ lifts to $\shape_1 Y$ along $\shape_1 f$.
-  \item Let $f:Y\to X$ be a covering space and $f$ a pointed map. Then there is a unique map $\widetilde{X}\to Y$ over $X$.
+  \item Let $f:Y\to X$ be a covering space and $f$ a pointed map. Then there is a unique map $\widetilde{X}\to Y$ such that
+    \begin{center}
+      \begin{tikzcd}
+        \widetilde{X}\arrow[rr]\arrow[dr] & & Y\arrow[dl, "f"] \\
+        & X & \\
+      \end{tikzcd}
+    \end{center}
+    commutes.
   \end{enumerate}
 \end{rmk}
 \begin{proof}
@@ -1123,8 +1137,7 @@ The following basic observations give some justification to those names:
 
 The construction of the covering spaces corresponding to a subgroup $H\subseteq \pi_1(X)$ for a path connected $X$,
 can be done by applying the delooping construction of \cite{LicataFinster} to the inclusion map of $H$ to get a map $Bi:BH\to\shape_1(X)$ and pulling $Bi$ back along $\modalunit$. In other words, we use that any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete $0$-type
-\footnote{This means we use the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} 
-and \cite[Section 7.1]{ulrik-egbert-floris-groups}}
+\footnote{}
 and therefore a map $BH\to \shape_1X$, with discrete $BH$.
 
 To get the full correspondence for some general type $X$ of actions of the fundamental groupoid of $X$ on sets and covering spaces over $X$,
@@ -1133,14 +1146,16 @@ we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
 \begin{thm}
   \begin{enumerate}
   \item Let $X$ be a type. Then the type of $\shape_1$-étale maps into $X$ and the type of $\shape_1$-modal dependent types over $\shape_1 X$ are equivalent.
-  \item In particular the type of covering spaces and the type of maps $\shape_1X\to \mathcal U_{\shape_0}$ are equivalent.
-    If $X$ is pointed and $\shape_1 X$ connected, $\shape_1X\to \mathcal U_{\shape_0}$ is the type of actions of the fundamental group $\Omega(\shape_1 X)$ on discrete $0$-types.
+  \item The type of covering spaces and the type of maps $\shape_1X\to \mathcal U_{\shape_0}$ are equivalent.
+  \item Let $X$ be pointed and such that $\shape_1 X$ is connected. Then $\shape_1X\to \mathcal U_{\shape_0}$ is the type of actions of the fundamental group $\Omega(\shape_1 X)$ on discrete $0$-types and this type is again equivalent to covering spaces of $X$.
   \end{enumerate}
 \end{thm}
 \begin{proof}
   \begin{enumerate}
   \item This is just lemma \ref{thm:modal_descent} applied to $\shape_1$.
   \item By pullback pasting and surjectivity of $\modalunit_X$, fibers of $1$-covering spaces over $X$ are always equivalent to values of the corresponding morphism $\shape_1 X\to \mathcal U_{\shape_1}$ and vice versa.
+  \item The equivalence holds by (ii).
+    That maps of the form $\rho:\shape_1 X\to \mathcal U_{\shape_0}$ are actions of the loop space of $\shape_1 X$ on the value $\rho(\ast)$ is a consequence of the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} and \cite[Section 7.1]{ulrik-egbert-floris-groups}.
   \end{enumerate}
 \end{proof}
 
@@ -1148,7 +1163,6 @@ Similar generalizations of the classical topological correspondence are known on
 for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct} or \cite{dmr-2covers}.
 The introduction of the latter also gives more details on the history of the subject,
 in particular concerning definitions of covering spaces topological and differentiable stacks.
-The authors see an advantage of their approach in the clarity of the type theoretic proofs.
 
 \section*{Appendix: Analogous constructions in algebraic geometry}
 \label{subsection:algebraic geometry}
@@ -1169,7 +1183,7 @@ In the following, $k$ will always be a field and all rings and algebras are assu
 We denote the category of finitely generated algebras over $k$ with $k\mathrm{-Alg}_{\mathrm{fg}}$.
 That means, that any $A\in k\mathrm{-Alg}_{\mathrm{fg}}$ is a quotient $A=k[x_1,\dots,x_n]/(f_1,\dots,f_m)$.
 These algebras may contain nilpotent elements, i.e. elements $x\in A$, such that $x\neq 0$, but $x^n=0$ for some $n\in\bN$.
-Nilpotent elements are important for the following -- they represent infinitesimals.
+Nilpotent elements will be important for our constructions, since they represent infinitesimals.
 This can roughly be explained by the analogy
 that the elements of the algebras are to be thought of as generalized coordinate functions
 and the nilpotents represent coordinates that are so (infinitesimally) small, that some power is actually zero. 
@@ -1188,7 +1202,9 @@ So $\Im$ is an endofunctor on the presheaf category $\mathrm{Psh}(k\mathrm{-Alg}
 
 The name $\modal$-étale is an adaption of the name ``formally étale'' for general modalities.
 The name ``formally étale'' was used in \cite{wellen-thesis}, which reused the name from \cite{SyntheticPDEs}.
-The original definition of formally étale maps is from algebraic geometry (see \cite[§ 17]{GrothendieckDieudonne}):
+The original definition of formally étale maps is from algebraic geometry.
+The definition of formally étale maps in \cite[§ 17]{GrothendieckDieudonne} states that a comparison map to a pullback should be an isomorphism,
+which is equivalent to the unique lifting condition in the following definition:
 \begin{defn}
   A morphisms of schemes $\varphi:X\to Y$ is \emph{formally étale},
   if for all rings $R$ and all nilpotent ideals $N$ in $R$ all squares
@@ -1202,7 +1218,7 @@ The original definition of formally étale maps is from algebraic geometry (see 
 \end{defn}
 We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
 The presented fact and its proof is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
-We use the fact, that the Noetherian $k$-schemes embeds into the category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
+We use the fact, that the Noetherian $k$-schemes are embedded in the category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
 \begin{rmk}
   A morphism of $f:X\to Y$ Noetherian schemes $X,Y$ is formally étale if and only if the naturality square
   \begin{center}
@@ -1361,8 +1377,6 @@ and there are lots of further direction worth exploring.
 Also in \cite{myers2019} the concept of $\modal$-fibrations is introduced
 and used to precisely characterize the pullback squares which are preserved by a modality.
 This generalizes \cref{cor:etale_lex} (i).
-
-\todo{React to suggestions for conclusions and write something about factorization systems.}
 
 \printbibliography
 

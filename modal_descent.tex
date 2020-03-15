@@ -551,7 +551,19 @@ In this cube the front right square is a pullback square by the assumption that 
       \mathsf{Map}_\ast(\sphere{n+1},(A,x)) \arrow[r] & \mathsf{Map}_\ast(\sphere{n+1},(B,f(x)))
     \end{tikzcd}
   \end{equation*}
-  commutes, and has equivalences on both the left and right sides. Moreover, the bottom map is an equivalence by the suspension-loop space adjunction, and the fact that $\mathsf{Map}_\ast(\sphere{n},\loopspace{f,x})$ is an equivalence. We conclude that the top map is an equivalence, which completes the proof.
+  commutes. In this square, the bottom map is an equivalence by the suspension-loop space adjunction, and the fact that $\mathsf{Map}_\ast(\sphere{n},\loopspace{f,x})$ is an equivalence. Therefore it suffices to show that both vertical maps are equivalences, i.e., that any map of the form
+  \begin{equation*}
+    \proj 1\circ\blank : \mathsf{Map}_\ast(\sphere{n+1},D^{n}(A,x))\to \mathsf{Map}_\ast(\sphere{n+1},(A,x))
+  \end{equation*}
+  is an equivalence. To see this, we use that $D^n(A,x)$ is equivalent to the type $\sm{y:A}\trunc{n-1}{x=y}$. Therefore it follows that the fiber of the above post-composition map at $(h,\alpha):\mathsf{Map}_\ast(\sphere{n+1},(A,x))$ is equivalent to the type
+  \begin{equation*}
+    \sm{g:\prd{t:\sphere{n+1}}\trunc{n-1}{h(t)=x}}g(\ast)=\eta(\alpha).
+  \end{equation*}
+  Here $\alpha$ is the identification $h(\ast)=x$ witnessing that $h$ is a base-point preserving map. However, since $g$ is a dependent function from the $(n+1)$-sphere into a family of $(n-1)$-types, it follows by the dependent universal property of $\sphere{n+1}$ that the type above is equivalent to the type
+  \begin{equation*}
+    \sm{\beta:\trunc{n-1}{h(\ast)=x}}\beta=\eta(\alpha),
+  \end{equation*}
+  which is clearly contractible. Therefore we see that the post-composition map $\proj 1\circ\blank$ has contractible fibers, so we conclude that it is an equivalence.
 \end{proof}
 
 \section{Locally trivial maps}
@@ -662,20 +674,20 @@ in which we assume that $E$ and $B$ are modal types. Then the square
 Consider the diagram
 \begin{equation*}
 \begin{tikzcd}
-E' \arrow[r,dashed] \arrow[d,swap,"{p'}"] & \modal B'\times_{B} E \arrow[r,"\proj 2"] \arrow[d,swap,"\proj 1"] & E \arrow[d,"p"] \\
+E' \arrow[r,dashed,"h"] \arrow[d,swap,"{p'}"] & \modal B'\times_{B} E \arrow[r,"\proj 2"] \arrow[d,swap,"\proj 1"] & E \arrow[d,"p"] \\
 B' \arrow[r,swap,"\modalunit"] & \modal B' \arrow[r,swap,"\tilde{f}"] & B
 \end{tikzcd}
 \end{equation*}
-In this diagram, the square on the right is a pullback by definition, and the outer rectangle is a pullback by assumption, so the square on the left is also a pullback. Therefore the map $E'\to \modal B'\times_B E$ is $\modal$-connected. Moreover, since the modal types are closed under pullbacks it follows that $\modal B'\times_B E$ is modal. Therefore we obtain a commuting diagram of the form
+In this diagram, the square on the right is a pullback by definition, and the outer rectangle is a pullback by assumption, so the square on the left is also a pullback. Therefore the map $h:E'\to \modal B'\times_B E$ is $\modal$-connected. Moreover, since the modal types are closed under pullbacks it follows that $\modal B'\times_B E$ is modal. Therefore we obtain a commuting diagram of the form
 \begin{equation*}
   \begin{tikzcd}[row sep=small]
-    \modal E' \arrow[dd] \arrow[rr] \arrow[dr] & & \modal B'\times_B E \arrow[dd] \arrow[dl] \\
+    \modal E' \arrow[dd] \arrow[rr,dashed,"\tilde{h}"] \arrow[dr] & & \modal B'\times_B E \arrow[dd] \arrow[dl] \\
     \phantom{\modal B'\times_B E} & E \\
     \modal B' \arrow[rr] \arrow[dr] & & \modal B' \arrow[dl] \\
-    & B \arrow[from=uu,crossing over]
+    & B. \arrow[from=uu,crossing over]
   \end{tikzcd}
 \end{equation*}
-in which the horizontal maps on the left are equivalences. Since the square on the right side is a pullback square, the claim follows.
+The map $\tilde{h}$ is the unique extension of $h$ along $\eta:E'\to \modal E'$. Note that $\tilde{h}$ is an equivalence, since it extends a $\modal$-connected map. The bottom map in the back square is also an equivalence. Therefore it follows, that the square on the left is equivalent to the square on the right, which is a pullback square. Hence the claim follows.
 \end{proof}
 
 \begin{cor}\label{cor:etale_lex}

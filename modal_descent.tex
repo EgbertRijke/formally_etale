@@ -896,7 +896,7 @@ is a pullback square. Consider the commuting cube
 In this cube the top and bottom squares are pullback squares by the assumption that $f$ is $\modal$-\'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
 \end{proof}
 
-The reflective factorization system of a modality enjoys several properties. We highlight two of them, that turn out to characterize the orthogonal factorization systems that arise as the reflective factorization system of a modality.
+The reflective factorization system of a modality enjoys several properties. Two of them, stated in \cref{prop:LR-cartesian,prop:R-stable} turn out to characterize the orthogonal factorization systems that arise as the reflective factorization system of a modality.
 
 \begin{prp}\label{prop:LR-cartesian}
   Any commuting square of the form
@@ -921,6 +921,62 @@ The reflective factorization system of a modality enjoys several properties. We 
   \end{equation*}
   In this cube the back-left square and the front-right square are pullback squares by the assumption that $p'$ and $p$ are $\modal$-\'etale. Moreover, the maps $\modal B'\to\modal B$ and $\modal E'\to\modal E$ are equivalences by the assumption that $f$ and $g$ are $\modal$-equivalences. Therefore it follows that the front-left square is a pullback square. We conclude that the back-right square is a pullback square.
 \end{proof}
+
+In fact, we also have the following converse of \cref{prop:LR-cartesian}, stating that $\modal$-equivalences are stable under base change by $\modal$-\'etale maps.
+
+\begin{prp}\label{prop:LR-cartesian-converse}
+  Consider a pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      E' \arrow[d,swap,"{p'}"] \arrow[r,"g"] & E \arrow[d,"p"] \\
+      B' \arrow[r,swap,"f"] & B
+    \end{tikzcd}
+  \end{equation*}
+  in which $p$ and $p'$ are $\modal$-\'etale and $f$ is a $\modal$-equivalence. Then the map $g$ is a $\modal$-equivalence.
+\end{prp}
+
+\begin{proof}
+  Consider the commuting cube
+  \begin{equation*}
+    \begin{tikzcd}
+      \phantom{\modal B} & E' \arrow[dl] \arrow[d] \arrow[dr] & \phantom{\modal B} \\
+      \modal E' \arrow[d] & B' \arrow[dl] \arrow[dr] & E \arrow[d] \arrow[dl,crossing over] \\
+      \modal B' \arrow[dr] & \modal E \arrow[from=ul,crossing over] \arrow[d] & B \arrow[dl] \\
+      & \modal B
+    \end{tikzcd}
+  \end{equation*}
+  In this cube, the back-left, back-right, and front-right squares are pullback squares by assumption. Therefore it follows by \cref{thm:etale_flattening} that the front-left square is a pullback. However, in this square the map $LB\to LD$ is an equivalence, so we conclude that the map $LA\to LC$ is an equivalence. In other words, the map $A\to C$ is an $L$-equivalence.
+\end{proof}
+
+  Moreover, we have a descent-type result of the kind of \cref{thm:descent-sigma,thm:descent-surjective}.
+
+  \begin{thm}
+    Consider a diagram of the form
+    \begin{equation*}
+      \begin{tikzcd}
+        E'' \arrow[d] \arrow[r] & E' \arrow[d] \arrow[r] & E \arrow[d] \\
+        B'' \arrow[r,swap,"h"] & B' \arrow[r] & B
+      \end{tikzcd}
+    \end{equation*}
+    in which $h$ is a $\modal$-equivalence, the vertical maps in the right square are $\modal$-\'etale, and the left square is a pullback square. Then the following are equivalent:
+    \begin{enumerate}
+    \item The outer rectangle is a pullback square.
+    \item The square on the right is a pullback square.
+    \end{enumerate}
+  \end{thm}
+
+  \begin{proof}
+    We have that (ii) implies (i) by the pasting lemma for pullbacks, so it suffices to show that (i) implies (ii). Consider the diagram
+    \begin{equation*}
+      \begin{tikzcd}
+        E'' \arrow[rr] \arrow[dd] \arrow[dr] & \phantom{\modal E''} & E' \arrow[rr] \arrow[dd] \arrow[dr] & \phantom{\modal E''} & E \arrow[dd] \arrow[dr] & \phantom{\modal E''} \\
+        \phantom{\modal E''} & \modal E'' \arrow[rr,crossing over] & \phantom{\modal E''} & \modal E' \arrow[rr,crossing over] & \phantom{\modal E''} & LE \arrow[dd] \\
+        B'' \arrow[dr] \arrow[rr] & & B' \arrow[dr] \arrow[rr] & & B \arrow[dr] \\
+        & \modal B'' \arrow[from=uu,crossing over] \arrow[rr,swap,"\simeq"] & & \modal B' \arrow[from=uu,crossing over] \arrow[rr] & & \modal B.
+      \end{tikzcd}
+    \end{equation*}
+    In this diagram, the three vertical $\modal$-naturality squares are all pullback squares, because the vertical maps $E'\to B'$ and $E\to B$ are assumed to be $\modal$-\'etale, and the vertical map $E''\to B''$ is $\modal$-\'etale by \cref{cor:etale_lex}. Furthermore, the back-left square and the back rectangle are assumed to be pullback squares. By \cref{thm:etale_flattening} it follows that the front-left square and the front rectangle are pullback squares. Furthermore, the top map in the front-left square is an equivalence. Therefore we see that the front-right square, which is equivalent to the front rectangle, is a pullback square. Using the pullback squares on the sides of the right cube, we conclude that the back-right square is a pullback square.
+  \end{proof}
 
 \begin{prp}\label{prop:R-stable}
   Suppose $p_i:E_i\to B_i$ is a $\modal$-\'etale map for each $i:I$, where $I$ is assumed to be a $\modal$-modal type. Then the induced map on total spaces

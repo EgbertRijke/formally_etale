@@ -1222,11 +1222,6 @@ The following observations justify these names:
   \end{enumerate}
 \end{proof}
 
-The construction of the covering spaces corresponding to a subgroup $H\subseteq \pi_1(X)$ for a path connected $X$,
-can be done by applying the delooping construction of \cite{LicataFinster} to the inclusion map of $H$ to get a map $Bi:BH\to\shape_1(X)$ and pulling $Bi$ back along $\modalunit$. In other words, we use that any subgroup $H\subseteq\pi_1(X)$ can be represented by an action of $\pi_1(X)$ on a discrete $0$-type
-\footnote{}
-and therefore a map $BH\to \shape_1X$, with discrete $BH$.
-
 To get the full correspondence for some general type $X$ of actions of the fundamental groupoid of $X$ on sets and covering spaces over $X$,
 we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
 
@@ -1247,7 +1242,7 @@ we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
 \end{proof}
 
 Similar generalizations of the classical topological correspondence are known on the classical side
-for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct} or \cite{dmr-2covers}.
+for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct} or topological 1-stacks \cite{dmr-2covers}.
 The introduction of the latter also gives more details on the history of the subject,
 in particular concerning definitions of covering spaces topological and differentiable stacks.
 
@@ -1457,13 +1452,20 @@ The completion yields a functor:
   And therefore an induced $\hat{\varphi}:\hat{A}\to B$.
 \end{proof}
 
-\section{Conclusion}
+\section*{Conclusion}
 During the time of writing and revising this article,
 $\modal$-étale maps were already used for more calculations in real-cohesion \cite{myers2019}
 and there are lots of further direction worth exploring.
 Also in \cite{myers2019} the concept of $\modal$-fibrations is introduced
 and used to precisely characterize the pullback squares which are preserved by a modality.
-This generalizes \cref{cor:etale_lex} (i).
+This generalizes \cref{cor:etale_lex} (i). 
+
+While parts of \cref{thm:char_n_etale} apply to general nullification modalities,
+it is not clear to the authors if the whole theorem can be generalized.
+
+The modal descent theorem is specific to modalities.
+So we do not believe, that much of the theory in this article holds for reflective subuniverses,
+but we did not try to phrase everything as general as possible in this respect.
 
 \printbibliography
 

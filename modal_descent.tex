@@ -51,8 +51,8 @@ This idea of a cohesive type theory was later developed in \cite{ShulmanRealCohe
 While the results in this article are about one \emph{monadic} modality,
 these ideas were relevant for the development of our results and we will discuss possible applications along these lines.
   
-Monadic modalities, which we will just call modalities in this article, were defined in \cite[Section 7.7]{UFP}. They were studied extensively in \cite{RijkeSpittersShulman}, where it was shown that any modality gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. Hence we will call this factorization system the \emph{stable} factorization system of a modality. One of our main results is \cref{thm:rfs_orthogonal}, which shows that there is a second orthogonal factorization system that can be obtained from a modality: the \emph{reflective} factorization system. The left maps of the reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In the case where the modality is lex, those left and right classes coincide with the left and right classes of the stable orthogonal factorization system. The reflective factorization system was already used in category theory, e.g. in \cite{cassidy_hebert_kelly_1985},
-where the reflector of a reflective subcategory takes the role of the modality. In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the reflective factorization system of a modality.
+Monadic modalities, which we will just call modalities in this article, were defined in \cite[Section 7.7]{UFP}. They were studied extensively in \cite{RijkeSpittersShulman}, where it was shown that any modality gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. Hence we will call this factorization system the \emph{stable} factorization system of a modality. One of our main results is \cref{thm:rfs_orthogonal}, which shows that there is a second orthogonal factorization system that can be obtained from a modality: the \emph{reflective} factorization system. The left maps of the reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In the case where the modality is lex, those left and right classes coincide with the left and right classes of the stable orthogonal factorization system. What we call ``reflective factorization system'' is known in category theory, e.g. in \cite{cassidy_hebert_kelly_1985} as ``semi-lex reflective factorization system''.
+In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the reflective factorization system of a modality.
 
 We call right maps of the reflective factorization system $\modal$-étale, where $\modal$ is the modality.
 This name is inspired by the formally étale maps from algebraic geometry,
@@ -72,7 +72,7 @@ subsumes the classical fundamental theorem of the theory of covering spaces in r
 This also yields a candidate extension of this classical theorem to topological stacks.
 In fact, it is essentially in this context that the modal descent theorem was already found and proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
   
-We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018. This was also the time when the second author wrote his PhD thesis, so some of our results we present there, especially those in \cref{section:modal-descent} and \cref{section:reflective-factorization-system} have already appeared in \cite{rijke-phd}.
+We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018. This was also the time when the second author wrote his PhD thesis, so some of our results we present here, especially those in \cref{section:modal-descent} and \cref{section:reflective-factorization-system} have already appeared in \cite{rijke-phd}.
 Discussions with and remarks of Jonathan Zachhuber, Tobias Columbus, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal, Mathieu Anel, and Dan Christensen were helpful for this work.
 The anonymous reviewers greatly improved the article with their comments and suggestions. 
 This material is based upon work supported by the Air Force Office of Scientific Research under award number FA9550-17-1-0326, and through MURI grant FA9550-15-1-0053.
@@ -199,7 +199,7 @@ commutes. This square is called the \define{$\modal$-naturality square} of $f$.
     \end{equation*}
     is an equivalence. We also say that $\modal$ is \define{uniquely eliminating} if this property holds.
   \end{enumerate}
-  If either of these equivalent properties holds, then we say that the reflective subuniverse $\modal$ is a \define{modality}. If $\modal$ is a modality we call the $\modal$-local types \define{$\modal$-modal}.
+  If either of these equivalent properties holds, then we say that the reflective subuniverse $\modal$ is a \define{modality}. If $\modal$ is a modality we call the $\modal$-local types \define{$\modal$-modal}. 
 \end{prp}
 
 It is not the case, however, that any reflective subuniverse is a modality. For example, the subuniverse of types $X$ that are $p$-local in the sense that the precomposition map
@@ -932,6 +932,7 @@ Next, we show that $\modal$-equivalences are stable under base change by $\modal
   \section{Reflective factorization systems}\label{section:reflective-factorization-system}
 
   We will now define the reflective factorization system of a modality, of which the right class is the class of $\modal$-\'etale maps.
+  Note that our reflective factorization systems correspond most closely to the \emph{semi-lex} reflective factorization systems of \cite{cassidy_hebert_kelly_1985}.
 
 \begin{defn}
 The \define{reflective factorization system} associated to a modality $\modal$ consists of the $\modal$-equivalences as the left class, and the $\modal$-\'etale maps as the right class.
@@ -1462,11 +1463,13 @@ This generalizes \cref{cor:etale_lex} (i).
 
 While parts of \cref{thm:char_n_etale} apply to general nullification modalities,
 it is not clear to the authors if the whole theorem can be generalized.
-
-The modal descent theorem is specific to modalities.
-So we do not believe, that much of the theory in this article holds for reflective subuniverses,
+Also concering generalizations, we do not believe that much of the theory in this article holds for reflective subuniverses,
 but we did not try to phrase everything as general as possible in this respect.
 
+In some cases we gave references to classical notions that \emph{should} correspond to the notions in this article.
+For instance, our reflective factorization systems -- and therefore modalities by \cref{thm:rfs} --
+should correspond to the semi-lex factorization systems of \cite{cassidy_hebert_kelly_1985}
+but we did not make any attempt at proving this. 
 \printbibliography
 
 \end{document}

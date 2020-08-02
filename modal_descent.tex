@@ -811,8 +811,8 @@ is a pullback square. In particular the top map is $\modal$-connected, so this s
   Since the square is a pullback, and the bottom map is $\modal$-connected, it follows that the top map is $\modal$-connected. However, the codomain of the top map is $\modal$-modal, so it follows that the square is equivalent to the $\modal$-naturality square
   \begin{equation*}
     \begin{tikzcd}
-      \sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \modal\Big(\sm{x:X}P(x)\Big) \arrow[d,"\modal \proj 1"] \\
-X \arrow[r,swap,"\modalunit"] & \modal X.
+      & \sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \modal\Big(\sm{x:X}P(x)\Big) \arrow[d,"\modal \proj 1"] & \\
+      & X \arrow[r,swap,"\modalunit"] & \modal X. & \qedhere
     \end{tikzcd}
   \end{equation*}
 \end{proof}
@@ -1245,7 +1245,7 @@ we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
 Similar generalizations of the classical topological correspondence are known on the classical side
 for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct} or topological 1-stacks \cite{dmr-2covers}.
 The introduction of the latter also gives more details on the history of the subject,
-in particular concerning definitions of covering spaces topological and differentiable stacks.
+in particular concerning definitions of covering spaces of topological and differentiable stacks.
 
 
 \section*{Conclusion}

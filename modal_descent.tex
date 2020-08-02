@@ -1,9 +1,38 @@
-% latexmk -pdflatex='pdflatex %O %S' -pvc -pdf modal_descent.tex
-\documentclass[9pt,twosided]{amsart}
+\documentclass{msc}
 
-\usepackage{hott}
+\usepackage[english]{babel}
+\usepackage{microtype}
+%\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage[stable]{footmisc}
 
+\usepackage{ifthen}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{mathtools} % for :=
+\usepackage{wasysym}
 \usepackage{phonetic} % for esh
+\usepackage{tipa} % for textesh
+
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+
+\usepackage[style=alphabetic,maxnames=10,backend=biber,hyperref=true]{biblatex}
+\definecolor{darkblue}{rgb}{0,0.4,0.4}
+
+\usepackage[hyphens]{url}
+\usepackage[colorlinks,citecolor=orange,linkcolor=darkblue,unicode]{hyperref}
+\hypersetup{pdfpagemode=UseOutlines}
+
+% For some reason the following can't be above hyperref.
+\usepackage{aliascnt}
+\usepackage[capitalize]{cleveref}
 
 \newcommand{\shape}{\ensuremath{\mathord{\raisebox{0.5pt}{\text{\rm\esh}}}}}
 \newcommand{\drawpb}[1]{\arrow[#1, phantom, "\text{\scriptsize(pb)}" description]}
@@ -428,31 +457,6 @@ commutes.
   \end{equation*}
   is an equivalence for each $x:A$. By \cref{thm:pullback} it follows that (ii) is equivalent to the property that each $D^\modal(f,x)$ is an equivalence. This proves that (i) implies (ii). Furthermore, if $\eta_A$ is surjective, then the property that each $D^\modal(f,x)$ is an equivalence is equivalent to the property that each $\fib{\eta_A}{x}\to \fib{\eta_B}{\modal f(x)}$ is an equivalence. This proves that (ii) implies (i) in the case where $\eta_A$ is surjective.
 \end{proof}
-
-\begin{comment}%I don't think we need this
-\begin{cor}
-If $f:A\to B$ is $\modal$-\'etale, then the square
-\begin{equation*}
-\begin{tikzcd}[column sep=large]
-A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
-A\times_{\modal A} A \arrow[r,swap,"f\times_{\modal f}f"] & B\times_{\modal B} B
-\end{tikzcd}
-\end{equation*}
-is a pullback square.
-\end{cor}
-
-\begin{proof}
-Consider the diagram
-\begin{equation*}
-\begin{tikzcd}[column sep=large]
-A \arrow[d,swap,"\delta_{\modalunit}"] \arrow[r,"f"] & B \arrow[d,"\delta_{\modalunit}"] \\
-A\times_{\modal A} A \arrow[d,swap,"\proj 1"] \arrow[r,"{f\times_{\modal f} f}"] & B\times_{\modal B} B \arrow[d,"\proj 1"] \\
-A \arrow[r,"f"] & B
-\end{tikzcd}
-\end{equation*}
-The bottom square is a pullback square by \cref{lem:etale_char}, and the outer rectangle is a pullback since both vertical composites are homotopic to the respective identity functions. Therefore the top square is a pullback.
-\end{proof}
-\end{comment}
 
 \begin{eg}\label{rmk:-1etale}
 In the special case of $(-1)$-truncation, the characterization of \cref{lem:etale_char} (ii) asserts that a map $f:A\to B$ is $(-1)$-\'etale if and only if the square

@@ -1176,7 +1176,7 @@ In \cite[Theorem 3.28]{RijkeSpittersShulman} it is shown that for any two access
 there is a modality such that its modal types are the meet of the modal types of the two modalities.
 So we can make the following definition:
 \begin{defn}
-Let the $1$-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\blank}$ and $\shape$ with $\shape_1$.
+Let the $1$-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\blank}$ and $\shape$.
 \end{defn}
 Then, also from \cite{RijkeSpittersShulman} we know, that a type is $\shape_1$-modal if and only if it is discrete and $1$-truncated.
 In \cite[Theorem 6.21]{ShulmanRealCohesion} it is shown that crisply discrete types have discrete $n$-truncations.
@@ -1184,7 +1184,7 @@ So for crisp types $X$, we have
 \[ \trunc{1}{\shape X} \simeq \shape_1 X\text{.} \]
 If $X$ is a pointed type, the fundamental group with respect to its topological structure can be defined as the loop space
 \[ \Omega \left(\shape_1 X\right). \]
-Since we will use this notion only once, we will not denote it with $\pi_1$ to limited confusion with common definitions of homotopy type theory.
+Since we will use this notion only once, we will not denote it with $\pi_1$ to limit confusion with common definitions of homotopy type theory.
 
 With $\shape_1$ and its unit $\eta$, covering spaces and the universal cover are easy to define:
 \begin{defn}
@@ -1208,7 +1208,7 @@ The following observations justify these names:
     \begin{center}
       \begin{tikzcd}
         \widetilde{X}\arrow[rr]\arrow[dr] & & Y\arrow[dl, "f"] \\
-        & X & \\
+        & X &
       \end{tikzcd}
     \end{center}
     commutes.
@@ -1219,7 +1219,7 @@ The following observations justify these names:
   \item By lemma \ref{cor:etale_lex}. 
   \item Applying theorem \ref{thm:modal_descent} to $\unit\to \shape_1 X$ yields this result directly.
   \item This is the universal property of the pullback square from the definition of $\modal$-étale maps.
-  \item This is an application of (iii).
+  \item This is an application of (iii).\qedhere
   \end{enumerate}
 \end{proof}
 
@@ -1238,7 +1238,7 @@ we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
   \item This is just lemma \ref{thm:modal_descent} applied to $\shape_1$.
   \item By pullback pasting and surjectivity of $\modalunit_X$, fibers of $1$-covering spaces over $X$ are always equivalent to values of the corresponding morphism $\shape_1 X\to \mathcal U_{\shape_1}$ and vice versa.
   \item The equivalence holds by (ii).
-    That maps of the form $\rho:\shape_1 X\to \mathcal U_{\shape_0}$ are actions of the loop space of $\shape_1 X$ on the value $\rho(\ast)$ is a consequence of the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} and \cite[Section 7.1]{ulrik-egbert-floris-groups-published}.
+    That maps of the form $\rho:\shape_1 X\to \mathcal U_{\shape_0}$ are actions of the loop space of $\shape_1 X$ on the value $\rho(\ast)$ is a consequence of the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} and \cite[Section 7.1]{ulrik-egbert-floris-groups-published}. \qedhere
   \end{enumerate}
 \end{proof}
 
@@ -1295,12 +1295,12 @@ We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}
 These functors represent so called \emph{affine Noetherian $k$-schemes} and they form the basic building blocks of spaces called Noetherian $k$-schemes
 (see \cite[Chapter II]{hartshorne} for more on schemes).
 We will use no property of Noetherian $k$-schemes here,
-except that we can descent to affine Noetherian $k$-schemes .
+except that we can descend to affine Noetherian $k$-schemes .
 
 For any $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$,
 the functor $\Im X$ defined pointwise by
 \[ (\Im X)(A):\equiv X(A/\sqrt{0})\]
-is again a functor from $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ to the sets.
+is again a functor from $k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}}$ to sets.
 So $\Im$ is an endofunctor on the presheaf category $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
 
 The name $\modal$-étale is an adaption of the name ``formally étale'' for general modalities.
@@ -1321,8 +1321,8 @@ which is equivalent to the unique lifting condition in the following definition:
 \end{defn}
 We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
 The presented fact and its proof is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
-We use the fact, that the Noetherian $k$-schemes are embedded in the category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
-\begin{rmk}
+We use the fact, that the Noetherian $k$-schemes are embedded in the category $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
+\begin{prp}
   A morphism of $f:X\to Y$ Noetherian schemes $X,Y$ is formally étale if and only if the naturality square
   \begin{center}
     \begin{tikzcd}
@@ -1331,7 +1331,7 @@ We use the fact, that the Noetherian $k$-schemes are embedded in the category $X
     \end{tikzcd}
   \end{center}
   is a pullback square.
-\end{rmk}
+\end{prp}
 \begin{proof}
   Let $X$ and $Y$ be Noetherian $k$-schemes. 
   We will first show that a morphism of schemes $f:X\to Y$ is formally étale,
@@ -1431,7 +1431,7 @@ as the limit of the sequence of quotients by powers of $I$ with discrete topolog
 Let us write $\Delta(A)$ for $A\in\fgkAlg$ with the discrete topology.
 The completion yields a functor:
 \[ \Spf(\hat{A}) := \fgkAlgTop(\hat{A},\Delta(\_))\]
-\begin{rmk}
+\begin{prp}
   Let $X$ be a Noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
   \begin{center}
     \begin{tikzcd}
@@ -1440,7 +1440,7 @@ The completion yields a functor:
     \end{tikzcd}
   \end{center}
   Then $D^\Im(X,x)$ is the formal neighborhood of $x$ in $X$. 
-\end{rmk}
+\end{prp}
 \begin{proof}
   Since formal completions are defined by descending to affine schemes, we can assume $X=\Spec(A)$ with $A\in\fgkAlg$.
   Then $x:\unit\to X$ can be rewritten as $x:\Spec(k)\to\Spec(A)$ and thus corresponds to a $k$-algebra homomorphism $A\to k$,
@@ -1463,14 +1463,14 @@ The completion yields a functor:
       \dots\arrow[r] & A/m^{n+2}\arrow[r] & A/m^{n+1}\arrow[r] & A/m^{n}
     \end{tikzcd}
   \end{center}
-  for some $n\in\bN$ such that $\varphi(m^n)=\varphi(m)^n={0}$. So we have a map of sequences:
+  for some $n\in\bN$ such that $\varphi(m^n)=\varphi(m)^n={0}$. So we have a map of sequences
   \begin{center}
     \begin{tikzcd}
       \dots\arrow[r] & A/m^{n+2}\arrow[r]\arrow[d,"\varphi"] & A/m^{n+1}\arrow[r]\arrow[d,"\varphi"] & A/m^{n}\arrow[d,"\varphi"] \\
       \dots\arrow[r,"\mathrm{id}", swap] & B\arrow[r,"\mathrm{id}", swap] & B\arrow[r,"\mathrm{id}", swap] & B
     \end{tikzcd}
   \end{center}
-  And therefore an induced $\hat{\varphi}:\hat{A}\to B$.
+  inducing the required $\hat{\varphi}:\hat{A}\to B$.
 \end{proof}
 \printbibliography
 

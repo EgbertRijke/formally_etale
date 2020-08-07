@@ -934,7 +934,7 @@ Next, we show that $\modal$-equivalences are stable under base change by $\modal
   We will now define the modal reflective factorization system of a modality, of which the right class is the class of $\modal$-\'etale maps.
   Note that our modal reflective factorization systems correspond most closely to the \emph{semi-lex} reflective factorization systems of \cite{cassidy_hebert_kelly_1985}.
 
-\begin{defn}
+\begin{defn}\label{defn:modalrfs}
 The \define{modal reflective factorization system} associated to a modality $\modal$ consists of the $\modal$-equivalences as the left class, and the $\modal$-\'etale maps as the right class.
 \end{defn}
 
@@ -1040,7 +1040,7 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
     \end{equation*}
     is also in $\mathcal{R}$. 
   \end{enumerate}
-  Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the modal reflective factorization system of a modality. We say that $(\mathcal{L},\mathcal{R})$ \define{is a modal reflective factorization system} if it satisfies the two properties above.
+  Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the modal reflective factorization system of a modality. 
 \end{thm}
 
 \begin{proof}
@@ -1084,7 +1084,10 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
   \end{equation*}
   where $p$ is assumed to be in $\mathcal{R}$. The top and bottom maps in the left square are $\mathcal{L}$-maps. Moreover, all the maps in the right square are $\mathcal{R}$-maps. Hence the left square is a pullback by assumption (i).
 \end{proof}
-
+So by the theorem, the following definition agrees with \cref{defn:modalrfs}:
+\begin{defn}
+  An orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is called a \define{modal reflective factorization system} if it satisfies the two properties from the statement of \cref{thm:rfs}.
+\end{defn}
 Recall from \cite[Section 1]{RijkeSpittersShulman} that there are four equivalent ways of saying what a modality is:
 \begin{enumerate}
 \item A higher modality.

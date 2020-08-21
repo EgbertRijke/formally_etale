@@ -114,6 +114,27 @@
 \crefrangemultiformat{section}{\S\S#3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}
 \Crefrangemultiformat{section}{Sections~#3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}
 
+% Display format for appendices
+\crefformat{appendix}{Appendix~#2#1#3}
+\Crefformat{appendix}{Appendix~#2#1#3}
+\crefrangeformat{appendix}{Appendices~#3#1#4--#5#2#6}
+\Crefrangeformat{appendix}{Appendices~#3#1#4--#5#2#6}
+\crefmultiformat{appendix}{Appendices~#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\Crefmultiformat{appendix}{Appendices~#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\crefrangemultiformat{appendix}{Appendices~#3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}
+\Crefrangemultiformat{appendix}{Appendices~#3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}
+
+\crefname{part}{Part}{Parts}
+
+\crefformat{paragraph}{\S#2#1#3}
+\Crefformat{paragraph}{Paragraph~#2#1#3}
+\crefrangeformat{paragraph}{\S\S#3#1#4--#5#2#6}
+\Crefrangeformat{paragraph}{Paragraphs~#3#1#4--#5#2#6}
+\crefmultiformat{paragraph}{\S\S#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\Crefmultiformat{paragraph}{Paragraphs~#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\crefrangemultiformat{paragraph}{\S\S#3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}
+\Crefrangemultiformat{paragraph}{Paragraphs~#3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{ and~#3#1#4--#5#2#6}
+
 % Number subsubsections
 \setcounter{secnumdepth}{5}
 
@@ -141,6 +162,23 @@
 \renewcommand{\theenumi}{(\roman{enumi})}
 \renewcommand{\labelenumi}{\theenumi}
 
+
+%%%% MARGINS %%%%
+
+% This is a matter of personal preference, but I think the left
+% margins on enumerates and itemizes are too wide.
+%\setitemize[1]{leftmargin=2em}
+%\setenumerate[1]{leftmargin=*}
+
+% Likewise that they are too spaced out.
+%\setitemize[1]{itemsep=-0.2em}
+%\setenumerate[1]{itemsep=-0.2em}
+
+%%% Notes %%%
+\def\noteson{%
+\gdef\note##1{\mbox{}\marginpar{\color{blue}\textasteriskcentered\ ##1}}}
+\gdef\notesoff{\gdef\note##1{\null}}
+\noteson
 
 %%%% CITATIONS %%%%
 
@@ -170,150 +208,6 @@
 %%% Term being defined
 \newcommand{\define}[1]{\textbf{#1}}
 
-\newcommand{\usc}{\underline{\ }}
-\newcommand{\Z}{\ensuremath{\mathbb{Z}}\xspace}
-\newcommand{\blank}{\mathord{\hspace{1pt}\text{--}\hspace{1pt}}}
-\newcommand{\precomp}[1]{#1^{\ast}}
-\newcommand{\emptyt}{\ensuremath{\emptyset}\xspace}
-\newcommand{\proj}[1]{\ensuremath{\mathsf{pr}_{#1}}\xspace}
-\newcommand{\brck}[1]{\trunc{}{#1}}
-\newcommand{\bproj}[1]{\tproj{}{#1}}
-\newcommand{\trunc}[2]{\mathchoice{\mathopen{}\left\Vert #2\right\Vert_{#1}\mathclose{}}{\mathopen{}\Vert #2\Vert_{#1}\mathclose{}}{\mathopen{}\Vert #2\Vert_{#1}\mathclose{}}{\mathopen{}\Vert #2\Vert_{#1}\mathclose{}}}
-\newcommand{\tproj}[3][]{\mathopen{}\left|#3\right|_{#2}^{#1}\mathclose{}}
-\newcommand{\isequiv}{\mathsf{is\usc{}equiv}}
-\newcommand{\total}[2][]{\ensuremath{\mathsf{tot}_{#1}(#2)}}
-\newcommand{\loopspacesym}{\mathsf{\Omega}}
-\newcommand{\loopspace}[2][]{\loopspacesym^{#1}(#2)}
-\newcommand{\isetale}{\mathsf{is\usc{}etale}}
-\newcommand{\UU}{\mathcal{U}}
-\newcommand{\htpy}{\sim}
-\newcommand{\isprop}{\ensuremath{\mathsf{is\usc{}prop}}}
-\newcommand{\iscontr}{\ensuremath{\mathsf{is\usc{}contr}}}
-\newcommand{\modal}{\ensuremath{\ocircle}}
-\let\reflect\modal
-\newcommand{\modalunit}[1][]{{\eta_{#1}}}
-\newcommand{\modaltype}{\ensuremath{\type_\modal}}
-\newcommand{\modalUU}{\ensuremath{\UU_\modal}}
-\newcommand{\unit}{\ensuremath{\mathbf{1}}\xspace}
-\newcommand{\ttt}{\ensuremath{\star}\xspace}
-\newcommand{\sphere}[1]{S^{#1}}
-\newcommand{\Sn}{\mathbb{S}}
-\newcommand{\base}{\ensuremath{\mathsf{base}}\xspace}
-\newcommand{\lloop}{\ensuremath{\mathsf{loop}}\xspace}
-\newcommand{\surf}{\ensuremath{\mathsf{surf}}\xspace}
-\newcommand{\mapfunc}[1]{\ensuremath{\mathsf{ap}_{#1}}\xspace} % Without argument
-\newcommand{\map}[2]{\mapfunc{#1}\left({#2}\right)\xspace}
-\let\Ap\map
-%\newcommand{\Ap}[2]{\ensuremath{{#1}\left({#2}\right)}\xspace}
-\newcommand{\mapdepfunc}[1]{\ensuremath{\mathsf{apd}_{#1}}\xspace} % Without argument
-% \newcommand{\mapdep}[2]{\ensuremath{{#1}\llparenthesis{#2}\rrparenthesis}\xspace}
-\newcommand{\mapdep}[2]{\ensuremath{\mapdepfunc{#1}\mathopen{}\left(#2\right)\mathclose{}}\xspace}
-\let\apfunc\mapfunc
-\let\ap\map
-\let\apdfunc\mapdepfunc
-\let\apd\mapdep
-\newcommand{\eqvsym}{\simeq}    % infix symbol
-\newcommand{\eqv}[2]{
-  \@ifnextchar\bgroup
-    {#1 \eqvsym \eqv{#2}}
-    {#1 \eqvsym #2}
-  }
-\newcommand{\ctsym}{%
-  \mathchoice{\mathbin{\raisebox{0.5ex}{$\displaystyle\centerdot$}}}%
-             {\mathbin{\raisebox{0.5ex}{$\centerdot$}}}%
-             {\mathbin{\raisebox{0.25ex}{$\scriptstyle\,\centerdot\,$}}}%
-             {\mathbin{\raisebox{0.1ex}{$\scriptscriptstyle\,\centerdot\,$}}}
-  }
-\newcommand{\ct}[3][]{
-  \@ifnextchar\bgroup
-    {#2 \mathbin{\ctsym_{#1}} \ct[#1]{#3}}
-    {#2 \mathbin{\ctsym_{#1}} #3}
-  }
-  \newcommand{\fib}[2]{{\mathsf{fib}}_{#1}(#2)}
-  %%% Dependent sums %%%
-\def\smsym{\sum}
-\newcommand{\@thesum}[1]{\smsym_{(#1)}}
-\newcommand{\sm}[1]{\@ifnextchar\bgroup{\@sm{#1}\sm}{\@sm{#1}}}
-\newcommand{\@sm}[1]{\mathchoice{{\textstyle\@thesum{#1}}}{\@thesum{#1}}{\@thesum{#1}}{\@thesum{#1}}}
-\newcommand{\tsm}{\sm}
-\newcommand{\tprd}{\prd}
-\def\prdsym{\prod}
-%% Call the macro like \prd{x,y:A}{p:x=y} with any number of
-%% arguments.  Make sure that whatever comes *after* the call doesn't
-%% begin with an open-brace, or it will be parsed as another argument.
-
-%%%% Implicit arguments are possible. In the above example, if x and y are to be
-%%%% implicit, then one should write \prd*{x,y:A}{p:x=y}
-%%%%
-%%%% If one wants to use implicit arguments in the notation for product types,
-%%%% a * has to be put before the argument that has to be implicit.
-%%%% For example: in $\prd{x:A}*{y:B}{u:P(y)}Q(x,y,u)$, the argument y is
-%%%% implicit. Any of the arguments can be made implicit this way.
-
-%%%% First of all, we should make the command \prd search not only for a
-%%%% brace, but also for a star. We introduce an auxiliary command that
-%%%% determines whether the next character is a star or brace.
-
-\newcommand{\@ifnextchar@starorbrace}[2]
-  {\@ifnextchar*{#1}{\@ifnextchar\bgroup{#1}{#2}}}
-
-\newcommand{\@theprd}[1]{\prdsym_{(#1)}}
-\newcommand{\@theiprd}[1]{\prdsym_{\{#1\}}}
-
-%%%% When encountering the \prd command, latex should determine whether it
-%%%% should print implicit argument brackets or not.
-%%%% First, we have the following switch. Set it to true if implicit arguments
-%%%% are desired, or to false if not. Note turning off implicit arguments
-%%%% might render some parts of the text harder to comprehend, since in the
-%%%% text might appear $f(x)$ where we would have $f(i,x)$ without implicit
-%%%% arguments.
-
-\DeclareOption{implicit_arguments_on}%
-  {\newcommand{\implicitargumentson}{\boolean{true}}}
-\DeclareOption{implicit_arguments_off}%
-  {\newcommand{\implicitargumentson}{\boolean{false}}}
-
-\ExecuteOptions{implicit_arguments_on}
-
-\ProcessOptions\relax
-
-\newcommand{\prd}{\@ifnextchar*{\@iprd}{\@prd}}
-\newcommand{\@prd}[1]
-  {\@ifnextchar@starorbrace
-    {\@tprd{#1}\prd}
-    {\@tprd{#1}}}
-\newcommand{\@tprd}[1]{%
-  \mathchoice{%
-    {{\textstyle\@theprd{#1}}}}{\@theprd{#1}}{\@theprd{#1}}{\@theprd{#1}}}
-
-\newcommand{\@iprd}[2]{\@ifnextchar@starorbrace%
-  {\@tiprd{#2}\prd}%
-  {\@tiprd{#2}}}
-\newcommand{\@tiprd}[1]{
-  \ifthenelse{\implicitargumentson}
-    {\@@tiprd{#1}}%\@ifnextchar\bgroup{\@tiprd}{}}
-    {\@tprd{#1}}}
-\newcommand{\@@tiprd}[1]{\mathchoice{{\textstyle\@theiprd{#1}}}{\@theiprd{#1}}{\@theiprd{#1}}{\@theiprd{#1}}}
-
-%%% Lambda abstractions.
-% Each variable being abstracted over is a separate argument.  If
-% there is more than one such argument, they *must* be enclosed in
-% braces.  Arguments can be untyped, as in \lam{x}{y}, or typed with a
-% colon, as in \lam{x:A}{y:B}. In the latter case, the colons are
-% automatically noticed and (with current implementation) the space
-% around the colon is reduced.  You can even give more than one variable
-% the same type, as in \lam{x,y:A}.
-\def\lam#1{{\lambda}\@lamarg#1:\@endlamarg\@ifnextchar\bgroup{.\,\lam}{.\,}}
-\def\@lamarg#1:#2\@endlamarg{\if\relax\detokenize{#2}\relax #1\else\@lamvar{\@lameatcolon#2},#1\@endlamvar\fi}
-\def\@lamvar#1,#2\@endlamvar{(#2\,{:}\,#1)}
-% \def\@lamvar#1,#2{{#2}^{#1}\@ifnextchar,{.\,{\lambda}\@lamvar{#1}}{\let\@endlamvar\relax}}
-\def\@lameatcolon#1:{#1}
-\let\lamt\lam
-% This version silently eats any typing annotation.
-\def\lamu#1{{\lambda}\@lamuarg#1:\@endlamuarg\@ifnextchar\bgroup{.\,\lamu}{.\,}}
-\def\@lamuarg#1:#2\@endlamuarg{#1}
-
-\endinput 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Type constructors and quantifiers
 
@@ -497,6 +391,17 @@
 \newcommand{\refl}[1]{\ensuremath{\mathsf{refl}_{#1}}\xspace}
 
 %%% Path concatenation (used infix, in diagrammatic order) %%%
+\newcommand{\ctsym}{%
+  \mathchoice{\mathbin{\raisebox{0.5ex}{$\displaystyle\centerdot$}}}%
+             {\mathbin{\raisebox{0.5ex}{$\centerdot$}}}%
+             {\mathbin{\raisebox{0.25ex}{$\scriptstyle\,\centerdot\,$}}}%
+             {\mathbin{\raisebox{0.1ex}{$\scriptscriptstyle\,\centerdot\,$}}}
+  }
+\newcommand{\ct}[3][]{
+  \@ifnextchar\bgroup
+    {#2 \mathbin{\ctsym_{#1}} \ct[#1]{#3}}
+    {#2 \mathbin{\ctsym_{#1}} #3}
+  }
 
 %%% Path reversal %%%
 \newcommand{\opp}[1]{\mathord{{#1}^{-1}}}
@@ -517,7 +422,18 @@
 \newcommand{\transconst}[3]{\ensuremath{\mathsf{transportconst}}^{#1}_{#2}(#3)\xspace}
 \newcommand{\transconstf}{\ensuremath{\mathsf{transportconst}}\xspace}
 
-
+%%% Map on paths %%%
+\newcommand{\mapfunc}[1]{\ensuremath{\mathsf{ap}_{#1}}\xspace} % Without argument
+\newcommand{\map}[2]{\mapfunc{#1}\left({#2}\right)\xspace}
+\let\Ap\map
+%\newcommand{\Ap}[2]{\ensuremath{{#1}\left({#2}\right)}\xspace}
+\newcommand{\mapdepfunc}[1]{\ensuremath{\mathsf{apd}_{#1}}\xspace} % Without argument
+% \newcommand{\mapdep}[2]{\ensuremath{{#1}\llparenthesis{#2}\rrparenthesis}\xspace}
+\newcommand{\mapdep}[2]{\ensuremath{\mapdepfunc{#1}\mathopen{}\left(#2\right)\mathclose{}}\xspace}
+\let\apfunc\mapfunc
+\let\ap\map
+\let\apdfunc\mapdepfunc
+\let\apd\mapdep
 
 %%% 2D map on paths
 \newcommand{\aptwofunc}[1]{\ensuremath{\mathsf{ap}^2_{#1}}\xspace}
@@ -544,6 +460,10 @@
 
 %%% The empty type
 \newcommand{\emptyt}{\ensuremath{\emptyset}\xspace}
+
+%%% The unit type
+\newcommand{\unit}{\ensuremath{\mathbf{1}}\xspace}
+\newcommand{\ttt}{\ensuremath{\star}\xspace}
 
 %%% The two-element type
 \newcommand{\bool}{\ensuremath{\mathbf{2}}\xspace}
@@ -572,6 +492,11 @@
 \newcommand{\glue}{\mathsf{glue}}
 
 %%% Circles and spheres
+\newcommand{\sphere}[1]{S^{#1}}
+\newcommand{\Sn}{\mathbb{S}}
+\newcommand{\base}{\ensuremath{\mathsf{base}}\xspace}
+\newcommand{\lloop}{\ensuremath{\mathsf{loop}}\xspace}
+\newcommand{\surf}{\ensuremath{\mathsf{surf}}\xspace}
 \newcommand{\Thom}{\mathrm{Th}}
 
 %%% Suspension
@@ -819,6 +744,10 @@
 \newcommand{\bprojf}{\tprojf{}}
 
 %%% modalities %%%
+\newcommand{\modal}{\ensuremath{\ocircle}}
+\let\reflect\modal
+\newcommand{\modaltype}{\ensuremath{\type_\modal}}
+\newcommand{\modalUU}{\ensuremath{\UU_\modal}}
 % \newcommand{\ism}[1]{\ensuremath{\mathsf{is}_{#1}}}
 % \newcommand{\ismodal}{\ism{\modal}}
 % \newcommand{\existsmodal}{\ensuremath{{\exists}_{\modal}}}

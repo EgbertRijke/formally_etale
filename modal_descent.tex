@@ -69,21 +69,21 @@
 \maketitle
 
 \begin{abstract}
-  Any modality in homotopy type theory gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. This factorization system is called the reflective factorization system of a modality, and we give a precise characterization of the orthogonal factorization systems that arise as the reflective factorization system of a modality. In the special case of the $n$-truncation the reflective factorization system has a simple description: we show that the $n$-\'etale maps are the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We use the $\modal$-\'etale maps to prove a modal descent theorem: a map with modal fibers into $\modal X$ is the same thing as a $\modal$-\'etale map into a type $X$. We conclude with an application to real-cohesive homotopy type theory and remarks how $\modal$-étale maps relate to the formally etale maps from algebraic geometry. 
+  Any modality in homotopy type theory gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. This factorization system is called the modal reflective factorization system of a modality, and we give a precise characterization of the orthogonal factorization systems that arise as the modal reflective factorization system of a modality. In the special case of the $n$-truncation the modal reflective factorization system has a simple description: we show that the $n$-\'etale maps are the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We use the $\modal$-\'etale maps to prove a modal descent theorem: a map with modal fibers into $\modal X$ is the same thing as a $\modal$-\'etale map into a type $X$. We conclude with an application to real-cohesive homotopy type theory and remarks how $\modal$-étale maps relate to the formally etale maps from algebraic geometry. 
 \end{abstract}
 
 \section{Introduction}
-In 2011 Urs Schreiber and Mike Shulman introduced Modalities to Homotopy Type Theory,
+In 2011, Urs Schreiber and Michael Shulman introduced \emph{modalities} to homotopy type theory,
 with the idea to use these extended theories to reason about more specialized $(\infty,1)$-toposes.
-One special application they had in mind was to use Homotopy Type Theory to talk about \emph{cohesive} $(\infty,1)$-toposes \cite{ShulmanSchreiber}.
+One special application they had in mind was to use homotopy type theory to talk about \emph{cohesive} $(\infty,1)$-toposes \cite{ShulmanSchreiber}.
 This idea of a cohesive type theory was later developed in \cite{ShulmanRealCohesion} for a special case.
 While the results in this article are about one \emph{monadic} modality,
 these ideas were relevant for the development of our results and we will discuss possible applications along these lines.
   
-Monadic modalities, which we will just call modalities in this article, were defined in \cite[Section 7.7]{UFP}. They were studied extensively in \cite{RijkeSpittersShulman}, where it was shown that any modality gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. Hence we will call this factorization system the \emph{stable} factorization system of a modality. One of our main results is \cref{thm:rfs_orthogonal}, which shows that there is a second orthogonal factorization system that can be obtained from a modality: the \emph{reflective} factorization system. The left maps of the reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In the case where the modality is lex, those left and right classes coincide with the left and right classes of the stable orthogonal factorization system. What we call ``reflective factorization system'' is known in category theory, e.g. in \cite{cassidy_hebert_kelly_1985} as ``semi-lex reflective factorization system''.
-In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the reflective factorization system of a modality.
+Monadic modalities, which we will just call modalities in this article, were defined in \cite[Section 7.7]{UFP}. They were studied extensively in \cite{RijkeSpittersShulman}, where it was shown that any modality gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. Hence we will call this factorization system the \emph{stable} factorization system of a modality. One of our main results is \cref{thm:rfs_orthogonal}, which shows that there is a second orthogonal factorization system that can be obtained from a modality: the \emph{modal reflective} factorization system. The left maps of the modal reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In the case where the modality is lex, those left and right classes coincide with the left and right classes of the stable orthogonal factorization system. What we call ``modal reflective factorization system'' is known in category theory, e.g. in \cite{cassidy_hebert_kelly_1985} as ``semi-lex reflective factorization system''.
+In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the modal reflective factorization system of a modality.
 
-We call right maps of the reflective factorization system $\modal$-étale, where $\modal$ is the modality.
+We call right maps of the modal reflective factorization system $\modal$-étale, where $\modal$ is the modality.
 This name is inspired by the formally étale maps from algebraic geometry,
 which are maps reminiscent of local homeomorphisms in topology.
 In topology, ``local'' means that the maps are trivial over some open subset, while \emph{formally} étale maps are trivial on \emph{formal} disks.
@@ -101,7 +101,7 @@ subsumes the classical fundamental theorem of the theory of covering spaces in r
 This also yields a candidate extension of this classical theorem to topological stacks.
 In fact, it is essentially in this context that the modal descent theorem was already found and proven by Urs Schreiber as \cite[Proposition 5.2.42]{SchreiberDcct}.
   
-We thank Jonas Frey and Mike Shulman for help in understanding factorization systems in a long email discussion in early 2018. This was also the time when the second author wrote his PhD thesis, so some of our results we present here, especially those in \cref{section:modal-descent} and \cref{section:reflective-factorization-system} have already appeared in \cite{rijke-phd}.
+We thank Jonas Frey and Michael Shulman for help in understanding factorization systems in a long email discussion in early 2018. This was also the time when the second author wrote his PhD thesis, so some of our results we present here, especially those in \cref{section:modal-descent} and \cref{section:reflective-factorization-system} have already appeared in \cite{rijke-phd}.
 Discussions with and remarks of Jonathan Zachhuber, Tobias Columbus, Marcelo Fiore, Steve Awodey, Eric Finster, André Joyal, Mathieu Anel, and Dan Christensen were helpful for this work.
 The anonymous reviewers greatly improved the article with their comments and suggestions. 
 This material is based upon work supported by the Air Force Office of Scientific Research under award number FA9550-17-1-0326, and through MURI grant FA9550-15-1-0053.
@@ -535,7 +535,7 @@ These examples suggest the following theorem.
 & \trunc{n}{B}
 \end{tikzcd}
 \end{equation*}
-In this cube the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again a pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
+In this cube, the front right square is a pullback square by the assumption that $f$ is $n$-\'etale. The back left square is an exponent of this pullback square, so it is again a pullback. The front left square is a pullback square because its top and bottom map are both equivalences. Therefore we conclude, that the back right square is a pullback square, which shows that $f$ is right orthogonal to the map $\unit\to\sphere{n+1}$.
 
   For the converse, suppose that the square in \cref{eq:orth} is a pullback square. This square is equivalent to the square
   \begin{equation*}
@@ -817,8 +817,8 @@ is a pullback square. In particular the top map is $\modal$-connected, so this s
   Since the square is a pullback, and the bottom map is $\modal$-connected, it follows that the top map is $\modal$-connected. However, the codomain of the top map is $\modal$-modal, so it follows that the square is equivalent to the $\modal$-naturality square
   \begin{equation*}
     \begin{tikzcd}
-      \sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \modal\Big(\sm{x:X}P(x)\Big) \arrow[d,"\modal \proj 1"] \\
-X \arrow[r,swap,"\modalunit"] & \modal X.
+      & \sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \modal\Big(\sm{x:X}P(x)\Big) \arrow[d,"\modal \proj 1"] & \\
+      & X \arrow[r,swap,"\modalunit"] & \modal X. & \qedhere
     \end{tikzcd}
   \end{equation*}
 \end{proof}
@@ -935,13 +935,13 @@ Next, we show that $\modal$-equivalences are stable under base change by $\modal
     In this diagram, the three vertical $\modal$-naturality squares are all pullback squares, because the vertical maps $E'\to B'$ and $E\to B$ are assumed to be $\modal$-\'etale, and the vertical map $E''\to B''$ is $\modal$-\'etale by \cref{cor:etale_lex}. Furthermore, the back-left square and the back rectangle are assumed to be pullback squares. By \cref{thm:etale_flattening} it follows that the front-left square and the front rectangle are pullback squares. Furthermore, the top map in the front-left square is an equivalence. Therefore we see that the front-right square, which is equivalent to the front rectangle, is a pullback square. Using the pullback squares on the sides of the right cube, we conclude that the back-right square is a pullback square.
   \end{proof}
 
-  \section{Reflective factorization systems}\label{section:reflective-factorization-system}
+  \section{modal reflective factorization systems}\label{section:reflective-factorization-system}
 
-  We will now define the reflective factorization system of a modality, of which the right class is the class of $\modal$-\'etale maps.
-  Note that our reflective factorization systems correspond most closely to the \emph{semi-lex} reflective factorization systems of \cite{cassidy_hebert_kelly_1985}.
+  We will now define the modal reflective factorization system of a modality, of which the right class is the class of $\modal$-\'etale maps.
+  Note that our modal reflective factorization systems correspond most closely to the \emph{semi-lex} reflective factorization systems of \cite{cassidy_hebert_kelly_1985}.
 
-\begin{defn}
-The \define{reflective factorization system} associated to a modality $\modal$ consists of the $\modal$-equivalences as the left class, and the $\modal$-\'etale maps as the right class.
+\begin{defn}\label{defn:modalrfs}
+The \define{modal reflective factorization system} associated to a modality $\modal$ consists of the $\modal$-equivalences as the left class, and the $\modal$-\'etale maps as the right class.
 \end{defn}
 
 \begin{thm}\label{thm:rfs_orthogonal}
@@ -978,7 +978,7 @@ is a pullback square. Consider the commuting cube
 In this cube the top and bottom squares are pullback squares by the assumption that $f$ is $\modal$-\'etale and the fact that exponents of pullback squares are again pullback squares. Furthermore, the square in the front left is pullback, because the two vertical maps are equivalences by the assumption that $i:A\to B$ is a $\modal$-equivalence. Therefore we conclude that the square in the back right is also a pullback square, as desired.
 \end{proof}
 
-The reflective factorization system of a modality enjoys several properties. We highlight two of them, which turn out to characterize the orthogonal factorization systems that arise as the reflective factorization system of a modality. Note that the following proposition is a converse to \cref{prop:LR-cartesian-converse}.
+The modal reflective factorization system of a modality enjoys several properties. We highlight two of them, which turn out to characterize the orthogonal factorization systems that arise as the modal reflective factorization system of a modality. Note that the following proposition is a converse to \cref{prop:LR-cartesian-converse}.
 
 \begin{prp}\label{prop:LR-cartesian}
   Any commuting square of the form
@@ -1023,7 +1023,7 @@ The reflective factorization system of a modality enjoys several properties. We 
   is a pullback square. The vertical map on the right is a map between $\modal$-modal types by the assumption that $I$ is modal. Therefore it follows that the map on the left is $\modal$-\'etale.
 \end{proof}
 
-Now we show that if an orthogonal factorization system satisfies the conditions described in \cref{prop:LR-cartesian,prop:R-stable}, then it is the reflective factorization system of a modality.
+Now we show that if an orthogonal factorization system satisfies the conditions described in \cref{prop:LR-cartesian,prop:R-stable}, then it is the modal reflective factorization system of a modality.
 
 \begin{thm}\label{thm:rfs}
   Suppose $(\mathcal{L},\mathcal{R})$ is an orthogonal factorization system satisfying the following two properties:
@@ -1046,7 +1046,7 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
     \end{equation*}
     is also in $\mathcal{R}$. 
   \end{enumerate}
-  Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the reflective factorization system of a modality. We say that $(\mathcal{L},\mathcal{R})$ \define{is a reflective factorization system} if it satisfies the two properties above.
+  Then the orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is the modal reflective factorization system of a modality. 
 \end{thm}
 
 \begin{proof}
@@ -1090,7 +1090,10 @@ Now we show that if an orthogonal factorization system satisfies the conditions 
   \end{equation*}
   where $p$ is assumed to be in $\mathcal{R}$. The top and bottom maps in the left square are $\mathcal{L}$-maps. Moreover, all the maps in the right square are $\mathcal{R}$-maps. Hence the left square is a pullback by assumption (i).
 \end{proof}
-
+So by the theorem, the following definition agrees with \cref{defn:modalrfs}:
+\begin{defn}
+  An orthogonal factorization system $(\mathcal{L},\mathcal{R})$ is called a \define{modal reflective factorization system} if it satisfies the two properties from the statement of \cref{thm:rfs}.
+\end{defn}
 Recall from \cite[Section 1]{RijkeSpittersShulman} that there are four equivalent ways of saying what a modality is:
 \begin{enumerate}
 \item A higher modality.
@@ -1101,22 +1104,22 @@ Recall from \cite[Section 1]{RijkeSpittersShulman} that there are four equivalen
 In other words, the \emph{type} of higher modalities is equivalent to the \emph{type} of uniquely eliminating modalities, and so on. Each of these equivalences preserves the underlying subuniverse of modal types. We can now add a fifth structure to this list:
 \begin{enumerate}
   \setcounter{enumi}{4}
-\item A reflective factorization system.
+\item A modal reflective factorization system.
 \end{enumerate}
 Note, however, that this does \emph{not} mean that an orthogonal factorization system is stable if and only if it is reflective. The reflective and stable orthogonal factorization systems of a modality coincide if and only if the modality is lex.
 
 \begin{thm}
-  The type of modalities is equivalent to the type of reflective factorization systems.
+  The type of modalities is equivalent to the type of modal reflective factorization systems.
 \end{thm}
 
 \begin{proof}
-  In the proof of \cref{thm:rfs} we showed that the right class $\mathcal{R}$ of a reflective factorization system is precisely the class of \'etale maps for the underlying modality. In other words, a reflective factorization system is completely determined by its modal types, so the claim follows.
+  In the proof of \cref{thm:rfs} we showed that the right class $\mathcal{R}$ of a modal reflective factorization system is precisely the class of \'etale maps for the underlying modality. In other words, a modal reflective factorization system is completely determined by its modal types, so the claim follows.
 \end{proof}
 
 \section{Applications in real-cohesive homotopy type theory}
 \label{subsection:toplogical stacks}
 
-In \cite[Section 8]{ShulmanRealCohesion} Mike Shulman introduces real-cohesive homotopy type theory.
+In \cite[Section 8]{ShulmanRealCohesion} Michael Shulman introduces real-cohesive homotopy type theory.
 This type theory is a candidate for an internal language for some specific \emph{cohesive} ($\infty$,1)-toposes.
 The term ``cohesion'' refers to a higher analog 
 of Lawvere's axiomatic cohesion \cite{Lawvere07} developed by Urs Schreiber \cite{SchreiberDcct}.
@@ -1182,7 +1185,7 @@ In \cite[Theorem 3.28]{RijkeSpittersShulman} it is shown that for any two access
 there is a modality such that its modal types are the meet of the modal types of the two modalities.
 So we can make the following definition:
 \begin{defn}
-Let the $1$-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\blank}$ and $\shape$ with $\shape_1$.
+Let the $1$-shape, $\shape_1$ be the modality given as the meet of the accessible modalities $\trunc{1}{\blank}$ and $\shape$.
 \end{defn}
 Then, also from \cite{RijkeSpittersShulman} we know, that a type is $\shape_1$-modal if and only if it is discrete and $1$-truncated.
 In \cite[Theorem 6.21]{ShulmanRealCohesion} it is shown that crisply discrete types have discrete $n$-truncations.
@@ -1190,7 +1193,7 @@ So for crisp types $X$, we have
 \[ \trunc{1}{\shape X} \simeq \shape_1 X\text{.} \]
 If $X$ is a pointed type, the fundamental group with respect to its topological structure can be defined as the loop space
 \[ \Omega \left(\shape_1 X\right). \]
-Since we will use this notion only once, we will not denote it with $\pi_1$ to limited confusion with common definitions of homotopy type theory.
+Since we will use this notion only once, we will not denote it with $\pi_1$ to limit confusion with common definitions of homotopy type theory.
 
 With $\shape_1$ and its unit $\eta$, covering spaces and the universal cover are easy to define:
 \begin{defn}
@@ -1214,7 +1217,7 @@ The following observations justify these names:
     \begin{center}
       \begin{tikzcd}
         \widetilde{X}\arrow[rr]\arrow[dr] & & Y\arrow[dl, "f"] \\
-        & X & \\
+        & X &
       \end{tikzcd}
     \end{center}
     commutes.
@@ -1225,7 +1228,7 @@ The following observations justify these names:
   \item By lemma \ref{cor:etale_lex}. 
   \item Applying theorem \ref{thm:modal_descent} to $\unit\to \shape_1 X$ yields this result directly.
   \item This is the universal property of the pullback square from the definition of $\modal$-étale maps.
-  \item This is an application of (iii).
+  \item This is an application of (iii).\qedhere
   \end{enumerate}
 \end{proof}
 
@@ -1244,14 +1247,34 @@ we can apply theorem \ref{thm:modal_descent} to $\shape_1$ to get:
   \item This is just lemma \ref{thm:modal_descent} applied to $\shape_1$.
   \item By pullback pasting and surjectivity of $\modalunit_X$, fibers of $1$-covering spaces over $X$ are always equivalent to values of the corresponding morphism $\shape_1 X\to \mathcal U_{\shape_1}$ and vice versa.
   \item The equivalence holds by (ii).
-    That maps of the form $\rho:\shape_1 X\to \mathcal U_{\shape_0}$ are actions of the loop space of $\shape_1 X$ on the value $\rho(\ast)$ is a consequence of the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} and \cite[Section 7.1]{ulrik-egbert-floris-groups}.
+    That maps of the form $\rho:\shape_1 X\to \mathcal U_{\shape_0}$ are actions of the loop space of $\shape_1 X$ on the value $\rho(\ast)$ is a consequence of the \emph{homotopical} covering theory of \cite[Section 3.1]{favonia-thesis} and \cite[Section 7.1]{ulrik-egbert-floris-groups-published}. \qedhere
   \end{enumerate}
 \end{proof}
 
 Similar generalizations of the classical topological correspondence are known on the classical side
 for example for cohesive $\infty$-stacks \cite[Section 5.2.7]{SchreiberDcct} or topological 1-stacks \cite{dmr-2covers}.
 The introduction of the latter also gives more details on the history of the subject,
-in particular concerning definitions of covering spaces topological and differentiable stacks.
+in particular concerning definitions of covering spaces of topological and differentiable stacks.
+
+
+\section*{Conclusion}
+During the time of writing and revising this article,
+$\modal$-étale maps were already used for more calculations in real-cohesion \cite{myers2019}
+and there are lots of further direction worth exploring.
+Also in \cite{myers2019} the concept of $\modal$-fibrations is introduced
+and used to precisely characterize the pullback squares which are preserved by a modality.
+This generalizes \cref{cor:etale_lex} (i). 
+
+While parts of \cref{thm:char_n_etale} apply to general nullification modalities,
+it is not clear to the authors if the whole theorem can be generalized.
+Also concerning generalizations, we do not believe that much of the theory in this article holds for reflective subuniverses,
+but we did not try to phrase everything as general as possible in this respect.
+
+In some cases we gave references to classical notions that \emph{should} correspond to the notions in this article.
+For instance, our modal reflective factorization systems -- and therefore modalities by \cref{thm:rfs} --
+should correspond to the semi-lex reflective factorization systems of \cite{cassidy_hebert_kelly_1985}
+but we did not make any attempt at proving this.
+
 
 \section*{Appendix: Analogous constructions in algebraic geometry}
 \label{subsection:algebraic geometry}
@@ -1281,12 +1304,12 @@ We use the notation $\Spec(A)$ for the Hom-functor $k\mathrm{-Alg}_{\mathrm{fg}}
 These functors represent so called \emph{affine Noetherian $k$-schemes} and they form the basic building blocks of spaces called Noetherian $k$-schemes
 (see \cite[Chapter II]{hartshorne} for more on schemes).
 We will use no property of Noetherian $k$-schemes here,
-except that we can descent to affine Noetherian $k$-schemes .
+except that we can descend to affine Noetherian $k$-schemes .
 
 For any $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$,
 the functor $\Im X$ defined pointwise by
 \[ (\Im X)(A):\equiv X(A/\sqrt{0})\]
-is again a functor from $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$ to the sets.
+is again a functor from $k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}}$ to sets.
 So $\Im$ is an endofunctor on the presheaf category $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
 
 The name $\modal$-étale is an adaption of the name ``formally étale'' for general modalities.
@@ -1307,8 +1330,8 @@ which is equivalent to the unique lifting condition in the following definition:
 \end{defn}
 We will now make a remark which explains how the formally étale maps from algebraic geometry relate to our notion of $\modal$-étale.
 The presented fact and its proof is mostly a repetition of a proof from \cite[Section 4.4]{wellen-thesis}.
-We use the fact, that the Noetherian $k$-schemes are embedded in the category $X\in\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
-\begin{rmk}
+We use the fact, that the Noetherian $k$-schemes are embedded in the category $\mathrm{Psh}(k\mathrm{-Alg}^\mathrm{op}_{\mathrm{fg}})$.
+\begin{prp}
   A morphism of $f:X\to Y$ Noetherian schemes $X,Y$ is formally étale if and only if the naturality square
   \begin{center}
     \begin{tikzcd}
@@ -1317,7 +1340,7 @@ We use the fact, that the Noetherian $k$-schemes are embedded in the category $X
     \end{tikzcd}
   \end{center}
   is a pullback square.
-\end{rmk}
+\end{prp}
 \begin{proof}
   Let $X$ and $Y$ be Noetherian $k$-schemes. 
   We will first show that a morphism of schemes $f:X\to Y$ is formally étale,
@@ -1417,7 +1440,7 @@ as the limit of the sequence of quotients by powers of $I$ with discrete topolog
 Let us write $\Delta(A)$ for $A\in\fgkAlg$ with the discrete topology.
 The completion yields a functor:
 \[ \Spf(\hat{A}) := \fgkAlgTop(\hat{A},\Delta(\_))\]
-\begin{rmk}
+\begin{prp}
   Let $X$ be a Noetherian $k$-scheme and $D^\Im(X,x)$ be given as the pullback:
   \begin{center}
     \begin{tikzcd}
@@ -1426,7 +1449,7 @@ The completion yields a functor:
     \end{tikzcd}
   \end{center}
   Then $D^\Im(X,x)$ is the formal neighborhood of $x$ in $X$. 
-\end{rmk}
+\end{prp}
 \begin{proof}
   Since formal completions are defined by descending to affine schemes, we can assume $X=\Spec(A)$ with $A\in\fgkAlg$.
   Then $x:\unit\to X$ can be rewritten as $x:\Spec(k)\to\Spec(A)$ and thus corresponds to a $k$-algebra homomorphism $A\to k$,
@@ -1449,33 +1472,15 @@ The completion yields a functor:
       \dots\arrow[r] & A/m^{n+2}\arrow[r] & A/m^{n+1}\arrow[r] & A/m^{n}
     \end{tikzcd}
   \end{center}
-  for some $n\in\bN$ such that $\varphi(m^n)=\varphi(m)^n={0}$. So we have a map of sequences:
+  for some $n\in\bN$ such that $\varphi(m^n)=\varphi(m)^n={0}$. So we have a map of sequences
   \begin{center}
     \begin{tikzcd}
       \dots\arrow[r] & A/m^{n+2}\arrow[r]\arrow[d,"\varphi"] & A/m^{n+1}\arrow[r]\arrow[d,"\varphi"] & A/m^{n}\arrow[d,"\varphi"] \\
       \dots\arrow[r,"\mathrm{id}", swap] & B\arrow[r,"\mathrm{id}", swap] & B\arrow[r,"\mathrm{id}", swap] & B
     \end{tikzcd}
   \end{center}
-  And therefore an induced $\hat{\varphi}:\hat{A}\to B$.
+  inducing the required $\hat{\varphi}:\hat{A}\to B$.
 \end{proof}
-
-\section*{Conclusion}
-During the time of writing and revising this article,
-$\modal$-étale maps were already used for more calculations in real-cohesion \cite{myers2019}
-and there are lots of further direction worth exploring.
-Also in \cite{myers2019} the concept of $\modal$-fibrations is introduced
-and used to precisely characterize the pullback squares which are preserved by a modality.
-This generalizes \cref{cor:etale_lex} (i). 
-
-While parts of \cref{thm:char_n_etale} apply to general nullification modalities,
-it is not clear to the authors if the whole theorem can be generalized.
-Also concering generalizations, we do not believe that much of the theory in this article holds for reflective subuniverses,
-but we did not try to phrase everything as general as possible in this respect.
-
-In some cases we gave references to classical notions that \emph{should} correspond to the notions in this article.
-For instance, our reflective factorization systems -- and therefore modalities by \cref{thm:rfs} --
-should correspond to the semi-lex factorization systems of \cite{cassidy_hebert_kelly_1985}
-but we did not make any attempt at proving this.
 \printbibliography
 
 \end{document}

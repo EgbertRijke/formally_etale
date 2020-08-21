@@ -1,5 +1,5 @@
 % latexmk -pdflatex='pdflatex %O %S' -pvc -pdf modal_descent.tex
-\documentclass[9pt,twosided]{amsart}
+\documentclass{msc}
 
 \usepackage{hott}
 
@@ -29,15 +29,13 @@
 \newcommand{\ignore}[1]{}
 \newcommand{\et}{\mathsf{et}}
 
-\addbibresource{literatur.bib}
+%\addbibresource{literatur.bib}
 
 \title{Modal descent}
 \author{Felix Cherubini and Egbert Rijke}
 \date{\today}
 
 \begin{document}
-
-\maketitle
 
 \begin{abstract}
   Any modality in homotopy type theory gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. This factorization system is called the modal reflective factorization system of a modality, and we give a precise characterization of the orthogonal factorization systems that arise as the modal reflective factorization system of a modality. In the special case of the $n$-truncation the modal reflective factorization system has a simple description: we show that the $n$-\'etale maps are the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We use the $\modal$-\'etale maps to prove a modal descent theorem: a map with modal fibers into $\modal X$ is the same thing as a $\modal$-\'etale map into a type $X$. We conclude with an application to real-cohesive homotopy type theory and remarks how $\modal$-étale maps relate to the formally etale maps from algebraic geometry. 
@@ -593,7 +591,7 @@ is a pullback square, we see that a $\modal$-locally trivial map is a map that b
 \begin{equation*}
   F_y \simeq \fib{f}{i(z)}
 \end{equation*}
-indexed by $z:D_y$, where $i:D_y\to B$ is the fiber inclusion of the (unpointed) fiber sequence $D_y\hookrightarrow B\twoheadrightarrow\modal B$. The commutativity of the cube implies that the map $\varphi_y$ is uniquely determined, as we will soon see.
+indexed by $z:D_y$, where $i:D_y\to B$ is the fiber inclusion of the (unpointed) fiber sequence $D_y\hookrightarrow B\epi\modal B$. The commutativity of the cube implies that the map $\varphi_y$ is uniquely determined, as we will soon see.
 
 \begin{prp}\label{prp:locally_trivial}
   The following are equivalent:
@@ -789,8 +787,8 @@ is a pullback square. In particular the top map is $\modal$-connected, so this s
   \begin{equation*}
     \begin{tikzcd}
       & \sm{x:X}P(x) \arrow[d,swap,"\proj 1"] \arrow[r] & \modal\Big(\sm{x:X}P(x)\Big) \arrow[d,"\modal \proj 1"] & \\
-      & X \arrow[r,swap,"\modalunit"] & \modal X. & \qedhere
-    \end{tikzcd}
+      & X \arrow[r,swap,"\modalunit"] & \modal X. & 
+    \end{tikzcd}\qedhere
   \end{equation*}
 \end{proof}
 
@@ -812,7 +810,7 @@ We also note that the $n$-equivalences are not stable under pullbacks, whereas t
 \unit\arrow[r] & \sphere{n+1}
 \end{tikzcd}
 \end{equation*}
-Here the map on the right is an $n$-equivalence, since $\sphere{n+1}$ is $n$-connected. However, the map on the left is not an $n$-equivalence, since the $n$-th homotopy group of $\loopspace{\sphere{n+1}}$ is not trivial: it is the $(n+1)$-st homotopy group of $\sphere{n+1}$, which is $\Z$.
+Here the map on the right is an $n$-equivalence, since $\sphere{n+1}$ is $n$-connected. However, the map on the left is not an $n$-equivalence, since the $n$-th homotopy group of $\loopspace{\sphere{n+1}}$ is not trivial: it is the $(n+1)$-st homotopy group of $\sphere{n+1}$, which is $\bZ$.
 \end{rmk}
 We recall from \cite{CORS} the following facts about $\modal$-equivalences:
 \begin{prp}

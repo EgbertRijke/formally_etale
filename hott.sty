@@ -16,12 +16,12 @@
 %\PassOptionsToPackage{colorlinks,citecolor=darkblue,linkcolor=darkblue,unicode}{hyperref}
 
 
-\RequirePackage[utf8]{inputenc}
-\RequirePackage{comment}
+%\RequirePackage[utf8]{inputenc}
+%\RequirePackage{comment}
 
-\RequirePackage[hyphens]{url} % This package has to be loaded *before* hyperref and biblatex
-\RequirePackage[colorlinks,citecolor=orange,linkcolor=darkblue,unicode]{hyperref}
-\hypersetup{pdfpagemode=UseOutlines}
+%\RequirePackage[hyphens]{url} % This package has to be loaded *before* hyperref and biblatex
+%\RequirePackage[colorlinks,citecolor=orange,linkcolor=darkblue,unicode]{hyperref}
+%\hypersetup{pdfpagemode=UseOutlines}
 
 \RequirePackage[english]{babel}
 \RequirePackage{microtype}
@@ -32,9 +32,9 @@
 
 \RequirePackage{ifthen}
 
-\RequirePackage{amsmath}
-\RequirePackage{amsthm}
-\RequirePackage{amssymb}
+%\RequirePackage{amsmath}
+%\RequirePackage{amsthm}
+%\RequirePackage{amssymb}
 \RequirePackage{stmaryrd}
 \RequirePackage{mathrsfs}
 \RequirePackage{mathtools} % for :=
@@ -51,7 +51,7 @@
 \RequirePackage{bussproofs}
 \RequirePackage{tipa} % for textesh
 
-\RequirePackage[style=alphabetic,maxnames=10,backend=biber,hyperref=true]{biblatex}
+%\RequirePackage[style=alphabetic,maxnames=10,backend=biber,hyperref=true]{biblatex}
 \definecolor{darkblue}{rgb}{0,0.4,0.4}
 
 % For some reason the following can't be above hyperref.
@@ -392,10 +392,10 @@
 
 %%% Path concatenation (used infix, in diagrammatic order) %%%
 \newcommand{\ctsym}{%
-  \mathchoice{\mathbin{\raisebox{0.5ex}{$\displaystyle\centerdot$}}}%
-             {\mathbin{\raisebox{0.5ex}{$\centerdot$}}}%
-             {\mathbin{\raisebox{0.25ex}{$\scriptstyle\,\centerdot\,$}}}%
-             {\mathbin{\raisebox{0.1ex}{$\scriptscriptstyle\,\centerdot\,$}}}
+  \mathchoice{\mathbin{\raisebox{0.5ex}{$\displaystyle\cdot$}}}%
+             {\mathbin{\raisebox{0.5ex}{$\cdot$}}}%
+             {\mathbin{\raisebox{0.25ex}{$\scriptstyle\,\cdot\,$}}}%
+             {\mathbin{\raisebox{0.1ex}{$\scriptscriptstyle\,\cdot\,$}}}
   }
 \newcommand{\ct}[3][]{
   \@ifnextchar\bgroup
@@ -494,7 +494,7 @@
 %%% Circles and spheres
 \newcommand{\sphere}[1]{S^{#1}}
 \newcommand{\Sn}{\mathbb{S}}
-\newcommand{\base}{\ensuremath{\mathsf{base}}\xspace}
+\newcommand{\Sbase}{\ensuremath{\mathsf{base}}\xspace}
 \newcommand{\lloop}{\ensuremath{\mathsf{loop}}\xspace}
 \newcommand{\surf}{\ensuremath{\mathsf{surf}}\xspace}
 \newcommand{\Thom}{\mathrm{Th}}
@@ -991,7 +991,8 @@
 \newcommand{\cteqvsym}{\simeq}     % Symbol for equivalence of categories
 
 %%% Arrows
-\newcommand{\epi}{\ensuremath{\twoheadrightarrow}}
+\newcommand{\epi}{\ensuremath{\mathrel{\mathrlap{\rightarrow}\mkern1mu\rightarrow}}}
+%\newcommand{\epi}{\ensuremath{\twoheadrightarrow}}
 \newcommand{\mono}{\ensuremath{\rightarrowtail}}
 
 %%% Semigroup structure
@@ -1855,23 +1856,6 @@
 %%%% DEPENDENT FUNCTION TYPES
 
 \newcommand{\sprd}[2]{\Pi(\default@ctxext #1,\default@ctxext #2)}
-\begin{comment}
-\newcommand{\@sprd@test@cod}[2]{%
-  \@ifnextchar\bgroup{\@sprd@do@cod{#1}}{%
-  \Pi(\@sprd@test@dom{#1}{#2} #1,
-  }}
-\newcommand{\@sprd@do@cod}[4]{%
-  \ctxext{\@sprd{#1}{#2}}{\@sprd{#1}{#3}}
-  }
-\newcommand{\@sprd}[2]{
-  \@ifnextchar\bgroup{\@@sprd}{%
-    \Pi(}
-    #1,{#2})
-  }
-\newcommand{\@@sprd}[5]{%
-  \sprd{#1}{\sprd{#2}{#4}}
-  }
-\end{comment}
 
 \newcommand{\slam}[3]{%
   \lambda^{{\default@ctxext@parens #1},{\default@ctxext@parens #2}}

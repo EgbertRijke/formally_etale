@@ -23,23 +23,41 @@
 \newcommand{\fgkAlg}{\ensuremath{k\mathrm{-Alg}_{\mathrm{fg}}}}
 \newcommand{\fgkAlgTop}{\ensuremath{k\mathrm{-Alg}_{\mathrm{fg,top}}}}
 \newcommand{\Hom}{\ensuremath{\mathrm{Hom}}}
-\newcommand{\FSGrp}{\ensuremath{\mathsf{FSGrp}}}
-\newcommand{\Spaces}{\ensuremath{\mathrm{Etop}\infty\mathrm{Gpd}}}
 \newcommand{\todo}[1]{{\color{red}TODO: #1 \\}}
 \newcommand{\ignore}[1]{}
 \newcommand{\et}{\mathsf{et}}
 
 %\addbibresource{literatur.bib}
 
-\title{Modal descent}
-\author{Felix Cherubini and Egbert Rijke}
-\date{\today}
-
 \begin{document}
+
+\lefttitle{Modal Descent}
+\righttitle{Mathematical Structures in Computer}
+
+\papertitle{Article}
+\title{Modal Descent}
+
+\begin{authgrp}
+  \author{Felix Cherubini}
+  \affiliation{Softwareschneiderei GmbH\\
+    \email{felix.cherubini@posteo.de}}
+\end{authgrp}
+
+\begin{authgrp}
+  \author{Egbert Rijke}
+  \affiliation{University of Ljubljana\\
+    \email{e.m.rijke@gmail.com}}
+\end{authgrp}
 
 \begin{abstract}
   Any modality in homotopy type theory gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. We show that there is a second orthogonal factorization system associated to any modality, of which the left class is the class of $\modal$-equivalences and the right class is the class of $\modal$-\'etale maps. This factorization system is called the modal reflective factorization system of a modality, and we give a precise characterization of the orthogonal factorization systems that arise as the modal reflective factorization system of a modality. In the special case of the $n$-truncation the modal reflective factorization system has a simple description: we show that the $n$-\'etale maps are the maps that are right orthogonal to the map $\unit \to \sphere{n+1}$. We use the $\modal$-\'etale maps to prove a modal descent theorem: a map with modal fibers into $\modal X$ is the same thing as a $\modal$-\'etale map into a type $X$. We conclude with an application to real-cohesive homotopy type theory and remarks how $\modal$-étale maps relate to the formally etale maps from algebraic geometry. 
 \end{abstract}
+
+\begin{keywords}
+homotopy type theory; modal homotopy type theory; cohesive homotopy type theory; algebraic geometry; factorization systems; 
+\end{keywords}
+
+%\maketitle
 
 \section{Introduction}
 In 2011, Urs Schreiber and Michael Shulman introduced \emph{modalities} to homotopy type theory,
@@ -48,7 +66,7 @@ One special application they had in mind was to use homotopy type theory to talk
 This idea of a cohesive type theory was later developed in \cite{ShulmanRealCohesion} for a special case.
 While the results in this article are about one \emph{monadic} modality,
 these ideas were relevant for the development of our results and we will discuss possible applications along these lines.
-  
+
 Monadic modalities, which we will just call modalities in this article, were defined in \cite[Section 7.7]{UFP}. They were studied extensively in \cite{RijkeSpittersShulman}, where it was shown that any modality gives rise to an orthogonal factorization system of which the left class is stable under pullbacks. Hence we will call this factorization system the \emph{stable} factorization system of a modality. One of our main results is \cref{thm:rfs_orthogonal}, which shows that there is a second orthogonal factorization system that can be obtained from a modality: the \emph{modal reflective} factorization system. The left maps of the modal reflective factorization system are the maps that are inverted by the modality and the right maps are those with a cartesian naturality square. In the case where the modality is lex, those left and right classes coincide with the left and right classes of the stable orthogonal factorization system. What we call ``modal reflective factorization system'' is known in category theory, e.g. in \cite{cassidy_hebert_kelly_1985} as ``semi-lex reflective factorization system''.
 In \cref{thm:rfs} we give a precise characterization of those orthogonal factorization systems that arise as the modal reflective factorization system of a modality.
 
@@ -1450,6 +1468,6 @@ The completion yields a functor:
   \end{center}
   inducing the required $\hat{\varphi}:\hat{A}\to B$.
 \end{proof}
-\printbibliography
+%\printbibliography
 
 \end{document}
